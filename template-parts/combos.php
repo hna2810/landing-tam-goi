@@ -1,0 +1,82 @@
+<?php
+/**
+ * Combo Offers Section Template Part
+ *
+ * @package LXLanding
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+$combo_title = lx_get_field('combo_title', 'option', "Combo ưu đãi trải nghiệm");
+$combo_items = lx_get_field('combo_items', 'option');
+
+if (empty($combo_items) && !is_array($combo_items)) {
+    $combo_items = array(
+        array(
+            'key'    => 'trai-nghiem',
+            'name'   => 'Gói Trải Nghiệm',
+            'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (300ML)',
+            'price'  => '99K',
+            'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+            'is_hot' => false,
+        ),
+        array(
+            'key'    => 'ban-chay',
+            'name'   => 'Gói Best Seller',
+            'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (500ML)',
+            'price'  => '159k',
+            'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+            'is_hot' => true,
+        ),
+        array(
+            'key'    => 'sieu-tiet-kiem',
+            'name'   => 'Gói Tiết Kiệm',
+            'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (1000ML)',
+            'price'  => '299K',
+            'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+            'is_hot' => false,
+        ),
+    );
+}
+
+$has_combos = lx_has_content($combo_title) || (!empty($combo_items) && is_array($combo_items));
+if (!$has_combos) {
+    return;
+}
+?>
+
+  <section class="ltg-sec ltg-pk-sec" id="combo">
+    <div class="ltg-wrap">
+      <?php if (lx_has_content($combo_title)) : ?>
+      <div class="ltg-center ltg-rv">
+        <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo esc_html($combo_title); ?></h2>
+      </div>
+      <?php endif; ?>
+
+      <?php if (!empty($combo_items) && is_array($combo_items)) : ?>
+      <div class="ltg-pks">
+        <?php foreach ($combo_items as $cb) :
+            if (empty($cb['name'])) continue;
+            $k   = !empty($cb['key']) ? $cb['key'] : 'trai-nghiem';
+            $hot = !empty($cb['is_hot']) ? ' ltg-pk--hot' : '';
+            $img = !empty($cb['img']) ? $cb['img'] : 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png';
+        ?>
+          <a href="#dat-hang" class="ltg-pk<?php echo esc_attr($hot); ?> ltg-rv" data-combo="<?php echo esc_attr($k); ?>">
+            <?php if (!empty($img)) : ?>
+              <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($cb['name']); ?>" loading="lazy">
+            <?php endif; ?>
+            <h3 class="lx_wow_item"><?php echo esc_html($cb['name']); ?></h3>
+            <?php if (!empty($cb['desc'])) : ?>
+              <p class="lx_wow_item"><?php echo esc_html($cb['desc']); ?></p>
+            <?php endif; ?>
+            <?php if (!empty($cb['price'])) : ?>
+              <b class="lx_wow_item"><?php echo esc_html($cb['price']); ?></b>
+            <?php endif; ?>
+          </a>
+        <?php endforeach; ?>
+      </div>
+      <?php endif; ?>
+    </div>
+  </section>
