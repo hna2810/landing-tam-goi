@@ -11,31 +11,32 @@ if (!defined('ABSPATH')) {
 
 $steps_eyebrow = lx_get_field('steps_eyebrow', 'option', "Cách dùng");
 $steps_title   = lx_get_field('steps_title', 'option', "3 Bước để tóc sạch, da thơm mỗi ngày cùng bộ đôi Tắm Gội Gừng Nghệ");
-$steps_items   = lx_get_field('steps_items', 'option');
 
-if (empty($steps_items) && !is_array($steps_items)) {
-    $steps_items = array(
-        array(
-            'icon'  => 'i-drop',
-            'title' => 'Bước 1: Gội đầu:',
-            'desc'  => 'Làm ướt tóc bằng nước ấm. Lấy một lượng dầu gội vừa đủ, tạo bọt rồi massage nhẹ nhàng trên da đầu từ 3-5 phút. Xả sạch lại với nước để loại bỏ hoàn toàn bọt bám.',
-        ),
-        array(
-            'icon'  => 'i-leaf',
-            'title' => 'Bước 2: Tắm sạch body:',
-            'desc'  => 'Làm ướt cơ thể, lấy lượng sữa tắm ra lòng bàn tay hoặc bông tắm. Massage kỹ các vùng da dễ tích tụ mồ hôi và mụn như lưng, ngực, cánh tay trong 2 phút.',
-        ),
-        array(
-            'icon'  => 'i-heart',
-            'title' => 'Bước 3: Xả sạch:',
-            'desc'  => 'Tắm lại bằng nước sạch, dùng khăn mềm lau khô nhẹ nhàng để cảm nhận làn da mịn màng và mái tóc bồng bềnh.',
-        ),
-        array(
-            'icon'  => 'i-root',
-            'title' => 'Ủ phục hồi <small style="font-family:var(--sans);font-size:12px;color:var(--ginger)">(tuỳ chọn)</small>',
-            'desc'  => 'Tóc khô xơ: thoa nước ủ gừng tươi sau gội, ủ 10–15 phút rồi xả.',
-        ),
-    );
+$steps_default_items = array(
+    array(
+        'icon'  => 'i-drop',
+        'title' => 'Bước 1: Gội đầu:',
+        'desc'  => 'Làm ướt tóc bằng nước ấm. Lấy một lượng dầu gội vừa đủ, tạo bọt rồi massage nhẹ nhàng trên da đầu từ 3-5 phút. Xả sạch lại với nước để loại bỏ hoàn toàn bọt bám.',
+    ),
+    array(
+        'icon'  => 'i-leaf',
+        'title' => 'Bước 2: Tắm sạch body:',
+        'desc'  => 'Làm ướt cơ thể, lấy lượng sữa tắm ra lòng bàn tay hoặc bông tắm. Massage kỹ các vùng da dễ tích tụ mồ hôi và mụn như lưng, ngực, cánh tay trong 2 phút.',
+    ),
+    array(
+        'icon'  => 'i-heart',
+        'title' => 'Bước 3: Xả sạch:',
+        'desc'  => 'Tắm lại bằng nước sạch, dùng khăn mềm lau khô nhẹ nhàng để cảm nhận làn da mịn màng và mái tóc bồng bềnh.',
+    ),
+    array(
+        'icon'  => 'i-root',
+        'title' => 'Ủ phục hồi <small style="font-family:var(--sans);font-size:12px;color:var(--ginger)">(tuỳ chọn)</small>',
+        'desc'  => 'Tóc khô xơ: thoa nước ủ gừng tươi sau gội, ủ 10–15 phút rồi xả.',
+    ),
+);
+$steps_items = lx_get_field('steps_items', 'option', $steps_default_items);
+if (!is_array($steps_items)) {
+    $steps_items = array();
 }
 
 $has_steps = lx_has_content($steps_title) || (!empty($steps_items) && is_array($steps_items));

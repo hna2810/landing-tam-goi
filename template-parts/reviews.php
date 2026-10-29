@@ -13,15 +13,16 @@ $rev_eyebrow = lx_get_field('rev_eyebrow', 'option', "Khách hàng nói gì");
 $rev_title   = lx_get_field('rev_title', 'option', "Thư viện hàng ngàn feedback chân thực");
 $rev_stat_1  = lx_get_field('rev_stat_1', 'option', "⭐⭐⭐⭐⭐ 4.9/5 sao dựa trên hơn 2.500+ đánh giá thực tế.");
 $rev_stat_2  = lx_get_field('rev_stat_2', 'option', "📊 98% đánh giá phản hồi tóc bớt gãy rụng, kích thích mọc tóc và giảm thâm mụn lưng");
-$rev_gallery = lx_get_field('rev_gallery', 'option');
 
-if (empty($rev_gallery) && !is_array($rev_gallery)) {
-    $rev_gallery = array(
-        array('img' => 'https://cdn.hstatic.net/products/200001066686/feedback-sua-tam-gung-nghe-may-may_70ad2e7919234d7384635a04cef8f022.png'),
-        array('img' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-giam-mun-lung-nguc-gung-nghe_e52b32f1bd2b4aa2a3285e9d07e78545.png'),
-        array('img' => 'https://cdn.hstatic.net/products/200001066686/doi-tuong-dung-sua-tam-gung-nghe-may-may_9017f7a260ae4d8b83b10308909a7d54.png'),
-        array('img' => 'https://cdn.hstatic.net/products/200001066686/thanh-phan-sua-tam-gung-nghe-may-may_6a0a590666174a74b14cc313dbb61bd7.png'),
-    );
+$rev_default_gallery = array(
+    array('img' => 'https://cdn.hstatic.net/products/200001066686/feedback-sua-tam-gung-nghe-may-may_70ad2e7919234d7384635a04cef8f022.png'),
+    array('img' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-giam-mun-lung-nguc-gung-nghe_e52b32f1bd2b4aa2a3285e9d07e78545.png'),
+    array('img' => 'https://cdn.hstatic.net/products/200001066686/doi-tuong-dung-sua-tam-gung-nghe-may-may_9017f7a260ae4d8b83b10308909a7d54.png'),
+    array('img' => 'https://cdn.hstatic.net/products/200001066686/thanh-phan-sua-tam-gung-nghe-may-may_6a0a590666174a74b14cc313dbb61bd7.png'),
+);
+$rev_gallery = lx_get_field('rev_gallery', 'option', $rev_default_gallery);
+if (!is_array($rev_gallery)) {
+    $rev_gallery = array();
 }
 
 $has_rev = lx_has_content($rev_title) || (!empty($rev_gallery) && is_array($rev_gallery));
@@ -62,7 +63,12 @@ if (!$has_rev) {
         <?php foreach ($rev_gallery as $item) :
             $src = '';
             if (is_array($item)) {
-                $src = !empty($item['img']['url']) ? $item['img']['url'] : ($item['img'] ?? '');
+                if (!empty($item['img']['url'])) {
+                    $src = $item['img']['url'];
+                } elseif (!empty($item['img'])) {
+                    $raw = $item['img'];
+                    $src = is_numeric($raw) ? wp_get_attachment_image_url($raw, 'full') : $raw;
+                }
             } elseif (is_string($item)) {
                 $src = $item;
             }

@@ -15,6 +15,7 @@ $modules = array(
     'assets.php',
     'ajax-order.php',
     'acf-options.php',
+    'sync-content.php',
 );
 
 foreach ($modules as $file) {

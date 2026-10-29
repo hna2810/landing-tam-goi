@@ -10,35 +10,36 @@ if (!defined('ABSPATH')) {
 }
 
 $combo_title = lx_get_field('combo_title', 'option', "Combo ưu đãi trải nghiệm");
-$combo_items = lx_get_field('combo_items', 'option');
 
-if (empty($combo_items) && !is_array($combo_items)) {
-    $combo_items = array(
-        array(
-            'key'    => 'trai-nghiem',
-            'name'   => 'Gói Trải Nghiệm',
-            'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (300ML)',
-            'price'  => '99K',
-            'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-            'is_hot' => false,
-        ),
-        array(
-            'key'    => 'ban-chay',
-            'name'   => 'Gói Best Seller',
-            'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (500ML)',
-            'price'  => '159k',
-            'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-            'is_hot' => true,
-        ),
-        array(
-            'key'    => 'sieu-tiet-kiem',
-            'name'   => 'Gói Tiết Kiệm',
-            'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (1000ML)',
-            'price'  => '299K',
-            'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-            'is_hot' => false,
-        ),
-    );
+$combo_default_items = array(
+    array(
+        'key'    => 'trai-nghiem',
+        'name'   => 'Gói Trải Nghiệm',
+        'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (300ML)',
+        'price'  => '99K',
+        'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'is_hot' => false,
+    ),
+    array(
+        'key'    => 'ban-chay',
+        'name'   => 'Gói Best Seller',
+        'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (500ML)',
+        'price'  => '159k',
+        'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'is_hot' => true,
+    ),
+    array(
+        'key'    => 'sieu-tiet-kiem',
+        'name'   => 'Gói Tiết Kiệm',
+        'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (1000ML)',
+        'price'  => '299K',
+        'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'is_hot' => false,
+    ),
+);
+$combo_items = lx_get_field('combo_items', 'option', $combo_default_items);
+if (!is_array($combo_items)) {
+    $combo_items = array();
 }
 
 $has_combos = lx_has_content($combo_title) || (!empty($combo_items) && is_array($combo_items));
@@ -61,7 +62,7 @@ if (!$has_combos) {
             if (empty($cb['name'])) continue;
             $k   = !empty($cb['key']) ? $cb['key'] : 'trai-nghiem';
             $hot = !empty($cb['is_hot']) ? ' ltg-pk--hot' : '';
-            $img = !empty($cb['img']) ? $cb['img'] : 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png';
+            $img = !empty($cb['img']) ? (is_array($cb['img']) ? ($cb['img']['url'] ?? '') : (is_numeric($cb['img']) ? wp_get_attachment_image_url($cb['img'], 'full') : $cb['img'])) : '';
         ?>
           <a href="#dat-hang" class="ltg-pk<?php echo esc_attr($hot); ?> ltg-rv" data-combo="<?php echo esc_attr($k); ?>">
             <?php if (!empty($img)) : ?>

@@ -13,43 +13,44 @@ $gift_eyebrow    = lx_get_field('gift_eyebrow', 'option', "Mùa tri ân 20/11");
 $gift_title      = lx_get_field('gift_title', 'option', "Gửi thầy cô một món quà<br>chăm sóc từ thảo mộc");
 $gift_lead       = lx_get_field('gift_lead', 'option', "Thay lời tri ân sâu sắc gửi đến những người lái đò thầm lặng bằng bộ quà tặng từ thảo mộc tự nhiên, gói trọn sự ấm áp và chân thành.");
 $gift_count_note = lx_get_field('gift_count_note', 'option', "Đặt trước <b>17/11</b> để nhận quà kịp ngày 20/11");
-$gift_sets       = lx_get_field('gift_sets', 'option');
 
-if (empty($gift_sets) && !is_array($gift_sets)) {
-    $gift_sets = array(
-        array(
-            'name'     => 'SET TÂM GIAO',
-            'ribbon'   => '',
-            'img'      => 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
-            'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nHộp quà cao cấp & Thiệp viết tay",
-            'price'    => '199.000đ',
-            'data_set' => 'Set Tâm Giao – 199.000đ',
-        ),
-        array(
-            'name'     => 'SET AN NHIÊN',
-            'ribbon'   => '★ Chọn nhiều nhất',
-            'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-            'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nNước ủ gừng tươi (250ml)\nHộp quà cao cấp & Thiệp viết tay",
-            'price'    => '299.000đ',
-            'data_set' => 'Set An Nhiên – 299.000đ',
-        ),
-        array(
-            'name'     => 'SET TRI ÂN',
-            'ribbon'   => '',
-            'img'      => 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
-            'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nTinh dầu xịt dưỡng bưởi gừng (100ml)\nHộp quà VIP & Túi vải thương hiệu",
-            'price'    => '399.000đ',
-            'data_set' => 'Set Tri Ân – 399.000đ',
-        ),
-        array(
-            'name'     => 'SET ĐOÀN VIÊN',
-            'ribbon'   => '',
-            'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-            'items'    => "Bộ đôi đại 1000ml (gội + tắm)\nNước ủ tóc gừng tươi (500ml)\nXà bông gừng nghệ thủ công\nHộp gỗ khắc tên & Thiệp lụa",
-            'price'    => '499.000đ',
-            'data_set' => 'Set Đoàn Viên – 499.000đ',
-        ),
-    );
+$gift_default_sets = array(
+    array(
+        'name'     => 'SET TÂM GIAO',
+        'ribbon'   => '',
+        'img'      => 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
+        'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nHộp quà cao cấp & Thiệp viết tay",
+        'price'    => '199.000đ',
+        'data_set' => 'Set Tâm Giao – 199.000đ',
+    ),
+    array(
+        'name'     => 'SET AN NHIÊN',
+        'ribbon'   => '★ Chọn nhiều nhất',
+        'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nNước ủ gừng tươi (250ml)\nHộp quà cao cấp & Thiệp viết tay",
+        'price'    => '299.000đ',
+        'data_set' => 'Set An Nhiên – 299.000đ',
+    ),
+    array(
+        'name'     => 'SET TRI ÂN',
+        'ribbon'   => '',
+        'img'      => 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
+        'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nTinh dầu xịt dưỡng bưởi gừng (100ml)\nHộp quà VIP & Túi vải thương hiệu",
+        'price'    => '399.000đ',
+        'data_set' => 'Set Tri Ân – 399.000đ',
+    ),
+    array(
+        'name'     => 'SET ĐOÀN VIÊN',
+        'ribbon'   => '',
+        'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'items'    => "Bộ đôi đại 1000ml (gội + tắm)\nNước ủ tóc gừng tươi (500ml)\nXà bông gừng nghệ thủ công\nHộp gỗ khắc tên & Thiệp lụa",
+        'price'    => '499.000đ',
+        'data_set' => 'Set Đoàn Viên – 499.000đ',
+    ),
+);
+$gift_sets = lx_get_field('gift_sets', 'option', $gift_default_sets);
+if (!is_array($gift_sets)) {
+    $gift_sets = array();
 }
 
 $has_gift = lx_has_content($gift_title) || (!empty($gift_sets) && is_array($gift_sets));
@@ -113,14 +114,15 @@ if (!$has_gift) {
             if (empty($set['name'])) continue;
             $is_hot = !empty($set['ribbon']) ? ' ltg-set--hot' : '';
             $items_arr = !empty($set['items']) ? explode("\n", str_replace("\r", "", $set['items'])) : array();
+            $img = !empty($set['img']) ? (is_array($set['img']) ? ($set['img']['url'] ?? '') : (is_numeric($set['img']) ? wp_get_attachment_image_url($set['img'], 'full') : $set['img'])) : '';
         ?>
           <div class="ltg-set<?php echo esc_attr($is_hot); ?> ltg-rv">
             <?php if (!empty($set['ribbon'])) : ?>
               <span class="ltg-ribbon"><?php echo esc_html($set['ribbon']); ?></span>
             <?php endif; ?>
-            <?php if (!empty($set['img'])) : ?>
+            <?php if (!empty($img)) : ?>
               <div class="ltg-set-img">
-                <img src="<?php echo esc_url($set['img']); ?>" alt="<?php echo esc_attr($set['name']); ?>" loading="lazy">
+                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($set['name']); ?>" loading="lazy">
               </div>
             <?php endif; ?>
             <div class="ltg-set-body">

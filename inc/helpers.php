@@ -22,30 +22,43 @@ if (!defined('ABSPATH')) {
  * @return mixed
  */
 function lx_get_field($selector, $post_id = 'option', $default = '') {
+    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
+    $has_opt_in_db = (get_option($opt_key, '__NOT_SET__') !== '__NOT_SET__');
+
     if (function_exists('get_field')) {
         $value = get_field($selector, $post_id);
-        // Field was found in ACF
         if ($value !== null && $value !== false) {
-            // If it's a string that was explicitly cleared (empty string), return empty string (do NOT fall back to default)
             if (is_string($value)) {
                 return trim($value);
             }
-            // If it's an array/repeater that was cleared, return array
             if (is_array($value)) {
                 return $value;
             }
             return $value;
         }
+
+        // If field exists in database option table, but value is empty/false (e.g. user cleared it or deleted all repeater rows)
+        if ($has_opt_in_db) {
+            $raw_val = get_option($opt_key, null);
+            if ($raw_val === '0' || $raw_val === 0 || $raw_val === '') {
+                return '';
+            }
+            if (is_array($raw_val)) {
+                return $raw_val;
+            }
+            return '';
+        }
     }
 
-    // Direct WordPress option check as secondary fallback
-    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
-    $raw_opt = get_option($opt_key, null);
-    if ($raw_opt !== null) {
-        if (is_string($raw_opt)) {
-            return trim($raw_opt);
+    if ($has_opt_in_db) {
+        $raw_opt = get_option($opt_key, null);
+        if ($raw_opt !== null) {
+            if (is_string($raw_opt)) {
+                return trim($raw_opt);
+            }
+            return $raw_opt;
         }
-        return $raw_opt;
+        return '';
     }
 
     return $default;
@@ -66,6 +79,9 @@ function lx_get_image_url($selector, $default = '', $size = 'full', $post_id = '
         $default = (is_string($size) && $size !== 'full') ? $size : '';
         $size = 'full';
     }
+
+    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
+    $has_opt_in_db = (get_option($opt_key, '__NOT_SET__') !== '__NOT_SET__');
 
     if (function_exists('get_field')) {
         $img = get_field($selector, $post_id);
@@ -88,19 +104,28 @@ function lx_get_image_url($selector, $default = '', $size = 'full', $post_id = '
             // If cleared in ACF, return empty
             return '';
         }
+
+        if ($has_opt_in_db) {
+            $raw_opt = get_option($opt_key, null);
+            if (is_numeric($raw_opt) && $raw_opt > 0) {
+                $src = wp_get_attachment_image_url($raw_opt, $size);
+                if ($src) return $src;
+            }
+            if (is_string($raw_opt) && trim($raw_opt) !== '') {
+                return trim($raw_opt);
+            }
+            return '';
+        }
     }
 
-    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
-    $raw_opt = get_option($opt_key, null);
-    if ($raw_opt !== null) {
+    if ($has_opt_in_db) {
+        $raw_opt = get_option($opt_key, null);
         if (is_string($raw_opt) && trim($raw_opt) !== '') {
             return trim($raw_opt);
         }
         if (is_numeric($raw_opt) && $raw_opt > 0) {
             $src = wp_get_attachment_image_url($raw_opt, $size);
-            if ($src) {
-                return $src;
-            }
+            if ($src) return $src;
         }
         return '';
     }

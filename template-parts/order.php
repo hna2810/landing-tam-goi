@@ -11,39 +11,40 @@ if (!defined('ABSPATH')) {
 
 $order_title = lx_get_field('order_title', 'option', "Lấy lại mái tóc bồng bềnh & làn da mịn màng ngay hôm nay!");
 $order_lead  = lx_get_field('order_lead', 'option', "Để lại thông tin bên dưới để nhận ngay ưu đãi trải nghiệm từ Home Care.");
-$order_combos = lx_get_field('order_combos', 'option');
 
-if (empty($order_combos) && !is_array($order_combos)) {
-    $order_combos = array(
-        array(
-            'val'   => 'trai-nghiem',
-            'name'  => 'Gói Trải Nghiệm 99K',
-            'desc'  => '1 Gội + 1 Tắm + 1 Ủ (300ml) · Freeship',
-            'badge' => '99K',
-            'chk'   => false,
-        ),
-        array(
-            'val'   => 'ban-chay',
-            'name'  => 'Gói Best Seller 159K (Khuyên dùng)',
-            'desc'  => '1 Gội + 1 Tắm + 1 Ủ (500ml) · Tiết kiệm nhất',
-            'badge' => '159K',
-            'chk'   => true,
-        ),
-        array(
-            'val'   => 'sieu-tiet-kiem',
-            'name'  => 'Gói Siêu Tiết Kiệm 299K',
-            'desc'  => '1 Gội + 1 Tắm + 1 Ủ (1000ml) · Dùng 4-5 tháng',
-            'badge' => '299K',
-            'chk'   => false,
-        ),
-        array(
-            'val'   => 'set-20-11',
-            'name'  => 'Set Quà Tặng Tri Ân 20/11',
-            'desc'  => 'Hộp quà cao cấp + Thiệp chúc viết tay',
-            'badge' => 'Quà tặng',
-            'chk'   => false,
-        ),
-    );
+$order_default_combos = array(
+    array(
+        'val'   => 'trai-nghiem',
+        'name'  => 'Gói Trải Nghiệm 99K',
+        'desc'  => '1 Gội + 1 Tắm + 1 Ủ (300ml) · Freeship',
+        'badge' => '99K',
+        'chk'   => false,
+    ),
+    array(
+        'val'   => 'ban-chay',
+        'name'  => 'Gói Best Seller 159K (Khuyên dùng)',
+        'desc'  => '1 Gội + 1 Tắm + 1 Ủ (500ml) · Tiết kiệm nhất',
+        'badge' => '159K',
+        'chk'   => true,
+    ),
+    array(
+        'val'   => 'sieu-tiet-kiem',
+        'name'  => 'Gói Siêu Tiết Kiệm 299K',
+        'desc'  => '1 Gội + 1 Tắm + 1 Ủ (1000ml) · Dùng 4-5 tháng',
+        'badge' => '299K',
+        'chk'   => false,
+    ),
+    array(
+        'val'   => 'set-20-11',
+        'name'  => 'Set Quà Tặng Tri Ân 20/11',
+        'desc'  => 'Hộp quà cao cấp + Thiệp chúc viết tay',
+        'badge' => 'Quà tặng',
+        'chk'   => false,
+    ),
+);
+$order_combos = lx_get_field('order_combos', 'option', $order_default_combos);
+if (!is_array($order_combos)) {
+    $order_combos = array();
 }
 
 $has_order = lx_has_content($order_title);
@@ -80,6 +81,7 @@ if (!$has_order) {
               <input type="text" name="address" class="ltg-inp" placeholder="Số nhà, ngõ/ngách, đường, phường/xã, quận/huyện..." required>
             </div>
 
+            <?php if (!empty($order_combos)) : ?>
             <div class="ltg-fg">
               <label class="ltg-fl lx_wow_item">Chọn gói combo sản phẩm <span style="color:var(--red)">*</span></label>
               <div class="ltg-copts" id="ltgCombo">
@@ -104,6 +106,7 @@ if (!$has_order) {
                 <?php endforeach; ?>
               </div>
             </div>
+            <?php endif; ?>
 
             <div class="ltg-fg">
               <label class="ltg-cchk">

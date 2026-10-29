@@ -17,41 +17,42 @@ $proc_video_thumb= lx_get_image_url('proc_video_thumb', 'https://cdn.hstatic.net
 $proc_video_tag  = lx_get_field('proc_video_tag', 'option', "Video thực tế");
 $proc_video_h    = lx_get_field('proc_video_title', 'option', "Hành trình đun nấu Gừng Nghệ Mây Mây");
 $proc_video_desc = lx_get_field('proc_video_desc', 'option', "Từ chọn nguyên liệu, nấu chiết thảo dược đến khi thành chai dầu gội, sữa tắm.");
-$proc_flow_steps = lx_get_field('proc_flow_steps', 'option');
 
-if (empty($proc_flow_steps) && !is_array($proc_flow_steps)) {
-    $proc_flow_steps = array(
-        array(
-            'num'   => '01',
-            'title' => 'Chọn thảo dược',
-            'desc'  => 'Gừng, nghệ, bưởi tươi được tuyển chọn',
-            'img'   => 'https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg',
-        ),
-        array(
-            'num'   => '02',
-            'title' => 'Sơ chế',
-            'desc'  => 'Rửa sạch, cắt lát, giữ trọn tinh chất',
-            'img'   => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
-        ),
-        array(
-            'num'   => '03',
-            'title' => 'Đun nấu',
-            'desc'  => 'Nấu chiết thảo dược theo công thức Home Care',
-            'img'   => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg',
-        ),
-        array(
-            'num'   => '04',
-            'title' => 'Lọc & đóng chai',
-            'desc'  => 'Lọc mịn, phối vitamin, chiết rót',
-            'img'   => 'https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png',
-        ),
-        array(
-            'num'   => '05',
-            'title' => 'Công bố & tem',
-            'desc'  => 'Sở Y tế tiếp nhận, tem chống giả',
-            'img'   => 'https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png',
-        ),
-    );
+$proc_default_steps = array(
+    array(
+        'num'   => '01',
+        'title' => 'Chọn thảo dược',
+        'desc'  => 'Gừng, nghệ, bưởi tươi được tuyển chọn',
+        'img'   => 'https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg',
+    ),
+    array(
+        'num'   => '02',
+        'title' => 'Sơ chế',
+        'desc'  => 'Rửa sạch, cắt lát, giữ trọn tinh chất',
+        'img'   => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
+    ),
+    array(
+        'num'   => '03',
+        'title' => 'Đun nấu',
+        'desc'  => 'Nấu chiết thảo dược theo công thức Home Care',
+        'img'   => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg',
+    ),
+    array(
+        'num'   => '04',
+        'title' => 'Lọc & đóng chai',
+        'desc'  => 'Lọc mịn, phối vitamin, chiết rót',
+        'img'   => 'https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png',
+    ),
+    array(
+        'num'   => '05',
+        'title' => 'Công bố & tem',
+        'desc'  => 'Sở Y tế tiếp nhận, tem chống giả',
+        'img'   => 'https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png',
+    ),
+);
+$proc_flow_steps = lx_get_field('proc_flow_steps', 'option', $proc_default_steps);
+if (!is_array($proc_flow_steps)) {
+    $proc_flow_steps = array();
 }
 
 $has_proc = lx_has_content($proc_title) || !empty($proc_flow_steps);
@@ -105,7 +106,7 @@ if (!$has_proc) {
       <div class="ltg-flow">
         <?php foreach ($proc_flow_steps as $step) :
             if (empty($step['title'])) continue;
-            $img = !empty($step['img']) ? $step['img'] : '';
+            $img = !empty($step['img']) ? (is_array($step['img']) ? ($step['img']['url'] ?? '') : (is_numeric($step['img']) ? wp_get_attachment_image_url($step['img'], 'full') : $step['img'])) : '';
             $num = !empty($step['num']) ? $step['num'] : '';
         ?>
           <div class="ltg-rv">

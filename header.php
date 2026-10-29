@@ -55,18 +55,18 @@ if (!defined('ABSPATH')) {
       </a>
 
       <?php
-      $menu_items = lx_get_field('header_menu', 'option');
-      if (empty($menu_items) && !is_array($menu_items)) {
-          // Initial bootstrap menu
-          $menu_items = array(
-              array('label' => 'Sản phẩm', 'link' => '#san-pham'),
-              array('label' => 'Quy trình', 'link' => '#quy-trinh'),
-              array('label' => 'Review', 'link' => '#review'),
-              array('label' => 'Quà 20/11', 'link' => '#qua-20-11'),
-              array('label' => 'Hỏi đáp', 'link' => '#hoi-dap'),
-          );
+      $menu_default = array(
+          array('label' => 'Sản phẩm', 'link' => '#san-pham'),
+          array('label' => 'Quy trình', 'link' => '#quy-trinh'),
+          array('label' => 'Review', 'link' => '#review'),
+          array('label' => 'Quà 20/11', 'link' => '#qua-20-11'),
+          array('label' => 'Hỏi đáp', 'link' => '#hoi-dap'),
+      );
+      $menu_items = lx_get_field('header_menu', 'option', $menu_default);
+      if (!is_array($menu_items)) {
+          $menu_items = array();
       }
-      if (!empty($menu_items) && is_array($menu_items)) :
+      if (!empty($menu_items)) :
       ?>
       <div class="ltg-menu">
         <?php foreach ($menu_items as $item) :
