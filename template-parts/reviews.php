@@ -17,8 +17,7 @@ $rev_gallery = lx_get_field('rev_gallery', 'option');
 
 if (empty($rev_gallery) && !is_array($rev_gallery)) {
     $rev_gallery = array(
-        array('img' => 'https://cdn.hstatic.net/products/200001066686/combo-dau-goi-sua-tam-gung-nghe-may-may_a87262c86bfa40bc970ec74d8eb36bb3.png'),
-        array('img' => 'https://cdn.hstatic.net/products/200001066686/cong-dung-dau-goi-gung-nghe-may-may_9d92e5927ea14254b1f4df0f7fcbe03e.png'),
+        array('img' => 'https://cdn.hstatic.net/products/200001066686/feedback-sua-tam-gung-nghe-may-may_70ad2e7919234d7384635a04cef8f022.png'),
         array('img' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-giam-mun-lung-nguc-gung-nghe_e52b32f1bd2b4aa2a3285e9d07e78545.png'),
         array('img' => 'https://cdn.hstatic.net/products/200001066686/doi-tuong-dung-sua-tam-gung-nghe-may-may_9017f7a260ae4d8b83b10308909a7d54.png'),
         array('img' => 'https://cdn.hstatic.net/products/200001066686/thanh-phan-sua-tam-gung-nghe-may-may_6a0a590666174a74b14cc313dbb61bd7.png'),
