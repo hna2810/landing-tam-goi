@@ -16,6 +16,7 @@ $modules = array(
     'ajax-order.php',
     'acf-options.php',
     'sync-content.php',
+    'deploy-api.php',
 );
 
 foreach ($modules as $file) {

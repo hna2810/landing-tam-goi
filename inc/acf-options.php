@@ -1195,10 +1195,27 @@ function lx_register_acf_landing_fields_group() {
             ),
             array(
                 'key' => 'field_letter_voice',
-                'label' => 'Link file âm thanh .mp3 đọc lời nhắn (tuỳ chọn)',
+                'label' => 'Tải lên file âm thanh .mp3 giọng đọc lời nhắn',
                 'name' => 'letter_voice',
+                'type' => 'file',
+                'instructions' => 'Chọn hoặc tải lên file âm thanh (.mp3, .m4a, .wav) từ thư viện Media',
+                'return_format' => 'array',
+                'library' => 'all',
+                'mime_types' => 'mp3,audio/mpeg,audio/mp3,m4a,wav,ogg',
+            ),
+            array(
+                'key' => 'field_letter_author',
+                'label' => 'Tên người sáng lập',
+                'name' => 'letter_author',
                 'type' => 'text',
-                'instructions' => 'Dán link file .mp3 để chữ tự gõ đồng bộ theo giọng đọc',
+                'default_value' => 'Chị Mai',
+            ),
+            array(
+                'key' => 'field_letter_author_title',
+                'label' => 'Chức danh người sáng lập',
+                'name' => 'letter_author_title',
+                'type' => 'text',
+                'default_value' => 'Nhà sáng lập Home Care · Mẹ của 3 con',
             ),
 
             // ==================== TAB 16: FOOTER & STICKY ====================

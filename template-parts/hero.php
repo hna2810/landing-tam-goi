@@ -51,7 +51,7 @@ if (!$has_hero) {
     </div>
 
     <div class="ltg-wrap">
-      <div class="ltg-rv">
+      <div class="ltg-hero-content">
         <?php if (lx_has_content($hero_title)) : ?>
           <h1 class="lx_wow_item"><?php echo wp_kses_post($hero_title); ?></h1>
         <?php endif; ?>
@@ -111,7 +111,7 @@ if (!$has_hero) {
       </div>
 
       <?php if (!empty($hero_image)) : ?>
-        <div class="ltg-hero-img ltg-rv">
+        <div class="ltg-hero-img">
           <div class="ltg-main">
             <img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(strip_tags($hero_title)); ?>">
           </div>

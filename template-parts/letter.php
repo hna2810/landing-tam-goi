@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$letter_mascot      = lx_get_image_url('letter_mascot', 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'medium', 'option');
+$letter_mascot      = lx_get_image_url('letter_mascot', '', 'medium', 'option');
 $letter_title       = lx_get_field('letter_title', 'option', "MÂY MÂY –<br>TÓC SẠCH, DA THƠM");
 $letter_body        = lx_get_field('letter_body', 'option', "Trải qua ba lần sinh nở trước tuổi 30, chị Mai hiểu rằng, hành trình làm mẹ không chỉ có niềm vui đón con mà còn là những tháng ngày người mẹ cần được chăm sóc và nâng niu.\n\nTừ kiến thức chuyên môn và nhiều năm tháng đồng hành cùng các thai phụ & sản phụ, chị Mai tìm về những bí quyết chăm sóc bí truyền với các nguyên liệu thân thuộc từ gừng, nghệ và thảo mộc. Nhưng việc chuẩn bị cầu kỳ mỗi ngày khiến chị trăn trở về phương pháp chăm sóc mẹ thuận tiện hơn.\n\nTừ đó, chị Mai đã tạo nên Mây Mây – thương hiệu chăm sóc mẹ từ tinh hoa thảo mộc, mong muốn mang đến những sản phẩm gần gũi, giúp mẹ chăm sóc tóc và làn da dễ dàng hơn trong kỳ ở cữ.");
 $letter_hl          = lx_get_field('letter_hl', 'option', "Bởi chị hiểu, sau những tháng ngày dành trọn yêu thương cho con, mẹ cũng xứng đáng được chăm sóc và yêu thương chính mình.");
@@ -40,9 +40,9 @@ if (!$has_letter) {
 
   <section class="ltg-sec ltg-type" id="loi-nhan">
     <div class="ltg-wrap">
-      <div class="ltg-type-head ltg-rv">
+      <div class="ltg-type-head">
         <?php if (!empty($letter_mascot)) : ?>
-          <img src="<?php echo esc_url($letter_mascot); ?>" alt="Chị Mai Home Care" class="ltg-type-mascot" loading="lazy">
+          <img src="<?php echo esc_url($letter_mascot); ?>" alt="<?php echo esc_attr($letter_author ?: 'Chị Mai'); ?>" class="ltg-type-mascot" loading="lazy">
         <?php endif; ?>
         <span class="ltg-eyebrow lx_wow_item">Tâm thư người sáng lập</span>
         <?php if (lx_has_content($letter_title)) : ?>
@@ -51,7 +51,7 @@ if (!$has_letter) {
       </div>
 
       <?php if (!empty($voice_url)) : ?>
-      <div class="ltg-voice-player ltg-rv" id="ltgVoicePlayer">
+      <div class="ltg-voice-player" id="ltgVoicePlayer">
         <audio id="ltgTypeVoice" preload="metadata" src="<?php echo esc_url($voice_url); ?>"></audio>
         <button class="ltg-voice-btn" id="ltgVoiceBtn" type="button" aria-label="Phát giọng đọc của chị Mai">
           <svg class="ltg-voice-play-ic" width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
@@ -62,10 +62,10 @@ if (!$has_letter) {
             <span class="ltg-voice-wave" id="ltgVoiceWave">
               <span></span><span></span><span></span><span></span><span></span>
             </span>
-            <b class="ltg-voice-title">Lắng nghe chia sẻ từ Chị Mai</b>
+            <b class="ltg-voice-title">Lắng nghe tâm sự từ <?php echo esc_html($letter_author ?: 'Chị Mai'); ?></b>
           </div>
           <div class="ltg-voice-track">
-            <div class="ltg-voice-bar" id="ltgVoiceBar">
+            <div class="ltg-voice-bar" id="ltgVoiceBar" role="slider" aria-label="Thanh tiến trình âm thanh" tabindex="0">
               <div class="ltg-voice-fill" id="ltgVoiceFill"></div>
             </div>
             <div class="ltg-voice-time">
@@ -76,7 +76,7 @@ if (!$has_letter) {
       </div>
       <?php endif; ?>
 
-      <div class="ltg-type-box ltg-rv" id="ltgType">
+      <div class="ltg-type-box">
         <span class="ltg-type-quote" aria-hidden="true">“</span>
         
         <?php if (lx_has_content($letter_body)) : ?>

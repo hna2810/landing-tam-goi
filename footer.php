@@ -64,7 +64,7 @@ $footer_text = lx_get_field('footer_text', 'option', 'Đẹp và Thật · Since
 
 <?php
 // Include SVG sprite icons
-get_template_part('template-parts/svg-sprite');
+// SVG sprite loaded in header
 wp_footer();
 ?>
 </body>

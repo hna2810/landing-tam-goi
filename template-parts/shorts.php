@@ -17,38 +17,31 @@ $shorts_youtube = lx_get_field('shorts_youtube', 'option', "#");
 $shorts_default_items = array(
     array(
         'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
+        'thumb' => 'https://cdn.hstatic.net/products/200001066686/dau_goi_gung_nghe_may_may_-_dau_goi_cho_me_bau_va_me_sau_sinh_c85c9e18e5f24a9d93a1c3676d8fe1c8.jpg',
         'src'   => 'TikTok',
-        'title' => 'Gội thử lần đầu – tóc rụng ít hẳn',
-        'sub'   => 'Trải nghiệm dầu gội',
+        'title' => 'Mẹ bỉm chia sẻ Review sau 3 tuần',
+        'sub'   => 'Trải nghiệm thực tế',
     ),
     array(
         'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/dau_goi_gung_nghe_may_may_-_dau_goi_cho_me_bau_va_me_sau_sinh_c85c9e18e5f24a9d93a1c3676d8fe1c8.jpg',
+        'thumb' => 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
         'src'   => 'TikTok',
-        'title' => 'Mẹ bầu tắm gội an tâm mỗi ngày',
-        'sub'   => 'Review mẹ bầu',
+        'title' => 'Chất dầu gội sánh mịn cặn gừng tươi',
+        'sub'   => 'Cận cảnh sản phẩm',
     ),
     array(
         'video' => '',
         'thumb' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
-        'src'   => 'Reels',
-        'title' => 'Tạm biệt mụn lưng sau 3 tuần',
-        'sub'   => 'Trải nghiệm sữa tắm',
+        'src'   => 'Shorts',
+        'title' => 'Khử sạch mùi mồ hôi & mờ mụn lưng',
+        'sub'   => 'Sữa tắm Gừng Nghệ',
     ),
     array(
         'video' => '',
         'thumb' => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
         'src'   => 'Shorts',
-        'title' => 'Đun nấu thảo dược tại xưởng',
-        'sub'   => 'Hậu trường sản xuất',
-    ),
-    array(
-        'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi_341071304a9d48dab53bca2e5363b41d.png',
-        'src'   => 'TikTok',
-        'title' => 'Ủ tóc gừng tươi – tóc mềm mượt',
-        'sub'   => 'Tuỳ chọn ủ tóc',
+        'title' => 'Đóng gói set quà & Hậu trường tại xưởng',
+        'sub'   => 'Quy trình sản xuất',
     ),
 );
 $shorts_items = lx_get_field('shorts_items', 'option', $shorts_default_items);
@@ -64,7 +57,7 @@ if (!$has_shorts) {
 
   <section class="ltg-sec ltg-shorts">
     <div class="ltg-wrap">
-      <div class="ltg-shorts-head ltg-rv">
+      <div class="ltg-shorts-head">
         <div>
           <?php if (lx_has_content($shorts_eyebrow)) : ?>
             <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($shorts_eyebrow); ?></span>
@@ -89,28 +82,36 @@ if (!$has_shorts) {
       </div>
 
       <?php if (!empty($shorts_items) && is_array($shorts_items)) : 
-          $default_shorts_thumbs = array(
-              'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
+          $fallback_thumbs = array(
               'https://cdn.hstatic.net/products/200001066686/dau_goi_gung_nghe_may_may_-_dau_goi_cho_me_bau_va_me_sau_sinh_c85c9e18e5f24a9d93a1c3676d8fe1c8.jpg',
+              'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
               'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
               'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
-              'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi_341071304a9d48dab53bca2e5363b41d.png',
           );
       ?>
       <div class="ltg-srow">
         <?php foreach ($shorts_items as $idx => $sh) :
             if (empty($sh['title'])) continue;
-            $v_url = !empty($sh['video']) ? $sh['video'] : '';
-            $thumb = !empty($sh['thumb']) ? (is_array($sh['thumb']) ? ($sh['thumb']['url'] ?? '') : (is_numeric($sh['thumb']) ? wp_get_attachment_image_url($sh['thumb'], 'full') : $sh['thumb'])) : '';
+            $v_url = !empty($sh['video']) ? trim($sh['video']) : '';
+            $thumb = '';
+            if (!empty($sh['thumb'])) {
+                if (is_array($sh['thumb']) && !empty($sh['thumb']['url'])) {
+                    $thumb = $sh['thumb']['url'];
+                } elseif (is_numeric($sh['thumb'])) {
+                    $thumb = wp_get_attachment_image_url($sh['thumb'], 'full');
+                } elseif (is_string($sh['thumb'])) {
+                    $thumb = trim($sh['thumb']);
+                }
+            }
             
-            // Auto YouTube Shorts thumbnail fallback if not uploaded
+            // If thumb is empty, use fallback thumb by index
             if (empty($thumb) && !empty($v_url)) {
                 if (preg_match('/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $v_url, $yt_m)) {
                     $thumb = 'https://img.youtube.com/vi/' . $yt_m[1] . '/hqdefault.jpg';
                 }
             }
-            if (empty($thumb) && isset($default_shorts_thumbs[$idx])) {
-                $thumb = $default_shorts_thumbs[$idx];
+            if (empty($thumb)) {
+                $thumb = $fallback_thumbs[$idx % count($fallback_thumbs)];
             }
             $src_lbl = !empty($sh['src']) ? $sh['src'] : 'TikTok';
         ?>

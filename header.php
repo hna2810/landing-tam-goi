@@ -21,6 +21,8 @@ if (!defined('ABSPATH')) {
 <body <?php body_class('lx_landing_theme'); ?>>
 <?php wp_body_open(); ?>
 
+<?php get_template_part('template-parts/svg-sprite'); ?>
+
 <div class="ltg">
   <div class="ltg-prog" id="ltgProg"></div>
 
