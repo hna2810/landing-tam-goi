@@ -996,3 +996,21 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
 }
 
 
+
+
+/* Typewriter / Handwriting reveal & Hidden Voice Player */
+.ltg-voice-player{display:none!important}
+.ltg-type-text,.ltg-type-hl{position:relative}
+.ltg-type-text{font-size:18px;line-height:1.85;color:var(--forest);white-space:pre-line}
+.ltg-type-ghost{visibility:hidden;display:block}
+.ltg-type-live{position:absolute;top:0;left:0;right:0;display:block;color:#3b3a32}
+.ltg-type-hl{position:relative;margin-top:24px;padding-top:20px;border-top:1px dashed #ebd9a8;font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ginger);font-style:italic}
+.ltg-type-hl .ltg-type-live{position:absolute;top:20px;left:0;right:0}
+.ltg-type-caret{display:inline-block;width:2.5px;height:1.15em;margin-left:3px;vertical-align:-.18em;background:var(--ginger);border-radius:2px;animation:ltgCaretBlink .85s steps(1) infinite}
+@keyframes ltgCaretBlink{50%{opacity:0}}
+.ltg-type-box.is-done .ltg-type-caret{display:none!important}
+@media(max-width:680px){
+  .ltg-type-text{font-size:15.5px;line-height:1.75}
+  .ltg-type-hl{font-size:17.5px;margin-top:18px;padding-top:16px}
+  .ltg-type-hl .ltg-type-live{top:16px}
+}

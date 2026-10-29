@@ -50,45 +50,21 @@ if (!$has_letter) {
         <?php endif; ?>
       </div>
 
-      <?php if (!empty($voice_url)) : ?>
-      <div class="ltg-voice-player" id="ltgVoicePlayer">
-        <audio id="ltgTypeVoice" preload="metadata" src="<?php echo esc_url($voice_url); ?>"></audio>
-        <button class="ltg-voice-btn" id="ltgVoiceBtn" type="button" aria-label="Phát giọng đọc của chị Mai">
-          <svg class="ltg-voice-play-ic" width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-          <svg class="ltg-voice-pause-ic" width="22" height="22" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
-        </button>
-        <div class="ltg-voice-meta">
-          <div class="ltg-voice-top">
-            <span class="ltg-voice-wave" id="ltgVoiceWave">
-              <span></span><span></span><span></span><span></span><span></span>
-            </span>
-            <b class="ltg-voice-title">Lắng nghe tâm sự từ <?php echo esc_html($letter_author ?: 'Chị Mai'); ?></b>
-          </div>
-          <div class="ltg-voice-track">
-            <div class="ltg-voice-bar" id="ltgVoiceBar" role="slider" aria-label="Thanh tiến trình âm thanh" tabindex="0">
-              <div class="ltg-voice-fill" id="ltgVoiceFill"></div>
-            </div>
-            <div class="ltg-voice-time">
-              <span id="ltgVoiceCur">00:00</span> / <span id="ltgVoiceDur">--:--</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <?php endif; ?>
-
-      <div class="ltg-type-box">
+      <div class="ltg-type-box" id="ltgType" role="region" aria-label="Tâm thư người sáng lập">
         <span class="ltg-type-quote" aria-hidden="true">“</span>
         
         <?php if (lx_has_content($letter_body)) : ?>
-        <div class="ltg-type-text">
-          <?php echo nl2br(esc_html($letter_body)); ?>
-        </div>
+        <p class="ltg-type-text">
+          <span class="ltg-type-ghost" id="ltgGhostBody"><?php echo esc_html($letter_body); ?></span>
+          <span class="ltg-type-live" id="ltgTypeBody" aria-hidden="true"></span>
+        </p>
         <?php endif; ?>
 
         <?php if (lx_has_content($letter_hl)) : ?>
-        <div class="ltg-type-hl">
-          <strong><?php echo esc_html($letter_hl); ?></strong>
-        </div>
+        <p class="ltg-type-hl">
+          <strong class="ltg-type-ghost" id="ltgGhostHl"><?php echo esc_html($letter_hl); ?></strong>
+          <strong class="ltg-type-live" id="ltgTypeHl" aria-hidden="true"></strong>
+        </p>
         <?php endif; ?>
 
         <?php if (lx_has_content($letter_author)) : ?>
@@ -102,4 +78,8 @@ if (!$has_letter) {
         <?php endif; ?>
       </div>
     </div>
+
+    <?php if (!empty($voice_url)) : ?>
+      <audio id="ltgTypeVoice" preload="auto" src="<?php echo esc_url($voice_url); ?>" playsinline style="display:none;"></audio>
+    <?php endif; ?>
   </section>

@@ -4,109 +4,172 @@
  * @package LXLanding
  */
 
-// 1. FOUNDER VOICE AUDIO PLAYER (Safe, Zero-Dependencies)
+// 1. FOUNDER VOICE & SYNCHRONIZED TYPEWRITER / HANDWRITING REVEAL (51s)
 (function(){
   try {
-    var player = document.getElementById('ltgVoicePlayer');
-    if (!player) return;
+    var box = document.getElementById('ltgType');
+    var outB = document.getElementById('ltgTypeBody');
+    var outH = document.getElementById('ltgTypeHl');
+    var ghostB = document.getElementById('ltgGhostBody');
+    var ghostH = document.getElementById('ltgGhostHl');
+    var voice = document.getElementById('ltgTypeVoice');
 
-    var audio = document.getElementById('ltgTypeVoice');
-    var btn = document.getElementById('ltgVoiceBtn');
-    var fill = document.getElementById('ltgVoiceFill');
-    var curTime = document.getElementById('ltgVoiceCur');
-    var durTime = document.getElementById('ltgVoiceDur');
-    var bar = document.getElementById('ltgVoiceBar');
-    var playIc = btn ? btn.querySelector('.ltg-voice-play-ic') : null;
-    var pauseIc = btn ? btn.querySelector('.ltg-voice-pause-ic') : null;
+    if (!box || !outB) return;
 
-    if (!audio || !btn) return;
+    var DURATION = 51; // exactly 51 seconds
+    var running = false;
+    var started = false;
+    var rafId = null;
+    var t0 = 0;
+    var useVoice = false;
 
-    function fmtTime(sec){
-      if (isNaN(sec) || sec < 0) return '00:00';
-      var m = Math.floor(sec / 60);
-      var s = Math.floor(sec % 60);
-      return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    // Split text into Vietnamese grapheme clusters (preserving accents & combined letters)
+    function splitGraphemes(str) {
+      if (!str) return [];
+      str = str.replace(/[ \t\r]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+      if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+        var seg = new Intl.Segmenter('vi', { granularity: 'grapheme' });
+        return Array.from(seg.segment(str), function(x){ return x.segment; });
+      }
+      return Array.from(str);
     }
 
-    function setPlayingState(isPlaying){
-      if (isPlaying) {
-        player.classList.add('is-playing');
-        if (playIc) playIc.style.display = 'none';
-        if (pauseIc) pauseIc.style.display = 'block';
+    var cb = ghostB ? splitGraphemes(ghostB.textContent) : [];
+    var ch = ghostH ? splitGraphemes(ghostH.textContent) : [];
+    var NB = cb.length;
+    var NH = ch.length;
+    var N = NB + NH;
+
+    if (N === 0) return;
+
+    // Create elegant blinking caret / pen cursor
+    var caret = document.createElement('span');
+    caret.className = 'ltg-type-caret';
+    caret.setAttribute('aria-hidden', 'true');
+
+    var lastRendered = -1;
+
+    function render(elapsedSec) {
+      var totalDur = DURATION;
+      if (useVoice && voice && voice.duration && !isNaN(voice.duration) && voice.duration > 5) {
+        totalDur = voice.duration;
+      }
+
+      var progress = Math.min(1, Math.max(0, elapsedSec / totalDur));
+      var k = Math.min(N, Math.floor(progress * N));
+
+      if (k === lastRendered) return;
+      lastRendered = k;
+
+      if (k <= NB) {
+        outB.textContent = cb.slice(0, k).join('');
+        if (outH) outH.textContent = '';
+        outB.appendChild(caret);
       } else {
-        player.classList.remove('is-playing');
-        if (playIc) playIc.style.display = 'block';
-        if (pauseIc) pauseIc.style.display = 'none';
+        outB.textContent = cb.join('');
+        if (outH) {
+          outH.textContent = ch.slice(0, k - NB).join('');
+          outH.appendChild(caret);
+        }
       }
     }
 
-    // Update duration when metadata loads
-    audio.addEventListener('loadedmetadata', function(){
-      if (durTime && audio.duration) {
-        durTime.textContent = fmtTime(audio.duration);
+    function onComplete() {
+      running = false;
+      var totalDur = (useVoice && voice && voice.duration) ? voice.duration : DURATION;
+      render(totalDur);
+      if (caret.parentNode) {
+        caret.parentNode.removeChild(caret);
       }
-    });
+      box.classList.remove('is-typing');
+      box.classList.add('is-done');
+    }
 
-    // Track progress
-    audio.addEventListener('timeupdate', function(){
-      if (audio.duration) {
-        var pct = (audio.currentTime / audio.duration) * 100;
-        if (fill) fill.style.width = pct + '%';
-        if (curTime) curTime.textContent = fmtTime(audio.currentTime);
-        if (durTime && (durTime.textContent === '--:--' || durTime.textContent === '00:00')) {
-          durTime.textContent = fmtTime(audio.duration);
-        }
-      }
-    });
-
-    // Toggle play/pause
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      if (audio.paused) {
-        var playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.then(function(){
-            setPlayingState(true);
-          }).catch(function(err){
-            console.warn('Audio play notice:', err);
-          });
-        } else {
-          setPlayingState(true);
-        }
+    function tick() {
+      if (!running) return;
+      var elapsed = 0;
+      if (useVoice && voice && !voice.paused && voice.currentTime > 0) {
+        elapsed = voice.currentTime;
       } else {
-        audio.pause();
-        setPlayingState(false);
+        elapsed = (performance.now() - t0) / 1000;
+      }
+
+      render(elapsed);
+
+      var totalDur = (useVoice && voice && voice.duration) ? voice.duration : DURATION;
+      var isEnded = (useVoice && voice && voice.ended) || (elapsed >= totalDur);
+
+      if (!isEnded) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        onComplete();
+      }
+    }
+
+    function start(forceRestart) {
+      if (started && !forceRestart) return;
+      started = true;
+      running = true;
+      lastRendered = -1;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      box.classList.remove('is-done');
+      box.classList.add('is-typing');
+
+      useVoice = !!(voice && voice.src);
+
+      if (useVoice) {
+        try {
+          voice.currentTime = 0;
+          var p = voice.play();
+          if (p !== undefined) {
+            p.catch(function(err){
+              console.warn('Autoplay notice:', err);
+              // Listen for first interaction anywhere to resume voice
+              function resumeOnTouch() {
+                if (voice && voice.paused) {
+                  voice.play().catch(function(){});
+                }
+                document.removeEventListener('click', resumeOnTouch);
+                document.removeEventListener('touchstart', resumeOnTouch);
+              }
+              document.addEventListener('click', resumeOnTouch, { once: true });
+              document.addEventListener('touchstart', resumeOnTouch, { once: true });
+            });
+          }
+        } catch(e) {
+          console.warn('Voice play exception:', e);
+        }
+      }
+
+      t0 = performance.now();
+      rafId = requestAnimationFrame(tick);
+    }
+
+    // Click on box to replay anytime
+    box.addEventListener('click', function(){
+      if (!running) {
+        start(true);
       }
     });
 
-    // Handle seek on bar click
-    if (bar) {
-      function seek(e){
-        var rect = bar.getBoundingClientRect();
-        var clickX = e.clientX - rect.left;
-        var ratio = Math.max(0, Math.min(1, clickX / rect.width));
-        if (audio.duration) {
-          audio.currentTime = ratio * audio.duration;
+    // Auto-trigger when scrolled into view
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting && !started) {
+          start(false);
+          io.disconnect();
         }
-      }
-      bar.addEventListener('click', seek);
-      bar.addEventListener('keydown', function(e){
-        if (e.key === 'ArrowRight') {
-          audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 5);
-        } else if (e.key === 'ArrowLeft') {
-          audio.currentTime = Math.max(0, audio.currentTime - 5);
-        }
+      }, {
+        threshold: 0.25,
+        rootMargin: '0px 0px -40px 0px'
       });
+      io.observe(box);
+    } else {
+      start(false);
     }
-
-    // Audio ended
-    audio.addEventListener('ended', function(){
-      setPlayingState(false);
-      if (fill) fill.style.width = '0%';
-      if (curTime) curTime.textContent = '00:00';
-    });
   } catch (err) {
-    console.warn('Voice player init error:', err);
+    console.warn('Typewriter init error:', err);
   }
 })();
 
