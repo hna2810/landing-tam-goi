@@ -22,55 +22,30 @@ if (!defined('ABSPATH')) {
  * @return mixed
  */
 function lx_get_field($selector, $post_id = 'option', $default = '') {
-    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
-    $has_opt_in_db = (get_option($opt_key, '__NOT_SET__') !== '__NOT_SET__');
-    $is_synced = (bool) get_option('lx_tam_goi_content_sync_ver', false);
-
     if (function_exists('get_field')) {
         $value = get_field($selector, $post_id);
         if ($value !== null && $value !== false) {
             if (is_string($value)) {
-                $trimmed = trim($value);
-                if ($trimmed !== '') {
-                    return $trimmed;
-                }
-                if ($is_synced || $has_opt_in_db) {
-                    return '';
-                }
-            } elseif (is_array($value)) {
-                if (!empty($value)) {
-                    return $value;
-                }
-                if ($is_synced || $has_opt_in_db) {
-                    return array();
-                }
-            } else {
+                return trim($value);
+            }
+            if (is_array($value)) {
                 return $value;
             }
-        }
-
-        // If field exists in database option table, but value is empty/false (user cleared it or deleted all repeater rows)
-        if ($is_synced && $has_opt_in_db) {
-            $raw_val = get_option($opt_key, null);
-            if ($raw_val === '0' || $raw_val === 0 || $raw_val === '' || $raw_val === null || $raw_val === false) {
-                return '';
-            }
-            if (is_array($raw_val)) {
-                return $raw_val;
-            }
-            return '';
+            return $value;
         }
     }
 
-    if ($is_synced && $has_opt_in_db) {
-        $raw_opt = get_option($opt_key, null);
-        if ($raw_opt !== null && $raw_opt !== false && $raw_opt !== '' && $raw_opt !== 0 && $raw_opt !== '0') {
-            if (is_string($raw_opt)) {
-                return trim($raw_opt);
-            }
-            return $raw_opt;
+    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
+    $raw_val = get_option($opt_key, '__NOT_SET__');
+
+    if ($raw_val !== '__NOT_SET__') {
+        if ($raw_val === false || $raw_val === null || $raw_val === '' || $raw_val === 0 || $raw_val === '0') {
+            return is_array($default) ? array() : '';
         }
-        return '';
+        if (is_string($raw_val)) {
+            return trim($raw_val);
+        }
+        return $raw_val;
     }
 
     return $default;
@@ -79,88 +54,71 @@ function lx_get_field($selector, $post_id = 'option', $default = '') {
 /**
  * Get ACF image URL or default image
  *
- * @param string $selector Field name or key.
- * @param string $default  Fallback URL.
- * @param string $size     Image size.
- * @param mixed  $post_id  Post ID or 'option'.
+ * If the user explicitly cleared the image in ACF, returns empty string so that
+ * the image element can be hidden. If never configured, returns $default_url.
+ *
+ * @param string $selector    Field name.
+ * @param string $default_url Fallback image URL.
+ * @param string $size        Image size.
+ * @param mixed  $post_id     Post ID or 'option'.
  * @return string
  */
-function lx_get_image_url($selector, $default = '', $size = 'full', $post_id = 'option') {
-    if ($default === 'option') {
-        $post_id = 'option';
-        $default = (is_string($size) && $size !== 'full') ? $size : '';
-        $size = 'full';
-    }
-
-    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
-    $has_opt_in_db = (get_option($opt_key, '__NOT_SET__') !== '__NOT_SET__');
-    $is_synced = (bool) get_option('lx_tam_goi_content_sync_ver', false);
-
+function lx_get_image_url($selector, $default_url = '', $size = 'full', $post_id = 'option') {
     if (function_exists('get_field')) {
-        $img = get_field($selector, $post_id);
-        if ($img !== null && $img !== false && $img !== '' && $img !== 0 && $img !== '0') {
-            if (is_array($img) && !empty($img['url'])) {
-                if ($size !== 'full' && !empty($img['sizes'][$size])) {
-                    return $img['sizes'][$size];
-                }
-                return $img['url'];
+        $image = get_field($selector, $post_id);
+        if ($image !== null && $image !== false) {
+            if (empty($image)) {
+                return '';
             }
-            if (is_numeric($img) && $img > 0) {
-                $src = wp_get_attachment_image_url($img, $size);
-                if ($src) {
-                    return $src;
-                }
+            if (is_array($image) && !empty($image['url'])) {
+                return $image['url'];
             }
-            if (is_string($img) && trim($img) !== '') {
-                return trim($img);
+            if (is_numeric($image)) {
+                $url = wp_get_attachment_image_url($image, $size);
+                return $url ?: '';
             }
-        }
-
-        // If site was initialized and user explicitly removed the image in ACF
-        if ($is_synced && $has_opt_in_db) {
-            $raw_opt = get_option($opt_key, null);
-            if (is_numeric($raw_opt) && $raw_opt > 0) {
-                $src = wp_get_attachment_image_url($raw_opt, $size);
-                if ($src) return $src;
+            if (is_string($image) && trim($image) !== '') {
+                return trim($image);
             }
-            if (is_string($raw_opt) && trim($raw_opt) !== '' && $raw_opt !== '0') {
-                return trim($raw_opt);
-            }
-            // User cleared image in ACF -> return empty so it hides
             return '';
         }
     }
 
-    if ($is_synced && $has_opt_in_db) {
-        $raw_opt = get_option($opt_key, null);
-        if (is_numeric($raw_opt) && $raw_opt > 0) {
-            $src = wp_get_attachment_image_url($raw_opt, $size);
-            if ($src) return $src;
+    $opt_key = ($post_id === 'option') ? 'options_' . $selector : $selector;
+    $raw_val = get_option($opt_key, '__NOT_SET__');
+
+    if ($raw_val !== '__NOT_SET__') {
+        if (empty($raw_val)) {
+            return '';
         }
-        if (is_string($raw_opt) && trim($raw_opt) !== '' && $raw_opt !== '0') {
-            return trim($raw_opt);
+        if (is_numeric($raw_val)) {
+            $url = wp_get_attachment_image_url($raw_val, $size);
+            return $url ?: '';
+        }
+        if (is_string($raw_val) && trim($raw_val) !== '') {
+            return trim($raw_val);
         }
         return '';
     }
 
-    return $default;
+    return $default_url;
 }
 
 /**
- * Check if a field or array has meaningful content
+ * Check if a field value has actual visible content
  *
- * @param mixed $val Value to check.
+ * @param mixed $value Field value.
  * @return bool
  */
-function lx_has_content($val) {
-    if ($val === null || $val === false) {
+function lx_has_content($value) {
+    if ($value === null || $value === false) {
         return false;
     }
-    if (is_string($val)) {
-        return trim($val) !== '';
+    if (is_string($value)) {
+        return trim(strip_tags($value, '<img><svg><video><audio><input><br>')) !== '';
     }
-    if (is_array($val)) {
-        return !empty($val);
+    if (is_array($value)) {
+        return !empty($value);
     }
-    return true;
+    return !empty($value);
 }

@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 $hero_title            = lx_get_field('hero_title', 'option', "Tóc mọc tua tủa,<br>da sạch mịn màng");
-$hero_subtitle         = lx_get_field('hero_subtitle', 'option', "Bộ đôi Sữa tắm & Dầu gội Gừng Nghệ Mây Mây");
+$hero_subtitle         = lx_get_field('hero_subtitle', 'option', "<b>Bộ đôi Sữa tắm &amp; Dầu gội Gừng Nghệ Mây Mây</b>");
 $hero_benefits         = lx_get_field('hero_benefits', 'option', array(
     array('text' => 'Giảm rụng, kích mọc tóc'),
     array('text' => 'Sạch gàu, hết ngứa'),
@@ -19,7 +19,7 @@ $hero_benefits         = lx_get_field('hero_benefits', 'option', array(
 ));
 $hero_callout          = lx_get_field('hero_callout', 'option', "👉 Được sử dụng trong dịch vụ chăm sóc bầu, sau sinh của Home Care trên khắp 3 miền Bắc - Trung - Nam");
 $hero_price_label      = lx_get_field('hero_price_label', 'option', "Combo dầu gội + sữa tắm");
-$hero_price            = lx_get_field('hero_price', 'option', "399.000đ");
+$hero_price            = lx_get_field('hero_price', 'option', "99K");
 $hero_price_note       = lx_get_field('hero_price_note', 'option', "Freeship toàn quốc");
 $hero_price_tag        = lx_get_field('hero_price_tag', 'option', "FREE<br>SHIP");
 $hero_cta_pri_text     = lx_get_field('hero_cta_primary_text', 'option', "FREESHIP TOÀN QUỐC - MUA NGAY!");
@@ -78,62 +78,60 @@ if (!$has_hero) {
         <?php endif; ?>
 
         <?php if (lx_has_content($hero_price)) : ?>
-        <div class="ltg-pricebox">
-          <div class="ltg-rv ltg-z">
-            <?php if (lx_has_content($hero_price_label)) : ?>
-              <span><?php echo esc_html($hero_price_label); ?></span>
-            <?php endif; ?>
-            <b class="lx_wow_item"><?php echo esc_html($hero_price); ?></b>
-            <?php if (lx_has_content($hero_price_note)) : ?>
-              <small><?php echo esc_html($hero_price_note); ?></small>
+          <div class="ltg-pricebox">
+            <div class="ltg-pb-l">
+              <?php if (lx_has_content($hero_price_label)) : ?>
+                <small class="lx_wow_item"><?php echo esc_html($hero_price_label); ?></small>
+              <?php endif; ?>
+              <b class="lx_wow_item"><?php echo esc_html($hero_price); ?></b>
+              <?php if (lx_has_content($hero_price_note)) : ?>
+                <small style="color:var(--olive-2);font-weight:600" class="lx_wow_item"><?php echo esc_html($hero_price_note); ?></small>
+              <?php endif; ?>
+            </div>
+            <?php if (lx_has_content($hero_price_tag)) : ?>
+              <div class="ltg-pb-tag lx_wow_item"><?php echo wp_kses_post($hero_price_tag); ?></div>
             <?php endif; ?>
           </div>
-          <?php if (lx_has_content($hero_price_tag)) : ?>
-          <div class="ltg-tag ltg-rv ltg-z">
-            <span class="lx_wow_item"><?php echo wp_kses_post($hero_price_tag); ?></span>
-          </div>
-          <?php endif; ?>
-        </div>
         <?php endif; ?>
 
         <?php if (lx_has_content($hero_cta_pri_text) || lx_has_content($hero_cta_sec_text)) : ?>
-        <div class="ltg-hero-btns">
-          <?php if (lx_has_content($hero_cta_pri_text)) : ?>
-            <a href="<?php echo esc_url($hero_cta_pri_link ?: '#dat-hang'); ?>" class="ltg-btn ltg-btn--pri lx_wow_item">
-              <?php echo esc_html($hero_cta_pri_text); ?>
-            </a>
-          <?php endif; ?>
-          <?php if (lx_has_content($hero_cta_sec_text)) : ?>
-            <a href="<?php echo esc_url($hero_cta_sec_link ?: '#qua-20-11'); ?>" class="ltg-btn ltg-btn--sec lx_wow_item">
-              <?php echo esc_html($hero_cta_sec_text); ?>
-            </a>
-          <?php endif; ?>
-        </div>
+          <div class="ltg-hero-ctas">
+            <?php if (lx_has_content($hero_cta_pri_text)) : ?>
+              <a href="<?php echo esc_url($hero_cta_pri_link ?: '#dat-hang'); ?>" class="ltg-btn ltg-btn--pri ltg-pulse lx_wow_item">
+                <?php echo esc_html($hero_cta_pri_text); ?>
+              </a>
+            <?php endif; ?>
+            <?php if (lx_has_content($hero_cta_sec_text)) : ?>
+              <a href="<?php echo esc_url($hero_cta_sec_link ?: '#qua-20-11'); ?>" class="ltg-btn ltg-btn--ghost lx_wow_item">
+                <?php echo esc_html($hero_cta_sec_text); ?>
+              </a>
+            <?php endif; ?>
+          </div>
         <?php endif; ?>
       </div>
 
       <?php if (!empty($hero_image)) : ?>
-      <div class="ltg-hero-img ltg-rv">
-        <div class="ltg-main">
-          <img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(strip_tags($hero_title)); ?>">
+        <div class="ltg-hero-img ltg-rv">
+          <div class="ltg-main">
+            <img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(strip_tags($hero_title)); ?>">
+          </div>
         </div>
-      </div>
       <?php endif; ?>
     </div>
 
     <?php if (!empty($hero_trust_items) && is_array($hero_trust_items)) : ?>
-    <div class="ltg-trust">
-      <div class="ltg-wrap">
-        <?php foreach ($hero_trust_items as $t) :
-            if (empty($t['text'])) continue;
-            $icon = !empty($t['icon']) ? $t['icon'] : 'i-shield';
-        ?>
-          <div class="lx_wow_item">
-            <i><svg width="20" height="20"><use href="#<?php echo esc_attr($icon); ?>"/></svg></i>
-            <?php echo esc_html($t['text']); ?>
-          </div>
-        <?php endforeach; ?>
+      <div class="ltg-trust">
+        <div class="ltg-wrap">
+          <?php foreach ($hero_trust_items as $t) :
+              if (empty($t['text'])) continue;
+              $icon = !empty($t['icon']) ? $t['icon'] : 'i-shield';
+          ?>
+            <div class="lx_wow_item">
+              <i><svg width="20" height="20"><use href="#<?php echo esc_attr($icon); ?>"/></svg></i>
+              <?php echo esc_html($t['text']); ?>
+            </div>
+          <?php endforeach; ?>
+        </div>
       </div>
-    </div>
     <?php endif; ?>
   </header>

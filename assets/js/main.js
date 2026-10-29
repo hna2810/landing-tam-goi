@@ -4,6 +4,7 @@
  * @package LXLanding
  */
 
+// 1. TYPING EFFECT
 (function(){
   var DURATION = 51;
   var box = document.getElementById('ltgType');
@@ -17,7 +18,7 @@
 
   function split(s){
     s = s.replace(/[ \t\r]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-    return window.Intl && Intl.Segmenter ? Array.from(new Intl.Segmenter('vi', { granularity: 'grapheme' }).segment(s), function(x){ return x.segment; }) : Array.from(s);
+    return (window.Intl && Intl.Segmenter) ? Array.from(new Intl.Segmenter('vi', { granularity: 'grapheme' }).segment(s), function(x){ return x.segment; }) : Array.from(s);
   }
 
   var cb = split(ghosts[0].textContent);
@@ -73,13 +74,14 @@
         start();
         io.disconnect();
       }
-    }, { threshold: 0.4 });
+    }, { threshold: 0.3 });
     io.observe(box);
   } else {
     start();
   }
 })();
 
+// 2. MAIN INTERACTIONS
 (function(){
   var fmt = function(n){ return (n || 0).toLocaleString('vi-VN') + 'đ'; };
   var root = document.querySelector('.ltg') || document.body;
@@ -89,6 +91,17 @@
     var rvs = document.querySelectorAll('.ltg-rv');
     if (!rvs.length) return;
 
+    // Immediately reveal any element in or near the viewport
+    function checkVisible(){
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      rvs.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh + 120 && r.bottom > -80) {
+          el.classList.add('is-in');
+        }
+      });
+    }
+
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
@@ -97,30 +110,27 @@
             io.unobserve(e.target);
           }
         });
-      }, { threshold: 0.05, rootMargin: '60px 0px 60px 0px' });
+      }, { threshold: 0.05, rootMargin: '100px 0px 100px 0px' });
 
       rvs.forEach(function(el){ io.observe(el); });
     } else {
       rvs.forEach(function(el){ el.classList.add('is-in'); });
     }
 
-    // Safety checks: ensure above-the-fold content is NEVER stuck transparent
-    setTimeout(function(){
-      rvs.forEach(function(el){
-        var rect = el.getBoundingClientRect();
-        if (rect.top < (window.innerHeight || document.documentElement.clientHeight) + 150) {
-          el.classList.add('is-in');
-        }
-      });
-    }, 400);
-
+    checkVisible();
+    setTimeout(checkVisible, 300);
     setTimeout(function(){
       rvs.forEach(function(el){ el.classList.add('is-in'); });
-    }, 2500);
+    }, 2000);
   }
-  initReveal();
 
-  /* Chọn dung tích sản phẩm */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+
+  /* Dung tích sản phẩm nếu có */
   root.querySelectorAll('[data-card]').forEach(function(card){
     var sizes = card.querySelectorAll('.ltg-size');
     var out = card.querySelector('[data-out]');
@@ -136,13 +146,16 @@
     });
   });
 
-  /* Tab Trước / Sau */
-  var baTabs = root.querySelectorAll('.ltg-ba2-tab');
-  var baPanels = root.querySelectorAll('.ltg-ba2-p');
+  /* Tab Trước / Sau (ltg-ba3 & ltg-ba2) */
+  var baTabs = root.querySelectorAll('.ltg-ba3-tab, .ltg-ba2-tab');
+  var baPanels = root.querySelectorAll('.ltg-ba3-p, .ltg-ba2-p');
   baTabs.forEach(function(t){
     t.addEventListener('click', function(){
+      var targetKey = t.dataset.ba;
       baTabs.forEach(function(x){ x.classList.toggle('is-on', x === t); });
-      baPanels.forEach(function(p){ p.classList.toggle('is-on', p.dataset.bap === t.dataset.ba); });
+      baPanels.forEach(function(p){
+        p.classList.toggle('is-on', p.dataset.bap === targetKey);
+      });
     });
   });
 
@@ -166,7 +179,10 @@
   root.querySelectorAll('[data-combo]').forEach(function(a){
     a.addEventListener('click', function(){
       var r = root.querySelector('.ltg-copt input[value="' + a.dataset.combo + '"]');
-      if (r) { r.checked = true; syncCombo(); }
+      if (r) {
+        r.checked = true;
+        syncCombo();
+      }
     });
   });
 
@@ -175,6 +191,11 @@
     a.addEventListener('click', function(){
       if (wrap) wrap.checked = true;
       if (msg) msg.style.display = 'block';
+      var r = root.querySelector('.ltg-copt input[value="dac-biet"]') || root.querySelector('.ltg-copt input[value="ban-chay"]');
+      if (r) {
+        r.checked = true;
+        syncCombo();
+      }
     });
   });
 
@@ -192,7 +213,7 @@
       var f = this, ok = true;
       var c = root.querySelector('.ltg-copt input[type=radio]:checked');
 
-      ['name','phone','address'].forEach(function(n){
+      ['name', 'phone', 'address'].forEach(function(n){
         var el = f.elements[n];
         if (!el) return;
         if (!el.value.trim()) {
@@ -204,7 +225,7 @@
       });
 
       if (f.elements.phone) {
-        var cleanPhone = f.elements.phone.value.replace(/[\s.]/g, '');
+        var cleanPhone = f.elements.phone.value.replace(/[\s.-]/g, '');
         if (!/^0\d{9}$/.test(cleanPhone)) {
           f.elements.phone.style.borderColor = '#b8412b';
           ok = false;

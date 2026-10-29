@@ -48,11 +48,11 @@ if ($has_story) :
         <?php endif; ?>
 
         <?php if (lx_has_content($story_quote)) : ?>
-          <p class="ltg-quote lx_wow_item"><?php echo esc_html($story_quote); ?></p>
+          <p class="ltg-story-q lx_wow_item"><?php echo esc_html($story_quote); ?></p>
         <?php endif; ?>
 
         <?php if (lx_has_content($story_lead)) : ?>
-          <p class="ltg-lead lx_wow_item"><?php echo esc_html($story_lead); ?></p>
+          <p class="ltg-lead lx_wow_item" style="margin-top:0"><?php echo esc_html($story_lead); ?></p>
         <?php endif; ?>
 
         <?php if (!empty($story_stats) && is_array($story_stats)) : ?>
@@ -60,9 +60,9 @@ if ($has_story) :
           <?php foreach ($story_stats as $stat) :
               if (empty($stat['num'])) continue;
           ?>
-            <div class="ltg-stat lx_wow_item">
-              <span class="ltg-stat-n" data-count="<?php echo esc_attr($stat['num']); ?>" data-suffix="<?php echo esc_attr($stat['suffix'] ?? ''); ?>">0<?php echo esc_attr($stat['suffix'] ?? ''); ?></span>
-              <span class="ltg-stat-l"><?php echo esc_html($stat['text'] ?? ''); ?></span>
+            <div class="lx_wow_item">
+              <b data-count="<?php echo esc_attr($stat['num']); ?>"<?php echo !empty($stat['suffix']) ? ' data-suffix="' . esc_attr($stat['suffix']) . '"' : ''; ?>><?php echo esc_html($stat['num']); ?><?php echo esc_html($stat['suffix'] ?? ''); ?></b>
+              <?php echo esc_html($stat['text'] ?? ''); ?>
             </div>
           <?php endforeach; ?>
         </div>
@@ -71,21 +71,27 @@ if ($has_story) :
     </div>
   </section>
 
-  <!-- Dải chữ chạy (Marquee) -->
-  <div class="ltg-tband" aria-hidden="true">
-    <div class="ltg-tband-track">
-      <span>TÓC MỌC TUA TỦA</span><i>✦</i>
-      <span class="o">DA SẠCH MỊN MÀNG</span><i>✦</i>
-      <span>KHÔNG PARABEN</span><i>✦</i>
-      <span class="o">THẢO MỘC VIỆT</span><i>✦</i>
-      <span>AN TÂM CHO MẸ BẦU</span><i>✦</i>
-      <span class="o">TẮM GỘI MÂY MÂY</span><i>✦</i>
-      <span>TÓC MỌC TUA TỦA</span><i>✦</i>
-      <span class="o">DA SẠCH MỊN MÀNG</span><i>✦</i>
-      <span>KHÔNG PARABEN</span><i>✦</i>
-      <span class="o">THẢO MỘC VIỆT</span><i>✦</i>
-      <span>AN TÂM CHO MẸ BẦU</span><i>✦</i>
-      <span class="o">TẮM GỘI MÂY MÂY</span><i>✦</i>
+  <!-- MARQUEE -->
+  <div class="ltg-mq" aria-hidden="true">
+    <div class="ltg-mq-track">
+      <img src="https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png" alt="" loading="lazy">
+      <img src="https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg" alt="" loading="lazy">
+      <div class="ltg-mq-word">Sạch dịu<br>từ thiên nhiên</div>
+      <img src="https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png" alt="" loading="lazy">
+      <img src="https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png" alt="" loading="lazy">
+      <div class="ltg-mq-word">Gừng · Nghệ<br>· Bưởi</div>
+      <img src="https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-gung-tuoi_e093b2883b2040ccb50e8e7eff9a5f4b.png" alt="" loading="lazy">
+      <img src="https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png" alt="" loading="lazy">
+      <div class="ltg-mq-word">Lành cho<br>mẹ bầu</div>
+      <img src="https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png" alt="" loading="lazy">
+      <img src="https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg" alt="" loading="lazy">
+      <div class="ltg-mq-word">Sạch dịu<br>từ thiên nhiên</div>
+      <img src="https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png" alt="" loading="lazy">
+      <img src="https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png" alt="" loading="lazy">
+      <div class="ltg-mq-word">Gừng · Nghệ<br>· Bưởi</div>
+      <img src="https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-gung-tuoi_e093b2883b2040ccb50e8e7eff9a5f4b.png" alt="" loading="lazy">
+      <img src="https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png" alt="" loading="lazy">
+      <div class="ltg-mq-word">Lành cho<br>mẹ bầu</div>
     </div>
   </div>
 

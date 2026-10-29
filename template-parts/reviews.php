@@ -58,6 +58,50 @@ if (!$has_rev) {
         <?php endif; ?>
       </div>
 
+      <span class="ltg-ph ltg-ph--wide ltg-rv">Ảnh hội thảo mẹ cầm chai Sữa tắm + Dầu gội</span>
+
+      <h3 class="ltg-sub-h ltg-rv" style="margin-top:34px">Từ Bầu đến Sau sinh tin dùng</h3>
+
+      <div class="ltg-rev-grid">
+        <div class="ltg-rcard ltg-rv">
+          <div class="ltg-rcard-top"><span class="ltg-ava">L</span><div><b>Mẹ Lan Anh (Hà Nội)</b></div></div>
+          <p>“Tóc mình rụng thành từng nắm sau sinh khiến mình vô cùng stress. Dùng bộ đôi này được khoảng 3 tuần thì lượng tóc rụng giảm hẳn lúc chải đầu, tóc con bắt đầu mọc lởm chởm rất mừng. Sữa tắm dùng xong lưng sạch mụn hẳn, da cũng không bị khô rít.”</p>
+        </div>
+        <div class="ltg-rcard ltg-rv">
+          <div class="ltg-rcard-top"><span class="ltg-ava">H</span><div><b>Mẹ Thanh Hằng (Hà Nội)</b></div></div>
+          <p>“Da lưng mình bị mụn viêm lâu năm mặc đồ rất tự ti. Chuyển sang dòng sữa tắm này thấy da thông thoáng, mụn xẹp đi nhiều và không còn ngứa ngáy mỗi khi đổ mồ hôi nữa. Dầu gội thì đỉnh khỏi bàn, da đầu sạch gàu cả ngày thích lắm.”</p>
+        </div>
+        <div class="ltg-rcard ltg-rv">
+          <div class="ltg-rcard-top"><span class="ltg-ava">N</span><div><b>Mẹ Bích Ngọc (TP.HCM)</b></div></div>
+          <p>“Công việc căng thẳng khiến tóc gãy và dầu nhờn nhiều. Từ ngày đổi sang sản phẩm này, da đầu nhẹ hẳn, tóc bồng bềnh lâu bết hơn trước rất nhiều.”</p>
+        </div>
+        <div class="ltg-rcard ltg-rv">
+          <span class="ltg-sample">MẪU</span>
+          <div class="ltg-rcard-top"><span class="ltg-ava">L</span><div><b>Chị L.<span class="ltg-verified"><svg width="12" height="12"><use href="#i-check"/></svg>Đã mua</span></b><small>Giáo viên mầm non</small></div></div>
+          <div class="ltg-rstars">★★★★★</div>
+          <p>Năm ngoái được phụ huynh tặng set này, dùng thích nên năm nay tự mua thêm cho cả nhà. Hộp quà đẹp, sang.</p>
+          <span class="ltg-rprod">Set quà An Nhiên</span>
+        </div>
+        <div class="ltg-rcard ltg-rv">
+          <span class="ltg-sample">MẪU</span>
+          <div class="ltg-rcard-top"><span class="ltg-ava">N</span><div><b>Chị N.<span class="ltg-verified"><svg width="12" height="12"><use href="#i-check"/></svg>Đã mua</span></b><small>Tóc uốn nhuộm</small></div></div>
+          <div class="ltg-rstars">★★★★★</div>
+          <p>Tóc uốn nhuộm khô xơ, gội xong ủ thêm nước gừng tươi thì tóc mềm hơn rõ. Ủ tóc không bắt buộc nhưng nên thử.</p>
+          <span class="ltg-rprod">Dầu gội + Nước ủ tóc</span>
+        </div>
+        <div class="ltg-rcard ltg-rv">
+          <span class="ltg-sample">MẪU</span>
+          <div class="ltg-rcard-top"><span class="ltg-ava">P</span><div><b>Chị P.<span class="ltg-verified"><svg width="12" height="12"><use href="#i-check"/></svg>Đã mua</span></b><small>Mua cho mẹ</small></div></div>
+          <div class="ltg-rstars">★★★★★</div>
+          <p>Mua cho mẹ dùng, mẹ khen mùi dễ chịu, gội không khô tóc. Giao hàng nhanh, đóng gói cẩn thận.</p>
+          <span class="ltg-rprod">Combo tắm gội</span>
+        </div>
+      </div>
+      <div class="ltg-swipe">Vuốt để xem thêm <i></i></div>
+
+      <h3 class="ltg-sub-h ltg-rv" style="margin-top:40px">Hình ảnh &amp; phản hồi thực tế</h3>
+      <p class="ltg-sub-p ltg-rv">Bấm vào ảnh để xem lớn – cảm nhận rõ nét từ khách hàng</p>
+
       <?php if (!empty($rev_gallery) && is_array($rev_gallery)) : ?>
       <div class="ltg-shots">
         <?php foreach ($rev_gallery as $item) :

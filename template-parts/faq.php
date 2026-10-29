@@ -9,24 +9,28 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$faq_eyebrow = lx_get_field('faq_eyebrow', 'option', "Giải đáp thắc mắc");
+$faq_eyebrow = lx_get_field('faq_eyebrow', 'option', "Hỏi đáp");
 $faq_title   = lx_get_field('faq_title', 'option', "Giải đáp câu hỏi thường gặp");
 
 $faq_default_items = array(
     array(
-        'q' => 'Dầu gội và sữa tắm Gừng Nghệ Mây Mây có dùng được cho mẹ bầu và mẹ sau sinh không?',
-        'a' => 'Hoàn toàn dùng được! Bộ đôi được phát triển dựa trên hơn 15 năm kinh nghiệm chăm sóc mẹ bầu & sau sinh của Home Care, thành phần 100% thảo mộc tự nhiên, lành tính, không chứa hóa chất độc hại, an toàn tuyệt đối cho mẹ và bé.',
+        'q' => '1. Sản phẩm có dùng được cho mẹ bầu và mẹ sau sinh không?',
+        'a' => 'Có. Bộ đôi sản phẩm được nghiên cứu với các thành phần chiết xuất gừng, nghệ, hoa bưởi dịu nhẹ, phù hợp cho cả nam, nữ, mẹ bầu và mẹ sau sinh.',
     ),
     array(
-        'q' => 'Sản phẩm có làm bết tóc hoặc khô da không?',
-        'a' => 'Không. Dầu gội làm sạch dịu nhẹ, cân bằng độ pH da đầu, giúp tóc tơi phồng bồng bềnh mà không gây khô xơ. Sữa tắm chứa tinh chất nghệ và dầu thảo mộc dưỡng ẩm, giúp da mịn màng, ẩm mượt ngay sau khi tắm.',
+        'q' => '2. Dùng bao lâu thì giảm tình trạng rụng tóc và gàu ngứa?',
+        'a' => 'Hiệu quả cảm nhận rõ rệt sau 2–4 tuần sử dụng đều đặn hằng ngày nhờ sự kết hợp giữa gừng, nghệ, hoa bưởi và Vitamin B5 giúp làm sạch và nuôi dưỡng tóc từ sâu bên trong.',
     ),
     array(
-        'q' => 'Dùng bao lâu thì thấy hiệu quả giảm rụng và giảm mụn lưng?',
-        'a' => 'Thông thường sau 1–2 tuần đầu, bạn sẽ cảm nhận da đầu sạch gàu hết ngứa, các nốt mụn lưng se lại. Từ 3–4 tuần sử dụng đều đặn, nang tóc chắc khỏe, giảm gãy rụng rõ rệt và tóc con bắt đầu mọc tua tủa.',
+        'q' => '3. Sữa tắm có gây khô da sau khi tắm không?',
+        'a' => 'Sản phẩm chứa các thành phần dưỡng ẩm dịu nhẹ, giúp loại bỏ bã nhờn nhưng vẫn giữ lại độ ẩm tự nhiên, không gây cảm giác khô căng rát da.',
     ),
     array(
-        'q' => 'Sản phẩm có đầy đủ giấy tờ công bố không?',
+        'q' => 'Set quà 20/11 có giao tận trường không?',
+        'a' => 'Có. Bạn ghi địa chỉ trường và lời nhắn trên thiệp, Home Care gói quà và giao tận nơi. Đơn tập thể từ 10 set vui lòng gọi hotline để nhận giá riêng.',
+    ),
+    array(
+        'q' => 'Làm sao phân biệt hàng chính hãng?',
         'a' => 'Sản phẩm đã có phiếu công bố mỹ phẩm được Sở Y tế tiếp nhận, có tem chống hàng giả của Bộ Công An, tem chính hãng và thông tin trên hệ thống Mã số Mã vạch Quốc gia.',
     ),
 );
@@ -42,6 +46,13 @@ if (!$has_faq) {
 ?>
 
   <section class="ltg-has-deco ltg-sec" id="hoi-dap">
+    <div class="ltg-deco" aria-hidden="true">
+      <span class="ltg-sp im-gt lg edge" style="left:0;top:34%;width:290px;height:245px;--r:0deg;animation-delay:0s;animation-duration:13s"></span>
+      <span class="ltg-sp im-nb lg edge" style="right:0;top:26%;width:210px;height:181px;--r:0deg;animation-delay:-3s;animation-duration:12s"></span>
+      <span class="ltg-sp im-nl lg" style="right:6%;bottom:12%;width:160px;height:71px;--r:-10deg;animation-delay:-5s;animation-duration:11s"></span>
+      <span class="ltg-sp im-nl" style="left:5%;top:30px;width:130px;height:58px;--r:6deg;animation-delay:-2s;animation-duration:11s"></span>
+    </div>
+
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($faq_eyebrow)) : ?>
@@ -53,18 +64,14 @@ if (!$has_faq) {
       </div>
 
       <?php if (!empty($faq_items) && is_array($faq_items)) : ?>
-      <div class="ltg-faqs">
-        <?php foreach ($faq_items as $f) :
+      <div class="ltg-faq-list">
+        <?php foreach ($faq_items as $idx => $f) :
             if (empty($f['q'])) continue;
+            $open = ($idx === 0) ? ' open' : '';
         ?>
-          <details class="ltg-faq ltg-rv">
-            <summary class="lx_wow_item">
-              <span><?php echo esc_html($f['q']); ?></span>
-              <svg width="20" height="20"><use href="#i-chev"/></svg>
-            </summary>
-            <div class="ltg-faq-a lx_wow_item">
-              <p><?php echo wp_kses_post($f['a']); ?></p>
-            </div>
+          <details<?php echo esc_attr($open); ?>>
+            <summary class="lx_wow_item"><?php echo esc_html($f['q']); ?></summary>
+            <p class="lx_wow_item"><?php echo wp_kses_post($f['a'] ?? ''); ?></p>
           </details>
         <?php endforeach; ?>
       </div>

@@ -36,15 +36,15 @@ $tab2_name       = lx_get_field('tab2_name', 'option', "Sữa Tắm Gừng Ngh�
 $tab2_icon       = lx_get_image_url('tab2_icon', 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png', 'thumbnail', 'option');
 $tab2_bad_h      = lx_get_field('tab2_bad_h', 'option', "Trước khi dùng");
 $tab2_bad_items  = lx_get_field('tab2_bad_items', 'option', array(
-    array('text' => 'Mụn lưng, viêm nang lông sần sùi ngứa ngáy.'),
-    array('text' => 'Vết thâm mụn chi chít khắp lưng và ngực.'),
-    array('text' => 'Da khô ráp, bong tróc và thiếu ẩm.'),
+    array('text' => 'Mụn viêm, mụn ẩn lan rộng ở lưng, ngực, vai.'),
+    array('text' => 'Bít tắc lỗ chân lông do mồ hôi và dầu thừa.'),
+    array('text' => 'Da khô căng, rát hoặc bong tróc sau khi tắm.'),
 ));
 $tab2_good_h     = lx_get_field('tab2_good_h', 'option', "Sau khi dùng");
 $tab2_good_items = lx_get_field('tab2_good_items', 'option', array(
-    array('text' => 'Mụn lưng lặn dần, giảm viêm rõ rệt.'),
-    array('text' => 'Mờ thâm mụn, da đều màu và sáng mịn.'),
-    array('text' => 'Cấp ẩm sâu, da mềm mượt không còn khô căng.'),
+    array('text' => 'Hỗ trợ giảm mụn lưng, mờ vết thâm mụn.'),
+    array('text' => 'Len lỏi lỗ chân lông, sạch da, lỗ chân thông thoáng.'),
+    array('text' => 'Da mềm mại, duy trì độ ẩm tự nhiên và thơm dịu.'),
 ));
 $tab2_img        = lx_get_image_url('tab2_img', 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png', 'medium', 'option');
 $tab2_quote      = lx_get_field('tab2_quote', 'option', "“Da sạch, mềm mịn, mờ thâm”");
@@ -55,7 +55,7 @@ if (!$has_products) {
 }
 ?>
 
-  <section class="ltg-sec ltg-ba2" id="san-pham">
+  <section class="ltg-has-deco ltg-sec ltg-ba3" id="san-pham">
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($ba_eyebrow)) : ?>
@@ -65,121 +65,139 @@ if (!$has_products) {
           <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($ba_title); ?></h2>
         <?php endif; ?>
         <?php if (lx_has_content($ba_lead)) : ?>
-          <p class="ltg-lead lx_wow_item"><?php echo esc_html($ba_lead); ?></p>
+          <p class="ltg-lead lx_wow_item" style="font-style:italic"><?php echo esc_html($ba_lead); ?></p>
         <?php endif; ?>
       </div>
 
-      <div class="ltg-ba2-tabs ltg-rv">
+      <div class="ltg-ba3-tabs ltg-rv" role="tablist">
         <?php if (lx_has_content($tab1_name)) : ?>
-          <button type="button" class="ltg-ba2-tab is-on lx_wow_item" data-ba="dg">
+          <button type="button" class="ltg-ba2-tab ltg-ba3-tab is-on lx_wow_item" data-ba="goi">
             <?php if (!empty($tab1_icon)) : ?>
-              <img src="<?php echo esc_url($tab1_icon); ?>" alt="" width="26" height="26">
+              <img src="<?php echo esc_url($tab1_icon); ?>" alt="">
             <?php endif; ?>
-            <span><?php echo esc_html($tab1_name); ?></span>
+            <?php echo esc_html($tab1_name); ?>
           </button>
         <?php endif; ?>
 
         <?php if (lx_has_content($tab2_name)) : ?>
-          <button type="button" class="ltg-ba2-tab <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?> lx_wow_item" data-ba="st">
+          <button type="button" class="ltg-ba2-tab ltg-ba3-tab <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?> lx_wow_item" data-ba="tam">
             <?php if (!empty($tab2_icon)) : ?>
-              <img src="<?php echo esc_url($tab2_icon); ?>" alt="" width="26" height="26">
+              <img src="<?php echo esc_url($tab2_icon); ?>" alt="">
             <?php endif; ?>
-            <span><?php echo esc_html($tab2_name); ?></span>
+            <?php echo esc_html($tab2_name); ?>
           </button>
         <?php endif; ?>
       </div>
 
       <?php if (lx_has_content($tab1_name)) : ?>
-      <div class="ltg-ba2-p is-on" data-bap="dg">
-        <div class="ltg-ba2-grid">
-          <?php if (!empty($tab1_bad_items) && is_array($tab1_bad_items)) : ?>
-          <div class="ltg-ba2-col ltg-ba2-col--bad ltg-rv ltg-l">
-            <?php if (lx_has_content($tab1_bad_h)) : ?>
-              <div class="h"><span class="badge badge--bad">✕</span><?php echo esc_html($tab1_bad_h); ?></div>
-            <?php endif; ?>
-            <ul>
-              <?php foreach ($tab1_bad_items as $item) :
-                  if (empty($item['text'])) continue;
-              ?>
-                <li class="lx_wow_item">✕ <?php echo esc_html($item['text']); ?></li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
+      <div class="ltg-ba2-p ltg-ba3-p is-on" data-bap="goi">
+        <?php if (!empty($tab1_bad_items) && is_array($tab1_bad_items)) : ?>
+        <div class="ltg-ba3-side ltg-ba3-bad ltg-rv">
+          <?php if (lx_has_content($tab1_bad_h)) : ?>
+            <h4 class="lx_wow_item"><?php echo esc_html($tab1_bad_h); ?></h4>
           <?php endif; ?>
-
-          <?php if (!empty($tab1_img) || lx_has_content($tab1_quote)) : ?>
-          <div class="ltg-ba2-col ltg-ba2-col--mid ltg-rv ltg-z">
-            <?php if (!empty($tab1_img)) : ?>
-              <img src="<?php echo esc_url($tab1_img); ?>" alt="<?php echo esc_attr($tab1_name); ?>" loading="lazy">
-            <?php endif; ?>
-            <?php if (lx_has_content($tab1_quote)) : ?>
-              <p class="ltg-ba2-quote lx_wow_item"><?php echo esc_html($tab1_quote); ?></p>
-            <?php endif; ?>
-          </div>
-          <?php endif; ?>
-
-          <?php if (!empty($tab1_good_items) && is_array($tab1_good_items)) : ?>
-          <div class="ltg-ba2-col ltg-ba2-col--good ltg-rv ltg-r">
-            <?php if (lx_has_content($tab1_good_h)) : ?>
-              <div class="h"><span class="badge badge--good">✓</span><?php echo esc_html($tab1_good_h); ?></div>
-            <?php endif; ?>
-            <ul>
-              <?php foreach ($tab1_good_items as $item) :
-                  if (empty($item['text'])) continue;
-              ?>
-                <li class="lx_wow_item">✓ <?php echo esc_html($item['text']); ?></li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
-          <?php endif; ?>
+          <ul>
+            <?php foreach ($tab1_bad_items as $b) :
+                if (empty($b['text'])) continue;
+            ?>
+              <li class="lx_wow_item">
+                <i><svg width="12" height="12"><use href="#i-x"/></svg></i>
+                <?php echo esc_html($b['text']); ?>
+              </li>
+            <?php endforeach; ?>
+          </ul>
         </div>
+        <?php endif; ?>
+
+        <?php if (!empty($tab1_good_items) && is_array($tab1_good_items)) : ?>
+        <div class="ltg-ba3-side ltg-ba3-good ltg-rv">
+          <?php if (lx_has_content($tab1_good_h)) : ?>
+            <h4 class="lx_wow_item"><?php echo esc_html($tab1_good_h); ?></h4>
+          <?php endif; ?>
+          <ul>
+            <?php foreach ($tab1_good_items as $g) :
+                if (empty($g['text'])) continue;
+            ?>
+              <li class="lx_wow_item">
+                <i><svg width="12" height="12"><use href="#i-check"/></svg></i>
+                <?php echo esc_html($g['text']); ?>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!empty($tab1_img)) : ?>
+        <div class="ltg-ba3-core ltg-rv">
+          <span class="ltg-ba3-ring"></span>
+          <div class="ltg-ba3-img">
+            <img src="<?php echo esc_url($tab1_img); ?>" alt="<?php echo esc_attr($tab1_name); ?>" loading="lazy">
+          </div>
+          <span class="ltg-ba3-arrow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+        <?php endif; ?>
+
+        <?php if (lx_has_content($tab1_quote)) : ?>
+          <p class="ltg-ba3-q lx_wow_item"><?php echo esc_html($tab1_quote); ?></p>
+        <?php endif; ?>
       </div>
       <?php endif; ?>
 
       <?php if (lx_has_content($tab2_name)) : ?>
-      <div class="ltg-ba2-p <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?>" data-bap="st">
-        <div class="ltg-ba2-grid">
-          <?php if (!empty($tab2_bad_items) && is_array($tab2_bad_items)) : ?>
-          <div class="ltg-ba2-col ltg-ba2-col--bad ltg-rv ltg-l">
-            <?php if (lx_has_content($tab2_bad_h)) : ?>
-              <div class="h"><span class="badge badge--bad">✕</span><?php echo esc_html($tab2_bad_h); ?></div>
-            <?php endif; ?>
-            <ul>
-              <?php foreach ($tab2_bad_items as $item) :
-                  if (empty($item['text'])) continue;
-              ?>
-                <li class="lx_wow_item">✕ <?php echo esc_html($item['text']); ?></li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
+      <div class="ltg-ba2-p ltg-ba3-p <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?>" data-bap="tam">
+        <?php if (!empty($tab2_bad_items) && is_array($tab2_bad_items)) : ?>
+        <div class="ltg-ba3-side ltg-ba3-bad ltg-rv">
+          <?php if (lx_has_content($tab2_bad_h)) : ?>
+            <h4 class="lx_wow_item"><?php echo esc_html($tab2_bad_h); ?></h4>
           <?php endif; ?>
-
-          <?php if (!empty($tab2_img) || lx_has_content($tab2_quote)) : ?>
-          <div class="ltg-ba2-col ltg-ba2-col--mid ltg-rv ltg-z">
-            <?php if (!empty($tab2_img)) : ?>
-              <img src="<?php echo esc_url($tab2_img); ?>" alt="<?php echo esc_attr($tab2_name); ?>" loading="lazy">
-            <?php endif; ?>
-            <?php if (lx_has_content($tab2_quote)) : ?>
-              <p class="ltg-ba2-quote lx_wow_item"><?php echo esc_html($tab2_quote); ?></p>
-            <?php endif; ?>
-          </div>
-          <?php endif; ?>
-
-          <?php if (!empty($tab2_good_items) && is_array($tab2_good_items)) : ?>
-          <div class="ltg-ba2-col ltg-ba2-col--good ltg-rv ltg-r">
-            <?php if (lx_has_content($tab2_good_h)) : ?>
-              <div class="h"><span class="badge badge--good">✓</span><?php echo esc_html($tab2_good_h); ?></div>
-            <?php endif; ?>
-            <ul>
-              <?php foreach ($tab2_good_items as $item) :
-                  if (empty($item['text'])) continue;
-              ?>
-                <li class="lx_wow_item">✓ <?php echo esc_html($item['text']); ?></li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
-          <?php endif; ?>
+          <ul>
+            <?php foreach ($tab2_bad_items as $b) :
+                if (empty($b['text'])) continue;
+            ?>
+              <li class="lx_wow_item">
+                <i><svg width="12" height="12"><use href="#i-x"/></svg></i>
+                <?php echo esc_html($b['text']); ?>
+              </li>
+            <?php endforeach; ?>
+          </ul>
         </div>
+        <?php endif; ?>
+
+        <?php if (!empty($tab2_good_items) && is_array($tab2_good_items)) : ?>
+        <div class="ltg-ba3-side ltg-ba3-good ltg-rv">
+          <?php if (lx_has_content($tab2_good_h)) : ?>
+            <h4 class="lx_wow_item"><?php echo esc_html($tab2_good_h); ?></h4>
+          <?php endif; ?>
+          <ul>
+            <?php foreach ($tab2_good_items as $g) :
+                if (empty($g['text'])) continue;
+            ?>
+              <li class="lx_wow_item">
+                <i><svg width="12" height="12"><use href="#i-check"/></svg></i>
+                <?php echo esc_html($g['text']); ?>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!empty($tab2_img)) : ?>
+        <div class="ltg-ba3-core ltg-rv">
+          <span class="ltg-ba3-ring"></span>
+          <div class="ltg-ba3-img">
+            <img src="<?php echo esc_url($tab2_img); ?>" alt="<?php echo esc_attr($tab2_name); ?>" loading="lazy">
+          </div>
+          <span class="ltg-ba3-arrow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+        <?php endif; ?>
+
+        <?php if (lx_has_content($tab2_quote)) : ?>
+          <p class="ltg-ba3-q lx_wow_item"><?php echo esc_html($tab2_quote); ?></p>
+        <?php endif; ?>
       </div>
       <?php endif; ?>
     </div>

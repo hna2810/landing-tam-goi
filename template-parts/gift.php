@@ -27,7 +27,7 @@ $gift_default_sets = array(
         'name'     => 'SET AN NHIÊN',
         'ribbon'   => '★ Chọn nhiều nhất',
         'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-        'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nNước ủ gừng tươi (250ml)\nHộp quà cao cấp & Thiệp viết tay",
+        'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nXịt khử mùi body\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '299.000đ',
         'data_set' => 'Set An Nhiên – 299.000đ',
     ),
@@ -35,17 +35,17 @@ $gift_default_sets = array(
         'name'     => 'SET TRI ÂN',
         'ribbon'   => '',
         'img'      => 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
-        'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nTinh dầu xịt dưỡng bưởi gừng (100ml)\nHộp quà VIP & Túi vải thương hiệu",
+        'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nXịt khử mùi body & Xịt dưỡng tóc\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '399.000đ',
         'data_set' => 'Set Tri Ân – 399.000đ',
     ),
     array(
-        'name'     => 'SET ĐOÀN VIÊN',
+        'name'     => 'SET TINH HOA',
         'ribbon'   => '',
-        'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
-        'items'    => "Bộ đôi đại 1000ml (gội + tắm)\nNước ủ tóc gừng tươi (500ml)\nXà bông gừng nghệ thủ công\nHộp gỗ khắc tên & Thiệp lụa",
+        'img'      => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi_341071304a9d48dab53bca2e5363b41d.png',
+        'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nXịt khử mùi body & Xịt dưỡng tóc\nNước ủ tóc gừng tươi\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '499.000đ',
-        'data_set' => 'Set Đoàn Viên – 499.000đ',
+        'data_set' => 'Set Tinh Hoa – 499.000đ',
     ),
 );
 $gift_sets = lx_get_field('gift_sets', 'option', $gift_default_sets);
@@ -115,6 +115,7 @@ if (!$has_gift) {
             $is_hot = !empty($set['ribbon']) ? ' ltg-set--hot' : '';
             $items_arr = !empty($set['items']) ? explode("\n", str_replace("\r", "", $set['items'])) : array();
             $img = !empty($set['img']) ? (is_array($set['img']) ? ($set['img']['url'] ?? '') : (is_numeric($set['img']) ? wp_get_attachment_image_url($set['img'], 'full') : $set['img'])) : '';
+            $btn_cls = !empty($set['ribbon']) ? 'ltg-btn--pri' : 'ltg-btn--ghost';
         ?>
           <div class="ltg-set<?php echo esc_attr($is_hot); ?> ltg-rv">
             <?php if (!empty($set['ribbon'])) : ?>
@@ -142,19 +143,14 @@ if (!$has_gift) {
                 <b class="lx_wow_item"><?php echo esc_html($set['price']); ?></b>
               </div>
               <?php endif; ?>
-              <a href="#dat-hang" class="ltg-btn ltg-btn--ghost lx_wow_item" data-set="<?php echo esc_attr($set['data_set'] ?? $set['name']); ?>">
+              <a href="#dat-hang" class="ltg-btn <?php echo esc_attr($btn_cls); ?> lx_wow_item" data-set="<?php echo esc_attr($set['data_set'] ?? $set['name']); ?>">
                 Chọn set này
               </a>
             </div>
           </div>
         <?php endforeach; ?>
       </div>
+      <div class="ltg-swipe">Vuốt để xem thêm <i></i></div>
       <?php endif; ?>
-
-      <div class="ltg-gift-perks ltg-rv">
-        <div class="lx_wow_item"><i><svg width="24" height="24"><use href="#i-box"/></svg></i><div><b>Hộp quà sang trọng</b><small>Thiết kế tinh tế, chỉn chu</small></div></div>
-        <div class="lx_wow_item"><i><svg width="24" height="24"><use href="#i-pen"/></svg></i><div><b>Thiệp viết tay ý nghĩa</b><small>Ghi lời chúc theo yêu cầu</small></div></div>
-        <div class="lx_wow_item"><i><svg width="24" height="24"><use href="#i-truck"/></svg></i><div><b>Giao hoả tốc đúng ngày</b><small>Freeship toàn quốc từ 2 set</small></div></div>
-      </div>
     </div>
   </section>

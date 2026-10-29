@@ -9,38 +9,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$order_title = lx_get_field('order_title', 'option', "Lấy lại mái tóc bồng bềnh & làn da mịn màng ngay hôm nay!");
-$order_lead  = lx_get_field('order_lead', 'option', "Để lại thông tin bên dưới để nhận ngay ưu đãi trải nghiệm từ Home Care.");
+$order_title   = lx_get_field('order_title', 'option', "Lấy lại mái tóc bồng bềnh &amp; làn da mịn màng ngay hôm nay!");
+$order_lead    = lx_get_field('order_lead', 'option', "Điền thông tin – Home Care gọi xác nhận trong 15 phút (giờ hành chính). Thanh toán khi nhận hàng.");
+$hotline       = lx_get_field('hotline', 'option', "0962131515");
 
 $order_default_combos = array(
-    array(
-        'val'   => 'trai-nghiem',
-        'name'  => 'Gói Trải Nghiệm 99K',
-        'desc'  => '1 Gội + 1 Tắm + 1 Ủ (300ml) · Freeship',
-        'badge' => '99K',
-        'chk'   => false,
-    ),
-    array(
-        'val'   => 'ban-chay',
-        'name'  => 'Gói Best Seller 159K (Khuyên dùng)',
-        'desc'  => '1 Gội + 1 Tắm + 1 Ủ (500ml) · Tiết kiệm nhất',
-        'badge' => '159K',
-        'chk'   => true,
-    ),
-    array(
-        'val'   => 'sieu-tiet-kiem',
-        'name'  => 'Gói Siêu Tiết Kiệm 299K',
-        'desc'  => '1 Gội + 1 Tắm + 1 Ủ (1000ml) · Dùng 4-5 tháng',
-        'badge' => '299K',
-        'chk'   => false,
-    ),
-    array(
-        'val'   => 'set-20-11',
-        'name'  => 'Set Quà Tặng Tri Ân 20/11',
-        'desc'  => 'Hộp quà cao cấp + Thiệp chúc viết tay',
-        'badge' => 'Quà tặng',
-        'chk'   => false,
-    ),
+    array('val' => 'sieu-tiet-kiem', 'name' => 'Dầu gội + Sữa Tắm 1000ml', 'badge' => 'SIÊU TIẾT KIỆM', 'chk' => false),
+    array('val' => 'dac-biet', 'name' => 'Dầu gội + Sữa tắm + Nước ủ tóc gừng tươi 1000ml', 'badge' => 'ĐẶC BIỆT', 'chk' => false),
+    array('val' => 'trai-nghiem', 'name' => 'Combo Dầu gội + Sữa tắm 300ml', 'badge' => 'TRẢI NGHIỆM', 'chk' => false),
+    array('val' => 'ban-chay', 'name' => 'Combo Dầu gội + Sữa Tắm 500ml', 'badge' => 'BÁN CHẠY', 'chk' => true),
 );
 $order_combos = lx_get_field('order_combos', 'option', $order_default_combos);
 if (!is_array($order_combos)) {
@@ -54,95 +31,103 @@ if (!$has_order) {
 ?>
 
   <section class="ltg-sec ltg-order" id="dat-hang">
-    <div class="ltg-wrap">
-      <div class="ltg-order-card ltg-rv">
-        <div class="ltg-order-head">
-          <span class="ltg-eyebrow lx_wow_item">Đặt hàng nhanh</span>
-          <h2 class="ltg-h2 lx_wow_item"><?php echo wp_kses_post($order_title); ?></h2>
-          <?php if (lx_has_content($order_lead)) : ?>
-            <p class="ltg-lead lx_wow_item" style="margin-top:10px;"><?php echo esc_html($order_lead); ?></p>
-          <?php endif; ?>
+    <div class="ltg-deco" aria-hidden="true">
+      <span class="ltg-lf b1" style="left:-36px;top:8%;width:130px;height:249px;--r:22deg;animation-delay:0s;animation-duration:12s"><svg><use href="#i-lf3"/></svg></span>
+      <span class="ltg-lf b2" style="right:-50px;bottom:6%;width:170px;height:241px;--r:-35deg;animation-delay:-4s;animation-duration:13s"><svg><use href="#i-lf2"/></svg></span>
+    </div>
+
+    <div class="ltg-wrap ltg-order-grid">
+      <div class="ltg-rv">
+        <span class="ltg-eyebrow lx_wow_item">Đặt hàng</span>
+        <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($order_title); ?></h2>
+        <?php if (lx_has_content($order_lead)) : ?>
+          <p class="ltg-lead lx_wow_item"><?php echo esc_html($order_lead); ?></p>
+        <?php endif; ?>
+
+        <div class="ltg-promise">
+          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-shield"/></svg></i>Chính hãng – tem chống giả Bộ Công An</div>
+          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-truck"/></svg></i>Freeship toàn quốc, kiểm tra trước khi nhận</div>
+          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-gift"/></svg></i>Gói quà 20/11 &amp; thiệp viết tay miễn phí</div>
+          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-heart"/></svg></i>Tư vấn miễn phí cho mẹ bầu, sau sinh</div>
         </div>
 
-        <div id="ltgFormBody">
-          <form id="ltgForm" class="ltg-order-form" novalidate>
-            <div class="ltg-fg">
-              <label class="ltg-fl lx_wow_item">Họ và tên người nhận <span style="color:var(--red)">*</span></label>
-              <input type="text" name="name" class="ltg-inp" placeholder="Ví dụ: Nguyễn Thị Mai" required>
-            </div>
-
-            <div class="ltg-fg">
-              <label class="ltg-fl lx_wow_item">Số điện thoại liên hệ <span style="color:var(--red)">*</span></label>
-              <input type="tel" name="phone" class="ltg-inp" placeholder="Ví dụ: 0912 345 678" required>
-            </div>
-
-            <div class="ltg-fg">
-              <label class="ltg-fl lx_wow_item">Địa chỉ nhận hàng chi tiết <span style="color:var(--red)">*</span></label>
-              <input type="text" name="address" class="ltg-inp" placeholder="Số nhà, ngõ/ngách, đường, phường/xã, quận/huyện..." required>
-            </div>
-
-            <?php if (!empty($order_combos)) : ?>
-            <div class="ltg-fg">
-              <label class="ltg-fl lx_wow_item">Chọn gói combo sản phẩm <span style="color:var(--red)">*</span></label>
-              <div class="ltg-copts" id="ltgCombo">
-                <?php foreach ($order_combos as $cb) :
-                    if (empty($cb['name'])) continue;
-                    $val = !empty($cb['val']) ? $cb['val'] : sanitize_title($cb['name']);
-                    $is_checked = !empty($cb['chk']);
-                ?>
-                  <label class="ltg-copt<?php echo $is_checked ? ' is-on' : ''; ?>">
-                    <input type="radio" name="combo" value="<?php echo esc_attr($val); ?>"<?php echo $is_checked ? ' checked' : ''; ?>>
-                    <span class="ltg-copt-box"></span>
-                    <span class="ltg-copt-txt">
-                      <b class="lx_wow_item"><?php echo esc_html($cb['name']); ?></b>
-                      <?php if (!empty($cb['desc'])) : ?>
-                        <small class="lx_wow_item"><?php echo esc_html($cb['desc']); ?></small>
-                      <?php endif; ?>
-                    </span>
-                    <?php if (!empty($cb['badge'])) : ?>
-                      <span class="ltg-copt-tag"><?php echo esc_html($cb['badge']); ?></span>
-                    <?php endif; ?>
-                  </label>
-                <?php endforeach; ?>
-              </div>
-            </div>
-            <?php endif; ?>
-
-            <div class="ltg-fg">
-              <label class="ltg-cchk">
-                <input type="checkbox" id="ltgWrap" name="giftwrap" value="Có">
-                <span></span>
-                <span class="lx_wow_item"><b>Yêu cầu đóng gói hộp quà &amp; thiệp chúc mừng</b> (Miễn phí mùa 20/11)</span>
-              </label>
-            </div>
-
-            <div class="ltg-fg" id="ltgMsg" style="display:none">
-              <label class="ltg-fl lx_wow_item">Nội dung lời chúc gửi kèm thiệp (nếu có)</label>
-              <textarea name="card" class="ltg-inp" rows="2" placeholder="Gửi tặng thầy/cô..."></textarea>
-            </div>
-
-            <button type="submit" class="ltg-btn ltg-btn--pri ltg-pulse lx_wow_item" style="width:100%;font-size:16px;">
-              XÁC NHẬN ĐẶT HÀNG NGAY
-            </button>
-          </form>
-        </div>
-
-        <div id="ltgOk" class="ltg-order-ok" style="display:none;text-align:center;padding:40px 20px;">
-          <div style="width:70px;height:70px;background:var(--butter);color:var(--forest);border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;font-size:32px;">✓</div>
-          <h3 class="ltg-h2" style="font-size:28px;color:var(--forest);margin-bottom:12px;">ĐẶT HÀNG THÀNH CÔNG!</h3>
-          <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto 24px;line-height:1.6;">
-            Cảm ơn bạn đã tin chọn <b>Home Care</b>. Chuyên viên tư vấn sẽ liên hệ với bạn trong vòng 15 phút để xác nhận đơn hàng và chuẩn bị gửi hàng sớm nhất!
-          </p>
-          <div style="font-size:14px;color:var(--ginger);font-weight:600;">
-            Hotline hỗ trợ 24/7: 0962 131 515 – 0973 871 376
+        <a class="ltg-hotline lx_wow_item" href="tel:<?php echo esc_attr(preg_replace('/[^\d]/', '', $hotline)); ?>">
+          <i><svg width="24" height="24" style="color:var(--forest)"><use href="#i-phone"/></svg></i>
+          <div>
+            Hotline tư vấn
+            <b>0962 131 515</b>
+            Tổng đài 1900 0387 · 0973 871 376
           </div>
+        </a>
+      </div>
+
+      <form class="ltg-form ltg-rv" id="ltgForm" novalidate>
+        <div id="ltgFormBody">
+          <div class="ltg-fields ltg-fields--lb">
+            <label>
+              <span class="lx_wow_item">Họ và tên:</span>
+              <input type="text" name="name" required placeholder="Ví dụ: Nguyễn Thị Mai">
+            </label>
+            <label>
+              <span class="lx_wow_item">Số điện thoại:</span>
+              <input type="tel" name="phone" required placeholder="Ví dụ: 0912 345 678">
+            </label>
+            <label>
+              <span class="lx_wow_item">Địa chỉ nhận hàng:</span>
+              <input type="text" name="address" required placeholder="Số nhà, ngõ/ngách, đường, phường/xã...">
+            </label>
+          </div>
+
+          <?php if (!empty($order_combos)) : ?>
+          <div class="ltg-combo-pick" id="ltgCombo">
+            <span class="ltg-flabel lx_wow_item">Chọn combo:</span>
+            <?php foreach ($order_combos as $cb) :
+                if (empty($cb['name'])) continue;
+                $val = !empty($cb['val']) ? $cb['val'] : sanitize_title($cb['name']);
+                $badge = !empty($cb['badge']) ? '[' . $cb['badge'] . '] ' : '';
+                $is_chk = !empty($cb['chk']);
+            ?>
+              <label class="ltg-copt<?php echo $is_chk ? ' is-on' : ''; ?>">
+                <input type="radio" name="combo" value="<?php echo esc_attr($val); ?>"<?php echo $is_chk ? ' checked' : ''; ?>>
+                <span><b><?php echo esc_html($badge); ?></b><?php echo esc_html($cb['name']); ?></span>
+              </label>
+            <?php endforeach; ?>
+          </div>
+          <?php endif; ?>
+
+          <label class="ltg-giftwrap lx_wow_item">
+            <input type="checkbox" id="ltgWrap"> 🎁 Gói làm quà 20/11 &amp; kèm thiệp (miễn phí)
+          </label>
+
+          <div class="ltg-card-msg" id="ltgMsg">
+            <textarea name="card" placeholder="Lời nhắn trên thiệp, VD: Kính chúc cô luôn mạnh khoẻ, hạnh phúc!"></textarea>
+          </div>
+
+          <div class="ltg-fcd">
+            <b class="lx_wow_item">ƯU ĐÃI SẮP KẾT THÚC</b>
+            <div class="ltg-fcd-t" id="ltgFormCd">
+              <div><b data-h>00</b><small>Giờ</small></div>
+              <div><b data-m>00</b><small>phút</small></div>
+              <div><b data-s>00</b><small>giây</small></div>
+            </div>
+          </div>
+
+          <button type="submit" class="ltg-btn ltg-btn--pri ltg-pulse lx_wow_item">
+            ĐẶT HÀNG NGAY - NHẬN ƯU ĐÃI!
+          </button>
+
+          <p class="ltg-secure lx_wow_item">
+            🔒 Thanh toán khi nhận hàng · Thông tin của bạn được bảo mật
+          </p>
         </div>
 
-        <div class="ltg-order-trust">
-          <div class="lx_wow_item"><svg width="18" height="18"><use href="#i-truck"/></svg> Freeship toàn quốc</div>
-          <div class="lx_wow_item"><svg width="18" height="18"><use href="#i-shield"/></svg> Kiểm tra hàng trước khi thanh toán</div>
-          <div class="lx_wow_item"><svg width="18" height="18"><use href="#i-check"/></svg> Đổi trả 7 ngày nếu không hài lòng</div>
+        <div class="ltg-ok" id="ltgOk" style="display:none">
+          <div style="width:72px;height:72px;border-radius:50%;background:var(--butter);display:grid;place-items:center;margin:0 auto">
+            <svg width="34" height="34" style="color:var(--forest)"><use href="#i-check"/></svg>
+          </div>
+          <h3 class="lx_wow_item">Cảm ơn bạn đã đặt hàng!</h3>
+          <p class="ltg-hint lx_wow_item">Home Care sẽ gọi xác nhận đơn trong thời gian sớm nhất.</p>
         </div>
-      </div>
+      </form>
     </div>
   </section>
