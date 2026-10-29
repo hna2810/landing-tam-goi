@@ -56,10 +56,10 @@ if (!$has_faq) {
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($faq_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($faq_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($faq_eyebrow); ?></span>
         <?php endif; ?>
         <?php if (lx_has_content($faq_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($faq_title); ?></h2>
+          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($faq_title); ?></h2>
         <?php endif; ?>
       </div>
 
@@ -70,8 +70,8 @@ if (!$has_faq) {
             $open = ($idx === 0) ? ' open' : '';
         ?>
           <details<?php echo esc_attr($open); ?>>
-            <summary class="lx_wow_item"><?php echo esc_html($f['q']); ?></summary>
-            <p class="lx_wow_item"><?php echo wp_kses_post($f['a'] ?? ''); ?></p>
+            <summary><?php echo esc_html($f['q']); ?></summary>
+            <p><?php echo wp_kses_post($f['a'] ?? ''); ?></p>
           </details>
         <?php endforeach; ?>
       </div>

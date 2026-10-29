@@ -54,10 +54,10 @@ if (!$has_steps) {
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($steps_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($steps_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($steps_eyebrow); ?></span>
         <?php endif; ?>
         <?php if (lx_has_content($steps_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($steps_title); ?></h2>
+          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($steps_title); ?></h2>
         <?php endif; ?>
       </div>
 
@@ -90,9 +90,9 @@ if (!$has_steps) {
         ?>
           <div class="ltg-step ltg-rv">
             <i class="ltg-step-ic"><svg width="26" height="26"><use href="#<?php echo esc_attr($icon); ?>"/></svg></i>
-            <h4 class="lx_wow_item"><?php echo wp_kses_post($item['title']); ?></h4>
+            <h4><?php echo wp_kses_post($item['title']); ?></h4>
             <?php if (!empty($item['desc'])) : ?>
-              <p class="lx_wow_item"><?php echo esc_html($item['desc']); ?></p>
+              <p><?php echo esc_html($item['desc']); ?></p>
             <?php endif; ?>
           </div>
         <?php endforeach; ?>

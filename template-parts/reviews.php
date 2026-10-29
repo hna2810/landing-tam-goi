@@ -40,19 +40,19 @@ if (!$has_rev) {
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($rev_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($rev_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($rev_eyebrow); ?></span>
         <?php endif; ?>
         <?php if (lx_has_content($rev_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($rev_title); ?></h2>
+          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($rev_title); ?></h2>
         <?php endif; ?>
 
         <?php if (lx_has_content($rev_stat_1) || lx_has_content($rev_stat_2)) : ?>
         <div class="ltg-rstats">
           <?php if (lx_has_content($rev_stat_1)) : ?>
-            <div class="lx_wow_item"><?php echo esc_html($rev_stat_1); ?></div>
+            <div><?php echo esc_html($rev_stat_1); ?></div>
           <?php endif; ?>
           <?php if (lx_has_content($rev_stat_2)) : ?>
-            <div class="lx_wow_item"><?php echo esc_html($rev_stat_2); ?></div>
+            <div><?php echo esc_html($rev_stat_2); ?></div>
           <?php endif; ?>
         </div>
         <?php endif; ?>

@@ -15,10 +15,10 @@ $footer_text = lx_get_field('footer_text', 'option', 'Đẹp và Thật · Since
 
   <footer class="ltg-foot">
     <?php if (lx_has_content($footer_logo)) : ?>
-      <div class="ltg-logo lx_wow_item"><?php echo esc_html($footer_logo); ?></div>
+      <div class="ltg-logo"><?php echo esc_html($footer_logo); ?></div>
     <?php endif; ?>
     <?php if (lx_has_content($footer_text)) : ?>
-      <div class="lx_wow_item"><?php echo wp_kses_post($footer_text); ?></div>
+      <div><?php echo wp_kses_post($footer_text); ?></div>
     <?php endif; ?>
   </footer>
 

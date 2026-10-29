@@ -38,20 +38,20 @@ if (!$has_order) {
 
     <div class="ltg-wrap ltg-order-grid">
       <div class="ltg-rv">
-        <span class="ltg-eyebrow lx_wow_item">Đặt hàng</span>
-        <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($order_title); ?></h2>
+        <span class="ltg-eyebrow">Đặt hàng</span>
+        <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($order_title); ?></h2>
         <?php if (lx_has_content($order_lead)) : ?>
-          <p class="ltg-lead lx_wow_item"><?php echo esc_html($order_lead); ?></p>
+          <p class="ltg-lead"><?php echo esc_html($order_lead); ?></p>
         <?php endif; ?>
 
         <div class="ltg-promise">
-          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-shield"/></svg></i>Chính hãng – tem chống giả Bộ Công An</div>
-          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-truck"/></svg></i>Freeship toàn quốc, kiểm tra trước khi nhận</div>
-          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-gift"/></svg></i>Gói quà 20/11 &amp; thiệp viết tay miễn phí</div>
-          <div class="lx_wow_item"><i><svg width="16" height="16"><use href="#i-heart"/></svg></i>Tư vấn miễn phí cho mẹ bầu, sau sinh</div>
+          <div><i><svg width="16" height="16"><use href="#i-shield"/></svg></i>Chính hãng – tem chống giả Bộ Công An</div>
+          <div><i><svg width="16" height="16"><use href="#i-truck"/></svg></i>Freeship toàn quốc, kiểm tra trước khi nhận</div>
+          <div><i><svg width="16" height="16"><use href="#i-gift"/></svg></i>Gói quà 20/11 &amp; thiệp viết tay miễn phí</div>
+          <div><i><svg width="16" height="16"><use href="#i-heart"/></svg></i>Tư vấn miễn phí cho mẹ bầu, sau sinh</div>
         </div>
 
-        <a class="ltg-hotline lx_wow_item" href="tel:<?php echo esc_attr(preg_replace('/[^\d]/', '', $hotline)); ?>">
+        <a class="ltg-hotline" href="tel:<?php echo esc_attr(preg_replace('/[^\d]/', '', $hotline)); ?>">
           <i><svg width="24" height="24" style="color:var(--forest)"><use href="#i-phone"/></svg></i>
           <div>
             Hotline tư vấn
@@ -65,22 +65,22 @@ if (!$has_order) {
         <div id="ltgFormBody">
           <div class="ltg-fields ltg-fields--lb">
             <label>
-              <span class="lx_wow_item">Họ và tên:</span>
+              <span>Họ và tên:</span>
               <input type="text" name="name" required placeholder="Ví dụ: Nguyễn Thị Mai">
             </label>
             <label>
-              <span class="lx_wow_item">Số điện thoại:</span>
+              <span>Số điện thoại:</span>
               <input type="tel" name="phone" required placeholder="Ví dụ: 0912 345 678">
             </label>
             <label>
-              <span class="lx_wow_item">Địa chỉ nhận hàng:</span>
+              <span>Địa chỉ nhận hàng:</span>
               <input type="text" name="address" required placeholder="Số nhà, ngõ/ngách, đường, phường/xã...">
             </label>
           </div>
 
           <?php if (!empty($order_combos)) : ?>
           <div class="ltg-combo-pick" id="ltgCombo">
-            <span class="ltg-flabel lx_wow_item">Chọn combo:</span>
+            <span class="ltg-flabel">Chọn combo:</span>
             <?php foreach ($order_combos as $cb) :
                 if (empty($cb['name'])) continue;
                 $val = !empty($cb['val']) ? $cb['val'] : sanitize_title($cb['name']);
@@ -95,7 +95,7 @@ if (!$has_order) {
           </div>
           <?php endif; ?>
 
-          <label class="ltg-giftwrap lx_wow_item">
+          <label class="ltg-giftwrap">
             <input type="checkbox" id="ltgWrap"> 🎁 Gói làm quà 20/11 &amp; kèm thiệp (miễn phí)
           </label>
 
@@ -104,7 +104,7 @@ if (!$has_order) {
           </div>
 
           <div class="ltg-fcd">
-            <b class="lx_wow_item">ƯU ĐÃI SẮP KẾT THÚC</b>
+            <b>ƯU ĐÃI SẮP KẾT THÚC</b>
             <div class="ltg-fcd-t" id="ltgFormCd">
               <div><b data-h>00</b><small>Giờ</small></div>
               <div><b data-m>00</b><small>phút</small></div>
@@ -112,11 +112,11 @@ if (!$has_order) {
             </div>
           </div>
 
-          <button type="submit" class="ltg-btn ltg-btn--pri ltg-pulse lx_wow_item">
+          <button type="submit" class="ltg-btn ltg-btn--pri ltg-pulse">
             ĐẶT HÀNG NGAY - NHẬN ƯU ĐÃI!
           </button>
 
-          <p class="ltg-secure lx_wow_item">
+          <p class="ltg-secure">
             🔒 Thanh toán khi nhận hàng · Thông tin của bạn được bảo mật
           </p>
         </div>
@@ -125,8 +125,8 @@ if (!$has_order) {
           <div style="width:72px;height:72px;border-radius:50%;background:var(--butter);display:grid;place-items:center;margin:0 auto">
             <svg width="34" height="34" style="color:var(--forest)"><use href="#i-check"/></svg>
           </div>
-          <h3 class="lx_wow_item">Cảm ơn bạn đã đặt hàng!</h3>
-          <p class="ltg-hint lx_wow_item">Home Care sẽ gọi xác nhận đơn trong thời gian sớm nhất.</p>
+          <h3>Cảm ơn bạn đã đặt hàng!</h3>
+          <p class="ltg-hint">Home Care sẽ gọi xác nhận đơn trong thời gian sớm nhất.</p>
         </div>
       </form>
     </div>

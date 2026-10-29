@@ -44,9 +44,9 @@ if (!$has_letter) {
         <?php if (!empty($letter_mascot)) : ?>
           <img src="<?php echo esc_url($letter_mascot); ?>" alt="<?php echo esc_attr($letter_author ?: 'Chị Mai'); ?>" class="ltg-type-mascot" loading="lazy">
         <?php endif; ?>
-        <span class="ltg-eyebrow lx_wow_item">Tâm thư người sáng lập</span>
+        <span class="ltg-eyebrow">Tâm thư người sáng lập</span>
         <?php if (lx_has_content($letter_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($letter_title); ?></h2>
+          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($letter_title); ?></h2>
         <?php endif; ?>
       </div>
 
@@ -80,19 +80,19 @@ if (!$has_letter) {
         <span class="ltg-type-quote" aria-hidden="true">“</span>
         
         <?php if (lx_has_content($letter_body)) : ?>
-        <div class="ltg-type-text lx_wow_item">
+        <div class="ltg-type-text">
           <?php echo nl2br(esc_html($letter_body)); ?>
         </div>
         <?php endif; ?>
 
         <?php if (lx_has_content($letter_hl)) : ?>
-        <div class="ltg-type-hl lx_wow_item">
+        <div class="ltg-type-hl">
           <strong><?php echo esc_html($letter_hl); ?></strong>
         </div>
         <?php endif; ?>
 
         <?php if (lx_has_content($letter_author)) : ?>
-        <div class="ltg-type-sign lx_wow_item">
+        <div class="ltg-type-sign">
           <div class="ltg-sign-msg">Thương mến gửi mẹ ❤️</div>
           <div class="ltg-sign-name"><?php echo esc_html($letter_author); ?></div>
           <?php if (lx_has_content($letter_author_title)) : ?>

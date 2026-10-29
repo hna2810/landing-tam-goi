@@ -41,10 +41,10 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
       <?php if (lx_has_content($pain_title) || lx_has_content($pain_lead)) : ?>
         <div class="ltg-center ltg-rv">
           <?php if (lx_has_content($pain_title)) : ?>
-            <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($pain_title); ?></h2>
+            <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($pain_title); ?></h2>
           <?php endif; ?>
           <?php if (lx_has_content($pain_lead)) : ?>
-            <p class="ltg-lead lx_wow_item"><?php echo esc_html($pain_lead); ?></p>
+            <p class="ltg-lead"><?php echo esc_html($pain_lead); ?></p>
           <?php endif; ?>
         </div>
       <?php endif; ?>
@@ -53,16 +53,16 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
         <?php if ($has_hair) : ?>
           <div class="ltg-p4-col ltg-p4-col--l ltg-rv">
             <?php if (lx_has_content($pain_hair_h)) : ?>
-              <h3 class="ltg-p4-h lx_wow_item"><?php echo esc_html($pain_hair_h); ?></h3>
+              <h3 class="ltg-p4-h"><?php echo esc_html($pain_hair_h); ?></h3>
             <?php endif; ?>
             <ul>
               <?php foreach ($pain_hair_items as $item) :
                   if (empty($item['title'])) continue;
               ?>
                 <li class="ltg-p4-chip" tabindex="0">
-                  <b class="lx_wow_item"><span class="ltg-p4-dot"></span><?php echo esc_html($item['title']); ?></b>
+                  <b><span class="ltg-p4-dot"></span><?php echo esc_html($item['title']); ?></b>
                   <?php if (!empty($item['desc'])) : ?>
-                    <p class="lx_wow_item"><?php echo esc_html($item['desc']); ?></p>
+                    <p><?php echo esc_html($item['desc']); ?></p>
                   <?php endif; ?>
                 </li>
               <?php endforeach; ?>
@@ -85,16 +85,16 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
         <?php if ($has_skin) : ?>
           <div class="ltg-p4-col ltg-p4-col--r ltg-rv">
             <?php if (lx_has_content($pain_skin_h)) : ?>
-              <h3 class="ltg-p4-h lx_wow_item"><?php echo esc_html($pain_skin_h); ?></h3>
+              <h3 class="ltg-p4-h"><?php echo esc_html($pain_skin_h); ?></h3>
             <?php endif; ?>
             <ul>
               <?php foreach ($pain_skin_items as $item) :
                   if (empty($item['title'])) continue;
               ?>
                 <li class="ltg-p4-chip" tabindex="0">
-                  <b class="lx_wow_item"><span class="ltg-p4-dot"></span><?php echo esc_html($item['title']); ?></b>
+                  <b><span class="ltg-p4-dot"></span><?php echo esc_html($item['title']); ?></b>
                   <?php if (!empty($item['desc'])) : ?>
-                    <p class="lx_wow_item"><?php echo esc_html($item['desc']); ?></p>
+                    <p><?php echo esc_html($item['desc']); ?></p>
                   <?php endif; ?>
                 </li>
               <?php endforeach; ?>
@@ -109,17 +109,17 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
             <div class="ltg-p3-cause ltg-rv">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M10.5 7.5v3.5M10.5 13.6v.01"/></svg>
               <?php if (lx_has_content($pain_cause_h)) : ?>
-                <h3 class="lx_wow_item"><?php echo esc_html($pain_cause_h); ?></h3>
+                <h3><?php echo esc_html($pain_cause_h); ?></h3>
               <?php endif; ?>
               <?php if (lx_has_content($pain_cause_p)) : ?>
-                <p class="lx_wow_item"><?php echo esc_html($pain_cause_p); ?></p>
+                <p><?php echo esc_html($pain_cause_p); ?></p>
               <?php endif; ?>
             </div>
           <?php endif; ?>
 
           <?php if (lx_has_content($pain_cta_p)) : ?>
             <div class="ltg-p3-cta ltg-rv">
-              <p class="lx_wow_item"><?php echo wp_kses_post($pain_cta_p); ?></p>
+              <p><?php echo wp_kses_post($pain_cta_p); ?></p>
               <a href="<?php echo esc_url($pain_cta_link ?: '#san-pham'); ?>" class="ltg-p3-down" aria-label="Xem bộ đôi">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
               </a>

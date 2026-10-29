@@ -70,13 +70,13 @@ if (!$has_proc) {
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($proc_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($proc_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($proc_eyebrow); ?></span>
         <?php endif; ?>
         <?php if (lx_has_content($proc_title)) : ?>
-          <h2 class="ltg-h2 lx_wow_item"><?php echo wp_kses_post($proc_title); ?></h2>
+          <h2 class="ltg-h2"><?php echo wp_kses_post($proc_title); ?></h2>
         <?php endif; ?>
         <?php if (lx_has_content($proc_lead)) : ?>
-          <p class="ltg-lead lx_wow_item"><?php echo esc_html($proc_lead); ?></p>
+          <p class="ltg-lead"><?php echo esc_html($proc_lead); ?></p>
         <?php endif; ?>
       </div>
 
@@ -89,16 +89,16 @@ if (!$has_proc) {
         <div class="ltg-vlong-cap">
           <div>
             <?php if (lx_has_content($proc_video_tag)) : ?>
-              <span class="ltg-vlong-tag lx_wow_item"><?php echo esc_html($proc_video_tag); ?></span>
+              <span class="ltg-vlong-tag"><?php echo esc_html($proc_video_tag); ?></span>
             <?php endif; ?>
             <?php if (lx_has_content($proc_video_h)) : ?>
-              <h3 class="lx_wow_item"><?php echo esc_html($proc_video_h); ?></h3>
+              <h3><?php echo esc_html($proc_video_h); ?></h3>
             <?php endif; ?>
             <?php if (lx_has_content($proc_video_desc)) : ?>
-              <p class="lx_wow_item"><?php echo esc_html($proc_video_desc); ?></p>
+              <p><?php echo esc_html($proc_video_desc); ?></p>
             <?php endif; ?>
           </div>
-          <span class="ltg-dur lx_wow_item">▶ Xem video</span>
+          <span class="ltg-dur">▶ Xem video</span>
         </div>
       </div>
 
@@ -131,10 +131,10 @@ if (!$has_proc) {
               <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($step['title']); ?>" loading="lazy">
             <?php endif; ?>
             <?php if (!empty($num)) : ?>
-              <small class="lx_wow_item"><?php echo esc_html($num); ?></small>
+              <small><?php echo esc_html($num); ?></small>
             <?php endif; ?>
-            <b class="lx_wow_item"><?php echo esc_html($step['title']); ?></b>
-            <span class="lx_wow_item"><?php echo esc_html($step['desc'] ?? ''); ?></span>
+            <b><?php echo esc_html($step['title']); ?></b>
+            <span><?php echo esc_html($step['desc'] ?? ''); ?></span>
           </div>
         <?php endforeach; ?>
       </div>

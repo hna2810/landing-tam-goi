@@ -85,7 +85,7 @@ if (!defined('ABSPATH')) {
       $cta_link = lx_get_field('header_cta_link', 'option', '#dat-hang');
       if (lx_has_content($cta_text)) :
       ?>
-      <a href="<?php echo esc_url($cta_link); ?>" class="ltg-btn ltg-btn--pri lx_wow_item">
+      <a href="<?php echo esc_url($cta_link); ?>" class="ltg-btn ltg-btn--pri">
         <?php echo esc_html($cta_text); ?>
       </a>
       <?php endif; ?>

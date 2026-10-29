@@ -40,19 +40,19 @@ if ($has_story) :
 
       <div class="ltg-rv">
         <?php if (lx_has_content($story_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($story_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($story_eyebrow); ?></span>
         <?php endif; ?>
 
         <?php if (lx_has_content($story_title)) : ?>
-          <h2 class="ltg-h2 lx_wow_item"><?php echo wp_kses_post($story_title); ?></h2>
+          <h2 class="ltg-h2"><?php echo wp_kses_post($story_title); ?></h2>
         <?php endif; ?>
 
         <?php if (lx_has_content($story_quote)) : ?>
-          <p class="ltg-story-q lx_wow_item"><?php echo esc_html($story_quote); ?></p>
+          <p class="ltg-story-q"><?php echo esc_html($story_quote); ?></p>
         <?php endif; ?>
 
         <?php if (lx_has_content($story_lead)) : ?>
-          <p class="ltg-lead lx_wow_item" style="margin-top:0"><?php echo esc_html($story_lead); ?></p>
+          <p class="ltg-lead" style="margin-top:0"><?php echo esc_html($story_lead); ?></p>
         <?php endif; ?>
 
         <?php if (!empty($story_stats) && is_array($story_stats)) : ?>
@@ -60,7 +60,7 @@ if ($has_story) :
           <?php foreach ($story_stats as $stat) :
               if (empty($stat['num'])) continue;
           ?>
-            <div class="lx_wow_item">
+            <div>
               <b data-count="<?php echo esc_attr($stat['num']); ?>"<?php echo !empty($stat['suffix']) ? ' data-suffix="' . esc_attr($stat['suffix']) . '"' : ''; ?>><?php echo esc_html($stat['num']); ?><?php echo esc_html($stat['suffix'] ?? ''); ?></b>
               <?php echo esc_html($stat['text'] ?? ''); ?>
             </div>

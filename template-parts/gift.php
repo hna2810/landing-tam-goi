@@ -85,13 +85,13 @@ if (!$has_gift) {
       <div class="ltg-gift-head">
         <div class="ltg-rv">
           <?php if (lx_has_content($gift_eyebrow)) : ?>
-            <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($gift_eyebrow); ?></span>
+            <span class="ltg-eyebrow"><?php echo esc_html($gift_eyebrow); ?></span>
           <?php endif; ?>
           <?php if (lx_has_content($gift_title)) : ?>
-            <h2 class="ltg-h2 lx_wow_item"><?php echo wp_kses_post($gift_title); ?></h2>
+            <h2 class="ltg-h2"><?php echo wp_kses_post($gift_title); ?></h2>
           <?php endif; ?>
           <?php if (lx_has_content($gift_lead)) : ?>
-            <p class="ltg-lead lx_wow_item"><?php echo esc_html($gift_lead); ?></p>
+            <p class="ltg-lead"><?php echo esc_html($gift_lead); ?></p>
           <?php endif; ?>
         </div>
 
@@ -103,7 +103,7 @@ if (!$has_gift) {
             <div><b data-s>00</b><small>Giây</small></div>
           </div>
           <?php if (lx_has_content($gift_count_note)) : ?>
-            <p class="ltg-count-note lx_wow_item"><?php echo wp_kses_post($gift_count_note); ?></p>
+            <p class="ltg-count-note"><?php echo wp_kses_post($gift_count_note); ?></p>
           <?php endif; ?>
         </div>
       </div>
@@ -127,23 +127,23 @@ if (!$has_gift) {
               </div>
             <?php endif; ?>
             <div class="ltg-set-body">
-              <h3 class="lx_wow_item"><?php echo esc_html($set['name']); ?></h3>
+              <h3><?php echo esc_html($set['name']); ?></h3>
               <?php if (!empty($items_arr)) : ?>
               <ul class="ltg-set-items">
                 <?php foreach ($items_arr as $it) :
                     if (trim($it) === '') continue;
                 ?>
-                  <li class="lx_wow_item"><span><?php echo esc_html(trim($it)); ?></span></li>
+                  <li><span><?php echo esc_html(trim($it)); ?></span></li>
                 <?php endforeach; ?>
               </ul>
               <?php endif; ?>
               <?php if (!empty($set['price'])) : ?>
               <div class="ltg-set-price">
-                <small class="lx_wow_item">Giá niêm yết:</small>
-                <b class="lx_wow_item"><?php echo esc_html($set['price']); ?></b>
+                <small>Giá niêm yết:</small>
+                <b><?php echo esc_html($set['price']); ?></b>
               </div>
               <?php endif; ?>
-              <a href="#dat-hang" class="ltg-btn <?php echo esc_attr($btn_cls); ?> lx_wow_item" data-set="<?php echo esc_attr($set['data_set'] ?? $set['name']); ?>">
+              <a href="#dat-hang" class="ltg-btn <?php echo esc_attr($btn_cls); ?>" data-set="<?php echo esc_attr($set['data_set'] ?? $set['name']); ?>">
                 Chọn set này
               </a>
             </div>

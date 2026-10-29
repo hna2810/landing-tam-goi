@@ -52,7 +52,7 @@ if (!$has_combos) {
     <div class="ltg-wrap">
       <?php if (lx_has_content($combo_title)) : ?>
       <div class="ltg-center ltg-rv">
-        <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo esc_html($combo_title); ?></h2>
+        <h2 class="ltg-h2 ltg-h2--md"><?php echo esc_html($combo_title); ?></h2>
       </div>
       <?php endif; ?>
 
@@ -68,12 +68,12 @@ if (!$has_combos) {
             <?php if (!empty($img)) : ?>
               <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($cb['name']); ?>" loading="lazy">
             <?php endif; ?>
-            <h3 class="lx_wow_item"><?php echo esc_html($cb['name']); ?></h3>
+            <h3><?php echo esc_html($cb['name']); ?></h3>
             <?php if (!empty($cb['desc'])) : ?>
-              <p class="lx_wow_item"><?php echo esc_html($cb['desc']); ?></p>
+              <p><?php echo esc_html($cb['desc']); ?></p>
             <?php endif; ?>
             <?php if (!empty($cb['price'])) : ?>
-              <b class="lx_wow_item"><?php echo esc_html($cb['price']); ?></b>
+              <b><?php echo esc_html($cb['price']); ?></b>
             <?php endif; ?>
           </a>
         <?php endforeach; ?>

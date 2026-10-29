@@ -59,19 +59,19 @@ if (!$has_products) {
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($ba_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($ba_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($ba_eyebrow); ?></span>
         <?php endif; ?>
         <?php if (lx_has_content($ba_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($ba_title); ?></h2>
+          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($ba_title); ?></h2>
         <?php endif; ?>
         <?php if (lx_has_content($ba_lead)) : ?>
-          <p class="ltg-lead lx_wow_item" style="font-style:italic"><?php echo esc_html($ba_lead); ?></p>
+          <p class="ltg-lead" style="font-style:italic"><?php echo esc_html($ba_lead); ?></p>
         <?php endif; ?>
       </div>
 
       <div class="ltg-ba3-tabs ltg-rv" role="tablist">
         <?php if (lx_has_content($tab1_name)) : ?>
-          <button type="button" class="ltg-ba2-tab ltg-ba3-tab is-on lx_wow_item" data-ba="goi">
+          <button type="button" class="ltg-ba2-tab ltg-ba3-tab is-on" data-ba="goi">
             <?php if (!empty($tab1_icon)) : ?>
               <img src="<?php echo esc_url($tab1_icon); ?>" alt="">
             <?php endif; ?>
@@ -80,7 +80,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (lx_has_content($tab2_name)) : ?>
-          <button type="button" class="ltg-ba2-tab ltg-ba3-tab <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?> lx_wow_item" data-ba="tam">
+          <button type="button" class="ltg-ba2-tab ltg-ba3-tab <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?>" data-ba="tam">
             <?php if (!empty($tab2_icon)) : ?>
               <img src="<?php echo esc_url($tab2_icon); ?>" alt="">
             <?php endif; ?>
@@ -94,13 +94,13 @@ if (!$has_products) {
         <?php if (!empty($tab1_bad_items) && is_array($tab1_bad_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-bad ltg-rv">
           <?php if (lx_has_content($tab1_bad_h)) : ?>
-            <h4 class="lx_wow_item"><?php echo esc_html($tab1_bad_h); ?></h4>
+            <h4><?php echo esc_html($tab1_bad_h); ?></h4>
           <?php endif; ?>
           <ul>
             <?php foreach ($tab1_bad_items as $b) :
                 if (empty($b['text'])) continue;
             ?>
-              <li class="lx_wow_item">
+              <li>
                 <i><svg width="12" height="12"><use href="#i-x"/></svg></i>
                 <?php echo esc_html($b['text']); ?>
               </li>
@@ -112,13 +112,13 @@ if (!$has_products) {
         <?php if (!empty($tab1_good_items) && is_array($tab1_good_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-good ltg-rv">
           <?php if (lx_has_content($tab1_good_h)) : ?>
-            <h4 class="lx_wow_item"><?php echo esc_html($tab1_good_h); ?></h4>
+            <h4><?php echo esc_html($tab1_good_h); ?></h4>
           <?php endif; ?>
           <ul>
             <?php foreach ($tab1_good_items as $g) :
                 if (empty($g['text'])) continue;
             ?>
-              <li class="lx_wow_item">
+              <li>
                 <i><svg width="12" height="12"><use href="#i-check"/></svg></i>
                 <?php echo esc_html($g['text']); ?>
               </li>
@@ -140,7 +140,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (lx_has_content($tab1_quote)) : ?>
-          <p class="ltg-ba3-q lx_wow_item"><?php echo esc_html($tab1_quote); ?></p>
+          <p class="ltg-ba3-q"><?php echo esc_html($tab1_quote); ?></p>
         <?php endif; ?>
       </div>
       <?php endif; ?>
@@ -150,13 +150,13 @@ if (!$has_products) {
         <?php if (!empty($tab2_bad_items) && is_array($tab2_bad_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-bad ltg-rv">
           <?php if (lx_has_content($tab2_bad_h)) : ?>
-            <h4 class="lx_wow_item"><?php echo esc_html($tab2_bad_h); ?></h4>
+            <h4><?php echo esc_html($tab2_bad_h); ?></h4>
           <?php endif; ?>
           <ul>
             <?php foreach ($tab2_bad_items as $b) :
                 if (empty($b['text'])) continue;
             ?>
-              <li class="lx_wow_item">
+              <li>
                 <i><svg width="12" height="12"><use href="#i-x"/></svg></i>
                 <?php echo esc_html($b['text']); ?>
               </li>
@@ -168,13 +168,13 @@ if (!$has_products) {
         <?php if (!empty($tab2_good_items) && is_array($tab2_good_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-good ltg-rv">
           <?php if (lx_has_content($tab2_good_h)) : ?>
-            <h4 class="lx_wow_item"><?php echo esc_html($tab2_good_h); ?></h4>
+            <h4><?php echo esc_html($tab2_good_h); ?></h4>
           <?php endif; ?>
           <ul>
             <?php foreach ($tab2_good_items as $g) :
                 if (empty($g['text'])) continue;
             ?>
-              <li class="lx_wow_item">
+              <li>
                 <i><svg width="12" height="12"><use href="#i-check"/></svg></i>
                 <?php echo esc_html($g['text']); ?>
               </li>
@@ -196,7 +196,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (lx_has_content($tab2_quote)) : ?>
-          <p class="ltg-ba3-q lx_wow_item"><?php echo esc_html($tab2_quote); ?></p>
+          <p class="ltg-ba3-q"><?php echo esc_html($tab2_quote); ?></p>
         <?php endif; ?>
       </div>
       <?php endif; ?>

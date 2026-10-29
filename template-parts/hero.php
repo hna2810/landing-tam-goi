@@ -53,11 +53,11 @@ if (!$has_hero) {
     <div class="ltg-wrap">
       <div class="ltg-hero-content">
         <?php if (lx_has_content($hero_title)) : ?>
-          <h1 class="lx_wow_item"><?php echo wp_kses_post($hero_title); ?></h1>
+          <h1><?php echo wp_kses_post($hero_title); ?></h1>
         <?php endif; ?>
 
         <?php if (lx_has_content($hero_subtitle)) : ?>
-          <p class="ltg-sub lx_wow_item"><?php echo wp_kses_post($hero_subtitle); ?></p>
+          <p class="ltg-sub"><?php echo wp_kses_post($hero_subtitle); ?></p>
         <?php endif; ?>
 
         <?php if (!empty($hero_benefits) && is_array($hero_benefits)) : ?>
@@ -65,7 +65,7 @@ if (!$has_hero) {
             <?php foreach ($hero_benefits as $b) :
                 if (empty($b['text'])) continue;
             ?>
-              <div class="lx_wow_item">
+              <div>
                 <i><svg width="14" height="14"><use href="#i-check"/></svg></i>
                 <?php echo esc_html($b['text']); ?>
               </div>
@@ -74,22 +74,22 @@ if (!$has_hero) {
         <?php endif; ?>
 
         <?php if (lx_has_content($hero_callout)) : ?>
-          <p class="ltg-used lx_wow_item"><?php echo wp_kses_post($hero_callout); ?></p>
+          <p class="ltg-used"><?php echo wp_kses_post($hero_callout); ?></p>
         <?php endif; ?>
 
         <?php if (lx_has_content($hero_price)) : ?>
           <div class="ltg-pricebox">
             <div class="ltg-pb-l">
               <?php if (lx_has_content($hero_price_label)) : ?>
-                <small class="lx_wow_item"><?php echo esc_html($hero_price_label); ?></small>
+                <small><?php echo esc_html($hero_price_label); ?></small>
               <?php endif; ?>
-              <b class="lx_wow_item"><?php echo esc_html($hero_price); ?></b>
+              <b><?php echo esc_html($hero_price); ?></b>
               <?php if (lx_has_content($hero_price_note)) : ?>
-                <small style="color:var(--olive-2);font-weight:600" class="lx_wow_item"><?php echo esc_html($hero_price_note); ?></small>
+                <small style="color:var(--olive-2);font-weight:600"><?php echo esc_html($hero_price_note); ?></small>
               <?php endif; ?>
             </div>
             <?php if (lx_has_content($hero_price_tag)) : ?>
-              <div class="ltg-pb-tag lx_wow_item"><?php echo wp_kses_post($hero_price_tag); ?></div>
+              <div class="ltg-pb-tag"><?php echo wp_kses_post($hero_price_tag); ?></div>
             <?php endif; ?>
           </div>
         <?php endif; ?>
@@ -97,12 +97,12 @@ if (!$has_hero) {
         <?php if (lx_has_content($hero_cta_pri_text) || lx_has_content($hero_cta_sec_text)) : ?>
           <div class="ltg-hero-ctas">
             <?php if (lx_has_content($hero_cta_pri_text)) : ?>
-              <a href="<?php echo esc_url($hero_cta_pri_link ?: '#dat-hang'); ?>" class="ltg-btn ltg-btn--pri ltg-pulse lx_wow_item">
+              <a href="<?php echo esc_url($hero_cta_pri_link ?: '#dat-hang'); ?>" class="ltg-btn ltg-btn--pri ltg-pulse">
                 <?php echo esc_html($hero_cta_pri_text); ?>
               </a>
             <?php endif; ?>
             <?php if (lx_has_content($hero_cta_sec_text)) : ?>
-              <a href="<?php echo esc_url($hero_cta_sec_link ?: '#qua-20-11'); ?>" class="ltg-btn ltg-btn--ghost lx_wow_item">
+              <a href="<?php echo esc_url($hero_cta_sec_link ?: '#qua-20-11'); ?>" class="ltg-btn ltg-btn--ghost">
                 <?php echo esc_html($hero_cta_sec_text); ?>
               </a>
             <?php endif; ?>
@@ -126,7 +126,7 @@ if (!$has_hero) {
               if (empty($t['text'])) continue;
               $icon = !empty($t['icon']) ? $t['icon'] : 'i-shield';
           ?>
-            <div class="lx_wow_item">
+            <div>
               <i><svg width="20" height="20"><use href="#<?php echo esc_attr($icon); ?>"/></svg></i>
               <?php echo esc_html($t['text']); ?>
             </div>

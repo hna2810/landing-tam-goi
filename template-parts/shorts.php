@@ -60,21 +60,21 @@ if (!$has_shorts) {
       <div class="ltg-shorts-head">
         <div>
           <?php if (lx_has_content($shorts_eyebrow)) : ?>
-            <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($shorts_eyebrow); ?></span>
+            <span class="ltg-eyebrow"><?php echo esc_html($shorts_eyebrow); ?></span>
           <?php endif; ?>
           <?php if (lx_has_content($shorts_title)) : ?>
-            <h2 class="ltg-h2 lx_wow_item"><?php echo wp_kses_post($shorts_title); ?></h2>
+            <h2 class="ltg-h2"><?php echo wp_kses_post($shorts_title); ?></h2>
           <?php endif; ?>
         </div>
 
         <div class="ltg-social">
           <?php if (lx_has_content($shorts_tiktok)) : ?>
-            <a href="<?php echo esc_url($shorts_tiktok); ?>" target="_blank" rel="noopener" class="lx_wow_item">
+            <a href="<?php echo esc_url($shorts_tiktok); ?>" target="_blank" rel="noopener">
               <svg width="18" height="18"><use href="#i-tt"/></svg>TikTok
             </a>
           <?php endif; ?>
           <?php if (lx_has_content($shorts_youtube)) : ?>
-            <a href="<?php echo esc_url($shorts_youtube); ?>" target="_blank" rel="noopener" class="lx_wow_item">
+            <a href="<?php echo esc_url($shorts_youtube); ?>" target="_blank" rel="noopener">
               <svg width="18" height="18"><use href="#i-yt"/></svg>YouTube
             </a>
           <?php endif; ?>
@@ -122,9 +122,9 @@ if (!$has_shorts) {
             <span class="ltg-short-src"><?php echo esc_html($src_lbl); ?></span>
             <span class="ltg-short-play"><svg width="24" height="24"><use href="#i-play"/></svg></span>
             <div class="ltg-short-cap">
-              <b class="lx_wow_item"><?php echo esc_html($sh['title']); ?></b>
+              <b><?php echo esc_html($sh['title']); ?></b>
               <?php if (!empty($sh['sub'])) : ?>
-                <small class="lx_wow_item"><?php echo esc_html($sh['sub']); ?></small>
+                <small><?php echo esc_html($sh['sub']); ?></small>
               <?php endif; ?>
             </div>
           </div>

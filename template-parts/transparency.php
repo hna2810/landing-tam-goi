@@ -27,13 +27,13 @@ if (!$has_clear) {
     <div class="ltg-wrap">
       <div class="ltg-center ltg-rv">
         <?php if (lx_has_content($clear_eyebrow)) : ?>
-          <span class="ltg-eyebrow lx_wow_item"><?php echo esc_html($clear_eyebrow); ?></span>
+          <span class="ltg-eyebrow"><?php echo esc_html($clear_eyebrow); ?></span>
         <?php endif; ?>
         <?php if (lx_has_content($clear_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md lx_wow_item"><?php echo wp_kses_post($clear_title); ?></h2>
+          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($clear_title); ?></h2>
         <?php endif; ?>
         <?php if (lx_has_content($clear_lead)) : ?>
-          <p class="ltg-lead lx_wow_item"><?php echo esc_html($clear_lead); ?></p>
+          <p class="ltg-lead"><?php echo esc_html($clear_lead); ?></p>
         <?php endif; ?>
       </div>
 
@@ -55,7 +55,7 @@ if (!$has_clear) {
           <?php endif; ?>
 
           <?php if (lx_has_content($clear_cap)) : ?>
-            <p class="ltg-clear-cap lx_wow_item"><?php echo esc_html($clear_cap); ?></p>
+            <p class="ltg-clear-cap"><?php echo esc_html($clear_cap); ?></p>
           <?php endif; ?>
         </div>
 
@@ -65,7 +65,7 @@ if (!$has_clear) {
               <img src="<?php echo esc_url($clear_barcode); ?>" alt="Ảnh mã vạch, mã QR sản phẩm" loading="lazy" style="border-radius:18px;">
             </figure>
           <?php else : ?>
-            <span class="ltg-ph ltg-ph--tall lx_wow_item">Ảnh mã vạch, mã QR sản phẩm</span>
+            <span class="ltg-ph ltg-ph--tall">Ảnh mã vạch, mã QR sản phẩm</span>
           <?php endif; ?>
         </div>
       </div>
