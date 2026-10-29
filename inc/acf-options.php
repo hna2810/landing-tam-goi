@@ -44,6 +44,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_header',
                 'label' => 'Header & Topbar',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_topbar_text',
@@ -117,6 +119,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_hero',
                 'label' => 'Hero Banner & Cam Kết',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_hero_title',
@@ -249,6 +253,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_pain',
                 'label' => 'Nỗi Lo Mẹ Bầu & Sau Sinh',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_pain_title',
@@ -368,6 +374,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_products',
                 'label' => 'Sản Phẩm (Trước/Sau)',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_ba_eyebrow',
@@ -491,6 +499,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_story',
                 'label' => 'Câu Chuyện Mây Mây',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_story_eyebrow',
@@ -571,6 +581,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_proc',
                 'label' => 'Quy Trình & Video',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_proc_eyebrow',
@@ -663,6 +675,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_steps',
                 'label' => 'Cách Dùng (3 Bước)',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_steps_eyebrow',
@@ -714,6 +728,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_transparency',
                 'label' => 'Minh Bạch Hồ Sơ Y Tế',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_clear_eyebrow',
@@ -771,6 +787,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_reviews',
                 'label' => 'Feedback Khách Hàng',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_rev_eyebrow',
@@ -823,6 +841,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_shorts',
                 'label' => 'Video Ngắn 60s',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_shorts_eyebrow',
@@ -901,6 +921,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_combo',
                 'label' => 'Combo Ưu Đãi',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_combo_title',
@@ -962,6 +984,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_gift',
                 'label' => 'Set Quà Tặng 20/11',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_gift_eyebrow',
@@ -1047,6 +1071,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_order',
                 'label' => 'Đặt Hàng & Cài Đặt Email',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_order_email',
@@ -1117,6 +1143,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_faq',
                 'label' => 'Hỏi Đáp FAQ',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_faq_eyebrow',
@@ -1161,6 +1189,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_letter',
                 'label' => 'Lời Nhắn Mây Mây',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_letter_mascot',
@@ -1223,6 +1253,8 @@ function lx_register_acf_landing_fields_group() {
                 'key' => 'field_tab_footer',
                 'label' => 'Footer & Thanh Mua Nhanh',
                 'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ),
             array(
                 'key' => 'field_footer_logo',

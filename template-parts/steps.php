@@ -52,7 +52,7 @@ if (!$has_steps) {
     </div>
 
     <div class="ltg-wrap">
-      <div class="ltg-center ltg-rv">
+      <div class="ltg-center">
         <?php if (lx_has_content($steps_eyebrow)) : ?>
           <span class="ltg-eyebrow"><?php echo esc_html($steps_eyebrow); ?></span>
         <?php endif; ?>
@@ -88,8 +88,10 @@ if (!$has_steps) {
                 $icon = $default_step_icons[$idx % count($default_step_icons)];
             }
         ?>
-          <div class="ltg-step ltg-rv">
-            <i class="ltg-step-ic"><svg width="26" height="26"><use href="#<?php echo esc_attr($icon); ?>"/></svg></i>
+          <div class="ltg-step">
+            <i class="ltg-step-ic" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24"><use href="#<?php echo esc_attr($icon); ?>" xlink:href="#<?php echo esc_attr($icon); ?>"/></svg>
+            </i>
             <h4><?php echo wp_kses_post($item['title']); ?></h4>
             <?php if (!empty($item['desc'])) : ?>
               <p><?php echo esc_html($item['desc']); ?></p>

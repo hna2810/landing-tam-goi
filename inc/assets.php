@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Enqueue frontend scripts and styles
+ * Enqueue frontend scripts and styles with instant filemtime cache busting
  */
 function lx_enqueue_scripts() {
     // Google Fonts: Playfair Display & Be Vietnam Pro
@@ -21,12 +21,19 @@ function lx_enqueue_scripts() {
         null
     );
 
+    // Dynamic cache busting based on real file modification time
+    $css_file = LX_THEME_DIR . '/assets/css/main.css';
+    $css_ver  = file_exists($css_file) ? filemtime($css_file) : LX_THEME_VERSION;
+
+    $js_file  = LX_THEME_DIR . '/assets/js/main.js';
+    $js_ver   = file_exists($js_file) ? filemtime($js_file) : LX_THEME_VERSION;
+
     // Theme Main CSS
     wp_enqueue_style(
         'lx-main-style',
         LX_THEME_URI . '/assets/css/main.css',
         array(),
-        LX_THEME_VERSION
+        $css_ver
     );
 
     // Theme Main JS
@@ -34,7 +41,7 @@ function lx_enqueue_scripts() {
         'lx-main-script',
         LX_THEME_URI . '/assets/js/main.js',
         array(),
-        LX_THEME_VERSION,
+        $js_ver,
         true
     );
 
@@ -43,8 +50,8 @@ function lx_enqueue_scripts() {
         'lx-main-script',
         'lx_landing_vars',
         array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce'    => wp_create_nonce('lx_landing_order_nonce'),
+            'ajax_url'  => admin_url('admin-ajax.php'),
+            'nonce'     => wp_create_nonce('lx_landing_order_nonce'),
             'theme_uri' => LX_THEME_URI,
         )
     );

@@ -5,7 +5,9 @@
         {
             "key": "field_tab_header",
             "label": "Header & Topbar",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_topbar_text",
@@ -76,7 +78,9 @@
         {
             "key": "field_tab_hero",
             "label": "Hero Banner & Cam Kết",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_hero_title",
@@ -206,7 +210,9 @@
         {
             "key": "field_tab_pain",
             "label": "Nỗi Lo Mẹ Bầu & Sau Sinh",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_pain_title",
@@ -323,7 +329,9 @@
         {
             "key": "field_tab_products",
             "label": "Sản Phẩm (Trước/Sau)",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_ba_eyebrow",
@@ -442,7 +450,9 @@
         {
             "key": "field_tab_story",
             "label": "Câu Chuyện Mây Mây",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_story_eyebrow",
@@ -520,7 +530,9 @@
         {
             "key": "field_tab_proc",
             "label": "Quy Trình & Video",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_proc_eyebrow",
@@ -610,7 +622,9 @@
         {
             "key": "field_tab_steps",
             "label": "Cách Dùng (3 Bước)",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_steps_eyebrow",
@@ -659,7 +673,9 @@
         {
             "key": "field_tab_transparency",
             "label": "Minh Bạch Hồ Sơ Y Tế",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_clear_eyebrow",
@@ -714,7 +730,9 @@
         {
             "key": "field_tab_reviews",
             "label": "Feedback Khách Hàng",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_rev_eyebrow",
@@ -764,7 +782,9 @@
         {
             "key": "field_tab_shorts",
             "label": "Video Ngắn 60s",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_shorts_eyebrow",
@@ -840,7 +860,9 @@
         {
             "key": "field_tab_combo",
             "label": "Combo Ưu Đãi",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_combo_title",
@@ -899,7 +921,9 @@
         {
             "key": "field_tab_gift",
             "label": "Set Quà Tặng 20/11",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_gift_eyebrow",
@@ -982,7 +1006,9 @@
         {
             "key": "field_tab_order",
             "label": "Đặt Hàng & Cài Đặt Email",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_order_email",
@@ -1050,7 +1076,9 @@
         {
             "key": "field_tab_faq",
             "label": "Hỏi Đáp FAQ",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_faq_eyebrow",
@@ -1092,7 +1120,9 @@
         {
             "key": "field_tab_letter",
             "label": "Lời Nhắn Mây Mây",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_letter_mascot",
@@ -1155,7 +1185,9 @@
         {
             "key": "field_tab_footer",
             "label": "Footer & Thanh Mua Nhanh",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_footer_logo",

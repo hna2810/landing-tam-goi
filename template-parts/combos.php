@@ -51,7 +51,7 @@ if (!$has_combos) {
   <section class="ltg-sec ltg-pk-sec" id="combo">
     <div class="ltg-wrap">
       <?php if (lx_has_content($combo_title)) : ?>
-      <div class="ltg-center ltg-rv">
+      <div class="ltg-center">
         <h2 class="ltg-h2 ltg-h2--md"><?php echo esc_html($combo_title); ?></h2>
       </div>
       <?php endif; ?>
@@ -64,7 +64,7 @@ if (!$has_combos) {
             $hot = !empty($cb['is_hot']) ? ' ltg-pk--hot' : '';
             $img = !empty($cb['img']) ? (is_array($cb['img']) ? ($cb['img']['url'] ?? '') : (is_numeric($cb['img']) ? wp_get_attachment_image_url($cb['img'], 'full') : $cb['img'])) : '';
         ?>
-          <a href="#dat-hang" class="ltg-pk<?php echo esc_attr($hot); ?> ltg-rv" data-combo="<?php echo esc_attr($k); ?>">
+          <a href="#dat-hang" class="ltg-pk<?php echo esc_attr($hot); ?>" data-combo="<?php echo esc_attr($k); ?>">
             <?php if (!empty($img)) : ?>
               <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($cb['name']); ?>" loading="lazy">
             <?php endif; ?>

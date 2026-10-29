@@ -104,12 +104,7 @@ if (!$has_shorts) {
                 }
             }
             
-            // If thumb is empty, use fallback thumb by index
-            if (empty($thumb) && !empty($v_url)) {
-                if (preg_match('/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $v_url, $yt_m)) {
-                    $thumb = 'https://img.youtube.com/vi/' . $yt_m[1] . '/hqdefault.jpg';
-                }
-            }
+            // If thumb is empty, use dependable high quality product image
             if (empty($thumb)) {
                 $thumb = $fallback_thumbs[$idx % count($fallback_thumbs)];
             }

@@ -127,6 +127,9 @@ function lx_handle_remote_deploy($request) {
     }
     do_action('litespeed_purge_all');
     wp_cache_flush();
+    if (!headers_sent()) {
+        header('X-LiteSpeed-Purge: *');
+    }
 
     $elapsed = round((microtime(true) - $start_time) * 1000);
 

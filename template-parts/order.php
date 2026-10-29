@@ -37,7 +37,7 @@ if (!$has_order) {
     </div>
 
     <div class="ltg-wrap ltg-order-grid">
-      <div class="ltg-rv">
+      <div class="">
         <span class="ltg-eyebrow">Đặt hàng</span>
         <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($order_title); ?></h2>
         <?php if (lx_has_content($order_lead)) : ?>
@@ -61,7 +61,7 @@ if (!$has_order) {
         </a>
       </div>
 
-      <form class="ltg-form ltg-rv" id="ltgForm" novalidate>
+      <form class="ltg-form" id="ltgForm" novalidate>
         <div id="ltgFormBody">
           <div class="ltg-fields ltg-fields--lb">
             <label>

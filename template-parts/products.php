@@ -57,7 +57,7 @@ if (!$has_products) {
 
   <section class="ltg-has-deco ltg-sec ltg-ba3" id="san-pham">
     <div class="ltg-wrap">
-      <div class="ltg-center ltg-rv">
+      <div class="ltg-center">
         <?php if (lx_has_content($ba_eyebrow)) : ?>
           <span class="ltg-eyebrow"><?php echo esc_html($ba_eyebrow); ?></span>
         <?php endif; ?>
@@ -69,7 +69,7 @@ if (!$has_products) {
         <?php endif; ?>
       </div>
 
-      <div class="ltg-ba3-tabs ltg-rv" role="tablist">
+      <div class="ltg-ba3-tabs" role="tablist">
         <?php if (lx_has_content($tab1_name)) : ?>
           <button type="button" class="ltg-ba2-tab ltg-ba3-tab is-on" data-ba="goi">
             <?php if (!empty($tab1_icon)) : ?>
@@ -92,7 +92,7 @@ if (!$has_products) {
       <?php if (lx_has_content($tab1_name)) : ?>
       <div class="ltg-ba2-p ltg-ba3-p is-on" data-bap="goi">
         <?php if (!empty($tab1_bad_items) && is_array($tab1_bad_items)) : ?>
-        <div class="ltg-ba3-side ltg-ba3-bad ltg-rv">
+        <div class="ltg-ba3-side ltg-ba3-bad">
           <?php if (lx_has_content($tab1_bad_h)) : ?>
             <h4><?php echo esc_html($tab1_bad_h); ?></h4>
           <?php endif; ?>
@@ -110,7 +110,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (!empty($tab1_good_items) && is_array($tab1_good_items)) : ?>
-        <div class="ltg-ba3-side ltg-ba3-good ltg-rv">
+        <div class="ltg-ba3-side ltg-ba3-good">
           <?php if (lx_has_content($tab1_good_h)) : ?>
             <h4><?php echo esc_html($tab1_good_h); ?></h4>
           <?php endif; ?>
@@ -128,7 +128,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (!empty($tab1_img)) : ?>
-        <div class="ltg-ba3-core ltg-rv">
+        <div class="ltg-ba3-core">
           <span class="ltg-ba3-ring"></span>
           <div class="ltg-ba3-img">
             <img src="<?php echo esc_url($tab1_img); ?>" alt="<?php echo esc_attr($tab1_name); ?>" loading="lazy">
@@ -148,7 +148,7 @@ if (!$has_products) {
       <?php if (lx_has_content($tab2_name)) : ?>
       <div class="ltg-ba2-p ltg-ba3-p <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?>" data-bap="tam">
         <?php if (!empty($tab2_bad_items) && is_array($tab2_bad_items)) : ?>
-        <div class="ltg-ba3-side ltg-ba3-bad ltg-rv">
+        <div class="ltg-ba3-side ltg-ba3-bad">
           <?php if (lx_has_content($tab2_bad_h)) : ?>
             <h4><?php echo esc_html($tab2_bad_h); ?></h4>
           <?php endif; ?>
@@ -166,7 +166,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (!empty($tab2_good_items) && is_array($tab2_good_items)) : ?>
-        <div class="ltg-ba3-side ltg-ba3-good ltg-rv">
+        <div class="ltg-ba3-side ltg-ba3-good">
           <?php if (lx_has_content($tab2_good_h)) : ?>
             <h4><?php echo esc_html($tab2_good_h); ?></h4>
           <?php endif; ?>
@@ -184,7 +184,7 @@ if (!$has_products) {
         <?php endif; ?>
 
         <?php if (!empty($tab2_img)) : ?>
-        <div class="ltg-ba3-core ltg-rv">
+        <div class="ltg-ba3-core">
           <span class="ltg-ba3-ring"></span>
           <div class="ltg-ba3-img">
             <img src="<?php echo esc_url($tab2_img); ?>" alt="<?php echo esc_attr($tab2_name); ?>" loading="lazy">

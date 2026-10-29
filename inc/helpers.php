@@ -152,5 +152,8 @@ add_action('acf/save_post', function($post_id) {
         litespeed_purge_all();
     }
     do_action('litespeed_purge_all');
+    if (!headers_sent()) {
+        header('X-LiteSpeed-Purge: *');
+    }
     wp_cache_flush();
 }, 50);

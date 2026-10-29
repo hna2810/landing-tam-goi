@@ -54,7 +54,7 @@ if (!$has_faq) {
     </div>
 
     <div class="ltg-wrap">
-      <div class="ltg-center ltg-rv">
+      <div class="ltg-center">
         <?php if (lx_has_content($faq_eyebrow)) : ?>
           <span class="ltg-eyebrow"><?php echo esc_html($faq_eyebrow); ?></span>
         <?php endif; ?>

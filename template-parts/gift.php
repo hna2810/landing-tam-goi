@@ -83,7 +83,7 @@ if (!$has_gift) {
 
     <div class="ltg-wrap">
       <div class="ltg-gift-head">
-        <div class="ltg-rv">
+        <div class="">
           <?php if (lx_has_content($gift_eyebrow)) : ?>
             <span class="ltg-eyebrow"><?php echo esc_html($gift_eyebrow); ?></span>
           <?php endif; ?>
@@ -95,7 +95,7 @@ if (!$has_gift) {
           <?php endif; ?>
         </div>
 
-        <div class="ltg-rv">
+        <div class="">
           <div class="ltg-count" id="ltgCount">
             <div><b data-d>00</b><small>Ngày</small></div>
             <div><b data-h>00</b><small>Giờ</small></div>
@@ -117,7 +117,7 @@ if (!$has_gift) {
             $img = !empty($set['img']) ? (is_array($set['img']) ? ($set['img']['url'] ?? '') : (is_numeric($set['img']) ? wp_get_attachment_image_url($set['img'], 'full') : $set['img'])) : '';
             $btn_cls = !empty($set['ribbon']) ? 'ltg-btn--pri' : 'ltg-btn--ghost';
         ?>
-          <div class="ltg-set<?php echo esc_attr($is_hot); ?> ltg-rv">
+          <div class="ltg-set<?php echo esc_attr($is_hot); ?>">
             <?php if (!empty($set['ribbon'])) : ?>
               <span class="ltg-ribbon"><?php echo esc_html($set['ribbon']); ?></span>
             <?php endif; ?>

@@ -25,7 +25,7 @@ if (!$has_clear) {
 
   <section class="ltg-sec ltg-clear" id="minh-bach">
     <div class="ltg-wrap">
-      <div class="ltg-center ltg-rv">
+      <div class="ltg-center">
         <?php if (lx_has_content($clear_eyebrow)) : ?>
           <span class="ltg-eyebrow"><?php echo esc_html($clear_eyebrow); ?></span>
         <?php endif; ?>
@@ -38,7 +38,7 @@ if (!$has_clear) {
       </div>
 
       <div class="ltg-clear-grid">
-        <div class="ltg-rv">
+        <div class="">
           <?php if (!empty($clear_img_1) || !empty($clear_img_2)) : ?>
           <div class="ltg-clear-imgs">
             <?php if (!empty($clear_img_1)) : ?>
@@ -59,7 +59,7 @@ if (!$has_clear) {
           <?php endif; ?>
         </div>
 
-        <div class="ltg-rv">
+        <div class="">
           <?php if (!empty($clear_barcode)) : ?>
             <figure data-img="<?php echo esc_url($clear_barcode); ?>">
               <img src="<?php echo esc_url($clear_barcode); ?>" alt="Ảnh mã vạch, mã QR sản phẩm" loading="lazy" style="border-radius:18px;">

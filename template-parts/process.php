@@ -68,7 +68,7 @@ if (!$has_proc) {
     </div>
 
     <div class="ltg-wrap">
-      <div class="ltg-center ltg-rv">
+      <div class="ltg-center">
         <?php if (lx_has_content($proc_eyebrow)) : ?>
           <span class="ltg-eyebrow"><?php echo esc_html($proc_eyebrow); ?></span>
         <?php endif; ?>
@@ -81,7 +81,7 @@ if (!$has_proc) {
       </div>
 
       <!-- VIDEO DÀI -->
-      <div class="ltg-vlong ltg-rv" data-video="<?php echo esc_attr($proc_video); ?>" role="button" tabindex="0" aria-label="Xem video quy trình">
+      <div class="ltg-vlong" data-video="<?php echo esc_attr($proc_video); ?>" role="button" tabindex="0" aria-label="Xem video quy trình">
         <?php if (!empty($proc_video_thumb)) : ?>
           <img src="<?php echo esc_url($proc_video_thumb); ?>" alt="<?php echo esc_attr($proc_video_h); ?>" loading="lazy">
         <?php endif; ?>
@@ -126,7 +126,7 @@ if (!$has_proc) {
             }
             $num = !empty($step['num']) ? $step['num'] : str_pad($idx + 1, 2, '0', STR_PAD_LEFT);
         ?>
-          <div class="ltg-rv">
+          <div class="">
             <?php if (!empty($img)) : ?>
               <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($step['title']); ?>" loading="lazy">
             <?php endif; ?>

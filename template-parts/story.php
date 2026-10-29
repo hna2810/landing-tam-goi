@@ -28,7 +28,7 @@ if ($has_story) :
   <section class="ltg-sec ltg-story">
     <div class="ltg-wrap">
       <?php if (!empty($story_img_1) || !empty($story_img_2)) : ?>
-      <div class="ltg-story-imgs ltg-rv">
+      <div class="ltg-story-imgs">
         <?php if (!empty($story_img_1)) : ?>
           <div class="a"><img src="<?php echo esc_url($story_img_1); ?>" alt="Home Care chăm sóc từ tinh hoa cỏ cây Việt" loading="lazy"></div>
         <?php endif; ?>
@@ -38,7 +38,7 @@ if ($has_story) :
       </div>
       <?php endif; ?>
 
-      <div class="ltg-rv">
+      <div class="">
         <?php if (lx_has_content($story_eyebrow)) : ?>
           <span class="ltg-eyebrow"><?php echo esc_html($story_eyebrow); ?></span>
         <?php endif; ?>

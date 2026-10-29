@@ -39,7 +39,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
   <section class="ltg-p4" id="noi-lo">
     <div class="ltg-wrap">
       <?php if (lx_has_content($pain_title) || lx_has_content($pain_lead)) : ?>
-        <div class="ltg-center ltg-rv">
+        <div class="ltg-center">
           <?php if (lx_has_content($pain_title)) : ?>
             <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($pain_title); ?></h2>
           <?php endif; ?>
@@ -51,7 +51,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
 
       <div class="ltg-p4-stage">
         <?php if ($has_hair) : ?>
-          <div class="ltg-p4-col ltg-p4-col--l ltg-rv">
+          <div class="ltg-p4-col ltg-p4-col--l">
             <?php if (lx_has_content($pain_hair_h)) : ?>
               <h3 class="ltg-p4-h"><?php echo esc_html($pain_hair_h); ?></h3>
             <?php endif; ?>
@@ -71,7 +71,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
         <?php endif; ?>
 
         <?php if (!empty($pain_center_img)) : ?>
-          <div class="ltg-p4-center ltg-rv ltg-z">
+          <div class="ltg-p4-center ltg-z">
             <div class="ltg-p4-glow" aria-hidden="true"></div>
             <div class="ltg-p4-arch">
               <img src="<?php echo esc_url($pain_center_img); ?>" alt="<?php echo esc_attr(strip_tags($pain_title)); ?>" loading="lazy">
@@ -83,7 +83,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
         <?php endif; ?>
 
         <?php if ($has_skin) : ?>
-          <div class="ltg-p4-col ltg-p4-col--r ltg-rv">
+          <div class="ltg-p4-col ltg-p4-col--r">
             <?php if (lx_has_content($pain_skin_h)) : ?>
               <h3 class="ltg-p4-h"><?php echo esc_html($pain_skin_h); ?></h3>
             <?php endif; ?>
@@ -106,7 +106,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
       <?php if (lx_has_content($pain_cause_h) || lx_has_content($pain_cause_p) || lx_has_content($pain_cta_p)) : ?>
         <div class="ltg-p3-why">
           <?php if (lx_has_content($pain_cause_h) || lx_has_content($pain_cause_p)) : ?>
-            <div class="ltg-p3-cause ltg-rv">
+            <div class="ltg-p3-cause">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M10.5 7.5v3.5M10.5 13.6v.01"/></svg>
               <?php if (lx_has_content($pain_cause_h)) : ?>
                 <h3><?php echo esc_html($pain_cause_h); ?></h3>
@@ -118,7 +118,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
           <?php endif; ?>
 
           <?php if (lx_has_content($pain_cta_p)) : ?>
-            <div class="ltg-p3-cta ltg-rv">
+            <div class="ltg-p3-cta">
               <p><?php echo wp_kses_post($pain_cta_p); ?></p>
               <a href="<?php echo esc_url($pain_cta_link ?: '#san-pham'); ?>" class="ltg-p3-down" aria-label="Xem bộ đôi">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
