@@ -35,9 +35,17 @@ add_action('after_setup_theme', 'lx_theme_setup');
  */
 add_action('init', function() {
     if (isset($_GET['purge_cache']) || isset($_GET['lx_force_sync'])) {
-        if (has_action('litespeed_purge_all')) {
-            do_action('litespeed_purge_all');
+        if (class_exists('LiteSpeed_Cache_API')) {
+            LiteSpeed_Cache_API::purge_all();
         }
+        if (function_exists('litespeed_purge_all')) {
+            litespeed_purge_all();
+        }
+        do_action('litespeed_purge_all');
+        if (!headers_sent()) {
+            header('X-LiteSpeed-Purge: *');
+        }
+        wp_cache_flush();
     }
 }, 30);
 
