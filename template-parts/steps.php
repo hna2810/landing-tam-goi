@@ -45,7 +45,7 @@ if (!$has_steps) {
 }
 ?>
 
-  <section class="ltg-has-deco ltg-sec" style="background:linear-gradient(180deg,#eef1e4 0%,#f6f7ee 60%,#fffcf3 100%)">
+  <section class="ltg-has-deco ltg-sec" id="cach-dung" style="background:linear-gradient(180deg,#eef1e4 0%,#f6f7ee 60%,#fffcf3 100%)">
     <div class="ltg-deco" aria-hidden="true">
       <span class="ltg-sp im-nl" style="right:5%;top:46px;width:150px;height:66px;--r:8deg;animation-delay:0s;animation-duration:11s"></span>
       <span class="ltg-sp im-gc dk" style="left:3%;top:60px;width:190px;height:135px;--r:-6deg;animation-delay:-4s;animation-duration:13s"></span>
@@ -63,9 +63,30 @@ if (!$has_steps) {
 
       <?php if (!empty($steps_items) && is_array($steps_items)) : ?>
       <div class="ltg-steps ltg-steps--ic">
-        <?php foreach ($steps_items as $item) :
+        <?php 
+        $default_step_icons = array('i-drop', 'i-leaf', 'i-heart', 'i-root');
+        foreach ($steps_items as $idx => $item) :
             if (empty($item['title'])) continue;
-            $icon = !empty($item['icon']) ? $item['icon'] : 'i-drop';
+            $raw_icon = !empty($item['icon']) ? trim($item['icon']) : '';
+            $icon = 'i-drop';
+            if (!empty($raw_icon)) {
+                $clean = ltrim($raw_icon, '#');
+                if (in_array($clean, array('i-drop', 'i-leaf', 'i-heart', 'i-root', 'i-stp1', 'i-stp2', 'i-stp3', 'i-stp4', 'i-shield', 'i-gift', 'i-star', 'i-citrus', 'i-users', 'i-phone', 'i-truck'))) {
+                    $icon = $clean;
+                } elseif (strpos($clean, '1') !== false || strpos($clean, 'drop') !== false) {
+                    $icon = 'i-drop';
+                } elseif (strpos($clean, '2') !== false || strpos($clean, 'leaf') !== false) {
+                    $icon = 'i-leaf';
+                } elseif (strpos($clean, '3') !== false || strpos($clean, 'heart') !== false) {
+                    $icon = 'i-heart';
+                } elseif (strpos($clean, '4') !== false || strpos($clean, 'root') !== false) {
+                    $icon = 'i-root';
+                } else {
+                    $icon = $clean;
+                }
+            } else {
+                $icon = $default_step_icons[$idx % count($default_step_icons)];
+            }
         ?>
           <div class="ltg-step ltg-rv">
             <i class="ltg-step-ic"><svg width="26" height="26"><use href="#<?php echo esc_attr($icon); ?>"/></svg></i>

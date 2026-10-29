@@ -1127,10 +1127,30 @@
         },
         {
             "key": "field_letter_voice",
-            "label": "Link file âm thanh .mp3 đọc lời nhắn (tuỳ chọn)",
+            "label": "Tải lên File Voice MP3 (Giọng đọc lời nhắn từ Chị Mai)",
             "name": "letter_voice",
+            "type": "file",
+            "instructions": "Bấm Thêm File để tải lên file âm thanh .mp3 từ máy tính hoặc chọn từ Thư viện WordPress",
+            "required": 0,
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "30MB",
+            "mime_types": "mp3,audio/mpeg,audio/mp3,m4a,wav,ogg"
+        },
+        {
+            "key": "field_letter_author",
+            "label": "Tên người ký (Chữ ký tác giả)",
+            "name": "letter_author",
             "type": "text",
-            "instructions": "Dán link file .mp3 để chữ tự gõ đồng bộ theo giọng đọc"
+            "default_value": "Chị Mai"
+        },
+        {
+            "key": "field_letter_author_title",
+            "label": "Chức danh người ký",
+            "name": "letter_author_title",
+            "type": "text",
+            "default_value": "Nhà sáng lập Home Care · Mẹ của 3 con"
         },
         {
             "key": "field_tab_footer",

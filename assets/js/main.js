@@ -4,81 +4,93 @@
  * @package LXLanding
  */
 
-// 1. TYPING EFFECT
+// 1. FOUNDER VOICE AUDIO PLAYER
 (function(){
-  var DURATION = 51;
-  var box = document.getElementById('ltgType');
-  if (!box) return;
+  var player = document.getElementById('ltgVoicePlayer');
+  if (!player) return;
 
-  var outB = document.getElementById('ltgTypeBody');
-  var outH = document.getElementById('ltgTypeHl');
-  var voice = document.getElementById('ltgTypeVoice');
-  var ghosts = box.querySelectorAll('.ltg-type-ghost');
-  if (!outB || !outH || ghosts.length < 2) return;
+  var audio = document.getElementById('ltgTypeVoice');
+  var btn = document.getElementById('ltgVoiceBtn');
+  var fill = document.getElementById('ltgVoiceFill');
+  var curTime = document.getElementById('ltgVoiceCur');
+  var durTime = document.getElementById('ltgVoiceDur');
+  var bar = document.getElementById('ltgVoiceBar');
+  var playIc = btn ? btn.querySelector('.ltg-voice-play-ic') : null;
+  var pauseIc = btn ? btn.querySelector('.ltg-voice-pause-ic') : null;
 
-  function split(s){
-    s = s.replace(/[ \t\r]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-    return (window.Intl && Intl.Segmenter) ? Array.from(new Intl.Segmenter('vi', { granularity: 'grapheme' }).segment(s), function(x){ return x.segment; }) : Array.from(s);
+  if (!audio || !btn) return;
+
+  function fmtTime(sec){
+    if (isNaN(sec) || sec < 0) return '00:00';
+    var m = Math.floor(sec / 60);
+    var s = Math.floor(sec % 60);
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
   }
 
-  var cb = split(ghosts[0].textContent);
-  var ch = split(ghosts[1].textContent);
-  var NB = cb.length;
-  var N = NB + ch.length;
-  var caret = document.createElement('span');
-  caret.className = 'ltg-type-caret';
-  caret.setAttribute('aria-hidden', 'true');
-  var t0 = 0, raf = 0, shown = -1, running = false, useVoice = false;
-
-  function render(el){
-    var k = Math.min(N, Math.floor(el / DURATION * N));
-    if (k === shown) return;
-    shown = k;
-    outB.textContent = cb.slice(0, Math.min(k, NB)).join('');
-    outH.textContent = ch.slice(0, Math.max(0, k - NB)).join('');
-    (k < NB ? outB : outH).appendChild(caret);
-  }
-
-  function frame(){
-    var el = useVoice ? voice.currentTime : (performance.now() - t0) / 1000;
-    render(el);
-    if (el < DURATION && !(useVoice && voice.ended)) {
-      raf = requestAnimationFrame(frame);
+  function setPlayingState(isPlaying){
+    if (isPlaying) {
+      player.classList.add('is-playing');
+      if (playIc) playIc.style.display = 'none';
+      if (pauseIc) pauseIc.style.display = 'block';
     } else {
-      render(DURATION);
-      running = false;
-      box.classList.add('is-done');
+      player.classList.remove('is-playing');
+      if (playIc) playIc.style.display = 'block';
+      if (pauseIc) pauseIc.style.display = 'none';
     }
   }
 
-  function start(){
-    cancelAnimationFrame(raf);
-    shown = -1;
-    running = true;
-    box.classList.remove('is-done');
-    box.classList.add('is-typing');
-    useVoice = voice && !!voice.getAttribute('src');
-    if (useVoice) {
-      voice.currentTime = 0;
-      var pr = voice.play();
-      if (pr && pr.catch) pr.catch(function(){ useVoice = false; t0 = performance.now(); });
+  // Update duration when metadata loads
+  audio.addEventListener('loadedmetadata', function(){
+    if (durTime && audio.duration) {
+      durTime.textContent = fmtTime(audio.duration);
     }
-    t0 = performance.now();
-    raf = requestAnimationFrame(frame);
-  }
+  });
 
-  box.addEventListener('click', function(){ if (!running) start(); });
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(es){
-      if (es[0].isIntersecting && !running && shown < 0) {
-        start();
-        io.disconnect();
+  // Track progress
+  audio.addEventListener('timeupdate', function(){
+    if (audio.duration) {
+      var pct = (audio.currentTime / audio.duration) * 100;
+      if (fill) fill.style.width = pct + '%';
+      if (curTime) curTime.textContent = fmtTime(audio.currentTime);
+      if (durTime && (durTime.textContent === '--:--' || durTime.textContent === '00:00')) {
+        durTime.textContent = fmtTime(audio.duration);
       }
-    }, { threshold: 0.3 });
-    io.observe(box);
-  } else {
-    start();
+    }
+  });
+
+  // Toggle play/pause
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    if (audio.paused) {
+      audio.play().then(function(){
+        setPlayingState(true);
+      }).catch(function(err){
+        console.warn('Audio play notice:', err);
+      });
+    } else {
+      audio.pause();
+      setPlayingState(false);
+    }
+  });
+
+  // Handle seek on bar click
+  if (bar) {
+    bar.addEventListener('click', function(e){
+      var rect = bar.getBoundingClientRect();
+      var clickX = e.clientX - rect.left;
+      var ratio = Math.max(0, Math.min(1, clickX / rect.width));
+      if (audio.duration) {
+        audio.currentTime = ratio * audio.duration;
+      }
+    });
   }
+
+  // Audio ended
+  audio.addEventListener('ended', function(){
+    setPlayingState(false);
+    if (fill) fill.style.width = '0%';
+    if (curTime) curTime.textContent = '00:00';
+  });
 })();
 
 // 2. MAIN INTERACTIONS

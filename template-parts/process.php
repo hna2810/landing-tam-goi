@@ -102,12 +102,29 @@ if (!$has_proc) {
         </div>
       </div>
 
-      <?php if (!empty($proc_flow_steps) && is_array($proc_flow_steps)) : ?>
-      <div class="ltg-flow">
-        <?php foreach ($proc_flow_steps as $step) :
-            if (empty($step['title'])) continue;
+      <?php if (!empty($proc_flow_steps) && is_array($proc_flow_steps)) : 
+          $valid_flow_steps = array();
+          foreach ($proc_flow_steps as $st) {
+              if (!empty($st['title'])) {
+                  $valid_flow_steps[] = $st;
+              }
+          }
+          $flow_count = count($valid_flow_steps);
+          $default_flow_imgs = array(
+              'https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg',
+              'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
+              'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg',
+              'https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png',
+              'https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png',
+          );
+      ?>
+      <div class="ltg-flow" style="--flow-cols: <?php echo max(1, min(5, $flow_count)); ?>;">
+        <?php foreach ($valid_flow_steps as $idx => $step) :
             $img = !empty($step['img']) ? (is_array($step['img']) ? ($step['img']['url'] ?? '') : (is_numeric($step['img']) ? wp_get_attachment_image_url($step['img'], 'full') : $step['img'])) : '';
-            $num = !empty($step['num']) ? $step['num'] : '';
+            if (empty($img) && isset($default_flow_imgs[$idx])) {
+                $img = $default_flow_imgs[$idx];
+            }
+            $num = !empty($step['num']) ? $step['num'] : str_pad($idx + 1, 2, '0', STR_PAD_LEFT);
         ?>
           <div class="ltg-rv">
             <?php if (!empty($img)) : ?>
