@@ -13,15 +13,23 @@
     var ghostB = document.getElementById('ltgGhostBody');
     var ghostH = document.getElementById('ltgGhostHl');
     var voice = document.getElementById('ltgTypeVoice');
+    var vCtrl = document.getElementById('ltgVoiceCtrl');
+    var vBtn = document.getElementById('ltgVoiceBtn');
+    var vLabel = document.getElementById('ltgVoiceLabel');
+    var vPulse = document.getElementById('ltgVoicePulse');
+    var icPlay = vBtn ? vBtn.querySelector('.ltg-ic-play') : null;
+    var icPause = vBtn ? vBtn.querySelector('.ltg-ic-pause') : null;
 
     if (!box || !outB) return;
 
-    var DURATION = 51; // exactly 51 seconds
+    var DURATION = 51; // 51 seconds total duration
     var running = false;
     var started = false;
+    var isPlaying = false;
+    var primed = false;
     var rafId = null;
     var t0 = 0;
-    var useVoice = false;
+    var useVoice = !!(voice && voice.src);
 
     // Split text into Vietnamese grapheme clusters (preserving accents & combined letters)
     function splitGraphemes(str) {
@@ -74,8 +82,20 @@
       }
     }
 
+    function updateControlUI(playing, labelText) {
+      isPlaying = playing;
+      if (!vBtn) return;
+      vBtn.classList.toggle('is-playing', playing);
+      if (icPlay) icPlay.style.display = playing ? 'none' : 'inline-block';
+      if (icPause) icPause.style.display = playing ? 'inline-block' : 'none';
+      if (vPulse) vPulse.style.display = playing ? 'none' : 'block';
+      if (vLabel && labelText) vLabel.textContent = labelText;
+    }
+
     function onComplete() {
       running = false;
+      isPlaying = false;
+      updateControlUI(false, 'Lắng nghe lại tâm sự Chị Mai (51s)');
       var totalDur = (useVoice && voice && voice.duration) ? voice.duration : DURATION;
       render(totalDur);
       if (caret.parentNode) {
@@ -87,6 +107,7 @@
 
     function tick() {
       if (!running) return;
+
       var elapsed = 0;
       if (useVoice && voice && !voice.paused && voice.currentTime > 0) {
         elapsed = voice.currentTime;
@@ -106,67 +127,136 @@
       }
     }
 
-    function start(forceRestart) {
-      if (started && !forceRestart) return;
+    function playVoice() {
       started = true;
       running = true;
-      lastRendered = -1;
-
-      if (rafId) cancelAnimationFrame(rafId);
       box.classList.remove('is-done');
       box.classList.add('is-typing');
 
-      useVoice = !!(voice && voice.src);
-
-      if (useVoice) {
+      if (useVoice && voice) {
         try {
-          voice.currentTime = 0;
           var p = voice.play();
           if (p !== undefined) {
-            p.catch(function(err){
-              console.warn('Autoplay notice:', err);
-              // Listen for first interaction anywhere to resume voice
-              function resumeOnTouch() {
-                if (voice && voice.paused) {
-                  voice.play().catch(function(){});
-                }
-                document.removeEventListener('click', resumeOnTouch);
-                document.removeEventListener('touchstart', resumeOnTouch);
-              }
-              document.addEventListener('click', resumeOnTouch, { once: true });
-              document.addEventListener('touchstart', resumeOnTouch, { once: true });
+            p.then(function(){
+              updateControlUI(true, 'Đang phát tâm sự Chị Mai...');
+              if (rafId) cancelAnimationFrame(rafId);
+              rafId = requestAnimationFrame(tick);
+            }).catch(function(err){
+              console.warn('Mobile autoplay policy prevented sound:', err);
+              // Show prompt so user can tap to listen
+              updateControlUI(false, '▶ Chạm để nghe Chị Mai tâm sự (51s)');
+              // Fallback timer if user prefers reading silently
+              t0 = performance.now();
+              if (rafId) cancelAnimationFrame(rafId);
+              rafId = requestAnimationFrame(tick);
             });
+            return;
           }
-        } catch(e) {
-          console.warn('Voice play exception:', e);
+        } catch (e) {
+          console.warn('Audio play error:', e);
         }
       }
 
       t0 = performance.now();
+      if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
     }
 
-    // Click on box to replay anytime
-    box.addEventListener('click', function(){
-      if (!running) {
-        start(true);
+    function pauseVoice() {
+      if (useVoice && voice && !voice.paused) {
+        voice.pause();
       }
+      running = false;
+      updateControlUI(false, '▶ Tiếp tục nghe tâm sự (51s)');
+      if (rafId) cancelAnimationFrame(rafId);
+    }
+
+    function togglePlayback() {
+      if (useVoice && voice) {
+        if (voice.paused) {
+          playVoice();
+        } else {
+          pauseVoice();
+        }
+      } else {
+        if (!running) {
+          playVoice();
+        } else {
+          pauseVoice();
+        }
+      }
+    }
+
+    // Toggle button click
+    if (vBtn) {
+      vBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        togglePlayback();
+      });
+    }
+
+    // Box click triggers or toggles playback
+    box.addEventListener('click', function(){
+      togglePlayback();
     });
 
-    // Auto-trigger when scrolled into view
+    if (useVoice && voice) {
+      voice.addEventListener('ended', onComplete);
+      voice.addEventListener('pause', function(){
+        if (!voice.ended) {
+          updateControlUI(false, '▶ Tiếp tục nghe tâm sự (51s)');
+        }
+      });
+      voice.addEventListener('play', function(){
+        updateControlUI(true, 'Đang phát tâm sự Chị Mai...');
+      });
+    }
+
+    // Global unlock on first touch anywhere (enables audio on iOS & Android)
+    function primeAudio() {
+      if (!primed && voice) {
+        primed = true;
+        try {
+          voice.load();
+        } catch(e){}
+      }
+      document.removeEventListener('touchend', primeAudio);
+      document.removeEventListener('click', primeAudio);
+    }
+    document.addEventListener('touchend', primeAudio, { passive: true });
+    document.addEventListener('click', primeAudio, { passive: true });
+
+    // Check if section is in viewport
+    function isSectionInView() {
+      var r = box.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      return (r.top < vh * 0.85 && r.bottom > 60);
+    }
+
+    // Mobile scroll gesture trigger: when user swipes down into the section,
+    // the touchend event is recognized as a user gesture on iOS Safari & Chrome!
+    function onTouchEndScroll() {
+      if (!started && isSectionInView()) {
+        playVoice();
+        window.removeEventListener('touchend', onTouchEndScroll);
+      }
+    }
+    window.addEventListener('touchend', onTouchEndScroll, { passive: true });
+
+    // Desktop IntersectionObserver auto-trigger
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(entries){
         if (entries[0].isIntersecting && !started) {
-          start(false);
+          playVoice();
           io.disconnect();
         }
       }, {
-        threshold: 0.25,
+        threshold: 0.2,
         rootMargin: '0px 0px -40px 0px'
       });
       io.observe(box);
     } else {
-      start(false);
+      playVoice();
     }
   } catch (err) {
     console.warn('Typewriter init error:', err);

@@ -50,6 +50,22 @@ if (!$has_letter) {
         <?php endif; ?>
       </div>
 
+      <?php if (!empty($voice_url)) : ?>
+      <div class="ltg-voice-ctrl" id="ltgVoiceCtrl">
+        <button class="ltg-voice-btn" id="ltgVoiceBtn" type="button" aria-label="Bật hoặc tạm dừng giọng đọc Chị Mai">
+          <span class="ltg-voice-pulse" id="ltgVoicePulse" aria-hidden="true"></span>
+          <span class="ltg-voice-icon" id="ltgVoiceIcon" aria-hidden="true">
+            <svg class="ltg-ic-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="ltg-ic-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </span>
+          <span class="ltg-voice-label" id="ltgVoiceLabel">Lắng nghe Chị Mai tâm sự (51s)</span>
+          <span class="ltg-voice-wave" id="ltgVoiceWave" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+      <?php endif; ?>
+
       <div class="ltg-type-box" id="ltgType" role="region" aria-label="Tâm thư người sáng lập">
         <span class="ltg-type-quote" aria-hidden="true">“</span>
         
@@ -80,6 +96,6 @@ if (!$has_letter) {
     </div>
 
     <?php if (!empty($voice_url)) : ?>
-      <audio id="ltgTypeVoice" preload="auto" src="<?php echo esc_url($voice_url); ?>" playsinline style="display:none;"></audio>
+      <audio id="ltgTypeVoice" preload="auto" playsinline webkit-playsinline src="<?php echo esc_url($voice_url); ?>"></audio>
     <?php endif; ?>
   </section>
