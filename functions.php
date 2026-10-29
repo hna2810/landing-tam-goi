@@ -31,6 +31,17 @@ function lx_theme_setup() {
 add_action('after_setup_theme', 'lx_theme_setup');
 
 /**
+ * Purge cache helper
+ */
+add_action('init', function() {
+    if (isset($_GET['purge_cache']) || isset($_GET['lx_force_sync'])) {
+        if (has_action('litespeed_purge_all')) {
+            do_action('litespeed_purge_all');
+        }
+    }
+}, 30);
+
+/**
  * Load modules from inc/
  */
 require_once LX_THEME_DIR . '/inc/index.php';
