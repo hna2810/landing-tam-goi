@@ -1,6 +1,6 @@
 <?php
 /**
- * Founder Letter / Commitment Section Template Part
+ * Founder Letter / Commitment Section Template Part - Editorial Storytelling 2-Column Redesign
  *
  * @package LXLanding
  */
@@ -9,18 +9,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$letter_mascot      = lx_get_image_url('letter_mascot', get_template_directory_uri() . '/assets/images/real/founder-avatar.jpg', 'medium', 'option');
-if (empty($letter_mascot) || strpos($letter_mascot, 'combo-sua-tam') !== false || strpos($letter_mascot, 'hstatic.net') !== false) {
-    $letter_mascot = get_template_directory_uri() . '/assets/images/real/founder-avatar.jpg';
-}
-$letter_title       = lx_get_field('letter_title', 'option', "MÂY MÂY –<br>TÓC SẠCH, DA THƠM");
+$founder_portrait   = get_template_directory_uri() . '/assets/images/real/founder-portrait.jpg';
+$letter_title       = lx_get_field('letter_title', 'option', "MÂY MÂY – TÓC SẠCH, DA THƠM");
 $letter_body        = lx_get_field('letter_body', 'option', "Trải qua ba lần sinh nở trước tuổi 30, chị Mai hiểu rằng, hành trình làm mẹ không chỉ có niềm vui đón con mà còn là những tháng ngày người mẹ cần được chăm sóc và nâng niu.\n\nTừ kiến thức chuyên môn và nhiều năm tháng đồng hành cùng các thai phụ & sản phụ, chị Mai tìm về những bí quyết chăm sóc bí truyền với các nguyên liệu thân thuộc từ gừng, nghệ và thảo mộc. Nhưng việc chuẩn bị cầu kỳ mỗi ngày khiến chị trăn trở về phương pháp chăm sóc mẹ thuận tiện hơn.\n\nTừ đó, chị Mai đã tạo nên Mây Mây – thương hiệu chăm sóc mẹ từ tinh hoa thảo mộc, mong muốn mang đến những sản phẩm gần gũi, giúp mẹ chăm sóc tóc và làn da dễ dàng hơn trong kỳ ở cữ.");
 $letter_hl          = lx_get_field('letter_hl', 'option', "Bởi chị hiểu, sau những tháng ngày dành trọn yêu thương cho con, mẹ cũng xứng đáng được chăm sóc và yêu thương chính mình.");
 $letter_voice       = lx_get_field('letter_voice', 'option', '');
 $letter_author      = lx_get_field('letter_author', 'option', 'Chị Mai');
 $letter_author_title= lx_get_field('letter_author_title', 'option', 'Nhà sáng lập Home Care · Mẹ của 3 con');
 
-// Handle voice URL whether stored as array, ID, or URL string
+// Handle voice URL
 $voice_url = '';
 if (!empty($letter_voice)) {
     if (is_array($letter_voice) && !empty($letter_voice['url'])) {
@@ -34,6 +31,9 @@ if (!empty($letter_voice)) {
         $voice_url = trim($letter_voice);
     }
 }
+if (empty($voice_url)) {
+    $voice_url = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/Cau-chuyen-May-May_2026-10-27T04_23_12_chi-on_ivc_sp100_s50_sb75_v4-1.mp3';
+}
 
 $has_letter = lx_has_content($letter_title) || lx_has_content($letter_body);
 if (!$has_letter) {
@@ -43,28 +43,40 @@ if (!$has_letter) {
 
   <section class="ltg-sec ltg-type ltg-letter-sec" id="loi-nhan">
     <div class="ltg-wrap">
-      <div class="ltg-letter-container">
-        <!-- Top Cameo / Founder Header -->
-        <div class="ltg-letter-header">
-          <?php if (!empty($letter_mascot)) : ?>
-            <div class="ltg-founder-avatar-wrap">
-              <img src="<?php echo esc_url($letter_mascot); ?>" alt="<?php echo esc_attr($letter_author ?: 'Chị Mai'); ?>" class="ltg-founder-avatar ltg-type-mascot" loading="lazy">
-              <span class="ltg-founder-badge" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-              </span>
+      
+      <div class="ltg-founder-story" id="ltgType" role="region" aria-label="Tâm thư người sáng lập">
+        
+        <!-- Cột Trái: Chân dung Chị Mai & Huy hiệu Home Care Since 2008 -->
+        <div class="ltg-founder-visual">
+          <div class="ltg-founder-frame">
+            <img src="<?php echo esc_url($founder_portrait); ?>" alt="<?php echo esc_attr($letter_author ?: 'Chị Mai'); ?>" class="ltg-founder-img" loading="lazy">
+            
+            <div class="ltg-founder-badge-gold" aria-hidden="true">
+              <span class="ltg-badge-gold-year">SINCE 2008</span>
+              <strong class="ltg-badge-gold-brand">HOME CARE</strong>
+              <small class="ltg-badge-gold-sub">CHĂM SÓC MẸ &amp; BÉ</small>
             </div>
-          <?php endif; ?>
-          <span class="ltg-eyebrow">Tâm thư người sáng lập</span>
-          <?php if (lx_has_content($letter_title)) : ?>
-            <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($letter_title); ?></h2>
-          <?php endif; ?>
+          </div>
+          
+          <div class="ltg-founder-meta-card">
+            <div class="ltg-meta-name"><?php echo esc_html($letter_author); ?></div>
+            <div class="ltg-meta-role"><?php echo esc_html($letter_author_title); ?></div>
+            <p class="ltg-meta-motto">“Trọn vẹn tình yêu &amp; sự thấu hiểu sâu sắc dành cho người mẹ trong kỳ ở cữ”</p>
+          </div>
         </div>
 
-        <!-- Luxury Letter Card with Classic Parchment Styling -->
-        <div class="ltg-type-box ltg-letter-card" id="ltgType" role="region" aria-label="Tâm thư người sáng lập">
-          <div class="ltg-letter-card-inner">
+        <!-- Cột Phải: Tâm thư dạng Editorial Tạp chí & Chữ ký trang trọng -->
+        <div class="ltg-founder-article">
+          <div class="ltg-founder-article-inner">
             <span class="ltg-type-quote ltg-letter-quote-mark" aria-hidden="true">“</span>
             
+            <div class="ltg-article-head">
+              <span class="ltg-eyebrow">Tâm thư người sáng lập</span>
+              <?php if (lx_has_content($letter_title)) : ?>
+                <h2 class="ltg-h2 ltg-founder-title"><?php echo wp_kses_post($letter_title); ?></h2>
+              <?php endif; ?>
+            </div>
+
             <div class="ltg-letter-content">
               <?php if (lx_has_content($letter_body)) : ?>
               <p class="ltg-type-text">
@@ -82,17 +94,15 @@ if (!$has_letter) {
               </div>
               <?php endif; ?>
 
-              <!-- Sign-off & Authentic Seal -->
+              <!-- Chữ ký & Dấu mộc mộc đỏ uy tín -->
               <div class="ltg-letter-footer">
-                <?php if (lx_has_content($letter_author)) : ?>
-                <div class="ltg-type-sign ltg-letter-sign">
+                <div class="ltg-letter-sign">
                   <div class="ltg-sign-msg">Thương mến gửi mẹ ❤️</div>
                   <div class="ltg-sign-name"><?php echo esc_html($letter_author); ?></div>
                   <?php if (lx_has_content($letter_author_title)) : ?>
                     <div class="ltg-sign-title"><?php echo esc_html($letter_author_title); ?></div>
                   <?php endif; ?>
                 </div>
-                <?php endif; ?>
 
                 <div class="ltg-letter-stamp" aria-hidden="true">
                   <div class="ltg-stamp-circle">

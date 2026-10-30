@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('LX_THEME_VERSION')) {
-    define('LX_THEME_VERSION', '1.5.9');
+    define('LX_THEME_VERSION', '1.6.0');
 }
 if (!defined('LX_THEME_DIR')) {
     define('LX_THEME_DIR', get_template_directory());
