@@ -95,7 +95,7 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.3.0';
+    $target_version  = '1.3.1';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
@@ -224,6 +224,9 @@ function lx_sync_tam_goi_landing_content($force = false) {
         'clear_img_1'       => array('https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png', 'field_clear_img_1'),
         'clear_img_2'       => array('https://cdn.hstatic.net/products/200001066686/scb-sua-tam-gung-nghe_5328535177694ee6960a310a4cb94ac8.png', 'field_clear_img_2'),
         'letter_mascot'     => array('https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'field_letter_mascot'),
+        'gift_mobile_img'   => array($theme_dir . '/assets/images/real/gift-box-mobile.jpg', 'field_gift_mobile_img'),
+        'tab1_img'          => array($theme_dir . '/assets/images/real/prod-dau-goi.jpg', 'field_tab1_img'),
+        'tab2_img'          => array($theme_dir . '/assets/images/real/prod-sua-tam.jpg', 'field_tab2_img'),
     );
 
     $attach_cache = array();

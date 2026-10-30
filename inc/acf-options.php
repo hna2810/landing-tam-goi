@@ -440,6 +440,14 @@ function lx_register_acf_landing_fields_group() {
                 ),
             ),
             array(
+                'key' => 'field_tab1_img',
+                'label' => 'Tab 1: Ảnh vuông sản phẩm ở giữa',
+                'name' => 'tab1_img',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh vuông sản phẩm (tỉ lệ 1:1) hiển thị ở khối giữa Tab Dầu Gội.',
+            ),
+            array(
                 'key' => 'field_tab1_quote',
                 'label' => 'Tab 1: Câu trích dẫn chốt',
                 'name' => 'tab1_quote',
@@ -485,6 +493,14 @@ function lx_register_acf_landing_fields_group() {
                         'type' => 'text',
                     ),
                 ),
+            ),
+            array(
+                'key' => 'field_tab2_img',
+                'label' => 'Tab 2: Ảnh vuông sản phẩm ở giữa',
+                'name' => 'tab2_img',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh vuông sản phẩm (tỉ lệ 1:1) hiển thị ở khối giữa Tab Sữa Tắm.',
             ),
             array(
                 'key' => 'field_tab2_quote',
@@ -1089,6 +1105,14 @@ function lx_register_acf_landing_fields_group() {
                 'name' => 'gift_count_note',
                 'type' => 'text',
                 'default_value' => 'Đặt trước <b>17/11</b> để nhận quà kịp ngày 20/11',
+            ),
+            array(
+                'key' => 'field_gift_mobile_img',
+                'label' => 'Ảnh vuông hiển thị trên mobile (ở trên các card set quà)',
+                'name' => 'gift_mobile_img',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh vuông (tỉ lệ 1:1) hiển thị trên giao diện mobile ở vị trí phía trên các card set quà tặng.',
             ),
             array(
                 'key' => 'field_gift_sets',

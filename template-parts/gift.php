@@ -13,6 +13,10 @@ $gift_eyebrow    = lx_get_field('gift_eyebrow', 'option', "Mùa tri ân 20/11");
 $gift_title      = lx_get_field('gift_title', 'option', "Gửi thầy cô một món quà<br>chăm sóc từ thảo mộc");
 $gift_lead       = lx_get_field('gift_lead', 'option', "Thay lời tri ân sâu sắc gửi đến những người lái đò thầm lặng bằng bộ quà tặng từ thảo mộc tự nhiên, gói trọn sự ấm áp và chân thành.");
 $gift_count_note = lx_get_field('gift_count_note', 'option', "Đặt trước <b>17/11</b> để nhận quà kịp ngày 20/11");
+$gift_mobile_img = lx_get_image_url('gift_mobile_img', get_template_directory_uri() . '/assets/images/real/gift-box-mobile.jpg', 'large', 'option');
+if (empty($gift_mobile_img) || strpos($gift_mobile_img, 'hstatic.net') !== false) {
+    $gift_mobile_img = get_template_directory_uri() . '/assets/images/real/gift-box-mobile.jpg';
+}
 
 $gift_default_sets = array(
     array(
@@ -109,11 +113,13 @@ if (!$has_gift) {
       </div>
 
       <!-- Mobile Square Banner -->
+      <?php if (!empty($gift_mobile_img)) : ?>
       <div class="ltg-gift-mob-banner">
         <div class="ltg-gift-mob-frame">
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/real/gift-box-mobile.jpg'); ?>" alt="Bộ quà tặng tri ân 20/11 Thảo mộc Home Care" loading="lazy">
+          <img src="<?php echo esc_url($gift_mobile_img); ?>" alt="<?php echo esc_attr(strip_tags($gift_title)); ?>" loading="lazy">
         </div>
       </div>
+      <?php endif; ?>
 
       <?php if (!empty($gift_sets) && is_array($gift_sets)) : ?>
       <div class="ltg-sets ltg-sets--4">
