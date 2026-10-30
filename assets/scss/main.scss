@@ -1153,3 +1153,156 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
   .ltg-type-text{font-size:15px;line-height:1.75}
   .ltg-type-hl{font-size:17px}
 }
+
+
+/* ========================================================
+   Floating Contact Buttons (Call & Zalo on PC)
+   ======================================================== */
+.ltg-float-contact {
+  position: fixed;
+  right: 28px;
+  bottom: 32px;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+@media(min-width: 981px) {
+  .ltg-float-contact {
+    display: flex;
+  }
+}
+
+.ltg-float-btn {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.ltg-float-btn:hover {
+  transform: scale(1.1);
+}
+
+.ltg-float-btn--zalo {
+  background: #0068ff;
+  color: #ffffff;
+  box-shadow: 0 10px 25px -4px rgba(0, 104, 255, 0.45), 0 0 0 2.5px rgba(255, 255, 255, 0.95);
+}
+.ltg-float-btn--zalo:hover {
+  box-shadow: 0 14px 32px -4px rgba(0, 104, 255, 0.65), 0 0 0 3px #ffffff;
+}
+
+.ltg-float-btn--phone {
+  background: linear-gradient(135deg, #c46a22 0%, #e68a35 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 25px -4px rgba(196, 106, 34, 0.5), 0 0 0 2.5px rgba(255, 255, 255, 0.95);
+}
+.ltg-float-btn--phone:hover {
+  box-shadow: 0 14px 32px -4px rgba(196, 106, 34, 0.7), 0 0 0 3px #ffffff;
+}
+
+.ltg-float-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ltg-float-zalo-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.ltg-float-btn--phone .ltg-float-icon svg {
+  animation: ltgPhoneShake 2.4s ease-in-out infinite;
+}
+
+.ltg-float-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ltg-float-btn--zalo .ltg-float-pulse {
+  animation: ltgZaloPulseRing 2.4s ease-out infinite;
+}
+
+.ltg-float-btn--phone .ltg-float-pulse {
+  animation: ltgPhonePulseRing 2.4s ease-out infinite 0.7s;
+}
+
+@keyframes ltgZaloPulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.65); opacity: 1; }
+  70% { box-shadow: 0 0 0 16px rgba(0, 104, 255, 0); opacity: 0; }
+  100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); opacity: 0; }
+}
+
+@keyframes ltgPhonePulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(196, 106, 34, 0.7); opacity: 1; }
+  70% { box-shadow: 0 0 0 16px rgba(196, 106, 34, 0); opacity: 0; }
+  100% { box-shadow: 0 0 0 0 rgba(196, 106, 34, 0); opacity: 0; }
+}
+
+@keyframes ltgPhoneShake {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(-16deg); }
+  20%, 40% { transform: rotate(16deg); }
+  50% { transform: rotate(0deg); }
+}
+
+.ltg-float-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: #ffffff;
+  color: var(--forest);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #ebd9a8;
+  box-shadow: 0 8px 24px -4px rgba(60, 50, 20, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ltg-float-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+.ltg-float-btn:hover .ltg-float-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) translateX(0);
+}

@@ -74,6 +74,44 @@ if (!defined('ABSPATH')) {
   </div>
   <?php endif; ?>
 
+  <!-- Floating Contact Buttons (PC Bottom-Right) -->
+  <?php
+  $float_phone = lx_get_field('sticky_phone', 'option', '0973871376');
+  $float_zalo  = lx_get_field('contact_zalo', 'option', '0973871376');
+  if (empty($float_zalo)) {
+      $float_zalo = $float_phone;
+  }
+  $clean_phone = preg_replace('/[^\d]/', '', $float_phone);
+  $clean_zalo  = preg_replace('/[^\d]/', '', $float_zalo);
+
+  // Format phone for tooltip display (e.g. 0973.871.376)
+  $display_phone = $float_phone;
+  if (strlen($clean_phone) === 10 && strpos($display_phone, '.') === false) {
+      $display_phone = substr($clean_phone, 0, 4) . '.' . substr($clean_phone, 4, 3) . '.' . substr($clean_phone, 7);
+  }
+  ?>
+  <div class="ltg-float-contact" id="ltgFloatContact" role="complementary" aria-label="Kênh hỗ trợ nhanh trên máy tính">
+    <!-- Nút Chat Zalo -->
+    <a href="https://zalo.me/<?php echo esc_attr($clean_zalo); ?>" target="_blank" rel="noopener noreferrer" class="ltg-float-btn ltg-float-btn--zalo" aria-label="Chat Zalo tư vấn">
+      <span class="ltg-float-pulse" aria-hidden="true"></span>
+      <span class="ltg-float-icon">
+        <span class="ltg-float-zalo-text">Zalo</span>
+      </span>
+      <span class="ltg-float-tooltip">Chat Zalo tư vấn</span>
+    </a>
+
+    <!-- Nút Gọi Hotline -->
+    <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="ltg-float-btn ltg-float-btn--phone" aria-label="Gọi hotline tư vấn">
+      <span class="ltg-float-pulse" aria-hidden="true"></span>
+      <span class="ltg-float-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </span>
+      <span class="ltg-float-tooltip">Gọi: <?php echo esc_html($display_phone); ?></span>
+    </a>
+  </div>
+
 </div><!-- /.ltg -->
 
 <?php

@@ -1273,10 +1273,17 @@ function lx_register_acf_landing_fields_group() {
             ),
             array(
                 'key' => 'field_sticky_phone',
-                'label' => 'Số điện thoại gọi tư vấn trên thanh cố định',
+                'label' => 'Số điện thoại gọi tư vấn (Thanh cố định & Nút gọi PC)',
                 'name' => 'sticky_phone',
                 'type' => 'text',
-                'default_value' => '0962131515',
+                'default_value' => '0973871376',
+            ),
+            array(
+                'key' => 'field_contact_zalo',
+                'label' => 'Số Zalo tư vấn (Nút Zalo PC)',
+                'name' => 'contact_zalo',
+                'type' => 'text',
+                'default_value' => '0973871376',
             ),
             array(
                 'key' => 'field_sticky_price',
