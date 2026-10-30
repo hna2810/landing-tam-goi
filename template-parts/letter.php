@@ -41,44 +41,71 @@ if (!$has_letter) {
 }
 ?>
 
-  <section class="ltg-sec ltg-type" id="loi-nhan">
+  <section class="ltg-sec ltg-type ltg-letter-sec" id="loi-nhan">
     <div class="ltg-wrap">
-      <div class="ltg-type-head">
-        <?php if (!empty($letter_mascot)) : ?>
-          <img src="<?php echo esc_url($letter_mascot); ?>" alt="<?php echo esc_attr($letter_author ?: 'Chị Mai'); ?>" class="ltg-type-mascot" loading="lazy">
-        <?php endif; ?>
-        <span class="ltg-eyebrow">Tâm thư người sáng lập</span>
-        <?php if (lx_has_content($letter_title)) : ?>
-          <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($letter_title); ?></h2>
-        <?php endif; ?>
-      </div>
-
-      <div class="ltg-type-box" id="ltgType" role="region" aria-label="Tâm thư người sáng lập">
-        <span class="ltg-type-quote" aria-hidden="true">“</span>
-        
-        <?php if (lx_has_content($letter_body)) : ?>
-        <p class="ltg-type-text">
-          <span class="ltg-type-ghost" id="ltgGhostBody"><?php echo esc_html($letter_body); ?></span>
-          <span class="ltg-type-live" id="ltgTypeBody" aria-hidden="true"></span>
-        </p>
-        <?php endif; ?>
-
-        <?php if (lx_has_content($letter_hl)) : ?>
-        <p class="ltg-type-hl">
-          <strong class="ltg-type-ghost" id="ltgGhostHl"><?php echo esc_html($letter_hl); ?></strong>
-          <strong class="ltg-type-live" id="ltgTypeHl" aria-hidden="true"></strong>
-        </p>
-        <?php endif; ?>
-
-        <?php if (lx_has_content($letter_author)) : ?>
-        <div class="ltg-type-sign">
-          <div class="ltg-sign-msg">Thương mến gửi mẹ ❤️</div>
-          <div class="ltg-sign-name"><?php echo esc_html($letter_author); ?></div>
-          <?php if (lx_has_content($letter_author_title)) : ?>
-            <div class="ltg-sign-title"><?php echo esc_html($letter_author_title); ?></div>
+      <div class="ltg-letter-container">
+        <!-- Top Cameo / Founder Header -->
+        <div class="ltg-letter-header">
+          <?php if (!empty($letter_mascot)) : ?>
+            <div class="ltg-founder-avatar-wrap">
+              <img src="<?php echo esc_url($letter_mascot); ?>" alt="<?php echo esc_attr($letter_author ?: 'Chị Mai'); ?>" class="ltg-founder-avatar ltg-type-mascot" loading="lazy">
+              <span class="ltg-founder-badge" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </span>
+            </div>
+          <?php endif; ?>
+          <span class="ltg-eyebrow">Tâm thư người sáng lập</span>
+          <?php if (lx_has_content($letter_title)) : ?>
+            <h2 class="ltg-h2 ltg-h2--md"><?php echo wp_kses_post($letter_title); ?></h2>
           <?php endif; ?>
         </div>
-        <?php endif; ?>
+
+        <!-- Luxury Letter Card with Classic Parchment Styling -->
+        <div class="ltg-type-box ltg-letter-card" id="ltgType" role="region" aria-label="Tâm thư người sáng lập">
+          <div class="ltg-letter-card-inner">
+            <span class="ltg-type-quote ltg-letter-quote-mark" aria-hidden="true">“</span>
+            
+            <div class="ltg-letter-content">
+              <?php if (lx_has_content($letter_body)) : ?>
+              <p class="ltg-type-text">
+                <span class="ltg-type-ghost" id="ltgGhostBody"><?php echo esc_html($letter_body); ?></span>
+                <span class="ltg-type-live" id="ltgTypeBody" aria-hidden="true"></span>
+              </p>
+              <?php endif; ?>
+
+              <?php if (lx_has_content($letter_hl)) : ?>
+              <div class="ltg-letter-hl-box">
+                <p class="ltg-type-hl">
+                  <strong class="ltg-type-ghost" id="ltgGhostHl"><?php echo esc_html($letter_hl); ?></strong>
+                  <strong class="ltg-type-live" id="ltgTypeHl" aria-hidden="true"></strong>
+                </p>
+              </div>
+              <?php endif; ?>
+
+              <!-- Sign-off & Authentic Seal -->
+              <div class="ltg-letter-footer">
+                <?php if (lx_has_content($letter_author)) : ?>
+                <div class="ltg-type-sign ltg-letter-sign">
+                  <div class="ltg-sign-msg">Thương mến gửi mẹ ❤️</div>
+                  <div class="ltg-sign-name"><?php echo esc_html($letter_author); ?></div>
+                  <?php if (lx_has_content($letter_author_title)) : ?>
+                    <div class="ltg-sign-title"><?php echo esc_html($letter_author_title); ?></div>
+                  <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <div class="ltg-letter-stamp" aria-hidden="true">
+                  <div class="ltg-stamp-circle">
+                    <span>HOME CARE</span>
+                    <small>SINCE 2008</small>
+                    <i>CHĂM SÓC MẸ &amp; BÉ</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 

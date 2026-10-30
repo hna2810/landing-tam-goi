@@ -18,7 +18,7 @@ $gift_default_sets = array(
     array(
         'name'     => 'SET TÂM GIAO',
         'ribbon'   => '',
-        'img'      => 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
+        'img'      => '',
         'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '199.000đ',
         'data_set' => 'Set Tâm Giao – 199.000đ',
@@ -26,7 +26,7 @@ $gift_default_sets = array(
     array(
         'name'     => 'SET AN NHIÊN',
         'ribbon'   => '★ Chọn nhiều nhất',
-        'img'      => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'img'      => '',
         'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nXịt khử mùi body\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '299.000đ',
         'data_set' => 'Set An Nhiên – 299.000đ',
@@ -34,7 +34,7 @@ $gift_default_sets = array(
     array(
         'name'     => 'SET TRI ÂN',
         'ribbon'   => '',
-        'img'      => 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
+        'img'      => '',
         'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nXịt khử mùi body & Xịt dưỡng tóc\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '399.000đ',
         'data_set' => 'Set Tri Ân – 399.000đ',
@@ -42,7 +42,7 @@ $gift_default_sets = array(
     array(
         'name'     => 'SET TINH HOA',
         'ribbon'   => '',
-        'img'      => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi_341071304a9d48dab53bca2e5363b41d.png',
+        'img'      => '',
         'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nXịt khử mùi body & Xịt dưỡng tóc\nNước ủ tóc gừng tươi\nHộp quà cao cấp & Thiệp viết tay",
         'price'    => '499.000đ',
         'data_set' => 'Set Tinh Hoa – 499.000đ',
@@ -83,7 +83,7 @@ if (!$has_gift) {
 
     <div class="ltg-wrap">
       <div class="ltg-gift-head">
-        <div class="">
+        <div>
           <?php if (lx_has_content($gift_eyebrow)) : ?>
             <span class="ltg-eyebrow"><?php echo esc_html($gift_eyebrow); ?></span>
           <?php endif; ?>
@@ -95,7 +95,7 @@ if (!$has_gift) {
           <?php endif; ?>
         </div>
 
-        <div class="">
+        <div>
           <div class="ltg-count" id="ltgCount">
             <div><b data-d>00</b><small>Ngày</small></div>
             <div><b data-h>00</b><small>Giờ</small></div>
@@ -118,15 +118,17 @@ if (!$has_gift) {
             $btn_cls = !empty($set['ribbon']) ? 'ltg-btn--pri' : 'ltg-btn--ghost';
         ?>
           <div class="ltg-set<?php echo esc_attr($is_hot); ?>">
-            <?php if (!empty($set['ribbon'])) : ?>
-              <span class="ltg-ribbon"><?php echo esc_html($set['ribbon']); ?></span>
-            <?php endif; ?>
             <?php if (!empty($img)) : ?>
               <div class="ltg-set-img">
                 <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($set['name']); ?>" loading="lazy">
               </div>
             <?php endif; ?>
             <div class="ltg-set-body">
+              <?php if (!empty($set['ribbon'])) : ?>
+                <div class="ltg-set-ribbon-wrap">
+                  <span class="ltg-ribbon"><?php echo esc_html($set['ribbon']); ?></span>
+                </div>
+              <?php endif; ?>
               <h3><?php echo esc_html($set['name']); ?></h3>
               <?php if (!empty($items_arr)) : ?>
               <ul class="ltg-set-items">
