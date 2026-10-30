@@ -29,17 +29,10 @@ $tab1_good_items = lx_get_field('tab1_good_items', 'option', array(
     array('text' => 'Tóc con mọc tua tủa sau 2–4 tuần sử dụng.'),
 ));
 
-// Ảnh Trước & Sau Tab 1
-$tab1_img_before = lx_get_image_url('tab1_img_before', get_template_directory_uri() . '/assets/images/real/ba-dau-goi-before.jpg', 'large', 'option');
-if (empty($tab1_img_before) || strpos($tab1_img_before, 'hstatic.net') !== false) {
-    $tab1_img_before = get_template_directory_uri() . '/assets/images/real/ba-dau-goi-before.jpg';
-}
-$tab1_img_after  = lx_get_image_url('tab1_img_after', '', 'large', 'option');
-if (empty($tab1_img_after) || strpos($tab1_img_after, 'hstatic.net') !== false) {
-    $tab1_img_after = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/ba-dau-goi-after.jpg', 'large', 'option');
-}
-if (empty($tab1_img_after) || strpos($tab1_img_after, 'hstatic.net') !== false) {
-    $tab1_img_after = get_template_directory_uri() . '/assets/images/real/ba-dau-goi-after.jpg';
+// Ảnh vuông ở giữa Tab 1 (Dầu Gội)
+$tab1_img = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg', 'large', 'option');
+if (empty($tab1_img) || strpos($tab1_img, 'hstatic.net') !== false || strpos($tab1_img, 'ba-dau-goi') !== false) {
+    $tab1_img = get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg';
 }
 
 if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
@@ -63,17 +56,10 @@ $tab2_good_items = lx_get_field('tab2_good_items', 'option', array(
     array('text' => 'Da mềm mại, duy trì độ ẩm tự nhiên và thơm dịu.'),
 ));
 
-// Ảnh Trước & Sau Tab 2
-$tab2_img_before = lx_get_image_url('tab2_img_before', get_template_directory_uri() . '/assets/images/real/ba-sua-tam-before.jpg', 'large', 'option');
-if (empty($tab2_img_before) || strpos($tab2_img_before, 'hstatic.net') !== false) {
-    $tab2_img_before = get_template_directory_uri() . '/assets/images/real/ba-sua-tam-before.jpg';
-}
-$tab2_img_after  = lx_get_image_url('tab2_img_after', '', 'large', 'option');
-if (empty($tab2_img_after) || strpos($tab2_img_after, 'hstatic.net') !== false) {
-    $tab2_img_after = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/ba-sua-tam-after.jpg', 'large', 'option');
-}
-if (empty($tab2_img_after) || strpos($tab2_img_after, 'hstatic.net') !== false) {
-    $tab2_img_after = get_template_directory_uri() . '/assets/images/real/ba-sua-tam-after.jpg';
+// Ảnh vuông ở giữa Tab 2 (Sữa Tắm)
+$tab2_img = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'large', 'option');
+if (empty($tab2_img) || strpos($tab2_img, 'hstatic.net') !== false || strpos($tab2_img, 'ba-sua-tam') !== false) {
+    $tab2_img = get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg';
 }
 
 if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
@@ -159,22 +145,10 @@ if (!$has_products) {
         </div>
         <?php endif; ?>
 
-        <!-- Cặp ảnh Trước & Sau hình chữ nhật đặt cạnh nhau -->
-        <div class="ltg-ba3-pair">
-          <div class="ltg-ba3-card ltg-ba3-card--before">
-            <div class="ltg-ba3-thumb">
-              <img src="<?php echo esc_url($tab1_img_before); ?>" alt="<?php echo esc_attr($tab1_bad_h); ?>" loading="lazy">
-              <span class="ltg-ba3-tag ltg-ba3-tag--before">Trước</span>
-            </div>
-          </div>
-          <div class="ltg-ba3-arrow-mid" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-          <div class="ltg-ba3-card ltg-ba3-card--after">
-            <div class="ltg-ba3-thumb">
-              <img src="<?php echo esc_url($tab1_img_after); ?>" alt="<?php echo esc_attr($tab1_good_h); ?>" loading="lazy">
-              <span class="ltg-ba3-tag ltg-ba3-tag--after">Sau</span>
-            </div>
+        <!-- Ảnh vuông chính giữa sản phẩm -->
+        <div class="ltg-ba3-sq">
+          <div class="ltg-ba3-sq-frame">
+            <img src="<?php echo esc_url($tab1_img); ?>" alt="<?php echo esc_attr($tab1_name); ?>" loading="lazy">
           </div>
         </div>
 
@@ -222,22 +196,10 @@ if (!$has_products) {
         </div>
         <?php endif; ?>
 
-        <!-- Cặp ảnh Trước & Sau hình chữ nhật đặt cạnh nhau -->
-        <div class="ltg-ba3-pair">
-          <div class="ltg-ba3-card ltg-ba3-card--before">
-            <div class="ltg-ba3-thumb">
-              <img src="<?php echo esc_url($tab2_img_before); ?>" alt="<?php echo esc_attr($tab2_bad_h); ?>" loading="lazy">
-              <span class="ltg-ba3-tag ltg-ba3-tag--before">Trước</span>
-            </div>
-          </div>
-          <div class="ltg-ba3-arrow-mid" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-          <div class="ltg-ba3-card ltg-ba3-card--after">
-            <div class="ltg-ba3-thumb">
-              <img src="<?php echo esc_url($tab2_img_after); ?>" alt="<?php echo esc_attr($tab2_good_h); ?>" loading="lazy">
-              <span class="ltg-ba3-tag ltg-ba3-tag--after">Sau</span>
-            </div>
+        <!-- Ảnh vuông chính giữa sản phẩm -->
+        <div class="ltg-ba3-sq">
+          <div class="ltg-ba3-sq-frame">
+            <img src="<?php echo esc_url($tab2_img); ?>" alt="<?php echo esc_attr($tab2_name); ?>" loading="lazy">
           </div>
         </div>
 
