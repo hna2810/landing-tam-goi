@@ -13,7 +13,7 @@ $proc_eyebrow    = lx_get_field('proc_eyebrow', 'option', "Tận mắt quy trìn
 $proc_title      = lx_get_field('proc_title', 'option', "Từ nồi thảo dược đến tay bạn");
 $proc_lead       = lx_get_field('proc_lead', 'option', "Không giấu giếm – xem trọn quy trình đun nấu, chiết lọc và đóng chai dầu gội, sữa tắm Gừng Nghệ Mây Mây.");
 $proc_video      = lx_get_field('proc_video', 'option', "");
-$proc_video_thumb= lx_get_image_url('proc_video_thumb', 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'full', 'option');
+$proc_video_thumb= lx_get_image_url('proc_video_thumb', get_template_directory_uri() . '/assets/images/real/proc-video-thumb.jpg', 'full', 'option');
 $proc_video_tag  = lx_get_field('proc_video_tag', 'option', "Video thực tế");
 $proc_video_h    = lx_get_field('proc_video_title', 'option', "Hành trình đun nấu Gừng Nghệ Mây Mây");
 $proc_video_desc = lx_get_field('proc_video_desc', 'option', "Từ chọn nguyên liệu, nấu chiết thảo dược đến khi thành chai dầu gội, sữa tắm.");
@@ -23,31 +23,31 @@ $proc_default_steps = array(
         'num'   => '01',
         'title' => 'Chọn thảo dược',
         'desc'  => 'Gừng, nghệ, bưởi tươi được tuyển chọn',
-        'img'   => 'https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg',
+        'img'   => get_template_directory_uri() . '/assets/images/real/step-01-thao-duoc.jpg',
     ),
     array(
         'num'   => '02',
         'title' => 'Sơ chế',
         'desc'  => 'Rửa sạch, cắt lát, giữ trọn tinh chất',
-        'img'   => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
+        'img'   => get_template_directory_uri() . '/assets/images/real/step-02-so-che.jpg',
     ),
     array(
         'num'   => '03',
         'title' => 'Đun nấu',
         'desc'  => 'Nấu chiết thảo dược theo công thức Home Care',
-        'img'   => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg',
+        'img'   => get_template_directory_uri() . '/assets/images/real/step-03-dun-nau.jpg',
     ),
     array(
         'num'   => '04',
         'title' => 'Lọc & đóng chai',
         'desc'  => 'Lọc mịn, phối vitamin, chiết rót',
-        'img'   => 'https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png',
+        'img'   => get_template_directory_uri() . '/assets/images/real/step-04-chiet-rot.jpg',
     ),
     array(
         'num'   => '05',
         'title' => 'Công bố & tem',
         'desc'  => 'Sở Y tế tiếp nhận, tem chống giả',
-        'img'   => 'https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png',
+        'img'   => get_template_directory_uri() . '/assets/images/real/step-05-kiem-dinh.jpg',
     ),
 );
 $proc_flow_steps = lx_get_field('proc_flow_steps', 'option', $proc_default_steps);
@@ -111,11 +111,11 @@ if (!$has_proc) {
           }
           $flow_count = count($valid_flow_steps);
           $default_flow_imgs = array(
-              'https://cdn.hstatic.net/products/200001066686/nguyen-lieu-gung-nghe_aa75eb4c00f54ed7bda0abe067db2800.jpg',
-              'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
-              'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg',
-              'https://cdn.hstatic.net/products/200001066686/ch_t_d_u_g_i_g_ng_ngh__m_y_m_y_homecare_98cc876517dc4d9bbb42e1528e91dc58.png',
-              'https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png',
+              get_template_directory_uri() . '/assets/images/real/step-01-thao-duoc.jpg',
+              get_template_directory_uri() . '/assets/images/real/step-02-so-che.jpg',
+              get_template_directory_uri() . '/assets/images/real/step-03-dun-nau.jpg',
+              get_template_directory_uri() . '/assets/images/real/step-04-chiet-rot.jpg',
+              get_template_directory_uri() . '/assets/images/real/step-05-kiem-dinh.jpg',
           );
       ?>
       <div class="ltg-flow" style="--flow-cols: <?php echo max(1, min(5, $flow_count)); ?>;">

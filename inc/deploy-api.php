@@ -20,7 +20,48 @@ add_action('rest_api_init', function () {
         },
         'callback'            => 'lx_handle_remote_deploy',
     ));
+    register_rest_route('lx-deploy/v1', '/update-options', array(
+        'methods'             => array('POST'),
+        'permission_callback' => function () {
+            return current_user_can('manage_options');
+        },
+        'callback'            => 'lx_handle_remote_update_options',
+    ));
 });
+
+/**
+ * Handle remote ACF and WordPress options updates and automatic cache purge
+ */
+function lx_handle_remote_update_options($request) {
+    $params = $request->get_json_params();
+    if (empty($params) || !is_array($params)) {
+        return new WP_REST_Response(array('success' => false, 'message' => 'No parameters received'), 400);
+    }
+    $updated = array();
+    foreach ($params as $key => $val) {
+        if (function_exists('update_field')) {
+            update_field($key, $val, 'option');
+        }
+        update_option('options_' . $key, $val);
+        $updated[] = $key;
+    }
+    if (class_exists('LiteSpeed_Cache_API')) {
+        LiteSpeed_Cache_API::purge_all();
+    }
+    if (function_exists('litespeed_purge_all')) {
+        litespeed_purge_all();
+    }
+    do_action('litespeed_purge_all');
+    if (!headers_sent()) {
+        header('X-LiteSpeed-Purge: *');
+    }
+    wp_cache_flush();
+    return new WP_REST_Response(array(
+        'success'        => true,
+        'updated_fields' => $updated,
+        'count'          => count($updated),
+    ), 200);
+}
 
 /**
  * Native recursive copy to guarantee 100% file overwrite regardless of filesystem abstraction

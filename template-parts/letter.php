@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$letter_mascot      = lx_get_image_url('letter_mascot', '', 'medium', 'option');
+$letter_mascot      = lx_get_image_url('letter_mascot', get_template_directory_uri() . '/assets/images/real/founder-avatar.jpg', 'medium', 'option');
 $letter_title       = lx_get_field('letter_title', 'option', "MÂY MÂY –<br>TÓC SẠCH, DA THƠM");
 $letter_body        = lx_get_field('letter_body', 'option', "Trải qua ba lần sinh nở trước tuổi 30, chị Mai hiểu rằng, hành trình làm mẹ không chỉ có niềm vui đón con mà còn là những tháng ngày người mẹ cần được chăm sóc và nâng niu.\n\nTừ kiến thức chuyên môn và nhiều năm tháng đồng hành cùng các thai phụ & sản phụ, chị Mai tìm về những bí quyết chăm sóc bí truyền với các nguyên liệu thân thuộc từ gừng, nghệ và thảo mộc. Nhưng việc chuẩn bị cầu kỳ mỗi ngày khiến chị trăn trở về phương pháp chăm sóc mẹ thuận tiện hơn.\n\nTừ đó, chị Mai đã tạo nên Mây Mây – thương hiệu chăm sóc mẹ từ tinh hoa thảo mộc, mong muốn mang đến những sản phẩm gần gũi, giúp mẹ chăm sóc tóc và làn da dễ dàng hơn trong kỳ ở cữ.");
 $letter_hl          = lx_get_field('letter_hl', 'option', "Bởi chị hiểu, sau những tháng ngày dành trọn yêu thương cho con, mẹ cũng xứng đáng được chăm sóc và yêu thương chính mình.");

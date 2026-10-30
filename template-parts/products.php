@@ -15,7 +15,7 @@ $ba_lead      = lx_get_field('ba_lead', 'option', "Công thức độc quyền t
 
 // Tab 1: Dầu Gội
 $tab1_name       = lx_get_field('tab1_name', 'option', "Dầu Gội Gừng Nghệ Mây Mây");
-$tab1_icon       = lx_get_image_url('tab1_icon', 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png', 'thumbnail', 'option');
+$tab1_icon       = lx_get_image_url('tab1_icon', get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg', 'thumbnail', 'option');
 $tab1_bad_h      = lx_get_field('tab1_bad_h', 'option', "Trước khi dùng");
 $tab1_bad_items  = lx_get_field('tab1_bad_items', 'option', array(
     array('text' => 'Tóc rụng từng nắm mỗi lần gội/chải, vuốt nhẹ cũng rụng.'),
@@ -28,12 +28,12 @@ $tab1_good_items = lx_get_field('tab1_good_items', 'option', array(
     array('text' => 'Da đầu sạch thoáng, hết ngứa.'),
     array('text' => 'Tóc con mọc tua tủa sau 2–4 tuần sử dụng.'),
 ));
-$tab1_img        = lx_get_image_url('tab1_img', 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png', 'medium', 'option');
+$tab1_img        = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg', 'medium', 'option');
 $tab1_quote      = lx_get_field('tab1_quote', 'option', "“Tóc mọc tua tủa – Kích mở nang tóc”");
 
 // Tab 2: Sữa Tắm
 $tab2_name       = lx_get_field('tab2_name', 'option', "Sữa Tắm Gừng Nghệ Mây Mây");
-$tab2_icon       = lx_get_image_url('tab2_icon', 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png', 'thumbnail', 'option');
+$tab2_icon       = lx_get_image_url('tab2_icon', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'thumbnail', 'option');
 $tab2_bad_h      = lx_get_field('tab2_bad_h', 'option', "Trước khi dùng");
 $tab2_bad_items  = lx_get_field('tab2_bad_items', 'option', array(
     array('text' => 'Mụn viêm, mụn ẩn lan rộng ở lưng, ngực, vai.'),
@@ -46,7 +46,7 @@ $tab2_good_items = lx_get_field('tab2_good_items', 'option', array(
     array('text' => 'Len lỏi lỗ chân lông, sạch da, lỗ chân thông thoáng.'),
     array('text' => 'Da mềm mại, duy trì độ ẩm tự nhiên và thơm dịu.'),
 ));
-$tab2_img        = lx_get_image_url('tab2_img', 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png', 'medium', 'option');
+$tab2_img        = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'medium', 'option');
 $tab2_quote      = lx_get_field('tab2_quote', 'option', "“Da sạch, mềm mịn, mờ thâm”");
 
 $has_products = lx_has_content($ba_title) || lx_has_content($tab1_name) || lx_has_content($tab2_name);

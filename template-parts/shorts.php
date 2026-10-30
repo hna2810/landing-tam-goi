@@ -17,28 +17,28 @@ $shorts_youtube = lx_get_field('shorts_youtube', 'option', "#");
 $shorts_default_items = array(
     array(
         'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/dau_goi_gung_nghe_may_may_-_dau_goi_cho_me_bau_va_me_sau_sinh_c85c9e18e5f24a9d93a1c3676d8fe1c8.jpg',
+        'thumb' => get_template_directory_uri() . '/assets/images/real/short-01-hau-truong.jpg',
         'src'   => 'TikTok',
         'title' => 'Mẹ bỉm chia sẻ Review sau 3 tuần',
         'sub'   => 'Trải nghiệm thực tế',
     ),
     array(
         'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
+        'thumb' => get_template_directory_uri() . '/assets/images/real/short-02-chat-dau-goi.jpg',
         'src'   => 'TikTok',
         'title' => 'Chất dầu gội sánh mịn cặn gừng tươi',
         'sub'   => 'Cận cảnh sản phẩm',
     ),
     array(
         'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
+        'thumb' => get_template_directory_uri() . '/assets/images/real/short-03-bo-combo.jpg',
         'src'   => 'Shorts',
         'title' => 'Khử sạch mùi mồ hôi & mờ mụn lưng',
         'sub'   => 'Sữa tắm Gừng Nghệ',
     ),
     array(
         'video' => '',
-        'thumb' => 'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
+        'thumb' => get_template_directory_uri() . '/assets/images/real/short-04-nguyen-lieu.jpg',
         'src'   => 'Shorts',
         'title' => 'Đóng gói set quà & Hậu trường tại xưởng',
         'sub'   => 'Quy trình sản xuất',
@@ -83,10 +83,10 @@ if (!$has_shorts) {
 
       <?php if (!empty($shorts_items) && is_array($shorts_items)) : 
           $fallback_thumbs = array(
-              'https://cdn.hstatic.net/products/200001066686/dau_goi_gung_nghe_may_may_-_dau_goi_cho_me_bau_va_me_sau_sinh_c85c9e18e5f24a9d93a1c3676d8fe1c8.jpg',
-              'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png',
-              'https://cdn.hstatic.net/products/200001066686/sua-tam-gung-nghe-may-may-500ml_8029728340d44067aa56b610e29f48ae.png',
-              'https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg',
+              get_template_directory_uri() . '/assets/images/real/short-01-hau-truong.jpg',
+              get_template_directory_uri() . '/assets/images/real/short-02-chat-dau-goi.jpg',
+              get_template_directory_uri() . '/assets/images/real/short-03-bo-combo.jpg',
+              get_template_directory_uri() . '/assets/images/real/short-04-nguyen-lieu.jpg',
           );
       ?>
       <div class="ltg-srow">

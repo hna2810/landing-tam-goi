@@ -17,7 +17,7 @@ $combo_default_items = array(
         'name'   => 'Gói Trải Nghiệm',
         'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (300ML)',
         'price'  => '99K',
-        'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'img'    => get_template_directory_uri() . '/assets/images/real/combo-01-trai-nghiem.jpg',
         'is_hot' => false,
     ),
     array(
@@ -25,7 +25,7 @@ $combo_default_items = array(
         'name'   => 'Gói Best Seller',
         'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (500ML)',
         'price'  => '159k',
-        'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'img'    => get_template_directory_uri() . '/assets/images/real/combo-02-ban-chay.jpg',
         'is_hot' => true,
     ),
     array(
@@ -33,7 +33,7 @@ $combo_default_items = array(
         'name'   => 'Gói Tiết Kiệm',
         'desc'   => '1 Dầu gội + 1 Sữa tắm Gừng Nghệ + 1 Ủ tóc (1000ML)',
         'price'  => '299K',
-        'img'    => 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png',
+        'img'    => get_template_directory_uri() . '/assets/images/real/combo-03-tiet-kiem.jpg',
         'is_hot' => false,
     ),
 );
