@@ -870,17 +870,73 @@ section[id],div[id]{scroll-margin-top:76px}
 .ltg-copt--add{margin-top:10px;border-style:dashed}
 .ltg-copt--add input{accent-color:var(--ginger)}
 .ltg-copt small{color:var(--muted);font-size:12.5px}
-/* 3 buoc: can giua tuyet doi */
-.ltg-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;counter-reset:s;justify-content:center;max-width:1040px;margin-left:auto;margin-right:auto}
-.ltg-steps--center{justify-content:center!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}
+/* 3 buoc: can giua desktop/tablet, responsive carousel chuan tren mobile */
 .ltg-step--center{text-align:center;display:flex;flex-direction:column;align-items:center}
+
 @media(min-width:981px){
-  .ltg-steps--ic{grid-template-columns:repeat(3,1fr)!important;gap:28px!important;max-width:1040px!important;margin:44px auto 0!important;justify-content:center!important}
+  .ltg-steps,
+  .ltg-steps--center,
+  .ltg-steps--ic{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:28px!important;
+    max-width:1040px!important;
+    margin:44px auto 0!important;
+    justify-content:center!important;
+  }
+  .ltg-steps .ltg-step,
   .ltg-steps--ic .ltg-step{padding:36px 28px!important}
 }
+
 @media(min-width:681px) and (max-width:980px){
-  .ltg-steps--ic{grid-template-columns:repeat(3,1fr)!important;gap:16px!important;max-width:960px!important;margin:36px auto 0!important;justify-content:center!important}
+  .ltg-steps,
+  .ltg-steps--center,
+  .ltg-steps--ic{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:16px!important;
+    max-width:960px!important;
+    margin:36px auto 0!important;
+    justify-content:center!important;
+  }
+  .ltg-steps .ltg-step,
   .ltg-steps--ic .ltg-step{padding:24px 16px!important}
+}
+
+@media(max-width:680px){
+  .ltg-steps,
+  .ltg-steps--center,
+  .ltg-steps--ic{
+    display:flex!important;
+    overflow-x:auto!important;
+    scroll-snap-type:x mandatory!important;
+    gap:14px!important;
+    margin:28px -16px 0!important;
+    padding:8px 16px 22px!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+    max-width:none!important;
+    justify-content:flex-start!important;
+  }
+  .ltg-steps::-webkit-scrollbar,
+  .ltg-steps--center::-webkit-scrollbar,
+  .ltg-steps--ic::-webkit-scrollbar{display:none!important}
+  .ltg-steps .ltg-step,
+  .ltg-steps--ic .ltg-step{
+    flex:0 0 82%!important;
+    max-width:82%!important;
+    scroll-snap-align:center!important;
+    padding:28px 20px 24px!important;
+    border-radius:24px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,#ffffff 0%,#fffdf5 100%)!important;
+    border:1.5px solid #ebd9a8!important;
+    box-shadow:0 20px 48px -24px rgba(90,65,20,.18)!important;
+  }
+  .ltg-step-ic{margin:0 auto 14px!important}
+  .ltg-step h4{font-size:18px!important;margin:12px 0 8px!important;line-height:1.35!important}
+  .ltg-step p{font-size:14px!important;line-height:1.6!important}
+  .ltg-steps-sec .ltg-swipe{display:flex!important;margin-top:6px!important}
 }
 
 /* tablet steps handled */
