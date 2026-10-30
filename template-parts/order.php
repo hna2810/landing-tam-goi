@@ -51,12 +51,11 @@ if (!$has_order) {
           <div><i><svg width="16" height="16"><use href="#i-heart"/></svg></i>Tư vấn miễn phí cho mẹ bầu, sau sinh</div>
         </div>
 
-        <a class="ltg-hotline" href="tel:<?php echo esc_attr(preg_replace('/[^\d]/', '', $hotline)); ?>">
+        <a class="ltg-hotline" href="tel:0973871376">
           <i><svg width="24" height="24" style="color:var(--forest)"><use href="#i-phone"/></svg></i>
           <div>
             Hotline tư vấn
-            <b>0962 131 515</b>
-            Tổng đài 1900 0387 · 0973 871 376
+            <b>0973 871 376</b>
           </div>
         </a>
       </div>
@@ -106,9 +105,8 @@ if (!$has_order) {
           <div class="ltg-fcd">
             <b>ƯU ĐÃI SẮP KẾT THÚC</b>
             <div class="ltg-fcd-t" id="ltgFormCd">
-              <div><b data-h>00</b><small>Giờ</small></div>
-              <div><b data-m>00</b><small>phút</small></div>
-              <div><b data-s>00</b><small>giây</small></div>
+              <div><b data-m>14</b><small>Phút</small></div>
+              <div><b data-s>59</b><small>Giây</small></div>
             </div>
           </div>
 

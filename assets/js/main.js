@@ -494,16 +494,22 @@
           var sEl = cd.querySelector('[data-s]'); if (sEl) sEl.textContent = pad(d % 60);
         }
 
-        var eod = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-        var r = Math.max(0, eod - now) / 1000;
+        // Under 15-minute countdown (< 15 mins per user request)
+        var totalSec15 = 14 * 60 + 59;
+        var nowSec = Math.floor(Date.now() / 1000);
+        var cycleSec = nowSec % 900;
+        var rem15 = Math.max(0, totalSec15 - cycleSec);
+
+        var fm15 = pad(rem15 / 60);
+        var fs15 = pad(rem15 % 60);
 
         if (topEl) {
-          topEl.textContent = pad(r / 3600) + ':' + pad((r % 3600) / 60) + ':' + pad(r % 60);
+          topEl.textContent = fm15 + ':' + fs15;
         }
         if (fcd) {
-          var fh = fcd.querySelector('[data-h]'); if (fh) fh.textContent = pad(r / 3600);
-          var fm = fcd.querySelector('[data-m]'); if (fm) fm.textContent = pad((r % 3600) / 60);
-          var fs = fcd.querySelector('[data-s]'); if (fs) fs.textContent = pad(r % 60);
+          var fh = fcd.querySelector('[data-h]'); if (fh) fh.textContent = '00';
+          var fm = fcd.querySelector('[data-m]'); if (fm) fm.textContent = fm15;
+          var fs = fcd.querySelector('[data-s]'); if (fs) fs.textContent = fs15;
         }
       }
       tick();

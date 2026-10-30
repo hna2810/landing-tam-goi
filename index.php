@@ -35,8 +35,7 @@ get_template_part('template-parts/transparency');
 // 8. Đánh giá khách hàng
 get_template_part('template-parts/reviews');
 
-// 9. Video ngắn 60s
-get_template_part('template-parts/shorts');
+// 9. Video ngắn (da bo theo yeu cau)
 
 // 10. Combo ưu đãi
 get_template_part('template-parts/combos');
