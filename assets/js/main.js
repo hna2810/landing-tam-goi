@@ -212,36 +212,55 @@
       });
     }
 
-    // Global unlock on first touch anywhere (enables audio on iOS & Android)
-    function primeAudio() {
-      if (!primed && voice) {
-        primed = true;
-        try {
-          voice.load();
-        } catch(e){}
-      }
-      document.removeEventListener('touchend', primeAudio);
-      document.removeEventListener('click', primeAudio);
-    }
-    document.addEventListener('touchend', primeAudio, { passive: true });
-    document.addEventListener('click', primeAudio, { passive: true });
-
-    // Check if section is in viewport
+    // Robust mobile audio unlock on iOS Safari & Android Chrome
     function isSectionInView() {
       var r = box.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
       return (r.top < vh * 0.85 && r.bottom > 60);
     }
 
-    // Mobile scroll gesture trigger: when user swipes down into the section,
-    // the touchend event is recognized as a user gesture on iOS Safari & Chrome!
-    function onTouchEndScroll() {
+    // Unlock audio context on first user interaction anywhere
+    function unlockAudioContext() {
+      if (primed || !voice) return;
+      try {
+        var p = voice.play();
+        if (p !== undefined) {
+          p.then(function() {
+            primed = true;
+            // If section is not yet in view, pause immediately so it's silently primed
+            if (!isSectionInView()) {
+              voice.pause();
+              voice.currentTime = 0;
+            } else {
+              // If already at the section, continue playing and start reveal
+              if (!started) {
+                started = true;
+                running = true;
+                box.classList.remove('is-done');
+                box.classList.add('is-typing');
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(tick);
+              }
+            }
+          }).catch(function(e) {
+            // User gesture will unlock on next interaction
+          });
+        }
+      } catch(e) {}
+    }
+
+    ['touchstart', 'touchend', 'click', 'pointerdown'].forEach(function(evt) {
+      document.addEventListener(evt, unlockAudioContext, { passive: true, once: false });
+    });
+
+    // Mobile scroll gesture trigger: automatically start audio when user scrolls into section
+    function checkScrollAndPlay() {
       if (!started && isSectionInView()) {
         playVoice();
-        window.removeEventListener('touchend', onTouchEndScroll);
       }
     }
-    window.addEventListener('touchend', onTouchEndScroll, { passive: true });
+    window.addEventListener('touchend', checkScrollAndPlay, { passive: true });
+    window.addEventListener('scroll', checkScrollAndPlay, { passive: true });
 
     // Desktop IntersectionObserver auto-trigger
     if ('IntersectionObserver' in window) {

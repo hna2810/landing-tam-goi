@@ -33,7 +33,7 @@ $headers["Content-Type"] = "application/zip"
 try {
     $res = Invoke-RestMethod -Uri "$siteUrl/wp-json/lx-deploy/v1/sync" -Method Post -Headers $headers -Body $zipBytes -TimeoutSec 60
     Write-Host "Deployment SUCCESS: $($res.message)" -ForegroundColor Green
-    Write-Host "Method: $($res.method) | Time: $($res.time_ms) ms | Version: $($res.theme_version)" -ForegroundColor Green
+    Write-Host "Method: $($res.method) | Time: $($res.time_ms) ms | Files copied: $($res.files_copied) | Version: $($res.theme_version)" -ForegroundColor Green
 } catch {
     Write-Host "Deploy Error: $($_.Exception.Message)" -ForegroundColor Red
 } finally {

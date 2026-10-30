@@ -63,6 +63,14 @@ if (!$has_combos) {
             $k   = !empty($cb['key']) ? $cb['key'] : 'trai-nghiem';
             $hot = !empty($cb['is_hot']) ? ' ltg-pk--hot' : '';
             $img = !empty($cb['img']) ? (is_array($cb['img']) ? ($cb['img']['url'] ?? '') : (is_numeric($cb['img']) ? wp_get_attachment_image_url($cb['img'], 'full') : $cb['img'])) : '';
+            $cb_defaults = array(
+                'trai-nghiem'    => get_template_directory_uri() . '/assets/images/real/combo-01-trai-nghiem.jpg',
+                'ban-chay'       => get_template_directory_uri() . '/assets/images/real/combo-02-ban-chay.jpg',
+                'sieu-tiet-kiem' => get_template_directory_uri() . '/assets/images/real/combo-03-tiet-kiem.jpg',
+            );
+            if ((empty($img) || strpos($img, 'hstatic.net') !== false) && isset($cb_defaults[$k])) {
+                $img = $cb_defaults[$k];
+            }
         ?>
           <a href="#dat-hang" class="ltg-pk<?php echo esc_attr($hot); ?>" data-combo="<?php echo esc_attr($k); ?>">
             <?php if (!empty($img)) : ?>

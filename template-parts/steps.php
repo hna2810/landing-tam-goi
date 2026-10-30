@@ -90,7 +90,23 @@ if (!$has_steps) {
         ?>
           <div class="ltg-step">
             <i class="ltg-step-ic" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24"><use href="#<?php echo esc_attr($icon); ?>" xlink:href="#<?php echo esc_attr($icon); ?>"/></svg>
+              <?php
+              // Render clean inline SVG to guarantee 100% display in all browsers without fragment/sprite issues
+              $step_num = $idx + 1;
+              if ($step_num === 1) {
+                  // Step 1: Làm ướt & tạo bọt - Water drop & foam
+                  echo '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><path d="M12 11a2.5 2.5 0 0 0-2.5 2.5"/></svg>';
+              } elseif ($step_num === 2) {
+                  // Step 2: Massage thư giãn - Gentle leaf / floral soothing
+                  echo '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>';
+              } elseif ($step_num === 3) {
+                  // Step 3: Xả sạch với nước - Clean water rinse / sparkles check
+                  echo '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>';
+              } else {
+                  // Step 4: Ủ thảo dược - Herbal root
+                  echo '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>';
+              }
+              ?>
             </i>
             <h4><?php echo wp_kses_post($item['title']); ?></h4>
             <?php if (!empty($item['desc'])) : ?>

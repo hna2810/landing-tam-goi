@@ -14,6 +14,9 @@ $proc_title      = lx_get_field('proc_title', 'option', "Từ nồi thảo dư�
 $proc_lead       = lx_get_field('proc_lead', 'option', "Không giấu giếm – xem trọn quy trình đun nấu, chiết lọc và đóng chai dầu gội, sữa tắm Gừng Nghệ Mây Mây.");
 $proc_video      = lx_get_field('proc_video', 'option', "");
 $proc_video_thumb= lx_get_image_url('proc_video_thumb', get_template_directory_uri() . '/assets/images/real/proc-video-thumb.jpg', 'full', 'option');
+if (empty($proc_video_thumb) || strpos($proc_video_thumb, 'hstatic.net') !== false) {
+    $proc_video_thumb = get_template_directory_uri() . '/assets/images/real/proc-video-thumb.jpg';
+}
 $proc_video_tag  = lx_get_field('proc_video_tag', 'option', "Video thực tế");
 $proc_video_h    = lx_get_field('proc_video_title', 'option', "Hành trình đun nấu Gừng Nghệ Mây Mây");
 $proc_video_desc = lx_get_field('proc_video_desc', 'option', "Từ chọn nguyên liệu, nấu chiết thảo dược đến khi thành chai dầu gội, sữa tắm.");
@@ -121,7 +124,7 @@ if (!$has_proc) {
       <div class="ltg-flow" style="--flow-cols: <?php echo max(1, min(5, $flow_count)); ?>;">
         <?php foreach ($valid_flow_steps as $idx => $step) :
             $img = !empty($step['img']) ? (is_array($step['img']) ? ($step['img']['url'] ?? '') : (is_numeric($step['img']) ? wp_get_attachment_image_url($step['img'], 'full') : $step['img'])) : '';
-            if (empty($img) && isset($default_flow_imgs[$idx])) {
+            if ((empty($img) || strpos($img, 'hstatic.net') !== false) && isset($default_flow_imgs[$idx])) {
                 $img = $default_flow_imgs[$idx];
             }
             $num = !empty($step['num']) ? $step['num'] : str_pad($idx + 1, 2, '0', STR_PAD_LEFT);

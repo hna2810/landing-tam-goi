@@ -29,6 +29,12 @@ $tab1_good_items = lx_get_field('tab1_good_items', 'option', array(
     array('text' => 'Tóc con mọc tua tủa sau 2–4 tuần sử dụng.'),
 ));
 $tab1_img        = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg', 'medium', 'option');
+if (empty($tab1_img) || strpos($tab1_img, 'hstatic.net') !== false) {
+    $tab1_img = get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg';
+}
+if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
+    $tab1_icon = $tab1_img;
+}
 $tab1_quote      = lx_get_field('tab1_quote', 'option', "“Tóc mọc tua tủa – Kích mở nang tóc”");
 
 // Tab 2: Sữa Tắm
@@ -47,6 +53,12 @@ $tab2_good_items = lx_get_field('tab2_good_items', 'option', array(
     array('text' => 'Da mềm mại, duy trì độ ẩm tự nhiên và thơm dịu.'),
 ));
 $tab2_img        = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'medium', 'option');
+if (empty($tab2_img) || strpos($tab2_img, 'hstatic.net') !== false) {
+    $tab2_img = get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg';
+}
+if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
+    $tab2_icon = $tab2_img;
+}
 $tab2_quote      = lx_get_field('tab2_quote', 'option', "“Da sạch, mềm mịn, mờ thâm”");
 
 $has_products = lx_has_content($ba_title) || lx_has_content($tab1_name) || lx_has_content($tab2_name);

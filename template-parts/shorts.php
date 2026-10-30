@@ -104,8 +104,8 @@ if (!$has_shorts) {
                 }
             }
             
-            // If thumb is empty, use dependable high quality product image
-            if (empty($thumb)) {
+            // If thumb is empty or contains external hstatic CDN, use authentic photoshoot image
+            if (empty($thumb) || strpos($thumb, 'hstatic.net') !== false) {
                 $thumb = $fallback_thumbs[$idx % count($fallback_thumbs)];
             }
             $src_lbl = !empty($sh['src']) ? $sh['src'] : 'TikTok';

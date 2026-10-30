@@ -211,7 +211,7 @@ function lx_handle_remote_deploy($request) {
         'method'         => $method_used,
         'files_copied'   => $copied_count,
         'time_ms'        => $elapsed,
-        'theme_version'  => '1.5.2',
+        'theme_version'  => defined('LX_THEME_VERSION') ? LX_THEME_VERSION : '1.5.7',
         'cache_purged'   => true,
         'timestamp'      => time(),
     ), 200);

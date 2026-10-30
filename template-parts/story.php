@@ -15,6 +15,12 @@ $story_quote   = lx_get_field('story_quote', 'option', "“Mẹ bầu, mẹ sau 
 $story_lead    = lx_get_field('story_lead', 'option', "Hơn 15 năm đồng hành cùng mẹ và bé, Home Care chọn gừng, nghệ, bưởi – những thảo dược quen thuộc của người Việt – để làm nên bộ tắm gội Mây Mây: sạch dịu, an tâm cho cả gia đình.");
 $story_img_1   = lx_get_image_url('story_img_1', get_template_directory_uri() . '/assets/images/real/story-main.jpg', 'full', 'option');
 $story_img_2   = lx_get_image_url('story_img_2', get_template_directory_uri() . '/assets/images/real/story-sub.jpg', 'full', 'option');
+if (empty($story_img_1) || strpos($story_img_1, 'hstatic.net') !== false) {
+    $story_img_1 = get_template_directory_uri() . '/assets/images/real/story-main.jpg';
+}
+if (empty($story_img_2) || strpos($story_img_2, 'hstatic.net') !== false) {
+    $story_img_2 = get_template_directory_uri() . '/assets/images/real/story-sub.jpg';
+}
 $story_stats   = lx_get_field('story_stats', 'option', array(
     array('num' => '2008', 'suffix' => '', 'text' => 'Thành lập Home Care'),
     array('num' => '3', 'suffix' => '', 'text' => 'Dung tích linh hoạt'),
