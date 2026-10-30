@@ -58,9 +58,7 @@ if (!$has_rev) {
         <?php endif; ?>
       </div>
 
-      <span class="ltg-ph ltg-ph--wide">Ảnh hội thảo mẹ cầm chai Sữa tắm + Dầu gội</span>
-
-      <h3 class="ltg-sub-h" style="margin-top:34px">Từ Bầu đến Sau sinh tin dùng</h3>
+      <h3 class="ltg-sub-h" style="margin-top:40px">Từ Bầu đến Sau sinh tin dùng</h3>
 
       <div class="ltg-rev-grid">
         <div class="ltg-rcard">
