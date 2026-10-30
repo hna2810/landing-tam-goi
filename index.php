@@ -26,16 +26,17 @@ get_template_part('template-parts/story');
 // 5. Quy trình đun nấu & Video
 get_template_part('template-parts/process');
 
-// 6. 3 Bước chăm sóc da & tóc
+// 6. 6 Thành phần thảo mộc & Dưỡng chất vàng
+get_template_part('template-parts/ingredients');
+
+// 7. 3 Bước chăm sóc da & tóc
 get_template_part('template-parts/steps');
 
-// 7. Minh bạch & Hồ sơ y tế
+// 8. Minh bạch & Hồ sơ y tế
 get_template_part('template-parts/transparency');
 
-// 8. Đánh giá khách hàng
+// 9. Đánh giá khách hàng
 get_template_part('template-parts/reviews');
-
-// 9. Video ngắn (da bo theo yeu cau)
 
 // 10. Combo ưu đãi
 get_template_part('template-parts/combos');

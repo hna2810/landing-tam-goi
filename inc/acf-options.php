@@ -670,7 +670,80 @@ function lx_register_acf_landing_fields_group() {
                 ),
             ),
 
-            // ==================== TAB 7: CÁCH DÙNG (3 BƯỚC) ====================
+                        // ==================== TAB 6: THÀNH PHẦN (6 DƯỠNG CHẤT) ====================
+            array(
+                'key' => 'field_tab_ingredients',
+                'label' => 'Thành Phần (6 Dưỡng Chất)',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ),
+            array(
+                'key' => 'field_ing_eyebrow',
+                'label' => 'Nhãn nhỏ trên tiêu đề',
+                'name' => 'ing_eyebrow',
+                'type' => 'text',
+                'default_value' => 'CÔNG THỨC ĐỘC QUYỀN HOME CARE',
+            ),
+            array(
+                'key' => 'field_ing_title',
+                'label' => 'Tiêu đề chính mục Thành phần',
+                'name' => 'ing_title',
+                'type' => 'text',
+                'default_value' => 'Sự kết hợp hoàn hảo của các thành phần thảo mộc và dưỡng chất vàng',
+            ),
+            array(
+                'key' => 'field_ing_lead',
+                'label' => 'Đoạn giới thiệu ngắn',
+                'name' => 'ing_lead',
+                'type' => 'textarea',
+                'rows' => 2,
+                'default_value' => 'Sự giao thoa trọn vẹn giữa bí quyết thảo mộc cổ truyền và các dưỡng chất khoa học chuyên sâu, mang lại hiệu quả phục hồi tóc và nuôi dưỡng làn da tối ưu.',
+            ),
+            array(
+                'key' => 'field_ingredients_items',
+                'label' => 'Danh sách 6 thành phần nổi bật',
+                'name' => 'ingredients_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Thêm thành phần',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_ing_item_name',
+                        'label' => 'Tên thành phần (vd: Gừng tươi, Vitamin B5...)',
+                        'name' => 'name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_ing_item_badge',
+                        'label' => 'Huy hiệu phân loại (Thảo mộc tự nhiên / Dưỡng chất vàng)',
+                        'name' => 'badge',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_ing_item_img',
+                        'label' => 'Hình ảnh thành phần',
+                        'name' => 'img',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                    array(
+                        'key' => 'field_ing_item_hl',
+                        'label' => 'Công dụng nổi bật tóm tắt (ngăn cách bởi dấu ·)',
+                        'name' => 'highlight',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_ing_item_desc',
+                        'label' => 'Mô tả chi tiết công dụng',
+                        'name' => 'desc',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                    ),
+                ),
+            ),
+
+// ==================== TAB 7: CÁCH DÙNG (3 BƯỚC) ====================
             array(
                 'key' => 'field_tab_steps',
                 'label' => 'Cách Dùng (3 Bước)',

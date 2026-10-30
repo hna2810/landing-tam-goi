@@ -1289,3 +1289,50 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
   pointer-events: auto;
   transform: translateY(-50%) translateX(0);
 }
+
+
+/* ========================================================
+   Section 6: 6 Golden Ingredients & Herbal Formula
+   ======================================================== */
+.ltg-ing6-sec{position:relative;background:radial-gradient(800px 500px at 50% 0%,rgba(253,227,144,.45) 0%,transparent 70%),linear-gradient(180deg,#fffdf7 0%,#fff7e4 100%);padding:96px 0;overflow:hidden}
+.ltg-ing6-head{max-width:860px;margin:0 auto 52px;text-align:center}
+.ltg-ing6-title{font-family:var(--serif);font-size:clamp(30px,3.8vw,44px);color:var(--forest);line-height:1.24;letter-spacing:-.01em}
+.ltg-ing6-lead{color:var(--muted);font-size:16.5px;line-height:1.65;max-width:680px;margin:16px auto 0}
+
+.ltg-ing6-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1140px;margin:0 auto}
+.ltg-ing6-card{background:linear-gradient(180deg,#ffffff 0%,#fffdf8 100%);border:1.5px solid #ebd9a8;border-radius:28px;padding:34px 26px 30px;box-shadow:0 20px 48px -24px rgba(90,65,20,.16);display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,border-color .3s ease;position:relative;overflow:hidden}
+.ltg-ing6-card:hover{transform:translateY(-6px);border-color:#dfc37a;box-shadow:0 28px 60px -20px rgba(90,65,20,.24)}
+
+.ltg-ing6-visual{margin-bottom:18px;position:relative}
+.ltg-ing6-avatar-wrap{width:116px;height:116px;border-radius:50%;padding:4px;background:linear-gradient(135deg,#fff1bf 0%,#f6c95a 100%);box-shadow:0 12px 28px -8px rgba(184,93,28,.35);position:relative;display:grid;place-items:center}
+.ltg-ing6-avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid #ffffff}
+.ltg-ing6-num{position:absolute;right:-2px;bottom:0;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3d4f26 0%,#26311b 100%);color:#fff1bf;display:grid;place-items:center;font-family:var(--serif);font-size:13px;font-weight:700;border:2px solid #ffffff;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+
+.ltg-ing6-body{display:flex;flex-direction:column;align-items:center;width:100%;flex:1}
+.ltg-ing6-meta{margin-bottom:8px}
+.ltg-ing6-badge{display:inline-flex;align-items:center;padding:4px 14px;border-radius:999px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.ltg-ing6-badge--herb{background:#f0f4e8;color:#3d5423;border:1px solid #d4e3be}
+.ltg-ing6-badge--gold{background:#fef4e2;color:#b85d1c;border:1px solid #f6d89e}
+
+.ltg-ing6-name{font-family:var(--serif);font-size:23px;font-weight:700;color:var(--forest);margin:6px 0 10px;line-height:1.25}
+.ltg-ing6-hl{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#a45016;background:rgba(254,237,203,.6);padding:5px 12px;border-radius:12px;margin-bottom:14px;line-height:1.35;text-align:center}
+.ltg-ing6-hl svg{flex-shrink:0;color:#c46a22}
+.ltg-ing6-desc{font-size:14.5px;line-height:1.68;color:#4e4a3c;margin:0;text-align:center}
+
+@media(min-width:681px) and (max-width:980px){
+  .ltg-ing6-sec{padding:76px 0}
+  .ltg-ing6-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media(max-width:680px){
+  .ltg-ing6-sec{padding:58px 0 64px}
+  .ltg-ing6-head{margin-bottom:28px}
+  .ltg-ing6-title{font-size:26px}
+  .ltg-ing6-lead{font-size:14.5px;margin-top:10px}
+  .ltg-ing6-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:8px 16px 20px;gap:14px}
+  .ltg-ing6-grid::-webkit-scrollbar{display:none}
+  .ltg-ing6-card{flex:0 0 82%;scroll-snap-align:center;padding:26px 18px 22px;border-radius:22px}
+  .ltg-ing6-avatar-wrap{width:96px;height:96px}
+  .ltg-ing6-name{font-size:20px}
+  .ltg-ing6-desc{font-size:14px;line-height:1.6}
+  .ltg-ing6-swipe{display:flex;margin-top:4px}
+}
