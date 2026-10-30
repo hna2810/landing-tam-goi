@@ -209,11 +209,9 @@ section[id],div[id]{scroll-margin-top:76px}
 /* Story */
 .ltg-story{background:linear-gradient(180deg,#fffcf3 0%,#fbf6e6 100%);position:relative;overflow:hidden}
 .ltg-story .ltg-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
-.ltg-story-imgs{position:relative;padding:0 0 60px 0}
-.ltg-story-imgs .a{border-radius:30px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(60,50,20,.5)}
-.ltg-story-imgs .a img{aspect-ratio:4/3.3;object-fit:cover;width:100%}
-.ltg-story-imgs .b{position:absolute;right:-30px;bottom:0;width:44%;border-radius:24px;overflow:hidden;border:8px solid #fffcf3;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
-.ltg-story-imgs .b img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.ltg-story-imgs{position:relative;max-width:520px;margin:0 auto;width:100%}
+.ltg-story-imgs .a{position:relative;width:100%;padding-bottom:100%;border-radius:28px;overflow:hidden;box-shadow:0 32px 70px -30px rgba(60,50,20,.4);border:2px solid #ebd9a8;background:#fffcf3}
+.ltg-story-imgs .a img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
 .ltg-story-q{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.55;color:var(--forest);border-left:3px solid #e3a94a;padding-left:20px;margin:24px 0}
 .ltg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
 .ltg-stats div{background:linear-gradient(160deg,#fff 0%,#fff3cc 100%);border:1px solid var(--line);border-radius:20px;padding:18px 16px;text-align:center;font-size:13px;color:var(--muted)}
@@ -246,7 +244,7 @@ section[id],div[id]{scroll-margin-top:76px}
 .ltg-final-box p{max-width:560px;margin:16px auto 30px;color:#5e5640;font-size:17px}
 .ltg-final-box .ltg-hero-ctas{justify-content:center}
 .ltg-final-leaf{position:absolute;opacity:.15;color:var(--forest)}
-@media(max-width:980px){.ltg-story .ltg-wrap{grid-template-columns:1fr;gap:40px}.ltg-story-imgs .b{right:0}}
+@media(max-width:980px){.ltg-story .ltg-wrap{grid-template-columns:1fr;gap:40px}}
 @media(max-width:680px){
   .ltg-stats{gap:8px}.ltg-stats b{font-size:26px}.ltg-stats div{padding:14px 6px;font-size:11.5px}
   .ltg-mq img,.ltg-mq-word{width:160px;height:160px;font-size:20px}

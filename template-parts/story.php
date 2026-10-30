@@ -33,14 +33,9 @@ if ($has_story) :
 
   <section class="ltg-sec ltg-story">
     <div class="ltg-wrap">
-      <?php if (!empty($story_img_1) || !empty($story_img_2)) : ?>
+      <?php if (!empty($story_img_1)) : ?>
       <div class="ltg-story-imgs">
-        <?php if (!empty($story_img_1)) : ?>
-          <div class="a"><img src="<?php echo esc_url($story_img_1); ?>" alt="Home Care chăm sóc từ tinh hoa cỏ cây Việt" loading="lazy"></div>
-        <?php endif; ?>
-        <?php if (!empty($story_img_2)) : ?>
-          <div class="b"><img src="<?php echo esc_url($story_img_2); ?>" alt="Thảo dược tươi" loading="lazy"></div>
-        <?php endif; ?>
+        <div class="a"><img src="<?php echo esc_url($story_img_1); ?>" alt="Home Care chăm sóc từ tinh hoa cỏ cây Việt" loading="lazy"></div>
       </div>
       <?php endif; ?>
 
