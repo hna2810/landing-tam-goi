@@ -483,8 +483,9 @@
 
       function tick(){
         var now = new Date(), y = now.getFullYear();
-        var end = new Date(y, 10, 20);
-        if (now > end) end = new Date(y + 1, 10, 20);
+        // Target 23:59:59 on Nov 17 (pre-order deadline for Nov 20 delivery)
+        var end = new Date(y, 10, 17, 23, 59, 59);
+        if (now > end) end = new Date(y + 1, 10, 17, 23, 59, 59);
         var d = Math.max(0, end - now) / 1000;
 
         if (cd) {

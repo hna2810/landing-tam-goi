@@ -108,6 +108,13 @@ if (!$has_gift) {
         </div>
       </div>
 
+      <!-- Mobile Square Banner -->
+      <div class="ltg-gift-mob-banner">
+        <div class="ltg-gift-mob-frame">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/real/gift-box-mobile.jpg'); ?>" alt="Bộ quà tặng tri ân 20/11 Thảo mộc Home Care" loading="lazy">
+        </div>
+      </div>
+
       <?php if (!empty($gift_sets) && is_array($gift_sets)) : ?>
       <div class="ltg-sets ltg-sets--4">
         <?php foreach ($gift_sets as $set) :

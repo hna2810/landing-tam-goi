@@ -542,8 +542,13 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
   .ltg-vlong-cap h3{font-size:24px}
   .ltg-vlong-cap p{font-size:13px}
 
-  /* Quà 20/11 */
-  .ltg-count{gap:8px}
+  /* Quà 20/11: Chỉnh giờ căn giữa, cánh hoa không đè, thêm ảnh vuông */
+  .ltg-petals{z-index:0;pointer-events:none}
+  .ltg-count{justify-content:center!important;gap:8px;position:relative;z-index:2}
+  .ltg-count-note{text-align:center!important;margin-top:10px!important;position:relative;z-index:2}
+  .ltg-gift-mob-banner{display:block;margin:22px auto 26px;max-width:340px;width:100%;position:relative;z-index:2}
+  .ltg-gift-mob-frame{position:relative;width:100%;padding-bottom:100%;border-radius:24px;overflow:hidden;border:2px solid rgba(253,227,144,.6);box-shadow:0 22px 48px -18px rgba(0,0,0,.55);background:linear-gradient(135deg,#3d4f26,#26311b)}
+  .ltg-gift-mob-frame img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
   .ltg-count b{font-size:30px}
   .ltg-gift-perks{grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
   .ltg-gift-perks div{flex-direction:column;text-align:center;font-size:12.5px;padding:14px 10px;gap:8px}
@@ -974,14 +979,37 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
 .ltg-fcd-t small{font-size:11px;color:#cfc8ac;letter-spacing:.1em;text-transform:uppercase}
 /* 4 set quà */
 .ltg-set-price small{font-size:13px;color:var(--muted);font-weight:600}
-@media(min-width:681px){
-  .ltg-sets--4{grid-template-columns:repeat(4,1fr);gap:18px}
-  .ltg-sets--4 .ltg-set h3{font-size:22px}
-  .ltg-sets--4 .ltg-set-body{padding:22px 20px 24px}
+/* Set qua 20/11: Can giua 3 set tren PC & Laptop */
+.ltg-gift-mob-banner{display:none}
+
+@media(min-width:981px){
+  .ltg-sets,
+  .ltg-sets--4{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:28px!important;
+    max-width:1080px!important;
+    margin:46px auto 0!important;
+    justify-content:center!important;
+  }
+  .ltg-sets--4 .ltg-set h3{font-size:24px}
+  .ltg-sets--4 .ltg-set-body{padding:24px 22px 26px}
   .ltg-sets--4 .ltg-set-price{flex-direction:column;align-items:flex-start;gap:4px}
-  .ltg-sets--4 .ltg-set-price b{font-size:30px}
+  .ltg-sets--4 .ltg-set-price b{font-size:32px}
 }
-@media(min-width:681px) and (max-width:1100px){.ltg-sets--4{grid-template-columns:1fr 1fr}.ltg-set--hot{transform:none}}
+@media(min-width:681px) and (max-width:980px){
+  .ltg-sets,
+  .ltg-sets--4{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:16px!important;
+    max-width:960px!important;
+    margin:36px auto 0!important;
+    justify-content:center!important;
+  }
+  .ltg-sets--4 .ltg-set h3{font-size:21px}
+  .ltg-sets--4 .ltg-set-body{padding:20px 16px}
+}
 @media(max-width:860px){.ltg-pks{grid-template-columns:1fr}}
 @media(max-width:980px){.ltg-pain-groups{grid-template-columns:1fr}}
 @media(max-width:680px){
