@@ -395,11 +395,43 @@
             ]
         },
         {
+            "key": "field_tab1_img",
+            "label": "Tab 1: Ảnh vuông sản phẩm ở giữa",
+            "name": "tab1_img",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh vuông sản phẩm (tỉ lệ 1:1) hiển thị ở khối giữa Tab Dầu Gội."
+        },
+        {
             "key": "field_tab1_quote",
             "label": "Tab 1: Câu trích dẫn chốt",
             "name": "tab1_quote",
             "type": "text",
             "default_value": "“Tóc mọc tua tủa – Kích mở nang tóc”"
+        },
+        {
+            "key": "field_tab1_shot_1",
+            "label": "Tab 1: Ảnh Trước - Sau 1 (Dầu Gội)",
+            "name": "tab1_shot_1",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh Trước - Sau thực tế 1 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Dầu Gội."
+        },
+        {
+            "key": "field_tab1_shot_2",
+            "label": "Tab 1: Ảnh Trước - Sau 2 (Dầu Gội)",
+            "name": "tab1_shot_2",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh Trước - Sau thực tế 2 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Dầu Gội."
+        },
+        {
+            "key": "field_tab1_shot_3",
+            "label": "Tab 1: Ảnh Trước - Sau 3 (Dầu Gội)",
+            "name": "tab1_shot_3",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh Trước - Sau thực tế 3 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Dầu Gội."
         },
         {
             "key": "field_tab2_name",
@@ -441,11 +473,43 @@
             ]
         },
         {
+            "key": "field_tab2_img",
+            "label": "Tab 2: Ảnh vuông sản phẩm ở giữa",
+            "name": "tab2_img",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh vuông sản phẩm (tỉ lệ 1:1) hiển thị ở khối giữa Tab Sữa Tắm."
+        },
+        {
             "key": "field_tab2_quote",
             "label": "Tab 2: Câu trích dẫn chốt",
             "name": "tab2_quote",
             "type": "text",
             "default_value": "“Da sạch, mềm mịn, mờ thâm”"
+        },
+        {
+            "key": "field_tab2_shot_1",
+            "label": "Tab 2: Ảnh Trước - Sau 1 (Sữa Tắm)",
+            "name": "tab2_shot_1",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh Trước - Sau thực tế 1 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Sữa Tắm."
+        },
+        {
+            "key": "field_tab2_shot_2",
+            "label": "Tab 2: Ảnh Trước - Sau 2 (Sữa Tắm)",
+            "name": "tab2_shot_2",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh Trước - Sau thực tế 2 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Sữa Tắm."
+        },
+        {
+            "key": "field_tab2_shot_3",
+            "label": "Tab 2: Ảnh Trước - Sau 3 (Sữa Tắm)",
+            "name": "tab2_shot_3",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh Trước - Sau thực tế 3 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Sữa Tắm."
         },
         {
             "key": "field_tab_story",
@@ -620,6 +684,77 @@
             ]
         },
         {
+            "key": "field_tab_ingredients",
+            "label": "Thành Phần (6 Dưỡng Chất)",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_ing_eyebrow",
+            "label": "Nhãn nhỏ trên tiêu đề",
+            "name": "ing_eyebrow",
+            "type": "text",
+            "default_value": "CÔNG THỨC ĐỘC QUYỀN HOME CARE"
+        },
+        {
+            "key": "field_ing_title",
+            "label": "Tiêu đề chính mục Thành phần",
+            "name": "ing_title",
+            "type": "text",
+            "default_value": "Sự kết hợp hoàn hảo của các thành phần thảo mộc và dưỡng chất vàng"
+        },
+        {
+            "key": "field_ing_lead",
+            "label": "Đoạn giới thiệu ngắn",
+            "name": "ing_lead",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Sự giao thoa trọn vẹn giữa bí quyết thảo mộc cổ truyền và các dưỡng chất khoa học chuyên sâu, mang lại hiệu quả phục hồi tóc và nuôi dưỡng làn da tối ưu."
+        },
+        {
+            "key": "field_ingredients_items",
+            "label": "Danh sách 6 thành phần nổi bật",
+            "name": "ingredients_items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Thêm thành phần",
+            "sub_fields": [
+                {
+                    "key": "field_ing_item_name",
+                    "label": "Tên thành phần (vd: Gừng tươi, Vitamin B5...)",
+                    "name": "name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_ing_item_badge",
+                    "label": "Huy hiệu phân loại (Thảo mộc tự nhiên / Dưỡng chất vàng)",
+                    "name": "badge",
+                    "type": "text"
+                },
+                {
+                    "key": "field_ing_item_img",
+                    "label": "Hình ảnh thành phần",
+                    "name": "img",
+                    "type": "image",
+                    "return_format": "url"
+                },
+                {
+                    "key": "field_ing_item_hl",
+                    "label": "Công dụng nổi bật tóm tắt (ngăn cách bởi dấu ·)",
+                    "name": "highlight",
+                    "type": "text"
+                },
+                {
+                    "key": "field_ing_item_desc",
+                    "label": "Mô tả chi tiết công dụng",
+                    "name": "desc",
+                    "type": "textarea",
+                    "rows": 3
+                }
+            ]
+        },
+        {
             "key": "field_tab_steps",
             "label": "Cách Dùng (3 Bước)",
             "type": "tab",
@@ -761,6 +896,37 @@
             "name": "rev_stat_2",
             "type": "text",
             "default_value": "📊 98% đánh giá phản hồi tóc bớt gãy rụng, kích thích mọc tóc và giảm thâm mụn lưng"
+        },
+        {
+            "key": "field_rev_workshop_h",
+            "label": "Tiêu đề mục Hội thảo",
+            "name": "rev_workshop_h",
+            "type": "text",
+            "default_value": "Hình ảnh hội thảo"
+        },
+        {
+            "key": "field_rev_workshop_sub",
+            "label": "Dòng phụ mục Hội thảo",
+            "name": "rev_workshop_sub",
+            "type": "text",
+            "default_value": "Khoảnh khắc các mẹ bầu & mẹ sau sinh trải nghiệm thực tế bộ đôi Tắm Gội Mây Mây"
+        },
+        {
+            "key": "field_rev_workshop_gallery",
+            "label": "Danh sách hình ảnh Hội thảo (ảnh vuông)",
+            "name": "rev_workshop_gallery",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Thêm ảnh hội thảo",
+            "sub_fields": [
+                {
+                    "key": "field_rev_workshop_img",
+                    "label": "Hình ảnh hội thảo",
+                    "name": "img",
+                    "type": "image",
+                    "return_format": "url"
+                }
+            ]
         },
         {
             "key": "field_rev_gallery",
@@ -954,6 +1120,14 @@
             "name": "gift_count_note",
             "type": "text",
             "default_value": "Đặt trước <b>17/11</b> để nhận quà kịp ngày 20/11"
+        },
+        {
+            "key": "field_gift_mobile_img",
+            "label": "Ảnh vuông hiển thị trên mobile (ở trên các card set quà)",
+            "name": "gift_mobile_img",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh vuông (tỉ lệ 1:1) hiển thị trên giao diện mobile ở vị trí phía trên các card set quà tặng."
         },
         {
             "key": "field_gift_sets",
@@ -1157,27 +1331,24 @@
         },
         {
             "key": "field_letter_voice",
-            "label": "Tải lên File Voice MP3 (Giọng đọc lời nhắn từ Chị Mai)",
+            "label": "Tải lên file âm thanh .mp3 giọng đọc lời nhắn",
             "name": "letter_voice",
             "type": "file",
-            "instructions": "Bấm Thêm File để tải lên file âm thanh .mp3 từ máy tính hoặc chọn từ Thư viện WordPress",
-            "required": 0,
+            "instructions": "Chọn hoặc tải lên file âm thanh (.mp3, .m4a, .wav) từ thư viện Media",
             "return_format": "array",
             "library": "all",
-            "min_size": "",
-            "max_size": "30MB",
             "mime_types": "mp3,audio/mpeg,audio/mp3,m4a,wav,ogg"
         },
         {
             "key": "field_letter_author",
-            "label": "Tên người ký (Chữ ký tác giả)",
+            "label": "Tên người sáng lập",
             "name": "letter_author",
             "type": "text",
             "default_value": "Chị Mai"
         },
         {
             "key": "field_letter_author_title",
-            "label": "Chức danh người ký",
+            "label": "Chức danh người sáng lập",
             "name": "letter_author_title",
             "type": "text",
             "default_value": "Nhà sáng lập Home Care · Mẹ của 3 con"
@@ -1206,10 +1377,17 @@
         },
         {
             "key": "field_sticky_phone",
-            "label": "Số điện thoại gọi tư vấn trên thanh cố định",
+            "label": "Số điện thoại gọi tư vấn (Thanh cố định & Nút gọi PC)",
             "name": "sticky_phone",
             "type": "text",
-            "default_value": "0962131515"
+            "default_value": "0973871376"
+        },
+        {
+            "key": "field_contact_zalo",
+            "label": "Số Zalo tư vấn (Nút Zalo PC)",
+            "name": "contact_zalo",
+            "type": "text",
+            "default_value": "0973871376"
         },
         {
             "key": "field_sticky_price",
@@ -1269,5 +1447,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1793094406
+    "modified": 1793428138
 }

@@ -1524,6 +1524,42 @@ function lx_register_acf_landing_fields_group() {
 add_action('acf/init', 'lx_register_acf_landing_fields_group');
 
 /**
+ * Auto-sync ACF Field Group from JSON into Database
+ */
+function lx_auto_sync_acf_landing_fields_group() {
+    if (!function_exists('acf_import_field_group')) {
+        return;
+    }
+    $theme_dir = defined('LX_THEME_DIR') ? LX_THEME_DIR : get_template_directory();
+    $json_file = $theme_dir . '/acf-json/group_tam_goi_landing.json';
+    if (!file_exists($json_file)) {
+        return;
+    }
+
+    $json_content = file_get_contents($json_file);
+    if (empty($json_content)) {
+        return;
+    }
+
+    $group = json_decode($json_content, true);
+    if (empty($group) || !is_array($group) || empty($group['key'])) {
+        return;
+    }
+
+    $hash = md5($json_content);
+    $saved_hash = get_option('lx_acf_group_synced_hash_' . $group['key'], '');
+
+    if ($hash !== $saved_hash) {
+        acf_import_field_group($group);
+        update_option('lx_acf_group_synced_hash_' . $group['key'], $hash);
+        if (function_exists('acf_flush_field_group_cache')) {
+            acf_flush_field_group_cache();
+        }
+    }
+}
+add_action('acf/init', 'lx_auto_sync_acf_landing_fields_group', 30);
+
+/**
  * Configure ACF JSON save & load points
  */
 add_filter('acf/settings/save_json', function($path) {

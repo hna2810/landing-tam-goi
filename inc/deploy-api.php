@@ -27,7 +27,48 @@ add_action('rest_api_init', function () {
         },
         'callback'            => 'lx_handle_remote_update_options',
     ));
+    register_rest_route('lx-deploy/v1', '/sync-acf', array(
+        'methods'             => array('GET', 'POST'),
+        'permission_callback' => function () {
+            return current_user_can('manage_options');
+        },
+        'callback'            => 'lx_handle_remote_sync_acf',
+    ));
 });
+
+/**
+ * Handle remote ACF field group sync from JSON into database
+ */
+function lx_handle_remote_sync_acf($request = null) {
+    if (!function_exists('acf_import_field_group')) {
+        return new WP_REST_Response(array('success' => false, 'message' => 'ACF Pro not active or acf_import_field_group not available'), 400);
+    }
+    $theme_dir = defined('LX_THEME_DIR') ? LX_THEME_DIR : get_template_directory();
+    $json_file = $theme_dir . '/acf-json/group_tam_goi_landing.json';
+    if (!file_exists($json_file)) {
+        return new WP_REST_Response(array('success' => false, 'message' => 'group_tam_goi_landing.json not found'), 404);
+    }
+    $json_content = file_get_contents($json_file);
+    $group_data = json_decode($json_content, true);
+    if (empty($group_data) || !is_array($group_data)) {
+        return new WP_REST_Response(array('success' => false, 'message' => 'Invalid JSON in group_tam_goi_landing.json'), 400);
+    }
+
+    $imported = acf_import_field_group($group_data);
+    update_option('lx_acf_group_synced_hash_' . $group_data['key'], md5($json_content));
+
+    if (function_exists('acf_flush_field_group_cache')) {
+        acf_flush_field_group_cache();
+    }
+    wp_cache_flush();
+
+    return new WP_REST_Response(array(
+        'success'      => true,
+        'group_key'    => isset($imported['key']) ? $imported['key'] : $group_data['key'],
+        'group_title'  => isset($imported['title']) ? $imported['title'] : $group_data['title'],
+        'fields_count' => isset($imported['fields']) ? count($imported['fields']) : count($group_data['fields']),
+    ), 200);
+}
 
 /**
  * Handle remote ACF and WordPress options updates and automatic cache purge
@@ -240,6 +281,22 @@ function lx_handle_remote_deploy($request) {
     // Reset PHP OPcache so new PHP code takes effect immediately
     if (function_exists('opcache_reset')) {
         @opcache_reset();
+    }
+
+    // Auto import/sync ACF Field Group if ACF Pro is active
+    if (function_exists('acf_import_field_group')) {
+        $json_file = $theme_dir . '/acf-json/group_tam_goi_landing.json';
+        if (file_exists($json_file)) {
+            $json_content = file_get_contents($json_file);
+            $group_data = json_decode($json_content, true);
+            if (!empty($group_data) && is_array($group_data)) {
+                acf_import_field_group($group_data);
+                update_option('lx_acf_group_synced_hash_' . $group_data['key'], md5($json_content));
+                if (function_exists('acf_flush_field_group_cache')) {
+                    acf_flush_field_group_cache();
+                }
+            }
+        }
     }
 
     // Purge LiteSpeed Cache & WordPress Object Cache

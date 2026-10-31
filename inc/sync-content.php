@@ -95,7 +95,7 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.3.1';
+    $target_version  = '1.3.2';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
@@ -227,6 +227,12 @@ function lx_sync_tam_goi_landing_content($force = false) {
         'gift_mobile_img'   => array($theme_dir . '/assets/images/real/gift-box-mobile.jpg', 'field_gift_mobile_img'),
         'tab1_img'          => array($theme_dir . '/assets/images/real/prod-dau-goi.jpg', 'field_tab1_img'),
         'tab2_img'          => array($theme_dir . '/assets/images/real/prod-sua-tam.jpg', 'field_tab2_img'),
+        'tab1_shot_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-1.png', 'field_tab1_shot_1'),
+        'tab1_shot_2'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-2.jpg', 'field_tab1_shot_2'),
+        'tab1_shot_3'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-3.png', 'field_tab1_shot_3'),
+        'tab2_shot_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-1.png', 'field_tab2_shot_1'),
+        'tab2_shot_2'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-2.png', 'field_tab2_shot_2'),
+        'tab2_shot_3'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-3.png', 'field_tab2_shot_3'),
     );
 
     $attach_cache = array();
