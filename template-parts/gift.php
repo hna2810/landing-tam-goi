@@ -20,36 +20,28 @@ if (empty($gift_mobile_img) || strpos($gift_mobile_img, 'hstatic.net') !== false
 
 $gift_default_sets = array(
     array(
-        'name'     => 'SET TÂM GIAO',
-        'ribbon'   => '',
-        'img'      => '',
-        'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nHộp quà cao cấp & Thiệp viết tay",
+        'name'     => 'Set Tri Ân 1 (300ml)',
+        'ribbon'   => 'GỢI Ý TẶNG CÔ',
+        'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464436_1660716325371320973_g464639762284770803_c84f1f1acbd3517df19d9197c3a68f7c.jpg',
+        'items'    => "1 Dầu gội Gừng Nghệ (300ml)\n1 Sữa tắm Gừng Nghệ (300ml)\n1 Nước ủ tóc Gừng Tươi (300ml)\n🎁 TẶNG 1 Xịt khử mùi 30ml\n🎁 TẶNG 1 Xịt dưỡng tóc 30ml\nHộp quà cao cấp & Thiệp chúc mừng\n🚚 Freeship toàn quốc",
         'price'    => '199.000đ',
-        'data_set' => 'Set Tâm Giao – 199.000đ',
+        'data_set' => 'Set Tri Ân 1 (300ml) – 199.000đ',
     ),
     array(
-        'name'     => 'SET AN NHIÊN',
-        'ribbon'   => '★ Chọn nhiều nhất',
-        'img'      => '',
-        'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nXịt khử mùi body\nHộp quà cao cấp & Thiệp viết tay",
-        'price'    => '299.000đ',
-        'data_set' => 'Set An Nhiên – 299.000đ',
+        'name'     => 'Set Tri Ân 2 (500ml)',
+        'ribbon'   => '★ BÁN CHẠY NHẤT',
+        'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464435_1660716325371320973_g464639762284770803_adbd45abc87877c9b23858367ed8f7a8.jpg',
+        'items'    => "1 Dầu gội Gừng Nghệ (500ml)\n1 Sữa tắm Gừng Nghệ (500ml)\n1 Nước ủ tóc Gừng Tươi (500ml)\n🎁 TẶNG 1 Xịt khử mùi 100ml\n🎁 TẶNG Dung dịch vệ sinh 200ml\nHộp quà cao cấp & Thiệp chúc mừng\n🚚 Freeship toàn quốc",
+        'price'    => '349.000đ',
+        'data_set' => 'Set Tri Ân 2 (500ml) – 349.000đ',
     ),
     array(
-        'name'     => 'SET TRI ÂN',
-        'ribbon'   => '',
-        'img'      => '',
-        'items'    => "Dầu gội Gừng Nghệ (300ml)\nSữa tắm Gừng Nghệ (300ml)\nXịt khử mùi body & Xịt dưỡng tóc\nHộp quà cao cấp & Thiệp viết tay",
-        'price'    => '399.000đ',
-        'data_set' => 'Set Tri Ân – 399.000đ',
-    ),
-    array(
-        'name'     => 'SET TINH HOA',
-        'ribbon'   => '',
-        'img'      => '',
-        'items'    => "Dầu gội Gừng Nghệ (500ml)\nSữa tắm Gừng Nghệ (500ml)\nXịt khử mùi body & Xịt dưỡng tóc\nNước ủ tóc gừng tươi\nHộp quà cao cấp & Thiệp viết tay",
+        'name'     => 'Set Tri Ân 3 (1000ml)',
+        'ribbon'   => 'SIÊU TIẾT KIỆM',
+        'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464437_1660716325371320973_g464639762284770803_b2dfd84335e12bb6b80d167cd9fee953.jpg',
+        'items'    => "1 Dầu gội Gừng Nghệ (1000ml)\n1 Sữa tắm Gừng Nghệ (1000ml)\n1 Nước ủ tóc Gừng Tươi (1000ml)\n🎁 TẶNG 1 Xịt khử mùi 30ml\n🎁 TẶNG 1 Xịt khử mùi 100ml\nHộp quà VIP cao cấp & Thiệp chúc mừng\n🚚 Freeship toàn quốc",
         'price'    => '499.000đ',
-        'data_set' => 'Set Tinh Hoa – 499.000đ',
+        'data_set' => 'Set Tri Ân 3 (1000ml) – 499.000đ',
     ),
 );
 $gift_sets = lx_get_field('gift_sets', 'option', $gift_default_sets);
@@ -122,7 +114,7 @@ if (!$has_gift) {
       <?php endif; ?>
 
       <?php if (!empty($gift_sets) && is_array($gift_sets)) : ?>
-      <div class="ltg-sets ltg-sets--4">
+      <div class="ltg-sets">
         <?php foreach ($gift_sets as $set) :
             if (empty($set['name'])) continue;
             $is_hot = !empty($set['ribbon']) ? ' ltg-set--hot' : '';

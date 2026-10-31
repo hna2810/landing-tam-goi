@@ -93,6 +93,17 @@ function lx_handle_remote_update_options($request) {
             'key'  => 'field_gift_items',
             'subs' => array('name' => 'field_gift_name', 'badge' => 'field_gift_badge', 'img' => 'field_gift_img', 'desc' => 'field_gift_desc', 'price' => 'field_gift_price', 'is_hot' => 'field_gift_is_hot'),
         ),
+        'gift_sets' => array(
+            'key'  => 'field_gift_sets',
+            'subs' => array(
+                'name'     => 'field_gset_name',
+                'ribbon'   => 'field_gset_ribbon',
+                'img'      => 'field_gset_img',
+                'items'    => 'field_gset_items',
+                'price'    => 'field_gset_price',
+                'data_set' => 'field_gset_data_set',
+            ),
+        ),
     );
 
     foreach ($params as $key => $val) {
