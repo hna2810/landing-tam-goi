@@ -1552,9 +1552,7 @@ function lx_auto_sync_acf_landing_fields_group() {
     if ($hash !== $saved_hash) {
         acf_import_field_group($group);
         update_option('lx_acf_group_synced_hash_' . $group['key'], $hash);
-        if (function_exists('acf_flush_field_group_cache')) {
-            acf_flush_field_group_cache();
-        }
+
     }
 }
 add_action('acf/init', 'lx_auto_sync_acf_landing_fields_group', 30);
