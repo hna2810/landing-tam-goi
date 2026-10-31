@@ -9,6 +9,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// Section Quà 20/11 is hidden per user request
+return;
+
 $gift_eyebrow    = lx_get_field('gift_eyebrow', 'option', "Mùa tri ân 20/11");
 $gift_title      = lx_get_field('gift_title', 'option', "Gửi thầy cô một món quà<br>chăm sóc từ thảo mộc");
 $gift_lead       = lx_get_field('gift_lead', 'option', "Thay lời tri ân sâu sắc gửi đến những người lái đò thầm lặng bằng bộ quà tặng từ thảo mộc tự nhiên, gói trọn sự ấm áp và chân thành.");

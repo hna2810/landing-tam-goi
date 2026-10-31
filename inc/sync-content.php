@@ -95,7 +95,7 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.3.4';
+    $target_version  = '1.3.5';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
@@ -280,7 +280,6 @@ function lx_sync_tam_goi_landing_content($force = false) {
                 array('label' => 'Sản phẩm', 'link' => '#san-pham'),
                 array('label' => 'Quy trình', 'link' => '#quy-trinh'),
                 array('label' => 'Review', 'link' => '#review'),
-                array('label' => 'Quà 20/11', 'link' => '#qua-20-11'),
                 array('label' => 'Hỏi đáp', 'link' => '#hoi-dap'),
             ),
         ),
@@ -298,7 +297,6 @@ function lx_sync_tam_goi_landing_content($force = false) {
             'key' => 'field_hero_trust_items',
             'subs' => array('icon' => 'field_trust_icon', 'text' => 'field_trust_text'),
             'rows' => array(
-                array('icon' => 'i-hosp', 'text' => 'Có mặt tại nhà thuốc, bệnh viện, phòng khám'),
                 array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
                 array('icon' => 'i-shield', 'text' => 'Tem chống hàng giả Bộ Công An'),
                 array('icon' => 'i-pen', 'text' => 'Đã công bố mỹ phẩm – Sở Y tế cấp số'),

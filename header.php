@@ -61,7 +61,6 @@ if (!defined('ABSPATH')) {
           array('label' => 'Sản phẩm', 'link' => '#san-pham'),
           array('label' => 'Quy trình', 'link' => '#quy-trinh'),
           array('label' => 'Review', 'link' => '#review'),
-          array('label' => 'Quà 20/11', 'link' => '#qua-20-11'),
           array('label' => 'Hỏi đáp', 'link' => '#hoi-dap'),
       );
       $menu_items = lx_get_field('header_menu', 'option', $menu_default);
@@ -73,6 +72,7 @@ if (!defined('ABSPATH')) {
       <div class="ltg-menu">
         <?php foreach ($menu_items as $item) :
             if (empty($item['label'])) continue;
+            if ($item['link'] === '#qua-20-11' || strpos($item['link'], 'qua-20-11') !== false || strpos($item['label'], '20/11') !== false) continue;
             $link = !empty($item['link']) ? $item['link'] : '#';
         ?>
           <a href="<?php echo esc_url($link); ?>"><?php echo esc_html($item['label']); ?></a>

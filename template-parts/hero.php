@@ -28,7 +28,6 @@ $hero_cta_sec_text     = lx_get_field('hero_cta_secondary_text', 'option', "Set 
 $hero_cta_sec_link     = lx_get_field('hero_cta_secondary_link', 'option', "#qua-20-11");
 $hero_image            = lx_get_image_url('hero_image', 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'full', 'option');
 $hero_trust_items      = lx_get_field('hero_trust_items', 'option', array(
-    array('icon' => 'i-hosp', 'text' => 'Có mặt tại nhà thuốc, bệnh viện, phòng khám'),
     array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
     array('icon' => 'i-shield', 'text' => 'Tem chống hàng giả Bộ Công An'),
     array('icon' => 'i-pen', 'text' => 'Đã công bố mỹ phẩm – Sở Y tế cấp số'),
@@ -101,8 +100,8 @@ if (!$has_hero) {
                 <?php echo esc_html($hero_cta_pri_text); ?>
               </a>
             <?php endif; ?>
-            <?php if (lx_has_content($hero_cta_sec_text)) : ?>
-              <a href="<?php echo esc_url($hero_cta_sec_link ?: '#qua-20-11'); ?>" class="ltg-btn ltg-btn--ghost">
+            <?php if (lx_has_content($hero_cta_sec_text) && $hero_cta_sec_link !== '#qua-20-11' && strpos($hero_cta_sec_link, 'qua-20-11') === false) : ?>
+              <a href="<?php echo esc_url($hero_cta_sec_link); ?>" class="ltg-btn ltg-btn--ghost">
                 <?php echo esc_html($hero_cta_sec_text); ?>
               </a>
             <?php endif; ?>
@@ -124,6 +123,7 @@ if (!$has_hero) {
         <div class="ltg-wrap">
           <?php foreach ($hero_trust_items as $t) :
               if (empty($t['text'])) continue;
+              if (strpos($t['text'], 'nhà thuốc') !== false || strpos($t['text'], 'bệnh viện') !== false) continue;
               $icon = !empty($t['icon']) ? $t['icon'] : 'i-shield';
           ?>
             <div>

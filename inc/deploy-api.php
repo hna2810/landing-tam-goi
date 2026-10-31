@@ -77,7 +77,15 @@ function lx_handle_remote_update_options($request) {
     $updated = array();
 
     $repeaters = array(
-        'rev_gallery' => array(
+                'header_menu' => array(
+            'key'  => 'field_header_menu',
+            'subs' => array('label' => 'field_menu_label', 'link' => 'field_menu_link'),
+        ),
+        'hero_trust_items' => array(
+            'key'  => 'field_hero_trust_items',
+            'subs' => array('icon' => 'field_trust_icon', 'text' => 'field_trust_text'),
+        ),
+'rev_gallery' => array(
             'key'  => 'field_rev_gallery',
             'subs' => array('img' => 'field_rev_gallery_img'),
         ),

@@ -42,7 +42,7 @@ get_template_part('template-parts/reviews');
 get_template_part('template-parts/combos');
 
 // 11. Quà tặng 20/11 tri ân
-get_template_part('template-parts/gift');
+// get_template_part('template-parts/gift'); // Hidden per user request
 
 // 12. Form đặt hàng trực tiếp
 get_template_part('template-parts/order');
