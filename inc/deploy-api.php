@@ -104,6 +104,16 @@ function lx_handle_remote_update_options($request) {
                 'data_set' => 'field_gset_data_set',
             ),
         ),
+        'ingredients_items' => array(
+            'key'  => 'field_ingredients_items',
+            'subs' => array(
+                'name'      => 'field_ing_item_name',
+                'badge'     => 'field_ing_item_badge',
+                'img'       => 'field_ing_item_img',
+                'highlight' => 'field_ing_item_hl',
+                'desc'      => 'field_ing_item_desc',
+            ),
+        ),
     );
 
     foreach ($params as $key => $val) {

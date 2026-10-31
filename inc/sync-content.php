@@ -95,7 +95,7 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.3.2';
+    $target_version  = '1.3.3';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
@@ -197,6 +197,9 @@ function lx_sync_tam_goi_landing_content($force = false) {
         'sticky_desc'              => array('Combo dầu gội + sữa tắm · Freeship', 'field_sticky_desc'),
         'sticky_btn_text'          => array('Đặt ngay', 'field_sticky_btn_text'),
         'sticky_btn_link'          => array('#dat-hang', 'field_sticky_btn_link'),
+        'ing_eyebrow'       => array('CÔNG THỨC ĐỘC QUYỀN HOME CARE', 'field_ing_eyebrow'),
+        'ing_title'         => array('Sự kết hợp hoàn hảo của các thành phần thảo mộc và dưỡng chất vàng', 'field_ing_title'),
+        'ing_lead'          => array('Sự giao thoa trọn vẹn giữa bí quyết thảo mộc cổ truyền và các dưỡng chất khoa học chuyên sâu, mang lại hiệu quả phục hồi tóc và nuôi dưỡng làn da tối ưu.', 'field_ing_lead'),
     );
 
     foreach ($scalars as $name => $data) {
@@ -420,32 +423,80 @@ function lx_sync_tam_goi_landing_content($force = false) {
             'subs' => array('name' => 'field_gset_name', 'ribbon' => 'field_gset_ribbon', 'img' => 'field_gset_img', 'items' => 'field_gset_items', 'price' => 'field_gset_price', 'data_set' => 'field_gset_data_set'),
             'rows' => array(
                 array(
-                    'name'     => 'Set Tri Ân 1 (300ml)',
+                    'name'     => 'Set Tri Ân 1',
                     'ribbon'   => 'GỢI Ý TẶNG CÔ',
-                    'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464436_1660716325371320973_g464639762284770803_c84f1f1acbd3517df19d9197c3a68f7c.jpg',
-                    'items'    => "1 Dầu gội Gừng Nghệ (300ml)\n1 Sữa tắm Gừng Nghệ (300ml)\n1 Nước ủ tóc Gừng Tươi (300ml)\n🎁 TẶNG 1 Xịt khử mùi 30ml\n🎁 TẶNG 1 Xịt dưỡng tóc 30ml\nHộp quà cao cấp & Thiệp chúc mừng\n🚚 Freeship toàn quốc",
-                    'price'    => '199.000đ',
-                    'data_set' => 'Set Tri Ân 1 (300ml) – 199.000đ',
-                ),
-                array(
-                    'name'     => 'Set Tri Ân 2 (500ml)',
-                    'ribbon'   => '★ BÁN CHẠY NHẤT',
                     'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464435_1660716325371320973_g464639762284770803_adbd45abc87877c9b23858367ed8f7a8.jpg',
-                    'items'    => "1 Dầu gội Gừng Nghệ (500ml)\n1 Sữa tắm Gừng Nghệ (500ml)\n1 Nước ủ tóc Gừng Tươi (500ml)\n🎁 TẶNG 1 Xịt khử mùi 100ml\n🎁 TẶNG Dung dịch vệ sinh 200ml\nHộp quà cao cấp & Thiệp chúc mừng\n🚚 Freeship toàn quốc",
-                    'price'    => '349.000đ',
-                    'data_set' => 'Set Tri Ân 2 (500ml) – 349.000đ',
+                    'items'    => "1 Sữa tắm Gừng Nghệ 500ml\n1 Thiệp viết tay lời chúc\nHộp quà kraft thắt nơ lụa",
+                    'price'    => '249.000đ',
+                    'data_set' => 'set1',
                 ),
                 array(
-                    'name'     => 'Set Tri Ân 3 (1000ml)',
-                    'ribbon'   => 'SIÊU TIẾT KIỆM',
+                    'name'     => 'Set Tri Ân 2 (Đặc Biệt)',
+                    'ribbon'   => 'BÁN CHẠY NHẤT',
                     'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464437_1660716325371320973_g464639762284770803_b2dfd84335e12bb6b80d167cd9fee953.jpg',
-                    'items'    => "1 Dầu gội Gừng Nghệ (1000ml)\n1 Sữa tắm Gừng Nghệ (1000ml)\n1 Nước ủ tóc Gừng Tươi (1000ml)\n🎁 TẶNG 1 Xịt khử mùi 30ml\n🎁 TẶNG 1 Xịt khử mùi 100ml\nHộp quà VIP cao cấp & Thiệp chúc mừng\n🚚 Freeship toàn quốc",
-                    'price'    => '499.000đ',
-                    'data_set' => 'Set Tri Ân 3 (1000ml) – 499.000đ',
+                    'items'    => "1 Dầu gội Gừng Nghệ 300ml\n1 Sữa tắm Gừng Nghệ 500ml\n1 Bông tắm xơ mướp tự nhiên\nHộp quà cứng sang trọng kèm thiệp",
+                    'price'    => '429.000đ',
+                    'data_set' => 'set2',
+                ),
+                array(
+                    'name'     => 'Set Cao Cấp',
+                    'ribbon'   => 'TRỌN BỘ QUÀ TẶNG',
+                    'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464436_1660716325371320973_g464639762284770803_c84f1f1acbd3517df19d9197c3a68f7c.jpg',
+                    'items'    => "Trọn bộ Tắm & Gội Mây Mây\n1 Nước ủ gừng tươi nguyên chất\nHộp quà lót rơm gỗ cao cấp + túi xách",
+                    'price'    => '549.000đ',
+                    'data_set' => 'set3',
                 ),
             ),
         ),
-        'order_combos' => array(
+                'ingredients_items' => array(
+            'key' => 'field_ingredients_items',
+            'subs' => array('name' => 'field_ing_item_name', 'badge' => 'field_ing_item_badge', 'img' => 'field_ing_item_img', 'highlight' => 'field_ing_item_hl', 'desc' => 'field_ing_item_desc'),
+            'rows' => array(
+                array(
+                    'name'      => 'Gừng tươi',
+                    'badge'     => 'Thảo mộc tự nhiên',
+                    'img'       => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/themes/landing-tam-goi/assets/images/real/ing-01-gung.jpg',
+                    'highlight' => 'Giữ ấm cơ thể · Tuần hoàn máu · Chắc chân tóc',
+                    'desc'      => 'Giữ ấm cơ thể, hỗ trợ tăng tuần hoàn máu dưới da đầu, giảm đau nhức và nuôi dưỡng chân tóc chắc khỏe.',
+                ),
+                array(
+                    'name'      => 'Nghệ tươi',
+                    'badge'     => 'Thảo mộc tự nhiên',
+                    'img'       => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/themes/landing-tam-goi/assets/images/real/ing-02-nghe.jpg',
+                    'highlight' => 'Kháng khuẩn · Mờ thâm nám · Chống oxy hóa',
+                    'desc'      => 'Kháng khuẩn tự nhiên, hỗ trợ làm mờ vết thâm, làm sáng da và chống oxy hóa cho làn da sau sinh.',
+                ),
+                array(
+                    'name'      => 'Chiết xuất bưởi',
+                    'badge'     => 'Thảo mộc tự nhiên',
+                    'img'       => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/themes/landing-tam-goi/assets/images/real/ing-03-buoi.jpg',
+                    'highlight' => 'Nuôi nang tóc · Kích mọc tóc · Giảm gãy rụng',
+                    'desc'      => 'Nuôi dưỡng nang tóc chắc khỏe, kích mọc tóc con, giảm thiểu tình trạng tóc gãy rụng và mang lại hương thơm dễ chịu.',
+                ),
+                array(
+                    'name'      => 'Vitamin B5',
+                    'badge'     => 'Dưỡng chất vàng',
+                    'img'       => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/themes/landing-tam-goi/assets/images/real/ing-04-vitamin-b5.jpg',
+                    'highlight' => 'Cấp ẩm sâu · Phục hồi hư tổn · Tóc bồng bềnh',
+                    'desc'      => 'Cung cấp độ ẩm cho tóc và da đầu, phục hồi mái tóc khô xơ, hư tổn, giúp tóc suôn mượt và bồng bềnh.',
+                ),
+                array(
+                    'name'      => 'Vitamin B3',
+                    'badge'     => 'Dưỡng chất vàng',
+                    'img'       => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/themes/landing-tam-goi/assets/images/real/ing-05-vitamin-b3.jpg',
+                    'highlight' => 'Bảo vệ da · Cải thiện đàn hồi · Sáng mịn da',
+                    'desc'      => 'Tăng cường hàng rào bảo vệ da, cải thiện độ đàn hồi, làm đều màu da và nuôi dưỡng làn da cơ thể sáng mịn.',
+                ),
+                array(
+                    'name'      => 'Dâu tằm',
+                    'badge'     => 'Dưỡng chất vàng',
+                    'img'       => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/themes/landing-tam-goi/assets/images/real/ing-06-dau-tam.jpg',
+                    'highlight' => 'Làm dịu da · Dưỡng ẩm mịn màng · Chống oxy hóa',
+                    'desc'      => 'Làm dịu da, cung cấp các dưỡng chất chống oxy hóa tự nhiên, hỗ trợ làm sáng và duy trì độ ẩm mịn màng cho làn da.',
+                ),
+            ),
+        ),
+'order_combos' => array(
             'key' => 'field_order_combos',
             'subs' => array('val' => 'field_ocb_val', 'name' => 'field_ocb_name', 'desc' => 'field_ocb_desc', 'badge' => 'field_ocb_badge', 'chk' => 'field_ocb_chk'),
             'rows' => array(

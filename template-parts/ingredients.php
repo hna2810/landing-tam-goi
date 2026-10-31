@@ -11,8 +11,19 @@ if (!defined('ABSPATH')) {
 }
 
 $ing_eyebrow = lx_get_field('ing_eyebrow', 'option', "CÔNG THỨC ĐỘC QUYỀN HOME CARE");
+if (empty($ing_eyebrow)) {
+    $ing_eyebrow = "CÔNG THỨC ĐỘC QUYỀN HOME CARE";
+}
+
 $ing_title   = lx_get_field('ing_title', 'option', "Sự kết hợp hoàn hảo của các thành phần thảo mộc và dưỡng chất vàng");
+if (empty($ing_title)) {
+    $ing_title = "Sự kết hợp hoàn hảo của các thành phần thảo mộc và dưỡng chất vàng";
+}
+
 $ing_lead    = lx_get_field('ing_lead', 'option', "Sự giao thoa trọn vẹn giữa bí quyết thảo mộc cổ truyền và các dưỡng chất khoa học chuyên sâu, mang lại hiệu quả phục hồi tóc và nuôi dưỡng làn da tối ưu.");
+if (empty($ing_lead)) {
+    $ing_lead = "Sự giao thoa trọn vẹn giữa bí quyết thảo mộc cổ truyền và các dưỡng chất khoa học chuyên sâu, mang lại hiệu quả phục hồi tóc và nuôi dưỡng làn da tối ưu.";
+}
 
 $default_ingredients = array(
     array(
@@ -66,7 +77,17 @@ $default_ingredients = array(
 );
 
 $ingredients_items = lx_get_field('ingredients_items', 'option', $default_ingredients);
-if (!is_array($ingredients_items) || empty($ingredients_items)) {
+
+$has_valid_item = false;
+if (is_array($ingredients_items) && !empty($ingredients_items)) {
+    foreach ($ingredients_items as $it) {
+        if (!empty($it['name'])) {
+            $has_valid_item = true;
+            break;
+        }
+    }
+}
+if (!$has_valid_item) {
     $ingredients_items = $default_ingredients;
 }
 ?>
@@ -90,12 +111,23 @@ if (!is_array($ingredients_items) || empty($ingredients_items)) {
       <!-- Grid 6 Thành phần -->
       <div class="ltg-ing6-grid">
         <?php foreach ($ingredients_items as $idx => $item) : 
-            $name      = $item['name'] ?? '';
-            $badge     = $item['badge'] ?? '';
-            $badge_cls = $item['badge_cls'] ?? ($idx < 3 ? 'ltg-ing6-badge--herb' : 'ltg-ing6-badge--gold');
-            $img       = $item['img'] ?? '';
-            $desc      = $item['desc'] ?? '';
-            $hl        = $item['highlight'] ?? '';
+            $name      = !empty($item['name']) ? $item['name'] : (isset($default_ingredients[$idx]['name']) ? $default_ingredients[$idx]['name'] : '');
+            $badge     = !empty($item['badge']) ? $item['badge'] : (isset($default_ingredients[$idx]['badge']) ? $default_ingredients[$idx]['badge'] : '');
+            $badge_cls = !empty($item['badge_cls']) ? $item['badge_cls'] : ($idx < 3 ? 'ltg-ing6-badge--herb' : 'ltg-ing6-badge--gold');
+            $img       = !empty($item['img']) ? $item['img'] : (isset($default_ingredients[$idx]['img']) ? $default_ingredients[$idx]['img'] : '');
+            
+            if (is_numeric($img) && $img > 0) {
+                $img = wp_get_attachment_image_url($img, 'full');
+            } elseif (is_array($img) && !empty($img['url'])) {
+                $img = $img['url'];
+            }
+            if (empty($img) && isset($default_ingredients[$idx]['img'])) {
+                $img = $default_ingredients[$idx]['img'];
+            }
+
+            $desc      = !empty($item['desc']) ? $item['desc'] : (isset($default_ingredients[$idx]['desc']) ? $default_ingredients[$idx]['desc'] : '');
+            $hl        = !empty($item['highlight']) ? $item['highlight'] : (isset($default_ingredients[$idx]['highlight']) ? $default_ingredients[$idx]['highlight'] : '');
+            
             if (empty($name)) continue;
         ?>
           <div class="ltg-ing6-card">
