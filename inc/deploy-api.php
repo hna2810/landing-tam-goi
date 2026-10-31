@@ -56,10 +56,6 @@ function lx_handle_remote_sync_acf($request = null) {
 
     $imported = acf_import_field_group($group_data);
     update_option('lx_acf_group_synced_hash_' . $group_data['key'], md5($json_content));
-
-    if (function_exists('acf_flush_field_group_cache')) {
-        acf_flush_field_group_cache();
-    }
     wp_cache_flush();
 
     return new WP_REST_Response(array(
@@ -292,9 +288,6 @@ function lx_handle_remote_deploy($request) {
             if (!empty($group_data) && is_array($group_data)) {
                 acf_import_field_group($group_data);
                 update_option('lx_acf_group_synced_hash_' . $group_data['key'], md5($json_content));
-                if (function_exists('acf_flush_field_group_cache')) {
-                    acf_flush_field_group_cache();
-                }
             }
         }
     }
