@@ -454,6 +454,30 @@ function lx_register_acf_landing_fields_group() {
                 'type' => 'text',
                 'default_value' => '“Tóc mọc tua tủa – Kích mở nang tóc”',
             ),
+            array(
+                'key' => 'field_tab1_shot_1',
+                'label' => 'Tab 1: Ảnh Trước - Sau 1 (Dầu Gội)',
+                'name' => 'tab1_shot_1',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh Trước - Sau thực tế 1 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Dầu Gội.',
+            ),
+            array(
+                'key' => 'field_tab1_shot_2',
+                'label' => 'Tab 1: Ảnh Trước - Sau 2 (Dầu Gội)',
+                'name' => 'tab1_shot_2',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh Trước - Sau thực tế 2 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Dầu Gội.',
+            ),
+            array(
+                'key' => 'field_tab1_shot_3',
+                'label' => 'Tab 1: Ảnh Trước - Sau 3 (Dầu Gội)',
+                'name' => 'tab1_shot_3',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh Trước - Sau thực tế 3 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Dầu Gội.',
+            ),
             // Tab con: Sữa tắm
             array(
                 'key' => 'field_tab2_name',
@@ -508,6 +532,30 @@ function lx_register_acf_landing_fields_group() {
                 'name' => 'tab2_quote',
                 'type' => 'text',
                 'default_value' => '“Da sạch, mềm mịn, mờ thâm”',
+            ),
+            array(
+                'key' => 'field_tab2_shot_1',
+                'label' => 'Tab 2: Ảnh Trước - Sau 1 (Sữa Tắm)',
+                'name' => 'tab2_shot_1',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh Trước - Sau thực tế 1 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Sữa Tắm.',
+            ),
+            array(
+                'key' => 'field_tab2_shot_2',
+                'label' => 'Tab 2: Ảnh Trước - Sau 2 (Sữa Tắm)',
+                'name' => 'tab2_shot_2',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh Trước - Sau thực tế 2 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Sữa Tắm.',
+            ),
+            array(
+                'key' => 'field_tab2_shot_3',
+                'label' => 'Tab 2: Ảnh Trước - Sau 3 (Sữa Tắm)',
+                'name' => 'tab2_shot_3',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh Trước - Sau thực tế 3 (tỉ lệ 1:1) hiển thị ở hàng dưới Tab Sữa Tắm.',
             ),
 
             // ==================== TAB 5: CÂU CHUYỆN ====================

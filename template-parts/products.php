@@ -40,6 +40,14 @@ if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
 }
 $tab1_quote      = lx_get_field('tab1_quote', 'option', "“Tóc mọc tua tủa – Kích mở nang tóc”");
 
+// 3 ảnh Trước - Sau thực tế ở dưới Tab 1 (Dầu Gội)
+$tab1_shot_1 = lx_get_image_url('tab1_shot_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-1.png', 'large', 'option');
+$tab1_shot_2 = lx_get_image_url('tab1_shot_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-2.jpg', 'large', 'option');
+$tab1_shot_3 = lx_get_image_url('tab1_shot_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-3.png', 'large', 'option');
+if (empty($tab1_shot_2)) {
+    $tab1_shot_2 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-2.jpg';
+}
+
 // Tab 2: Sữa Tắm
 $tab2_name       = lx_get_field('tab2_name', 'option', "Sữa Tắm Gừng Nghệ Mây Mây");
 $tab2_icon       = lx_get_image_url('tab2_icon', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'thumbnail', 'option');
@@ -66,6 +74,11 @@ if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
     $tab2_icon = get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg';
 }
 $tab2_quote      = lx_get_field('tab2_quote', 'option', "“Da sạch, mềm mịn, mờ thâm”");
+
+// 3 ảnh Trước - Sau thực tế ở dưới Tab 2 (Sữa Tắm)
+$tab2_shot_1 = lx_get_image_url('tab2_shot_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-1.png', 'large', 'option');
+$tab2_shot_2 = lx_get_image_url('tab2_shot_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-2.png', 'large', 'option');
+$tab2_shot_3 = lx_get_image_url('tab2_shot_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-3.png', 'large', 'option');
 
 $has_products = lx_has_content($ba_title) || lx_has_content($tab1_name) || lx_has_content($tab2_name);
 if (!$has_products) {
@@ -152,6 +165,36 @@ if (!$has_products) {
           </div>
         </div>
 
+        <!-- 3 ảnh Trước - Sau thực tế ở dưới -->
+        <?php if (!empty($tab1_shot_1) || !empty($tab1_shot_2) || !empty($tab1_shot_3)) : ?>
+        <div class="ltg-ba3-shots">
+          <?php if (!empty($tab1_shot_1)) : ?>
+            <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab1_shot_1); ?>">
+              <div class="ltg-ba3-shot-wrap">
+                <img src="<?php echo esc_url($tab1_shot_1); ?>" alt="<?php echo esc_attr($tab1_name); ?> - Kết quả Trước Sau 1" loading="lazy">
+                <span class="ltg-ba3-shot-badge">Trước &amp; Sau</span>
+              </div>
+            </figure>
+          <?php endif; ?>
+          <?php if (!empty($tab1_shot_2)) : ?>
+            <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab1_shot_2); ?>">
+              <div class="ltg-ba3-shot-wrap">
+                <img src="<?php echo esc_url($tab1_shot_2); ?>" alt="<?php echo esc_attr($tab1_name); ?> - Kết quả Trước Sau 2" loading="lazy">
+                <span class="ltg-ba3-shot-badge">Trước &amp; Sau</span>
+              </div>
+            </figure>
+          <?php endif; ?>
+          <?php if (!empty($tab1_shot_3)) : ?>
+            <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab1_shot_3); ?>">
+              <div class="ltg-ba3-shot-wrap">
+                <img src="<?php echo esc_url($tab1_shot_3); ?>" alt="<?php echo esc_attr($tab1_name); ?> - Kết quả Trước Sau 3" loading="lazy">
+                <span class="ltg-ba3-shot-badge">Trước &amp; Sau</span>
+              </div>
+            </figure>
+          <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
         <?php if (lx_has_content($tab1_quote)) : ?>
           <p class="ltg-ba3-q"><?php echo esc_html($tab1_quote); ?></p>
         <?php endif; ?>
@@ -202,6 +245,36 @@ if (!$has_products) {
             <img src="<?php echo esc_url($tab2_img); ?>" alt="<?php echo esc_attr($tab2_name); ?>" loading="lazy">
           </div>
         </div>
+
+        <!-- 3 ảnh Trước - Sau thực tế ở dưới -->
+        <?php if (!empty($tab2_shot_1) || !empty($tab2_shot_2) || !empty($tab2_shot_3)) : ?>
+        <div class="ltg-ba3-shots">
+          <?php if (!empty($tab2_shot_1)) : ?>
+            <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab2_shot_1); ?>">
+              <div class="ltg-ba3-shot-wrap">
+                <img src="<?php echo esc_url($tab2_shot_1); ?>" alt="<?php echo esc_attr($tab2_name); ?> - Kết quả Trước Sau 1" loading="lazy">
+                <span class="ltg-ba3-shot-badge">Trước &amp; Sau</span>
+              </div>
+            </figure>
+          <?php endif; ?>
+          <?php if (!empty($tab2_shot_2)) : ?>
+            <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab2_shot_2); ?>">
+              <div class="ltg-ba3-shot-wrap">
+                <img src="<?php echo esc_url($tab2_shot_2); ?>" alt="<?php echo esc_attr($tab2_name); ?> - Kết quả Trước Sau 2" loading="lazy">
+                <span class="ltg-ba3-shot-badge">Trước &amp; Sau</span>
+              </div>
+            </figure>
+          <?php endif; ?>
+          <?php if (!empty($tab2_shot_3)) : ?>
+            <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab2_shot_3); ?>">
+              <div class="ltg-ba3-shot-wrap">
+                <img src="<?php echo esc_url($tab2_shot_3); ?>" alt="<?php echo esc_attr($tab2_name); ?> - Kết quả Trước Sau 3" loading="lazy">
+                <span class="ltg-ba3-shot-badge">Trước &amp; Sau</span>
+              </div>
+            </figure>
+          <?php endif; ?>
+        </div>
+        <?php endif; ?>
 
         <?php if (lx_has_content($tab2_quote)) : ?>
           <p class="ltg-ba3-q"><?php echo esc_html($tab2_quote); ?></p>
