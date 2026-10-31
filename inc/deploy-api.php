@@ -38,11 +38,64 @@ function lx_handle_remote_update_options($request) {
         return new WP_REST_Response(array('success' => false, 'message' => 'No parameters received'), 400);
     }
     $updated = array();
+
+    $repeaters = array(
+        'rev_gallery' => array(
+            'key'  => 'field_rev_gallery',
+            'subs' => array('img' => 'field_rev_gallery_img'),
+        ),
+        'rev_workshop_gallery' => array(
+            'key'  => 'field_rev_workshop_gallery',
+            'subs' => array('img' => 'field_rev_workshop_img'),
+        ),
+        'combo_items' => array(
+            'key'  => 'field_combo_items',
+            'subs' => array('key' => 'field_combo_key', 'name' => 'field_combo_name', 'desc' => 'field_combo_desc', 'price' => 'field_combo_price', 'img' => 'field_combo_img', 'is_hot' => 'field_combo_is_hot'),
+        ),
+        'gift_items' => array(
+            'key'  => 'field_gift_items',
+            'subs' => array('name' => 'field_gift_name', 'badge' => 'field_gift_badge', 'img' => 'field_gift_img', 'desc' => 'field_gift_desc', 'price' => 'field_gift_price', 'is_hot' => 'field_gift_is_hot'),
+        ),
+    );
+
     foreach ($params as $key => $val) {
-        if (function_exists('update_field')) {
-            update_field($key, $val, 'option');
+        if (isset($repeaters[$key]) && is_array($val)) {
+            $rep_info = $repeaters[$key];
+            $rep_key  = $rep_info['key'];
+            $subs     = $rep_info['subs'];
+            $opt_key  = 'options_' . $key;
+            $count    = count($val);
+
+            $prev_count = intval(get_option($opt_key, 0));
+            for ($p = $count; $p < $prev_count; $p++) {
+                foreach ($subs as $sub_name => $sub_key) {
+                    delete_option($opt_key . '_' . $p . '_' . $sub_name);
+                    delete_option('_' . $opt_key . '_' . $p . '_' . $sub_name);
+                }
+            }
+
+            update_option($opt_key, $count);
+            update_option('_' . $opt_key, $rep_key);
+
+            foreach ($val as $i => $row) {
+                foreach ($subs as $sub_name => $sub_key) {
+                    $sub_val = isset($row[$sub_name]) ? $row[$sub_name] : '';
+                    update_option($opt_key . '_' . $i . '_' . $sub_name, $sub_val);
+                    if (!empty($sub_key)) {
+                        update_option('_' . $opt_key . '_' . $i . '_' . $sub_name, $sub_key);
+                    }
+                }
+            }
+
+            if (function_exists('update_field')) {
+                update_field($rep_key, $val, 'option');
+            }
+        } else {
+            if (function_exists('update_field')) {
+                update_field($key, $val, 'option');
+            }
+            update_option('options_' . $key, $val);
         }
-        update_option('options_' . $key, $val);
         $updated[] = $key;
     }
     if (class_exists('LiteSpeed_Cache_API')) {

@@ -30,14 +30,18 @@ if (empty($rev_workshop_gallery) || !is_array($rev_workshop_gallery)) {
 }
 
 $rev_default_gallery = array(
-    array('img' => 'https://cdn.hstatic.net/products/200001066686/feedback-sua-tam-gung-nghe-may-may_70ad2e7919234d7384635a04cef8f022.png'),
-    array('img' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-giam-mun-lung-nguc-gung-nghe_e52b32f1bd2b4aa2a3285e9d07e78545.png'),
-    array('img' => 'https://cdn.hstatic.net/products/200001066686/doi-tuong-dung-sua-tam-gung-nghe-may-may_9017f7a260ae4d8b83b10308909a7d54.png'),
-    array('img' => 'https://cdn.hstatic.net/products/200001066686/thanh-phan-sua-tam-gung-nghe-may-may_6a0a590666174a74b14cc313dbb61bd7.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-1.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-1.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-3.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-2.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-3.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-sua-tam-gung-nghe-2.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/7d6c7ec2-24e0-4644-8523-d82dbed09920.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/62096ad6-f658-40a8-b200-90284d7502c8.png'),
 );
 $rev_gallery = lx_get_field('rev_gallery', 'option', $rev_default_gallery);
-if (!is_array($rev_gallery)) {
-    $rev_gallery = array();
+if (empty($rev_gallery) || !is_array($rev_gallery)) {
+    $rev_gallery = $rev_default_gallery;
 }
 
 $has_rev = lx_has_content($rev_title) || (!empty($rev_gallery) && is_array($rev_gallery));
@@ -92,6 +96,8 @@ if (!$has_rev) {
                     $raw = $item['img'];
                     $src = is_numeric($raw) ? wp_get_attachment_image_url($raw, 'full') : $raw;
                 }
+            } elseif (is_numeric($item)) {
+                $src = wp_get_attachment_image_url($item, 'full');
             } elseif (is_string($item)) {
                 $src = $item;
             }
@@ -158,6 +164,8 @@ if (!$has_rev) {
                     $raw = $item['img'];
                     $src = is_numeric($raw) ? wp_get_attachment_image_url($raw, 'full') : $raw;
                 }
+            } elseif (is_numeric($item)) {
+                $src = wp_get_attachment_image_url($item, 'full');
             } elseif (is_string($item)) {
                 $src = $item;
             }
