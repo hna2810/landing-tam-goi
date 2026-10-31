@@ -14,6 +14,21 @@ $rev_title   = lx_get_field('rev_title', 'option', "Thư viện hàng ngàn feed
 $rev_stat_1  = lx_get_field('rev_stat_1', 'option', "⭐⭐⭐⭐⭐ 4.9/5 sao dựa trên hơn 2.500+ đánh giá thực tế.");
 $rev_stat_2  = lx_get_field('rev_stat_2', 'option', "📊 98% đánh giá phản hồi tóc bớt gãy rụng, kích thích mọc tóc và giảm thâm mụn lưng");
 
+// Hình ảnh hội thảo
+$rev_workshop_h   = lx_get_field('rev_workshop_h', 'option', "Hình ảnh hội thảo");
+$rev_workshop_sub = lx_get_field('rev_workshop_sub', 'option', "Khoảnh khắc các mẹ bầu &amp; mẹ sau sinh trải nghiệm thực tế bộ đôi Tắm Gội Mây Mây");
+
+$rev_default_workshop = array(
+    array('img' => get_template_directory_uri() . '/assets/images/real/workshop-01.jpg'),
+    array('img' => get_template_directory_uri() . '/assets/images/real/workshop-02.jpg'),
+    array('img' => get_template_directory_uri() . '/assets/images/real/workshop-03.jpg'),
+    array('img' => get_template_directory_uri() . '/assets/images/real/workshop-04.jpg'),
+);
+$rev_workshop_gallery = lx_get_field('rev_workshop_gallery', 'option', $rev_default_workshop);
+if (empty($rev_workshop_gallery) || !is_array($rev_workshop_gallery)) {
+    $rev_workshop_gallery = $rev_default_workshop;
+}
+
 $rev_default_gallery = array(
     array('img' => 'https://cdn.hstatic.net/products/200001066686/feedback-sua-tam-gung-nghe-may-may_70ad2e7919234d7384635a04cef8f022.png'),
     array('img' => 'https://cdn.hstatic.net/products/200001066686/sua-tam-giam-mun-lung-nguc-gung-nghe_e52b32f1bd2b4aa2a3285e9d07e78545.png'),
@@ -58,7 +73,39 @@ if (!$has_rev) {
         <?php endif; ?>
       </div>
 
-      <h3 class="ltg-sub-h" style="margin-top:40px">Từ Bầu đến Sau sinh tin dùng</h3>
+      <!-- Mục: Hình ảnh hội thảo -->
+      <?php if (lx_has_content($rev_workshop_h)) : ?>
+        <h3 class="ltg-sub-h" style="margin-top:40px"><?php echo esc_html($rev_workshop_h); ?></h3>
+      <?php endif; ?>
+      <?php if (lx_has_content($rev_workshop_sub)) : ?>
+        <p class="ltg-sub-p"><?php echo wp_kses_post($rev_workshop_sub); ?></p>
+      <?php endif; ?>
+
+      <?php if (!empty($rev_workshop_gallery) && is_array($rev_workshop_gallery)) : ?>
+      <div class="ltg-workshop-shots">
+        <?php foreach ($rev_workshop_gallery as $item) :
+            $src = '';
+            if (is_array($item)) {
+                if (!empty($item['img']['url'])) {
+                    $src = $item['img']['url'];
+                } elseif (!empty($item['img'])) {
+                    $raw = $item['img'];
+                    $src = is_numeric($raw) ? wp_get_attachment_image_url($raw, 'full') : $raw;
+                }
+            } elseif (is_string($item)) {
+                $src = $item;
+            }
+            if (empty($src)) continue;
+        ?>
+          <figure data-img="<?php echo esc_url($src); ?>">
+            <img src="<?php echo esc_url($src); ?>" alt="Hình ảnh hội thảo mẹ bầu và sau sinh Home Care" loading="lazy">
+          </figure>
+        <?php endforeach; ?>
+      </div>
+      <div class="ltg-swipe">Vuốt để xem thêm <i></i></div>
+      <?php endif; ?>
+
+      <h3 class="ltg-sub-h" style="margin-top:48px">Từ Bầu đến Sau sinh tin dùng</h3>
 
       <div class="ltg-rev-grid">
         <div class="ltg-rcard">

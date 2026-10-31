@@ -309,6 +309,10 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
 .ltg-rprod{display:inline-block;margin-top:12px;font-size:12px;background:var(--sage);color:var(--olive-2);padding:4px 10px;border-radius:999px;font-weight:600}
 .ltg-verified{display:inline-flex;align-items:center;gap:4px;color:var(--olive-2);font-size:11.5px;font-weight:600;margin-left:6px}
 .ltg-sample{position:absolute;top:14px;right:14px;background:#ffe9a8;color:#8a5a00;border:1px dashed #d9a400;font-size:10.5px;font-weight:800;letter-spacing:.08em;padding:3px 8px;border-radius:8px}
+.ltg-workshop-shots{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:16px;margin-bottom:20px}
+.ltg-workshop-shots figure{margin:0;position:relative;width:100%;padding-bottom:100%;border-radius:20px;overflow:hidden;background:#fff;border:1.5px solid #ebd9a8;box-shadow:0 16px 36px -20px rgba(120,90,20,.35);cursor:zoom-in;transition:border-color .3s ease,box-shadow .3s ease}
+.ltg-workshop-shots figure:hover{border-color:var(--forest);box-shadow:0 24px 50px -20px rgba(46,59,34,.45)}
+.ltg-workshop-shots img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
 .ltg-shots{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px}
 .ltg-shots figure{border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);cursor:zoom-in;box-shadow:0 20px 40px -32px rgba(0,0,0,.4)}
 .ltg-shots img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;transition:transform .6s}
@@ -498,13 +502,14 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
   .ltg-trust i{width:36px;height:36px;flex:0 0 36px}
 
   /* Carousel vuốt ngang */
-  .ltg-ba,.ltg-sets,.ltg-rev-grid,.ltg-steps,.ltg-shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-left:-16px;margin-right:-16px;padding:6px 16px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;columns:auto}
-  .ltg-ba::-webkit-scrollbar,.ltg-sets::-webkit-scrollbar,.ltg-rev-grid::-webkit-scrollbar,.ltg-steps::-webkit-scrollbar,.ltg-shots::-webkit-scrollbar,.ltg-srow::-webkit-scrollbar,.ltg-flow::-webkit-scrollbar{display:none}
+  .ltg-ba,.ltg-sets,.ltg-rev-grid,.ltg-steps,.ltg-shots,.ltg-workshop-shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-left:-16px;margin-right:-16px;padding:6px 16px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;columns:auto}
+  .ltg-ba::-webkit-scrollbar,.ltg-sets::-webkit-scrollbar,.ltg-rev-grid::-webkit-scrollbar,.ltg-steps::-webkit-scrollbar,.ltg-shots::-webkit-scrollbar,.ltg-workshop-shots::-webkit-scrollbar,.ltg-srow::-webkit-scrollbar,.ltg-flow::-webkit-scrollbar{display:none}
   .ltg-ba>*{flex:0 0 86%;scroll-snap-align:center}
   .ltg-sets>*{flex:0 0 84%;scroll-snap-align:center}
   .ltg-rev-grid>*{flex:0 0 82%;scroll-snap-align:center;margin-bottom:0}
   .ltg-steps>*{flex:0 0 74%;scroll-snap-align:center}
   .ltg-shots>*{flex:0 0 62%;scroll-snap-align:center}
+  .ltg-workshop-shots>*{flex:0 0 74%;width:74%;scroll-snap-align:center}
   .ltg-sets{margin-top:34px;padding-top:18px;align-items:stretch}
   .ltg-set--hot{transform:none}
   .ltg-ba{margin-top:30px}

@@ -908,6 +908,37 @@ function lx_register_acf_landing_fields_group() {
                 'default_value' => '📊 98% đánh giá phản hồi tóc bớt gãy rụng, kích thích mọc tóc và giảm thâm mụn lưng',
             ),
             array(
+                'key' => 'field_rev_workshop_h',
+                'label' => 'Tiêu đề mục Hội thảo',
+                'name' => 'rev_workshop_h',
+                'type' => 'text',
+                'default_value' => 'Hình ảnh hội thảo',
+            ),
+            array(
+                'key' => 'field_rev_workshop_sub',
+                'label' => 'Dòng phụ mục Hội thảo',
+                'name' => 'rev_workshop_sub',
+                'type' => 'text',
+                'default_value' => 'Khoảnh khắc các mẹ bầu & mẹ sau sinh trải nghiệm thực tế bộ đôi Tắm Gội Mây Mây',
+            ),
+            array(
+                'key' => 'field_rev_workshop_gallery',
+                'label' => 'Danh sách hình ảnh Hội thảo (ảnh vuông)',
+                'name' => 'rev_workshop_gallery',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Thêm ảnh hội thảo',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_rev_workshop_img',
+                        'label' => 'Hình ảnh hội thảo',
+                        'name' => 'img',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_rev_gallery',
                 'label' => 'Thư viện ảnh chụp Feedback',
                 'name' => 'rev_gallery',
