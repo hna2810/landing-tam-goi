@@ -95,7 +95,7 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.3.3';
+    $target_version  = '1.3.4';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
@@ -423,32 +423,32 @@ function lx_sync_tam_goi_landing_content($force = false) {
             'subs' => array('name' => 'field_gset_name', 'ribbon' => 'field_gset_ribbon', 'img' => 'field_gset_img', 'items' => 'field_gset_items', 'price' => 'field_gset_price', 'data_set' => 'field_gset_data_set'),
             'rows' => array(
                 array(
-                    'name'     => 'Set Tri Ân 1',
+                    'name'     => 'Set Tri Ân 1 (300ml)',
                     'ribbon'   => 'GỢI Ý TẶNG CÔ',
-                    'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464435_1660716325371320973_g464639762284770803_adbd45abc87877c9b23858367ed8f7a8.jpg',
-                    'items'    => "1 Sữa tắm Gừng Nghệ 500ml\n1 Thiệp viết tay lời chúc\nHộp quà kraft thắt nơ lụa",
-                    'price'    => '249.000đ',
-                    'data_set' => 'set1',
-                ),
-                array(
-                    'name'     => 'Set Tri Ân 2 (Đặc Biệt)',
-                    'ribbon'   => 'BÁN CHẠY NHẤT',
-                    'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464437_1660716325371320973_g464639762284770803_b2dfd84335e12bb6b80d167cd9fee953.jpg',
-                    'items'    => "1 Dầu gội Gừng Nghệ 300ml\n1 Sữa tắm Gừng Nghệ 500ml\n1 Bông tắm xơ mướp tự nhiên\nHộp quà cứng sang trọng kèm thiệp",
-                    'price'    => '429.000đ',
-                    'data_set' => 'set2',
-                ),
-                array(
-                    'name'     => 'Set Cao Cấp',
-                    'ribbon'   => 'TRỌN BỘ QUÀ TẶNG',
                     'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464436_1660716325371320973_g464639762284770803_c84f1f1acbd3517df19d9197c3a68f7c.jpg',
-                    'items'    => "Trọn bộ Tắm & Gội Mây Mây\n1 Nước ủ gừng tươi nguyên chất\nHộp quà lót rơm gỗ cao cấp + túi xách",
-                    'price'    => '549.000đ',
-                    'data_set' => 'set3',
+                    'items'    => "1 Dầu gội Gừng Nghệ 300ml\n1 Sữa tắm Gừng Nghệ 300ml\n1 Serum Ủ tóc Gừng Tươi 300ml\n🎁 TẶNG 1 Xịt khử mùi 30ml\n🎁 TẶNG 1 Xịt dưỡng tóc 30ml\n🚚 Miễn phí vận chuyển toàn quốc",
+                    'price'    => '199.000đ',
+                    'data_set' => 'Set Tri Ân 1 (300ml) – 199.000đ',
+                ),
+                array(
+                    'name'     => 'Set Tri Ân 2 (500ml)',
+                    'ribbon'   => '★ BÁN CHẠY NHẤT',
+                    'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464435_1660716325371320973_g464639762284770803_adbd45abc87877c9b23858367ed8f7a8.jpg',
+                    'items'    => "1 Dầu gội Gừng Nghệ 500ml\n1 Sữa tắm Gừng Nghệ 500ml\n1 Serum Ủ tóc Gừng Tươi 500ml\n🎁 TẶNG 1 Xịt khử mùi 100ml\n🎁 TẶNG 1 Dung dịch vệ sinh 200ml\n🚚 Miễn phí vận chuyển toàn quốc",
+                    'price'    => '349.000đ',
+                    'data_set' => 'Set Tri Ân 2 (500ml) – 349.000đ',
+                ),
+                array(
+                    'name'     => 'Set Cao Cấp (1000ml)',
+                    'ribbon'   => 'TRỌN BỘ QUÀ TẶNG',
+                    'img'      => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/1793430464437_1660716325371320973_g464639762284770803_b2dfd84335e12bb6b80d167cd9fee953.jpg',
+                    'items'    => "1 Dầu gội Gừng Nghệ 1000ml\n1 Sữa tắm Gừng Nghệ 1000ml\n1 Serum Ủ tóc Gừng Tươi 1000ml\n🎁 TẶNG 1 Xịt khử mùi 30ml\n🎁 TẶNG 1 Xịt khử mùi 100ml\n🚚 Miễn phí vận chuyển toàn quốc",
+                    'price'    => '499.000đ',
+                    'data_set' => 'Set Cao Cấp (1000ml) – 499.000đ',
                 ),
             ),
         ),
-                'ingredients_items' => array(
+        'ingredients_items' => array(
             'key' => 'field_ingredients_items',
             'subs' => array('name' => 'field_ing_item_name', 'badge' => 'field_ing_item_badge', 'img' => 'field_ing_item_img', 'highlight' => 'field_ing_item_hl', 'desc' => 'field_ing_item_desc'),
             'rows' => array(

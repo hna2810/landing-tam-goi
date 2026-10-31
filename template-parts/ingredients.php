@@ -145,12 +145,7 @@ if (!$has_valid_item) {
 
               <h3 class="ltg-ing6-name"><?php echo esc_html($name); ?></h3>
 
-              <?php if (!empty($hl)) : ?>
-                <div class="ltg-ing6-hl">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><?php echo esc_html($hl); ?></span>
-                </div>
-              <?php endif; ?>
+
 
               <p class="ltg-ing6-desc"><?php echo esc_html($desc); ?></p>
             </div>
