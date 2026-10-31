@@ -314,9 +314,9 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
 .ltg-workshop-shots figure:hover{border-color:var(--forest);box-shadow:0 24px 50px -20px rgba(46,59,34,.45)}
 .ltg-workshop-shots img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
 .ltg-shots{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:16px;margin-bottom:20px}
-.ltg-shots figure{margin:0;position:relative;width:100%;padding-bottom:100%;border-radius:20px;overflow:hidden;background:#fff;border:1.5px solid #ebd9a8;box-shadow:0 16px 36px -20px rgba(120,90,20,.35);cursor:zoom-in;transition:border-color .3s ease,box-shadow .3s ease}
+.ltg-shots figure{margin:0;position:relative;width:100%;padding-bottom:177.78%;border-radius:20px;overflow:hidden;background:#fff;border:1.5px solid #ebd9a8;box-shadow:0 16px 36px -20px rgba(120,90,20,.35);cursor:zoom-in;transition:border-color .3s ease,box-shadow .3s ease}
 .ltg-shots figure:hover{border-color:var(--forest);box-shadow:0 24px 50px -20px rgba(46,59,34,.45)}
-.ltg-shots img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .5s ease}
+.ltg-shots img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s ease}
 .ltg-shots figure:hover img{transform:scale(1.05)}
 .ltg-sub-h{font-family:var(--serif);font-size:24px;color:var(--forest);margin:50px 0 6px;text-align:center}
 .ltg-sub-p{text-align:center;color:var(--muted);font-size:14.5px;margin-bottom:22px}
@@ -509,7 +509,7 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
   .ltg-sets>*{flex:0 0 84%;scroll-snap-align:center}
   .ltg-rev-grid>*{flex:0 0 82%;scroll-snap-align:center;margin-bottom:0}
   .ltg-steps>*{flex:0 0 74%;scroll-snap-align:center}
-  .ltg-shots>*{flex:0 0 74%;width:74%;scroll-snap-align:center}
+  .ltg-shots>*{flex:0 0 68%;width:68%;scroll-snap-align:center}
   .ltg-workshop-shots>*{flex:0 0 74%;width:74%;scroll-snap-align:center}
   .ltg-sets{margin-top:34px;padding-top:18px;align-items:stretch}
   .ltg-set--hot{transform:none}

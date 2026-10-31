@@ -309,6 +309,14 @@ function lx_register_acf_landing_fields_group() {
                 'return_format' => 'url',
             ),
             array(
+                'key' => 'field_pain_badge_img',
+                'label' => 'Ảnh huy hiệu tròn nổi góc ảnh giữa',
+                'name' => 'pain_badge_img',
+                'type' => 'image',
+                'return_format' => 'url',
+                'instructions' => 'Chọn ảnh hiển thị trong vòng tròn nhỏ đè lên góc dưới bên trái của ảnh vòm giữa mục Nỗi lo.',
+            ),
+            array(
                 'key' => 'field_pain_skin_h',
                 'label' => 'Tiêu đề cột Làn da cơ thể',
                 'name' => 'pain_skin_h',

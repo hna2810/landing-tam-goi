@@ -218,6 +218,7 @@ function lx_sync_tam_goi_landing_content($force = false) {
     $images = array(
         'hero_image'        => array('https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'field_hero_image'),
         'pain_center_img'   => array($theme_dir . '/assets/images/skin-body.webp', 'field_pain_center_img'),
+        'pain_badge_img'    => array('https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png', 'field_pain_badge_img'),
         'story_img_1'       => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'field_story_img_1'),
         'story_img_2'       => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg', 'field_story_img_2'),
         'proc_video_thumb'  => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'field_proc_video_thumb'),

@@ -267,6 +267,14 @@
             "return_format": "url"
         },
         {
+            "key": "field_pain_badge_img",
+            "label": "Ảnh huy hiệu tròn nổi góc ảnh giữa",
+            "name": "pain_badge_img",
+            "type": "image",
+            "return_format": "url",
+            "instructions": "Chọn ảnh hiển thị trong vòng tròn nhỏ đè lên góc dưới bên trái của ảnh vòm giữa mục Nỗi lo."
+        },
+        {
             "key": "field_pain_skin_h",
             "label": "Tiêu đề cột Làn da cơ thể",
             "name": "pain_skin_h",
@@ -1447,5 +1455,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1793428138
+    "modified": 1793433225
 }
