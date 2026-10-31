@@ -12,6 +12,7 @@
     var outH = document.getElementById('ltgTypeHl');
     var ghostB = document.getElementById('ltgGhostBody');
     var ghostH = document.getElementById('ltgGhostHl');
+    var hlBox = box ? box.querySelector('.ltg-letter-hl-box') : null;
     var voice = document.getElementById('ltgTypeVoice');
     var vCtrl = document.getElementById('ltgVoiceCtrl');
     var vBtn = document.getElementById('ltgVoiceBtn');
@@ -69,12 +70,14 @@
       if (k === lastRendered) return;
       lastRendered = k;
 
-      if (k <= NB) {
+      if (k < NB) {
         outB.textContent = cb.slice(0, k).join('');
         if (outH) outH.textContent = '';
         outB.appendChild(caret);
+        if (hlBox) hlBox.classList.remove('is-show');
       } else {
         outB.textContent = cb.join('');
+        if (hlBox) hlBox.classList.add('is-show');
         if (outH) {
           outH.textContent = ch.slice(0, k - NB).join('');
           outH.appendChild(caret);
@@ -98,6 +101,7 @@
       updateControlUI(false, 'Lắng nghe lại tâm sự Chị Mai (51s)');
       var totalDur = (useVoice && voice && voice.duration) ? voice.duration : DURATION;
       render(totalDur);
+      if (hlBox) hlBox.classList.add('is-show');
       if (caret.parentNode) {
         caret.parentNode.removeChild(caret);
       }
