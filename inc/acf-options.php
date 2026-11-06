@@ -310,7 +310,7 @@ function lx_register_acf_landing_fields_group() {
             ),
             array(
                 'key' => 'field_pain_badge_img',
-                'label' => 'Ảnh huy hiệu tròn nổi góc ảnh giữa',
+                'label' => 'Ảnh huy hiệu tròn nổi góc ảnh giữa (Mái tóc)',
                 'name' => 'pain_badge_img',
                 'type' => 'image',
                 'return_format' => 'url',

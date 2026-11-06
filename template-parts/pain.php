@@ -18,9 +18,10 @@ $pain_hair_items = lx_get_field('pain_hair_items', 'option', array(
     array('title' => 'Tóc khô xơ, hư tổn', 'desc' => 'Sợi tóc xơ xác, chẻ ngọn, thiếu sức sống do tác động từ hóa chất, uốn nhuộm hoặc thay đổi nội tiết tố.'),
 ));
 $pain_center_img = lx_get_image_url('pain_center_img', LX_THEME_URI . '/assets/images/skin-body.webp', 'full', 'option');
-$pain_badge_img  = lx_get_image_url('pain_badge_img', 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png', 'large', 'option');
-if (empty($pain_badge_img)) {
-    $pain_badge_img = 'https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png';
+$default_pain_badge = get_template_directory_uri() . '/assets/images/real/mai-toc-noi-lo.png';
+$pain_badge_img  = lx_get_image_url('pain_badge_img', $default_pain_badge, 'large', 'option');
+if (empty($pain_badge_img) || strpos($pain_badge_img, 'dau-goi-gung-nghe-may-may') !== false || strpos($pain_badge_img, 'hstatic.net') !== false) {
+    $pain_badge_img = $default_pain_badge;
 }
 $pain_skin_h     = lx_get_field('pain_skin_h', 'option', "Làn da cơ thể");
 $pain_skin_items = lx_get_field('pain_skin_items', 'option', array(
@@ -82,7 +83,7 @@ if (!lx_has_content($pain_title) && !$has_hair && !$has_skin) {
             </div>
             <?php if (!empty($pain_badge_img)) : ?>
             <div class="ltg-p4-bub">
-              <img src="<?php echo esc_url($pain_badge_img); ?>" alt="Dầu gội gừng nghệ Mây Mây" loading="lazy">
+              <img src="<?php echo esc_url($pain_badge_img); ?>" alt="Mái tóc gãy rụng, hư tổn" loading="lazy">
             </div>
             <?php endif; ?>
           </div>

@@ -95,20 +95,22 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.4.1';
+    $target_version  = '1.4.2';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
     }
 
     // Force update key fields when upgrading
-    if ($force || version_compare($current_version, '1.4.1', '<')) {
+    if ($force || version_compare($current_version, '1.4.2', '<')) {
         update_option('options_hero_price', '79.000đ');
         update_option('options_hero_price_label', 'Combo dầu gội + sữa tắm 300ml');
         update_option('options_sticky_price', '79K');
         update_option('options_sticky_desc', 'Bộ đôi gội + tắm 300ml · Freeship');
         update_option('options_order_email', 'danghuy.homecare@gmail.com');
         update_option('options_proc_video', 'https://www.youtube.com/shorts/CoHucyPBjSU');
+        update_option('options_pain_badge_img', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/mai-toc-noi-lo.png');
+        update_option('_options_pain_badge_img', 'field_pain_badge_img');
 
         $trust_rows = array(
             array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
@@ -245,7 +247,7 @@ function lx_sync_tam_goi_landing_content($force = false) {
     $images = array(
         'hero_image'        => array('https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'field_hero_image'),
         'pain_center_img'   => array($theme_dir . '/assets/images/skin-body.webp', 'field_pain_center_img'),
-        'pain_badge_img'    => array('https://cdn.hstatic.net/products/200001066686/dau-goi-gung-nghe-may-may-300ml_976748158c9548e5a917d6f1037d2dbe.png', 'field_pain_badge_img'),
+        'pain_badge_img'    => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/mai-toc-noi-lo.png', 'field_pain_badge_img'),
         'story_img_1'       => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'field_story_img_1'),
         'story_img_2'       => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg', 'field_story_img_2'),
         'proc_video_thumb'  => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'field_proc_video_thumb'),
