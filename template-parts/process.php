@@ -13,13 +13,18 @@ $proc_eyebrow    = lx_get_field('proc_eyebrow', 'option', "Quy trình sản xu�
 $proc_title      = lx_get_field('proc_title', 'option', "Từng giọt dầu gội ra đời như thế nào?");
 $proc_lead       = lx_get_field('proc_lead', 'option', "Từ nguyên liệu gừng nghệ đến chai gội xả thơm lành trên tay.");
 $proc_video      = lx_get_field('proc_video', 'option', "https://www.youtube.com/shorts/CoHucyPBjSU");
-$proc_video_thumb= lx_get_image_url('proc_video_thumb', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'full', 'option');
-if (empty($proc_video_thumb) || strpos($proc_video_thumb, 'hstatic.net') !== false) {
-    $proc_video_thumb = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg';
-}
-$proc_video_tag  = lx_get_field('proc_video_tag', 'option', "Video thực tế");
 $proc_video_h    = lx_get_field('proc_video_title', 'option', "Hành trình từ đất lành đến mái tóc khoẻ – Dầu gội Gừng Nghệ Mây Mây");
-$proc_video_desc = lx_get_field('proc_video_desc', 'option', "");
+
+// Extract YouTube ID for direct iframe embed
+$youtube_id = '';
+if (!empty($proc_video)) {
+    if (preg_match('/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/', $proc_video, $matches)) {
+        $youtube_id = $matches[1];
+    }
+}
+if (empty($youtube_id)) {
+    $youtube_id = 'CoHucyPBjSU';
+}
 
 $proc_default_steps = array(
     array(
@@ -77,44 +82,27 @@ if (!$has_proc) {
         <?php endif; ?>
       </div>
 
-      <!-- VIDEO DÀI -->
-      <div class="ltg-vlong" data-video="<?php echo esc_attr($proc_video); ?>" data-vertical="1" role="button" tabindex="0" aria-label="Xem video quy trình">
-        <?php if (!empty($proc_video_thumb)) : ?>
-          <img src="<?php echo esc_url($proc_video_thumb); ?>" alt="<?php echo esc_attr($proc_video_h); ?>" loading="lazy">
-        <?php endif; ?>
-        <span class="ltg-play"><svg width="34" height="34"><use href="#i-play"/></svg></span>
-        <div class="ltg-vlong-cap">
-          <div>
-            <?php if (lx_has_content($proc_video_tag)) : ?>
-              <span class="ltg-vlong-tag"><?php echo esc_html($proc_video_tag); ?></span>
-            <?php endif; ?>
-            <?php if (lx_has_content($proc_video_h)) : ?>
-              <h3><?php echo esc_html($proc_video_h); ?></h3>
-            <?php endif; ?>
-            <?php if (lx_has_content($proc_video_desc)) : ?>
-              <p><?php echo esc_html($proc_video_desc); ?></p>
-            <?php endif; ?>
-          </div>
-          <span class="ltg-dur">▶ Xem video · 2 phút</span>
-        </div>
+      <!-- VIDEO EMBED TRỰC TIẾP -->
+      <div class="ltg-vlong ltg-vlong--embed" id="ltgMainVideoWrap">
+        <iframe src="https://www.youtube.com/embed/<?php echo esc_attr($youtube_id); ?>?rel=0&modestbranding=1" title="<?php echo esc_attr($proc_video_h); ?>" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
       </div>
 
       <!-- 2 VIDEO SHORTS -->
       <div class="ltg-nc-vids">
         <div class="ltg-nc-vid" data-video="https://www.youtube.com/shorts/RR7KrV1eiTo" data-vertical="1" role="button" tabindex="0" aria-label="Xem video Dầu gội Gừng Nghệ cho mẹ sau sinh">
-          <img src="https://i.ytimg.com/vi/RR7KrV1eiTo/oar2.jpg" alt="Dầu gội Gừng Nghệ Mây Mây cho mẹ sau sinh" loading="lazy">
+          <img src="https://i.ytimg.com/vi/RR7KrV1eiTo/hqdefault.jpg" alt="Dầu gội Gừng Nghệ Mây Mây cho mẹ sau sinh" loading="lazy">
           <span class="ltg-nc-vplay"><svg width="22" height="22"><use href="#i-play"/></svg></span>
           <div>
             <b>Sau sinh tóc rụng từng búi?</b>
-            <small>Dầu gội Gừng Nghệ · 30 giây</small>
+            <small>Dầu gội Gừng Nghệ · 30 giây (Xem video)</small>
           </div>
         </div>
         <div class="ltg-nc-vid" data-video="https://www.youtube.com/shorts/3E12F-vt77c" data-vertical="1" role="button" tabindex="0" aria-label="Xem video Xịt khử mùi Gừng Cam">
-          <img src="https://i.ytimg.com/vi/3E12F-vt77c/oar2.jpg" alt="Xịt khử mùi Gừng Cam Mây Mây" loading="lazy">
+          <img src="https://i.ytimg.com/vi/3E12F-vt77c/hqdefault.jpg" alt="Xịt khử mùi Gừng Cam Mây Mây" loading="lazy">
           <span class="ltg-nc-vplay"><svg width="22" height="22"><use href="#i-play"/></svg></span>
           <div>
             <b>Xịt khử mùi Gừng Cam</b>
-            <small>Quà tặng kèm bộ 500ml · 18 giây</small>
+            <small>Quà tặng kèm bộ 500ml · 18 giây (Xem video)</small>
           </div>
         </div>
       </div>

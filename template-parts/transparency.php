@@ -58,27 +58,19 @@ if (!$has_clear) {
                 <figcaption>Phiếu công bố – Sữa tắm</figcaption>
               </figure>
             <?php endif; ?>
-
-            <?php if (!empty($clear_img_3)) : ?>
-              <figure data-img="<?php echo esc_url($clear_img_3); ?>">
-                <img src="<?php echo esc_url($clear_img_3); ?>" alt="Ảnh mã vạch, mã QR sản phẩm" loading="lazy">
-                <figcaption>Mã số mã vạch &amp; Tem chống giả</figcaption>
-              </figure>
-            <?php endif; ?>
           </div>
-          <p class="ltg-hint" style="text-align:center;margin-top:14px">Bấm vào ảnh để xem bản phóng to rõ nét</p>
+          <p class="ltg-clear-cap">Đã được Sở Y tế tiếp nhận phiếu công bố mỹ phẩm</p>
         </div>
 
-        <div class="ltg-clear-card">
-          <h3>Đã được Sở Y tế tiếp nhận phiếu công bố mỹ phẩm</h3>
-          <p>Dầu Gội &amp; Sữa Tắm Gừng Nghệ Mây Mây đã hoàn thành đầy đủ thủ tục công bố mỹ phẩm theo quy định hiện hành của Bộ Y tế. Sản phẩm có đầy đủ tem chống hàng giả, mã vạch truy xuất nguồn gốc rõ ràng.</p>
-          <ul>
-            <li><b>Dầu gội:</b> Số CBMP 24650/25/CBMP-HN</li>
-            <li><b>Sữa tắm:</b> Số CBMP 24651/25/CBMP-HN</li>
-            <li><b>Đơn vị chịu trách nhiệm:</b> Công ty TNHH Chăm sóc Mẹ và Bé tại nhà Home Care</li>
-            <li><b>Hệ thống mã vạch:</b> Đăng ký chuẩn trên Cổng thông tin Mã số mã vạch Quốc gia (GS1)</li>
-          </ul>
+        <div class="">
+          <?php if (!empty($clear_img_3)) : ?>
+            <figure data-img="<?php echo esc_url($clear_img_3); ?>" class="ltg-clear-img-right">
+              <img src="<?php echo esc_url($clear_img_3); ?>" alt="Ảnh mã vạch, mã QR sản phẩm" loading="lazy">
+              <figcaption>Mã số mã vạch &amp; Tem chống giả</figcaption>
+            </figure>
+          <?php endif; ?>
         </div>
       </div>
+      <p class="ltg-hint" style="text-align:center;margin-top:16px">Bấm vào ảnh để xem bản phóng to rõ nét</p>
     </div>
   </section>

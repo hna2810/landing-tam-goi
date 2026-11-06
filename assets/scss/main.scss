@@ -1593,3 +1593,82 @@ body.lx_landing_theme{margin:0!important;padding:0!important;background:#fffcf3!
   margin: 12px auto 0;
 }
 
+
+
+/* ===== VIDEO EMBED TRỰC TIẾP (FIX CHƯA NHÚNG VIDEO) ===== */
+.ltg-vlong.ltg-vlong--embed {
+  position: relative !important;
+  margin-top: 40px !important;
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  box-shadow: 0 40px 90px -40px rgba(40,40,10,.6) !important;
+  padding-bottom: 56.25% !important; /* 16:9 aspect ratio standard */
+  height: 0 !important;
+  width: 100% !important;
+  background: #000 !important;
+  cursor: default !important;
+}
+.ltg-vlong.ltg-vlong--embed::after {
+  display: none !important;
+}
+.ltg-vlong.ltg-vlong--embed iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  border-radius: 28px !important;
+  display: block !important;
+}
+@media (max-width: 680px) {
+  .ltg-vlong.ltg-vlong--embed {
+    margin-top: 24px !important;
+    border-radius: 20px !important;
+    padding-bottom: 56.25% !important;
+  }
+  .ltg-vlong.ltg-vlong--embed iframe {
+    border-radius: 20px !important;
+  }
+}
+
+/* ===== MINH BẠCH - SỬA LỖI LAYOUT 2 CỘT CÂN ĐỐI (FIX LỖI CSS) ===== */
+.ltg-clear-img-right {
+  height: 100% !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+  cursor: zoom-in !important;
+  box-shadow: 0 20px 40px -30px rgba(0,0,0,.4) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.ltg-clear-img-right img {
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+.ltg-clear-grid figure figcaption {
+  padding: 10px 12px !important;
+  text-align: center !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: var(--forest) !important;
+  background: #fff !important;
+  border-top: 1px solid var(--line) !important;
+}
+@media (max-width: 860px) {
+  .ltg-clear-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .ltg-clear-img-right {
+    height: auto !important;
+  }
+  .ltg-clear-img-right img {
+    height: 380px !important;
+  }
+}
+
