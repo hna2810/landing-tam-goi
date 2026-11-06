@@ -17,12 +17,12 @@ $proc_video_h    = lx_get_field('proc_video_title', 'option', "Hành trình từ
 
 // Extract YouTube ID for direct iframe embed
 $youtube_id = '';
-if (!empty($proc_video)) {
+if (!empty($proc_video) && strpos($proc_video, 'dQw4w9WgXcQ') === false) {
     if (preg_match('/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/', $proc_video, $matches)) {
         $youtube_id = $matches[1];
     }
 }
-if (empty($youtube_id)) {
+if (empty($youtube_id) || $youtube_id === 'dQw4w9WgXcQ') {
     $youtube_id = 'CoHucyPBjSU';
 }
 

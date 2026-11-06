@@ -95,19 +95,20 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.4.0';
+    $target_version  = '1.4.1';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
     }
 
-    // Force update key fields when upgrading to 1.4.0 (rebuild new combos)
-    if ($force || version_compare($current_version, '1.4.0', '<')) {
+    // Force update key fields when upgrading
+    if ($force || version_compare($current_version, '1.4.1', '<')) {
         update_option('options_hero_price', '79.000đ');
         update_option('options_hero_price_label', 'Combo dầu gội + sữa tắm 300ml');
         update_option('options_sticky_price', '79K');
         update_option('options_sticky_desc', 'Bộ đôi gội + tắm 300ml · Freeship');
         update_option('options_order_email', 'danghuy.homecare@gmail.com');
+        update_option('options_proc_video', 'https://www.youtube.com/shorts/CoHucyPBjSU');
 
         $trust_rows = array(
             array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
