@@ -41,7 +41,7 @@ function lx_ensure_cf7_form() {
         . '</div>' . "\n"
         . '<div class="ltg-combo-pick" id="ltgCombo">' . "\n"
         . '  <span class="ltg-flabel">Chọn combo:</span>' . "\n"
-        . '  [radio combo use_label_element default:1 "[CÓ QUÀ] Bộ đôi Gội + Tắm 500ml – 169.000đ (tặng xịt khử mùi Gừng Cam 30ml)" "Bộ đôi Gội + Tắm 300ml – 79.000đ"]' . "\n"
+        . '  [radio combo use_label_element default:1 "&#91;CÓ QUÀ&#93; Bộ đôi Gội + Tắm 500ml – 169.000đ (tặng xịt khử mùi Gừng Cam 30ml)" "Bộ đôi Gội + Tắm 300ml – 79.000đ"]' . "\n"
         . '</div>' . "\n"
         . '<a class="ltg-nc-20link" href="https://trianthayco.homecarevietnam.com/#combo-qua" target="_blank" rel="noopener">🎁 Mua làm quà 20/11 tặng thầy cô? <b>Xem 3 combo quà →</b></a>' . "\n"
         . '<div class="ltg-fcd">' . "\n"
