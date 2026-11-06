@@ -13,7 +13,8 @@ $clear_eyebrow   = lx_get_field('clear_eyebrow', 'option', "Minh bạch – rõ 
 $clear_title     = lx_get_field('clear_title', 'option', "An tâm sử dụng với thông tin minh bạch, rõ ràng");
 $clear_img_1     = lx_get_image_url('clear_img_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8-1.png', 'full', 'option');
 $clear_img_2     = lx_get_image_url('clear_img_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/scb-sua-tam-gung-nghe_5328535177694ee6960a310a4cb94ac8-1.png', 'full', 'option');
-$clear_img_3     = lx_get_image_url('clear_img_3', get_template_directory_uri() . '/assets/images/real/combo-dau-goi-sua-tam-gung-nghe-mau-may-6-1.png', 'full', 'option');
+$default_clear_img_3 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-6-1.png';
+$clear_img_3     = lx_get_image_url('clear_img_3', $default_clear_img_3, 'full', 'option');
 
 if (empty($clear_img_1)) {
     $clear_img_1 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8-1.png';
@@ -21,8 +22,8 @@ if (empty($clear_img_1)) {
 if (empty($clear_img_2)) {
     $clear_img_2 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/scb-sua-tam-gung-nghe_5328535177694ee6960a310a4cb94ac8-1.png';
 }
-if (empty($clear_img_3) || strpos($clear_img_3, 'hstatic.net') !== false) {
-    $clear_img_3 = get_template_directory_uri() . '/assets/images/real/combo-dau-goi-sua-tam-gung-nghe-mau-may-6-1.png';
+if (empty($clear_img_3) || strpos($clear_img_3, 'uploads/2026/10/') !== false || strpos($clear_img_3, 'hstatic.net') !== false) {
+    $clear_img_3 = $default_clear_img_3;
 }
 
 $has_clear = lx_has_content($clear_title) || !empty($clear_img_1);

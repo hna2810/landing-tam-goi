@@ -12,19 +12,14 @@ if (!defined('ABSPATH')) {
 $proc_eyebrow    = lx_get_field('proc_eyebrow', 'option', "Quy trình sản xuất");
 $proc_title      = lx_get_field('proc_title', 'option', "Từng giọt dầu gội ra đời như thế nào?");
 $proc_lead       = lx_get_field('proc_lead', 'option', "Từ nguyên liệu gừng nghệ đến chai gội xả thơm lành trên tay.");
-$proc_video      = lx_get_field('proc_video', 'option', "https://www.youtube.com/shorts/CoHucyPBjSU");
-$proc_video_h    = lx_get_field('proc_video_title', 'option', "Hành trình từ đất lành đến mái tóc khoẻ – Dầu gội Gừng Nghệ Mây Mây");
-
-// Extract YouTube ID for direct iframe embed
-$youtube_id = '';
-if (!empty($proc_video) && strpos($proc_video, 'dQw4w9WgXcQ') === false) {
-    if (preg_match('/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/', $proc_video, $matches)) {
-        $youtube_id = $matches[1];
-    }
+$proc_video       = lx_get_field('proc_video', 'option', "https://www.youtube.com/shorts/CoHucyPBjSU");
+$proc_video_thumb = lx_get_image_url('proc_video_thumb', get_template_directory_uri() . '/assets/images/real/proc-video-thumb.jpg', 'full', 'option');
+if (empty($proc_video_thumb) || strpos($proc_video_thumb, 'hstatic.net') !== false) {
+    $proc_video_thumb = get_template_directory_uri() . '/assets/images/real/proc-video-thumb.jpg';
 }
-if (empty($youtube_id) || $youtube_id === 'dQw4w9WgXcQ') {
-    $youtube_id = 'CoHucyPBjSU';
-}
+$proc_video_tag   = lx_get_field('proc_video_tag', 'option', "Video thực tế");
+$proc_video_h     = lx_get_field('proc_video_title', 'option', "Hành trình từ đất lành đến mái tóc khoẻ – Dầu gội Gừng Nghệ Mây Mây");
+$proc_video_desc  = lx_get_field('proc_video_desc', 'option', "");
 
 $proc_default_steps = array(
     array(
@@ -82,9 +77,26 @@ if (!$has_proc) {
         <?php endif; ?>
       </div>
 
-      <!-- VIDEO EMBED TRỰC TIẾP -->
-      <div class="ltg-vlong ltg-vlong--embed" id="ltgMainVideoWrap">
-        <iframe src="https://www.youtube.com/embed/<?php echo esc_attr($youtube_id); ?>?rel=0&modestbranding=1" title="<?php echo esc_attr($proc_video_h); ?>" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      <!-- VIDEO DÀI (ẢNH CŨ LÀM THUMB) -->
+      <div class="ltg-vlong" data-video="<?php echo esc_attr($proc_video); ?>" data-vertical="1" role="button" tabindex="0" aria-label="Xem video quy trình">
+        <?php if (!empty($proc_video_thumb)) : ?>
+          <img src="<?php echo esc_url($proc_video_thumb); ?>" alt="<?php echo esc_attr($proc_video_h); ?>" loading="lazy">
+        <?php endif; ?>
+        <span class="ltg-play"><svg width="34" height="34"><use href="#i-play"/></svg></span>
+        <div class="ltg-vlong-cap">
+          <div>
+            <?php if (lx_has_content($proc_video_tag)) : ?>
+              <span class="ltg-vlong-tag"><?php echo esc_html($proc_video_tag); ?></span>
+            <?php endif; ?>
+            <?php if (lx_has_content($proc_video_h)) : ?>
+              <h3><?php echo esc_html($proc_video_h); ?></h3>
+            <?php endif; ?>
+            <?php if (lx_has_content($proc_video_desc)) : ?>
+              <p><?php echo esc_html($proc_video_desc); ?></p>
+            <?php endif; ?>
+          </div>
+          <span class="ltg-dur">▶ Xem video · 2 phút</span>
+        </div>
       </div>
 
       <!-- 2 VIDEO SHORTS -->

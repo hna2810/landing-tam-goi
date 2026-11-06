@@ -24,9 +24,10 @@ $hero_price_note       = lx_get_field('hero_price_note', 'option', "Freeship to�
 $hero_price_tag        = lx_get_field('hero_price_tag', 'option', "FREE<br>SHIP");
 $hero_cta_pri_text     = lx_get_field('hero_cta_primary_text', 'option', "FREESHIP TOÀN QUỐC - MUA NGAY!");
 $hero_cta_pri_link     = lx_get_field('hero_cta_primary_link', 'option', "#dat-hang");
-$hero_image            = lx_get_image_url('hero_image', get_template_directory_uri() . '/assets/images/real/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png', 'full', 'option');
-if (empty($hero_image) || strpos($hero_image, 'combo-sua-tam-dau-goi') !== false || strpos($hero_image, 'hstatic.net') !== false) {
-    $hero_image = get_template_directory_uri() . '/assets/images/real/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png';
+$default_hero_image    = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png';
+$hero_image            = lx_get_image_url('hero_image', $default_hero_image, 'full', 'option');
+if (empty($hero_image) || strpos($hero_image, 'uploads/2026/10/') !== false || strpos($hero_image, 'combo-sua-tam-dau-goi') !== false || strpos($hero_image, 'hstatic.net') !== false) {
+    $hero_image = $default_hero_image;
 }
 
 $hero_trust_items      = lx_get_field('hero_trust_items', 'option', array(

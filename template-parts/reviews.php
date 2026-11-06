@@ -30,11 +30,11 @@ if (empty($rev_workshop_gallery) || !is_array($rev_workshop_gallery)) {
 }
 
 $rev_default_gallery = array(
-    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-1.png'),
-    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-1.png'),
-    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-3.png'),
-    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-2.png'),
-    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-3.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-1.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-1.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-3.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-2.png'),
+    array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-3.png'),
     array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-sua-tam-gung-nghe-2.png'),
     array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/7d6c7ec2-24e0-4644-8523-d82dbed09920.png'),
     array('img' => 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/62096ad6-f658-40a8-b200-90284d7502c8.png'),
@@ -42,6 +42,14 @@ $rev_default_gallery = array(
 $rev_gallery = lx_get_field('rev_gallery', 'option', $rev_default_gallery);
 if (empty($rev_gallery) || !is_array($rev_gallery)) {
     $rev_gallery = $rev_default_gallery;
+}
+if (!empty($rev_gallery) && is_array($rev_gallery)) {
+    foreach ($rev_gallery as &$item) {
+        if (!empty($item['img']) && strpos($item['img'], '/uploads/2026/10/feedback-') !== false) {
+            $item['img'] = str_replace('/uploads/2026/10/feedback-', '/uploads/2026/11/feedback-', $item['img']);
+        }
+    }
+    unset($item);
 }
 
 $has_rev = lx_has_content($rev_title) || (!empty($rev_gallery) && is_array($rev_gallery));

@@ -30,9 +30,10 @@ $tab1_good_items = lx_get_field('tab1_good_items', 'option', array(
 ));
 
 // Ảnh vuông ở giữa Tab 1 (Dầu Gội)
-$tab1_img = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/Combo-Dau-Goi-Sua-Tam-2.png', 'large', 'option');
-if (empty($tab1_img) || strpos($tab1_img, 'hstatic.net') !== false || strpos($tab1_img, 'ba-dau-goi') !== false || strpos($tab1_img, 'prod-dau-goi') !== false) {
-    $tab1_img = get_template_directory_uri() . '/assets/images/real/Combo-Dau-Goi-Sua-Tam-2.png';
+$default_tab1_img = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/Combo-Dau-Goi-Sua-Tam-2.png';
+$tab1_img = lx_get_image_url('tab1_img', $default_tab1_img, 'large', 'option');
+if (empty($tab1_img) || strpos($tab1_img, 'uploads/2026/10/') !== false || strpos($tab1_img, 'hstatic.net') !== false || strpos($tab1_img, 'ba-dau-goi') !== false || strpos($tab1_img, 'prod-dau-goi') !== false) {
+    $tab1_img = $default_tab1_img;
 }
 
 if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
@@ -41,12 +42,15 @@ if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
 $tab1_quote      = lx_get_field('tab1_quote', 'option', "“Tóc mọc tua tủa – Kích mở nang tóc”");
 
 // 3 ảnh Trước - Sau thực tế ở dưới Tab 1 (Dầu Gội)
-$tab1_shot_1 = lx_get_image_url('tab1_shot_1', get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-1.png', 'large', 'option');
-$tab1_shot_2 = lx_get_image_url('tab1_shot_2', get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-2.png', 'large', 'option');
-$tab1_shot_3 = lx_get_image_url('tab1_shot_3', get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-3.png', 'large', 'option');
-if (empty($tab1_shot_1)) $tab1_shot_1 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-1.png';
-if (empty($tab1_shot_2)) $tab1_shot_2 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-2.png';
-if (empty($tab1_shot_3)) $tab1_shot_3 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-3.png';
+$default_tab1_shot_1 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-1.png';
+$default_tab1_shot_2 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-2.png';
+$default_tab1_shot_3 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-3.png';
+$tab1_shot_1 = lx_get_image_url('tab1_shot_1', $default_tab1_shot_1, 'large', 'option');
+$tab1_shot_2 = lx_get_image_url('tab1_shot_2', $default_tab1_shot_2, 'large', 'option');
+$tab1_shot_3 = lx_get_image_url('tab1_shot_3', $default_tab1_shot_3, 'large', 'option');
+if (empty($tab1_shot_1) || strpos($tab1_shot_1, 'uploads/2026/10/') !== false) $tab1_shot_1 = $default_tab1_shot_1;
+if (empty($tab1_shot_2) || strpos($tab1_shot_2, 'uploads/2026/10/') !== false) $tab1_shot_2 = $default_tab1_shot_2;
+if (empty($tab1_shot_3) || strpos($tab1_shot_3, 'uploads/2026/10/') !== false) $tab1_shot_3 = $default_tab1_shot_3;
 
 // Tab 2: Sữa Tắm
 $tab2_name       = lx_get_field('tab2_name', 'option', "Sữa Tắm Gừng Nghệ Mây Mây");
@@ -65,9 +69,10 @@ $tab2_good_items = lx_get_field('tab2_good_items', 'option', array(
 ));
 
 // Ảnh vuông ở giữa Tab 2 (Sữa Tắm)
-$tab2_img = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png', 'large', 'option');
-if (empty($tab2_img) || strpos($tab2_img, 'hstatic.net') !== false || strpos($tab2_img, 'ba-sua-tam') !== false || strpos($tab2_img, 'prod-sua-tam') !== false) {
-    $tab2_img = get_template_directory_uri() . '/assets/images/real/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png';
+$default_tab2_img = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png';
+$tab2_img = lx_get_image_url('tab2_img', $default_tab2_img, 'large', 'option');
+if (empty($tab2_img) || strpos($tab2_img, 'uploads/2026/10/') !== false || strpos($tab2_img, 'hstatic.net') !== false || strpos($tab2_img, 'ba-sua-tam') !== false || strpos($tab2_img, 'prod-sua-tam') !== false) {
+    $tab2_img = $default_tab2_img;
 }
 
 if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
@@ -76,12 +81,15 @@ if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
 $tab2_quote      = lx_get_field('tab2_quote', 'option', "“Da sạch, mềm mịn, mờ thâm”");
 
 // 3 ảnh Trước - Sau thực tế ở dưới Tab 2 (Sữa Tắm)
-$tab2_shot_1 = lx_get_image_url('tab2_shot_1', get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-1.png', 'large', 'option');
-$tab2_shot_2 = lx_get_image_url('tab2_shot_2', get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-2.png', 'large', 'option');
-$tab2_shot_3 = lx_get_image_url('tab2_shot_3', get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-3.png', 'large', 'option');
-if (empty($tab2_shot_1)) $tab2_shot_1 = get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-1.png';
-if (empty($tab2_shot_2)) $tab2_shot_2 = get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-2.png';
-if (empty($tab2_shot_3)) $tab2_shot_3 = get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-3.png';
+$default_tab2_shot_1 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-1.png';
+$default_tab2_shot_2 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-2.png';
+$default_tab2_shot_3 = 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-3.png';
+$tab2_shot_1 = lx_get_image_url('tab2_shot_1', $default_tab2_shot_1, 'large', 'option');
+$tab2_shot_2 = lx_get_image_url('tab2_shot_2', $default_tab2_shot_2, 'large', 'option');
+$tab2_shot_3 = lx_get_image_url('tab2_shot_3', $default_tab2_shot_3, 'large', 'option');
+if (empty($tab2_shot_1) || strpos($tab2_shot_1, 'uploads/2026/10/') !== false) $tab2_shot_1 = $default_tab2_shot_1;
+if (empty($tab2_shot_2) || strpos($tab2_shot_2, 'uploads/2026/10/') !== false) $tab2_shot_2 = $default_tab2_shot_2;
+if (empty($tab2_shot_3) || strpos($tab2_shot_3, 'uploads/2026/10/') !== false) $tab2_shot_3 = $default_tab2_shot_3;
 
 $has_products = lx_has_content($ba_title) || lx_has_content($tab1_name) || lx_has_content($tab2_name);
 if (!$has_products) {

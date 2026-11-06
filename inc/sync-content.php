@@ -95,14 +95,14 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.4.2';
+    $target_version  = '1.4.3';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
     }
 
     // Force update key fields when upgrading
-    if ($force || version_compare($current_version, '1.4.2', '<')) {
+    if ($force || version_compare($current_version, '1.4.3', '<')) {
         update_option('options_hero_price', '79.000đ');
         update_option('options_hero_price_label', 'Combo dầu gội + sữa tắm 300ml');
         update_option('options_sticky_price', '79K');
@@ -111,6 +111,30 @@ function lx_sync_tam_goi_landing_content($force = false) {
         update_option('options_proc_video', 'https://www.youtube.com/shorts/CoHucyPBjSU');
         update_option('options_pain_badge_img', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/mai-toc-noi-lo.png');
         update_option('_options_pain_badge_img', 'field_pain_badge_img');
+        update_option('options_hero_image', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png');
+        update_option('_options_hero_image', 'field_hero_image');
+        update_option('options_tab1_img', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/Combo-Dau-Goi-Sua-Tam-2.png');
+        update_option('_options_tab1_img', 'field_tab1_img');
+        update_option('options_tab2_img', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png');
+        update_option('_options_tab2_img', 'field_tab2_img');
+        update_option('options_story_img_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-1-1.png');
+        update_option('_options_story_img_1', 'field_story_img_1');
+        update_option('options_clear_img_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-6-1.png');
+        update_option('_options_clear_img_3', 'field_clear_img_3');
+        update_option('options_tab1_shot_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-1.png');
+        update_option('_options_tab1_shot_1', 'field_tab1_shot_1');
+        update_option('options_tab1_shot_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-2.png');
+        update_option('_options_tab1_shot_2', 'field_tab1_shot_2');
+        update_option('options_tab1_shot_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-3.png');
+        update_option('_options_tab1_shot_3', 'field_tab1_shot_3');
+        update_option('options_tab2_shot_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-1.png');
+        update_option('_options_tab2_shot_1', 'field_tab2_shot_1');
+        update_option('options_tab2_shot_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-2.png');
+        update_option('_options_tab2_shot_2', 'field_tab2_shot_2');
+        update_option('options_tab2_shot_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-3.png');
+        update_option('_options_tab2_shot_3', 'field_tab2_shot_3');
+        update_option('options_proc_video_thumb', get_template_directory_uri() . '/assets/images/real/proc-video-thumb.jpg');
+        update_option('_options_proc_video_thumb', 'field_proc_video_thumb');
 
         $trust_rows = array(
             array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
@@ -245,24 +269,24 @@ function lx_sync_tam_goi_landing_content($force = false) {
 
     // 2. IMAGE FIELDS: name => array(url_or_path, key)
     $images = array(
-        'hero_image'        => array('https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'field_hero_image'),
+        'hero_image'        => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png', 'field_hero_image'),
         'pain_center_img'   => array($theme_dir . '/assets/images/skin-body.webp', 'field_pain_center_img'),
         'pain_badge_img'    => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/mai-toc-noi-lo.png', 'field_pain_badge_img'),
-        'story_img_1'       => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'field_story_img_1'),
+        'story_img_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-1-1.png', 'field_story_img_1'),
         'story_img_2'       => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-bang-gung-tuoi-homecare_b083a03618e0411081b79ca35482e003.jpg', 'field_story_img_2'),
-        'proc_video_thumb'  => array('https://cdn.hstatic.net/products/200001066686/nuoc-u-toc-tu-gung_39ddc7514164454692cfd14d198b8458.jpg', 'field_proc_video_thumb'),
+        'proc_video_thumb'  => array($theme_dir . '/assets/images/real/proc-video-thumb.jpg', 'field_proc_video_thumb'),
         'clear_img_1'       => array('https://cdn.hstatic.net/products/200001066686/scb-dau-goi-gung-nghe_b1a448ecb88540ea96a76760844ae7f8.png', 'field_clear_img_1'),
         'clear_img_2'       => array('https://cdn.hstatic.net/products/200001066686/scb-sua-tam-gung-nghe_5328535177694ee6960a310a4cb94ac8.png', 'field_clear_img_2'),
         'letter_mascot'     => array('https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'field_letter_mascot'),
         'gift_mobile_img'   => array($theme_dir . '/assets/images/real/gift-box-mobile.jpg', 'field_gift_mobile_img'),
-        'tab1_img'          => array($theme_dir . '/assets/images/real/prod-dau-goi.jpg', 'field_tab1_img'),
-        'tab2_img'          => array($theme_dir . '/assets/images/real/prod-sua-tam.jpg', 'field_tab2_img'),
-        'tab1_shot_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-1.png', 'field_tab1_shot_1'),
-        'tab1_shot_2'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-2.jpg', 'field_tab1_shot_2'),
-        'tab1_shot_3'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-3.png', 'field_tab1_shot_3'),
-        'tab2_shot_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-1.png', 'field_tab2_shot_1'),
-        'tab2_shot_2'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-2.png', 'field_tab2_shot_2'),
-        'tab2_shot_3'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-3.png', 'field_tab2_shot_3'),
+        'tab1_img'          => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/Combo-Dau-Goi-Sua-Tam-2.png', 'field_tab1_img'),
+        'tab2_img'          => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png', 'field_tab2_img'),
+        'tab1_shot_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-1.png', 'field_tab1_shot_1'),
+        'tab1_shot_2'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-2.jpg', 'field_tab1_shot_2'),
+        'tab1_shot_3'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-dau-goi-gung-nghe-3.png', 'field_tab1_shot_3'),
+        'tab2_shot_1'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-1.png', 'field_tab2_shot_1'),
+        'tab2_shot_2'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-2.png', 'field_tab2_shot_2'),
+        'tab2_shot_3'       => array('https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/11/feedback-sua-tam-gung-nghe-3.png', 'field_tab2_shot_3'),
     );
 
     $attach_cache = array();
