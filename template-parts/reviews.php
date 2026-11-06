@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 $rev_eyebrow = lx_get_field('rev_eyebrow', 'option', "Khách hàng nói gì");
-$rev_title   = lx_get_field('rev_title', 'option', "Thư viện hàng ngàn feedback chân thực");
+$rev_title   = lx_get_field('rev_title', 'option', "Thư viện feedback");
 $rev_stat_1  = lx_get_field('rev_stat_1', 'option', "⭐⭐⭐⭐⭐ 4.9/5 sao dựa trên hơn 2.500+ đánh giá thực tế.");
 $rev_stat_2  = lx_get_field('rev_stat_2', 'option', "📊 98% đánh giá phản hồi tóc bớt gãy rụng, kích thích mọc tóc và giảm thâm mụn lưng");
 

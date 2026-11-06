@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 $hero_title            = lx_get_field('hero_title', 'option', "Tóc mọc tua tủa,<br>da sạch mịn màng");
-$hero_subtitle         = lx_get_field('hero_subtitle', 'option', "<b>Bộ đôi Sữa tắm &amp; Dầu gội Gừng Nghệ Mây Mây</b>");
+$hero_subtitle         = lx_get_field('hero_subtitle', 'option', "Bộ đôi sữa tắm gội Gừng Nghệ Mây Mây");
 $hero_benefits         = lx_get_field('hero_benefits', 'option', array(
     array('text' => 'Giảm rụng, kích mọc tóc'),
     array('text' => 'Sạch gàu, hết ngứa'),
@@ -18,15 +18,17 @@ $hero_benefits         = lx_get_field('hero_benefits', 'option', array(
     array('text' => 'Dùng được cho mẹ bầu & mẹ sau sinh'),
 ));
 $hero_callout          = lx_get_field('hero_callout', 'option', "👉 Được sử dụng trong dịch vụ chăm sóc bầu, sau sinh của Home Care trên khắp 3 miền Bắc - Trung - Nam");
-$hero_price_label      = lx_get_field('hero_price_label', 'option', "Combo dầu gội + sữa tắm");
-$hero_price            = lx_get_field('hero_price', 'option', "99K");
+$hero_price_label      = lx_get_field('hero_price_label', 'option', "Combo dầu gội + sữa tắm 300ml");
+$hero_price            = lx_get_field('hero_price', 'option', "79.000đ");
 $hero_price_note       = lx_get_field('hero_price_note', 'option', "Freeship toàn quốc");
 $hero_price_tag        = lx_get_field('hero_price_tag', 'option', "FREE<br>SHIP");
 $hero_cta_pri_text     = lx_get_field('hero_cta_primary_text', 'option', "FREESHIP TOÀN QUỐC - MUA NGAY!");
 $hero_cta_pri_link     = lx_get_field('hero_cta_primary_link', 'option', "#dat-hang");
-$hero_cta_sec_text     = lx_get_field('hero_cta_secondary_text', 'option', "Set quà 20/11");
-$hero_cta_sec_link     = lx_get_field('hero_cta_secondary_link', 'option', "#qua-20-11");
-$hero_image            = lx_get_image_url('hero_image', 'https://cdn.hstatic.net/products/200001066686/combo-sua-tam-dau-goi-gung-nghe-may-may_37c9f5a7dbe9474d82a53a57c114c033.png', 'full', 'option');
+$hero_image            = lx_get_image_url('hero_image', get_template_directory_uri() . '/assets/images/real/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png', 'full', 'option');
+if (empty($hero_image) || strpos($hero_image, 'combo-sua-tam-dau-goi') !== false || strpos($hero_image, 'hstatic.net') !== false) {
+    $hero_image = get_template_directory_uri() . '/assets/images/real/Bo-Dau-Goi-Va-Sua-Tam-Gung-Nghe-1.png';
+}
+
 $hero_trust_items      = lx_get_field('hero_trust_items', 'option', array(
     array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
     array('icon' => 'i-shield', 'text' => 'Tem chống hàng giả Bộ Công An'),
@@ -93,18 +95,11 @@ if (!$has_hero) {
           </div>
         <?php endif; ?>
 
-        <?php if (lx_has_content($hero_cta_pri_text) || lx_has_content($hero_cta_sec_text)) : ?>
+        <?php if (lx_has_content($hero_cta_pri_text)) : ?>
           <div class="ltg-hero-ctas">
-            <?php if (lx_has_content($hero_cta_pri_text)) : ?>
-              <a href="<?php echo esc_url($hero_cta_pri_link ?: '#dat-hang'); ?>" class="ltg-btn ltg-btn--pri ltg-pulse">
-                <?php echo esc_html($hero_cta_pri_text); ?>
-              </a>
-            <?php endif; ?>
-            <?php if (lx_has_content($hero_cta_sec_text) && $hero_cta_sec_link !== '#qua-20-11' && strpos($hero_cta_sec_link, 'qua-20-11') === false) : ?>
-              <a href="<?php echo esc_url($hero_cta_sec_link); ?>" class="ltg-btn ltg-btn--ghost">
-                <?php echo esc_html($hero_cta_sec_text); ?>
-              </a>
-            <?php endif; ?>
+            <a href="<?php echo esc_url($hero_cta_pri_link ?: '#dat-hang'); ?>" class="ltg-btn ltg-btn--pri ltg-pulse">
+              <?php echo esc_html($hero_cta_pri_text); ?>
+            </a>
           </div>
         <?php endif; ?>
       </div>

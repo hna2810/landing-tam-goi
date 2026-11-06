@@ -347,23 +347,28 @@
       var msg = document.getElementById('ltgMsg');
 
       function syncCombo(){
-        root.querySelectorAll('.ltg-copt input').forEach(function(r){
-          var parent = r.closest('.ltg-copt');
+        root.querySelectorAll('.ltg-copt input, .wpcf7-radio input').forEach(function(r){
+          var parent = r.closest('.ltg-copt') || r.closest('.wpcf7-list-item');
           if (parent) parent.classList.toggle('is-on', r.checked);
         });
         if (cbox) cbox.classList.remove('is-err');
       }
 
-      root.querySelectorAll('.ltg-copt input').forEach(function(r){
+      root.querySelectorAll('.ltg-copt input, .wpcf7-radio input').forEach(function(r){
         r.addEventListener('change', syncCombo);
       });
 
       root.querySelectorAll('[data-combo]').forEach(function(a){
         a.addEventListener('click', function(){
-          var r = root.querySelector('.ltg-copt input[value="' + a.dataset.combo + '"]');
+          var val = a.dataset.combo;
+          var matchText = (val === 'c500') ? '500ml' : '300ml';
+          var r = root.querySelector('.ltg-copt input[value="' + val + '"]') ||
+                  root.querySelector('.ltg-copt input[value*="' + matchText + '"]') ||
+                  root.querySelector('.wpcf7-radio input[value*="' + matchText + '"]');
           if (r) {
             r.checked = true;
             syncCombo();
+            r.dispatchEvent(new Event('change', { bubbles: true }));
           }
         });
       });
@@ -626,4 +631,16 @@
   } catch (err) {
     console.warn('Landing script notice:', err);
   }
-})();
+
+    /* Lắng nghe sự kiện gửi thành công từ Contact Form 7 */
+    document.addEventListener('wpcf7mailsent', function(e) {
+      var formBody = document.getElementById('ltgFormBody');
+      var ok = document.getElementById('ltgOk');
+      if (formBody) formBody.style.display = 'none';
+      if (ok) {
+        ok.style.display = 'block';
+        ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, false);
+
+  })();

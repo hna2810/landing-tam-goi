@@ -45,8 +45,8 @@ if (!defined('ABSPATH')) {
   <!-- Sticky Buy Bar -->
   <?php
   $sticky_phone    = lx_get_field('sticky_phone', 'option', '0973871376');
-  $sticky_price    = lx_get_field('sticky_price', 'option', '99K');
-  $sticky_desc     = lx_get_field('sticky_desc', 'option', 'Combo dầu gội + sữa tắm · Freeship');
+  $sticky_price    = lx_get_field('sticky_price', 'option', '79K');
+  $sticky_desc     = lx_get_field('sticky_desc', 'option', 'Bộ đôi gội + tắm 300ml · Freeship');
   $sticky_btn_text = lx_get_field('sticky_btn_text', 'option', 'Đặt ngay');
   $sticky_btn_link = lx_get_field('sticky_btn_link', 'option', '#dat-hang');
 

@@ -95,10 +95,33 @@ function lx_import_local_theme_image($file_path, $desc = '') {
  */
 function lx_sync_tam_goi_landing_content($force = false) {
     $current_version = get_option('lx_tam_goi_content_sync_ver', '');
-    $target_version  = '1.3.5';
+    $target_version  = '1.4.0';
 
     if (!$force && $current_version === $target_version && !isset($_GET['lx_force_sync'])) {
         return;
+    }
+
+    // Force update key fields when upgrading to 1.4.0 (rebuild new combos)
+    if ($force || version_compare($current_version, '1.4.0', '<')) {
+        update_option('options_hero_price', '79.000đ');
+        update_option('options_hero_price_label', 'Combo dầu gội + sữa tắm 300ml');
+        update_option('options_sticky_price', '79K');
+        update_option('options_sticky_desc', 'Bộ đôi gội + tắm 300ml · Freeship');
+        update_option('options_order_email', 'danghuy.homecare@gmail.com');
+
+        $trust_rows = array(
+            array('icon' => 'i-bar', 'text' => 'Có trên hệ thống Mã số Mã vạch Quốc gia'),
+            array('icon' => 'i-shield', 'text' => 'Tem chống hàng giả Bộ Công An'),
+            array('icon' => 'i-pen', 'text' => 'Đã công bố mỹ phẩm – Sở Y tế cấp số'),
+        );
+        update_option('options_hero_trust_items', count($trust_rows));
+        update_option('_options_hero_trust_items', 'field_hero_trust_items');
+        foreach ($trust_rows as $ti => $tr) {
+            update_option('options_hero_trust_items_' . $ti . '_icon', $tr['icon']);
+            update_option('_options_hero_trust_items_' . $ti . '_icon', 'field_trust_icon');
+            update_option('options_hero_trust_items_' . $ti . '_text', $tr['text']);
+            update_option('_options_hero_trust_items_' . $ti . '_text', 'field_trust_text');
+        }
     }
 
     $theme_dir = defined('LX_THEME_DIR') ? LX_THEME_DIR : get_template_directory();
@@ -116,8 +139,8 @@ function lx_sync_tam_goi_landing_content($force = false) {
         'hero_title'               => array("Tóc mọc tua tủa,<br>da sạch mịn màng", 'field_hero_title'),
         'hero_subtitle'            => array('<b>Bộ đôi Sữa tắm &amp; Dầu gội Gừng Nghệ Mây Mây</b>', 'field_hero_subtitle'),
         'hero_callout'             => array('👉 Được sử dụng trong dịch vụ chăm sóc bầu, sau sinh của Home Care trên khắp 3 miền Bắc - Trung - Nam', 'field_hero_callout'),
-        'hero_price_label'         => array('Combo dầu gội + sữa tắm', 'field_hero_price_label'),
-        'hero_price'               => array('99K', 'field_hero_price'),
+        'hero_price_label'         => array('Combo dầu gội + sữa tắm 300ml', 'field_hero_price_label'),
+        'hero_price'               => array('79.000đ', 'field_hero_price'),
         'hero_price_note'          => array('Freeship toàn quốc', 'field_hero_price_note'),
         'hero_price_tag'           => array('FREE<br>SHIP', 'field_hero_price_tag'),
         'hero_cta_primary_text'    => array('FREESHIP TOÀN QUỐC - MUA NGAY!', 'field_hero_cta_primary_text'),
@@ -193,8 +216,8 @@ function lx_sync_tam_goi_landing_content($force = false) {
         'footer_logo'              => array('Home Care', 'field_footer_logo'),
         'footer_text'              => array("Đẹp và Thật · Since 2008<br>Tổng đài 1900 0387 · Hotline 0962 131 515 – 0973 871 376", 'field_footer_text'),
         'sticky_phone'             => array('0962131515', 'field_sticky_phone'),
-        'sticky_price'             => array('99K', 'field_sticky_price'),
-        'sticky_desc'              => array('Combo dầu gội + sữa tắm · Freeship', 'field_sticky_desc'),
+        'sticky_price'             => array('79K', 'field_sticky_price'),
+        'sticky_desc'              => array('Bộ đôi gội + tắm 300ml · Freeship', 'field_sticky_desc'),
         'sticky_btn_text'          => array('Đặt ngay', 'field_sticky_btn_text'),
         'sticky_btn_link'          => array('#dat-hang', 'field_sticky_btn_link'),
         'ing_eyebrow'       => array('CÔNG THỨC ĐỘC QUYỀN HOME CARE', 'field_ing_eyebrow'),

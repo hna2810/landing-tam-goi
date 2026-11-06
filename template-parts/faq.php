@@ -9,34 +9,50 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$faq_eyebrow = lx_get_field('faq_eyebrow', 'option', "Hỏi đáp");
+$faq_eyebrow = lx_get_field('faq_eyebrow', 'option', "Giải đáp thắc mắc");
 $faq_title   = lx_get_field('faq_title', 'option', "Giải đáp câu hỏi thường gặp");
 
 $faq_default_items = array(
     array(
-        'q' => '1. Sản phẩm có dùng được cho mẹ bầu và mẹ sau sinh không?',
-        'a' => 'Có. Bộ đôi sản phẩm được nghiên cứu với các thành phần chiết xuất gừng, nghệ, hoa bưởi dịu nhẹ, phù hợp cho cả nam, nữ, mẹ bầu và mẹ sau sinh.',
+        'q' => 'Mẹ bầu và mẹ sau sinh có dùng được không?',
+        'a' => 'Dùng được. Bộ đôi chiết xuất từ gừng, nghệ và thảo mộc, công thức dịu nhẹ, trên nhãn ghi rõ “Dùng cho cả nam, nữ, bầu &amp; sau sinh”. Đây cũng là sản phẩm Home Care đang dùng trong dịch vụ chăm sóc bầu, sau sinh. Nếu da đầu hoặc da đang bị tổn thương, vết mổ chưa lành, mẹ nên hỏi ý kiến bác sĩ trước khi dùng.',
     ),
     array(
-        'q' => '2. Dùng bao lâu thì giảm tình trạng rụng tóc và gàu ngứa?',
-        'a' => 'Hiệu quả cảm nhận rõ rệt sau 2–4 tuần sử dụng đều đặn hằng ngày nhờ sự kết hợp giữa gừng, nghệ, hoa bưởi và Vitamin B5 giúp làm sạch và nuôi dưỡng tóc từ sâu bên trong.',
+        'q' => 'Mùi gừng nghệ có bị nồng, hắc không?',
+        'a' => 'Không. Mùi gừng nghệ ấm và nhẹ, gội/tắm xong chỉ còn thoang thoảng, không hăng như nước gừng tự nấu. Dầu gội có thêm chiết xuất bưởi nên mùi dễ chịu hơn.',
     ),
     array(
-        'q' => '3. Sữa tắm có gây khô da sau khi tắm không?',
-        'a' => 'Sản phẩm chứa các thành phần dưỡng ẩm dịu nhẹ, giúp loại bỏ bã nhờn nhưng vẫn giữ lại độ ẩm tự nhiên, không gây cảm giác khô căng rát da.',
+        'q' => 'Gội xong tóc có bị khô, rít không?',
+        'a' => 'Dầu gội có Vitamin B5 giúp giữ ẩm nên gội xong tóc mềm, không khô rít. Với tóc đã khô xơ do uốn, nhuộm, mẹ nên dùng thêm dầu xả hoặc ủ tóc để tóc mượt hơn.',
     ),
     array(
-        'q' => 'Set quà 20/11 có giao tận trường không?',
-        'a' => 'Có. Bạn ghi địa chỉ trường và lời nhắn trên thiệp, Home Care gói quà và giao tận nơi. Đơn tập thể từ 10 set vui lòng gọi hotline để nhận giá riêng.',
+        'q' => 'Bao lâu thì thấy tóc bớt rụng?',
+        'a' => 'Tuỳ cơ địa mỗi người. Nhiều mẹ phản hồi sau khoảng 3–4 tuần gội đều đặn thì da đầu sạch thoáng, tóc ít gãy rụng khi chải hơn. Rụng tóc sau sinh liên quan đến nội tiết nên thường kéo dài vài tháng; dầu gội giúp chăm sóc da đầu và chân tóc trong giai đoạn này, không thay thế điều trị.',
     ),
     array(
-        'q' => 'Làm sao phân biệt hàng chính hãng?',
-        'a' => 'Sản phẩm đã có phiếu công bố mỹ phẩm được Sở Y tế tiếp nhận, có tem chống hàng giả của Bộ Công An, tem chính hãng và thông tin trên hệ thống Mã số Mã vạch Quốc gia.',
+        'q' => 'Sữa tắm có giúp ích cho da lưng hay nổi mụn không?',
+        'a' => 'Sữa tắm giúp làm sạch dầu thừa, mồ hôi và bụi bẩn trên da lưng, ngực – những nguyên nhân thường gặp gây bít tắc lỗ chân lông, mà không làm khô căng da. Với mụn viêm nặng hoặc kéo dài, mẹ nên đi khám da liễu.',
+    ),
+    array(
+        'q' => 'Nên chọn bộ 300ml hay 500ml?',
+        'a' => 'Bộ 300ml (79.000đ) hợp để dùng thử hoặc dùng cho 1 người. Bộ 500ml (169.000đ) dùng được lâu hơn, hợp cho cả nhà, và được tặng kèm 1 xịt khử mùi Gừng Cam 30ml.',
+    ),
+    array(
+        'q' => 'Xịt khử mùi Gừng Cam tặng kèm dùng để làm gì?',
+        'a' => 'Xịt khử mùi từ tinh dầu thiên nhiên bạc hà, trầu không, gừng cam, dùng cho vùng nách, chân và các vùng hay ra mồ hôi, giúp cơ thể khô thoáng, thơm nhẹ. Phù hợp cả với mẹ bầu và mẹ sau sinh.',
+    ),
+    array(
+        'q' => 'Muốn mua làm quà tặng thầy cô 20/11 thì sao?',
+        'a' => 'Home Care có 3 combo quà riêng cho 20/11 (199K, 349K, 499K), trọn bộ Tắm – Gội – Ủ tóc gừng nghệ. Mẹ xem chi tiết tại <a href="https://trianthayco.homecarevietnam.com/#combo-qua" target="_blank" rel="noopener" style="color:var(--ginger);font-weight:700;text-decoration:underline">trang quà tặng 20/11</a>.',
+    ),
+    array(
+        'q' => 'Giao hàng và đổi trả thế nào?',
+        'a' => 'Home Care giao hàng toàn quốc, miễn phí vận chuyển cho đơn đặt qua trang này. Mẹ được kiểm tra hàng trước khi thanh toán, và được đổi trả trong 7 ngày nếu sản phẩm có lỗi từ nhà sản xuất.',
     ),
 );
 $faq_items = lx_get_field('faq_items', 'option', $faq_default_items);
-if (!is_array($faq_items)) {
-    $faq_items = array();
+if (!is_array($faq_items) || empty($faq_items)) {
+    $faq_items = $faq_default_items;
 }
 
 $has_faq = lx_has_content($faq_title) || (!empty($faq_items) && is_array($faq_items));
@@ -65,13 +81,12 @@ if (!$has_faq) {
 
       <?php if (!empty($faq_items) && is_array($faq_items)) : ?>
       <div class="ltg-faq-list">
-        <?php foreach ($faq_items as $idx => $f) :
-            if (empty($f['q'])) continue;
-            $open = ($idx === 0) ? ' open' : '';
+        <?php foreach ($faq_items as $i => $item) :
+            if (empty($item['q'])) continue;
         ?>
-          <details<?php echo esc_attr($open); ?>>
-            <summary><?php echo esc_html($f['q']); ?></summary>
-            <p><?php echo wp_kses_post($f['a'] ?? ''); ?></p>
+          <details<?php echo ($i === 0) ? ' open' : ''; ?>>
+            <summary><?php echo esc_html($item['q']); ?></summary>
+            <p><?php echo wp_kses_post($item['a'] ?? ''); ?></p>
           </details>
         <?php endforeach; ?>
       </div>

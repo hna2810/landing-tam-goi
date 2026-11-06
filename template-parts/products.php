@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 $ba_eyebrow   = lx_get_field('ba_eyebrow', 'option', "Hình ảnh trực quan (Trước &amp; Sau khi sử dụng)");
-$ba_title     = lx_get_field('ba_title', 'option', "Phục hồi mái tóc bồng bềnh, sạch gàu ngứa và nuôi dưỡng làn da cơ thể mịn màng cùng Bộ đôi Tắm Gội Gừng Nghệ Mây Mây");
+$ba_title     = lx_get_field('ba_title', 'option', "Phục hồi mái tóc bồng bềnh, sạch gàu ngứa và nuôi dưỡng làn da cơ thể mịn màng <br> cùng Bộ đôi Tắm Gội Gừng Nghệ Mây Mây");
 $ba_lead      = lx_get_field('ba_lead', 'option', "Công thức độc quyền từ tinh hoa thảo mộc Gừng, Nghệ");
 
 // Tab 1: Dầu Gội
@@ -30,9 +30,9 @@ $tab1_good_items = lx_get_field('tab1_good_items', 'option', array(
 ));
 
 // Ảnh vuông ở giữa Tab 1 (Dầu Gội)
-$tab1_img = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg', 'large', 'option');
-if (empty($tab1_img) || strpos($tab1_img, 'hstatic.net') !== false || strpos($tab1_img, 'ba-dau-goi') !== false) {
-    $tab1_img = get_template_directory_uri() . '/assets/images/real/prod-dau-goi.jpg';
+$tab1_img = lx_get_image_url('tab1_img', get_template_directory_uri() . '/assets/images/real/Combo-Dau-Goi-Sua-Tam-2.png', 'large', 'option');
+if (empty($tab1_img) || strpos($tab1_img, 'hstatic.net') !== false || strpos($tab1_img, 'ba-dau-goi') !== false || strpos($tab1_img, 'prod-dau-goi') !== false) {
+    $tab1_img = get_template_directory_uri() . '/assets/images/real/Combo-Dau-Goi-Sua-Tam-2.png';
 }
 
 if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
@@ -41,33 +41,33 @@ if (empty($tab1_icon) || strpos($tab1_icon, 'hstatic.net') !== false) {
 $tab1_quote      = lx_get_field('tab1_quote', 'option', "“Tóc mọc tua tủa – Kích mở nang tóc”");
 
 // 3 ảnh Trước - Sau thực tế ở dưới Tab 1 (Dầu Gội)
-$tab1_shot_1 = lx_get_image_url('tab1_shot_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-1.png', 'large', 'option');
-$tab1_shot_2 = lx_get_image_url('tab1_shot_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-2.jpg', 'large', 'option');
-$tab1_shot_3 = lx_get_image_url('tab1_shot_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-dau-goi-gung-nghe-3.png', 'large', 'option');
-if (empty($tab1_shot_2)) {
-    $tab1_shot_2 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-2.jpg';
-}
+$tab1_shot_1 = lx_get_image_url('tab1_shot_1', get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-1.png', 'large', 'option');
+$tab1_shot_2 = lx_get_image_url('tab1_shot_2', get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-2.png', 'large', 'option');
+$tab1_shot_3 = lx_get_image_url('tab1_shot_3', get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-3.png', 'large', 'option');
+if (empty($tab1_shot_1)) $tab1_shot_1 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-1.png';
+if (empty($tab1_shot_2)) $tab1_shot_2 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-2.png';
+if (empty($tab1_shot_3)) $tab1_shot_3 = get_template_directory_uri() . '/assets/images/real/feedback-dau-goi-gung-nghe-3.png';
 
 // Tab 2: Sữa Tắm
 $tab2_name       = lx_get_field('tab2_name', 'option', "Sữa Tắm Gừng Nghệ Mây Mây");
 $tab2_icon       = lx_get_image_url('tab2_icon', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'thumbnail', 'option');
 $tab2_bad_h      = lx_get_field('tab2_bad_h', 'option', "Trước khi dùng");
 $tab2_bad_items  = lx_get_field('tab2_bad_items', 'option', array(
-    array('text' => 'Mụn viêm, mụn ẩn lan rộng ở lưng, ngực, vai.'),
-    array('text' => 'Bít tắc lỗ chân lông do mồ hôi và dầu thừa.'),
-    array('text' => 'Da khô căng, rát hoặc bong tróc sau khi tắm.'),
+    array('text' => 'Mụn lưng, viêm nang lông sần sùi ngứa ngáy.'),
+    array('text' => 'Vết thâm mụn chi chít khắp lưng và ngực.'),
+    array('text' => 'Da khô ráp, bong tróc và thiếu ẩm.'),
 ));
 $tab2_good_h     = lx_get_field('tab2_good_h', 'option', "Sau khi dùng");
 $tab2_good_items = lx_get_field('tab2_good_items', 'option', array(
-    array('text' => 'Hỗ trợ giảm mụn lưng, mờ vết thâm mụn.'),
-    array('text' => 'Len lỏi lỗ chân lông, sạch da, lỗ chân thông thoáng.'),
-    array('text' => 'Da mềm mại, duy trì độ ẩm tự nhiên và thơm dịu.'),
+    array('text' => 'Mụn lưng lặn dần, giảm viêm rõ rệt.'),
+    array('text' => 'Mờ thâm mụn, da đều màu và sáng mịn.'),
+    array('text' => 'Cấp ẩm sâu, da mềm mượt không còn khô căng.'),
 ));
 
 // Ảnh vuông ở giữa Tab 2 (Sữa Tắm)
-$tab2_img = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg', 'large', 'option');
-if (empty($tab2_img) || strpos($tab2_img, 'hstatic.net') !== false || strpos($tab2_img, 'ba-sua-tam') !== false) {
-    $tab2_img = get_template_directory_uri() . '/assets/images/real/prod-sua-tam.jpg';
+$tab2_img = lx_get_image_url('tab2_img', get_template_directory_uri() . '/assets/images/real/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png', 'large', 'option');
+if (empty($tab2_img) || strpos($tab2_img, 'hstatic.net') !== false || strpos($tab2_img, 'ba-sua-tam') !== false || strpos($tab2_img, 'prod-sua-tam') !== false) {
+    $tab2_img = get_template_directory_uri() . '/assets/images/real/combo-dau-goi-sua-tam-gung-nghe-mau-may-3.png';
 }
 
 if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
@@ -76,9 +76,12 @@ if (empty($tab2_icon) || strpos($tab2_icon, 'hstatic.net') !== false) {
 $tab2_quote      = lx_get_field('tab2_quote', 'option', "“Da sạch, mềm mịn, mờ thâm”");
 
 // 3 ảnh Trước - Sau thực tế ở dưới Tab 2 (Sữa Tắm)
-$tab2_shot_1 = lx_get_image_url('tab2_shot_1', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-1.png', 'large', 'option');
-$tab2_shot_2 = lx_get_image_url('tab2_shot_2', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-2.png', 'large', 'option');
-$tab2_shot_3 = lx_get_image_url('tab2_shot_3', 'https://tamgoigungnghe.homecarevietnam.com/wp-content/uploads/2026/10/feedback-sua-tam-gung-nghe-3.png', 'large', 'option');
+$tab2_shot_1 = lx_get_image_url('tab2_shot_1', get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-1.png', 'large', 'option');
+$tab2_shot_2 = lx_get_image_url('tab2_shot_2', get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-2.png', 'large', 'option');
+$tab2_shot_3 = lx_get_image_url('tab2_shot_3', get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-3.png', 'large', 'option');
+if (empty($tab2_shot_1)) $tab2_shot_1 = get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-1.png';
+if (empty($tab2_shot_2)) $tab2_shot_2 = get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-2.png';
+if (empty($tab2_shot_3)) $tab2_shot_3 = get_template_directory_uri() . '/assets/images/real/feedback-sua-tam-gung-nghe-3.png';
 
 $has_products = lx_has_content($ba_title) || lx_has_content($tab1_name) || lx_has_content($tab2_name);
 if (!$has_products) {
@@ -101,62 +104,49 @@ if (!$has_products) {
       </div>
 
       <div class="ltg-ba3-tabs" role="tablist">
-        <?php if (lx_has_content($tab1_name)) : ?>
-          <button type="button" class="ltg-ba2-tab ltg-ba3-tab is-on" data-ba="goi">
-            <?php if (!empty($tab1_icon)) : ?>
-              <img src="<?php echo esc_url($tab1_icon); ?>" alt="">
-            <?php endif; ?>
-            <?php echo esc_html($tab1_name); ?>
-          </button>
-        <?php endif; ?>
-
-        <?php if (lx_has_content($tab2_name)) : ?>
-          <button type="button" class="ltg-ba2-tab ltg-ba3-tab <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?>" data-ba="tam">
-            <?php if (!empty($tab2_icon)) : ?>
-              <img src="<?php echo esc_url($tab2_icon); ?>" alt="">
-            <?php endif; ?>
-            <?php echo esc_html($tab2_name); ?>
-          </button>
-        <?php endif; ?>
+        <button type="button" class="ltg-ba2-tab ltg-ba3-tab is-on" data-ba="goi">
+          <?php if (!empty($tab1_icon)) : ?>
+            <img src="<?php echo esc_url($tab1_icon); ?>" alt="">
+          <?php endif; ?>
+          <?php echo esc_html($tab1_name); ?>
+        </button>
+        <button type="button" class="ltg-ba2-tab ltg-ba3-tab" data-ba="tam">
+          <?php if (!empty($tab2_icon)) : ?>
+            <img src="<?php echo esc_url($tab2_icon); ?>" alt="">
+          <?php endif; ?>
+          <?php echo esc_html($tab2_name); ?>
+        </button>
       </div>
 
-      <?php if (lx_has_content($tab1_name)) : ?>
+      <!-- Tab 1: Dầu Gội -->
       <div class="ltg-ba2-p ltg-ba3-p is-on" data-bap="goi">
-        <?php if (!empty($tab1_bad_items) && is_array($tab1_bad_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-bad">
-          <?php if (lx_has_content($tab1_bad_h)) : ?>
-            <h4><?php echo esc_html($tab1_bad_h); ?></h4>
-          <?php endif; ?>
+          <h4><?php echo esc_html($tab1_bad_h); ?></h4>
           <ul>
-            <?php foreach ($tab1_bad_items as $b) :
-                if (empty($b['text'])) continue;
+            <?php foreach ($tab1_bad_items as $item) :
+                if (empty($item['text'])) continue;
             ?>
               <li>
                 <i><svg width="12" height="12"><use href="#i-x"/></svg></i>
-                <?php echo esc_html($b['text']); ?>
+                <?php echo esc_html($item['text']); ?>
               </li>
             <?php endforeach; ?>
           </ul>
         </div>
-        <?php endif; ?>
 
-        <?php if (!empty($tab1_good_items) && is_array($tab1_good_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-good">
-          <?php if (lx_has_content($tab1_good_h)) : ?>
-            <h4><?php echo esc_html($tab1_good_h); ?></h4>
-          <?php endif; ?>
+          <h4><?php echo esc_html($tab1_good_h); ?></h4>
           <ul>
-            <?php foreach ($tab1_good_items as $g) :
-                if (empty($g['text'])) continue;
+            <?php foreach ($tab1_good_items as $item) :
+                if (empty($item['text'])) continue;
             ?>
               <li>
                 <i><svg width="12" height="12"><use href="#i-check"/></svg></i>
-                <?php echo esc_html($g['text']); ?>
+                <?php echo esc_html($item['text']); ?>
               </li>
             <?php endforeach; ?>
           </ul>
         </div>
-        <?php endif; ?>
 
         <!-- Ảnh vuông chính giữa sản phẩm -->
         <div class="ltg-ba3-sq">
@@ -166,7 +156,6 @@ if (!$has_products) {
         </div>
 
         <!-- 3 ảnh Trước - Sau thực tế ở dưới -->
-        <?php if (!empty($tab1_shot_1) || !empty($tab1_shot_2) || !empty($tab1_shot_3)) : ?>
         <div class="ltg-ba3-shots">
           <?php if (!empty($tab1_shot_1)) : ?>
             <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab1_shot_1); ?>">
@@ -193,51 +182,41 @@ if (!$has_products) {
             </figure>
           <?php endif; ?>
         </div>
-        <?php endif; ?>
 
         <?php if (lx_has_content($tab1_quote)) : ?>
           <p class="ltg-ba3-q"><?php echo esc_html($tab1_quote); ?></p>
         <?php endif; ?>
       </div>
-      <?php endif; ?>
 
-      <?php if (lx_has_content($tab2_name)) : ?>
-      <div class="ltg-ba2-p ltg-ba3-p <?php echo !lx_has_content($tab1_name) ? 'is-on' : ''; ?>" data-bap="tam">
-        <?php if (!empty($tab2_bad_items) && is_array($tab2_bad_items)) : ?>
+      <!-- Tab 2: Sữa Tắm -->
+      <div class="ltg-ba2-p ltg-ba3-p" data-bap="tam">
         <div class="ltg-ba3-side ltg-ba3-bad">
-          <?php if (lx_has_content($tab2_bad_h)) : ?>
-            <h4><?php echo esc_html($tab2_bad_h); ?></h4>
-          <?php endif; ?>
+          <h4><?php echo esc_html($tab2_bad_h); ?></h4>
           <ul>
-            <?php foreach ($tab2_bad_items as $b) :
-                if (empty($b['text'])) continue;
+            <?php foreach ($tab2_bad_items as $item) :
+                if (empty($item['text'])) continue;
             ?>
               <li>
                 <i><svg width="12" height="12"><use href="#i-x"/></svg></i>
-                <?php echo esc_html($b['text']); ?>
+                <?php echo esc_html($item['text']); ?>
               </li>
             <?php endforeach; ?>
           </ul>
         </div>
-        <?php endif; ?>
 
-        <?php if (!empty($tab2_good_items) && is_array($tab2_good_items)) : ?>
         <div class="ltg-ba3-side ltg-ba3-good">
-          <?php if (lx_has_content($tab2_good_h)) : ?>
-            <h4><?php echo esc_html($tab2_good_h); ?></h4>
-          <?php endif; ?>
+          <h4><?php echo esc_html($tab2_good_h); ?></h4>
           <ul>
-            <?php foreach ($tab2_good_items as $g) :
-                if (empty($g['text'])) continue;
+            <?php foreach ($tab2_good_items as $item) :
+                if (empty($item['text'])) continue;
             ?>
               <li>
                 <i><svg width="12" height="12"><use href="#i-check"/></svg></i>
-                <?php echo esc_html($g['text']); ?>
+                <?php echo esc_html($item['text']); ?>
               </li>
             <?php endforeach; ?>
           </ul>
         </div>
-        <?php endif; ?>
 
         <!-- Ảnh vuông chính giữa sản phẩm -->
         <div class="ltg-ba3-sq">
@@ -247,7 +226,6 @@ if (!$has_products) {
         </div>
 
         <!-- 3 ảnh Trước - Sau thực tế ở dưới -->
-        <?php if (!empty($tab2_shot_1) || !empty($tab2_shot_2) || !empty($tab2_shot_3)) : ?>
         <div class="ltg-ba3-shots">
           <?php if (!empty($tab2_shot_1)) : ?>
             <figure class="ltg-ba3-shot" data-img="<?php echo esc_url($tab2_shot_1); ?>">
@@ -274,12 +252,10 @@ if (!$has_products) {
             </figure>
           <?php endif; ?>
         </div>
-        <?php endif; ?>
 
         <?php if (lx_has_content($tab2_quote)) : ?>
           <p class="ltg-ba3-q"><?php echo esc_html($tab2_quote); ?></p>
         <?php endif; ?>
       </div>
-      <?php endif; ?>
     </div>
   </section>

@@ -13,6 +13,7 @@ $modules = array(
     'helpers.php',
     'cleanup.php',
     'assets.php',
+    'cf7.php',
     'ajax-order.php',
     'acf-options.php',
     'sync-content.php',
