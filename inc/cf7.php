@@ -151,10 +151,12 @@ add_action('init', function() {
  * Filter to ensure combo value is correctly mapped and recipient is danghuy.homecare@gmail.com
  */
 add_action('wpcf7_before_send_mail', function($contact_form) {
-    $mail = $contact_form->get_prop('mail');
-    if (is_array($mail)) {
-        $mail['recipient'] = 'danghuy.homecare@gmail.com';
-        $contact_form->set_properties(array('mail' => $mail));
+    if (is_object($contact_form) && method_exists($contact_form, 'prop')) {
+        $mail = $contact_form->prop('mail');
+        if (is_array($mail)) {
+            $mail['recipient'] = 'danghuy.homecare@gmail.com';
+            $contact_form->set_properties(array('mail' => $mail));
+        }
     }
 });
 

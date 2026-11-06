@@ -396,7 +396,7 @@
     /* Form Đặt Hàng AJAX */
     try {
       var form = document.getElementById('ltgForm');
-      if (form) {
+      if (form && !form.classList.contains('wpcf7-form')) {
         form.addEventListener('submit', function(e){
           e.preventDefault();
           var f = this, ok = true;
