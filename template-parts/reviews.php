@@ -45,8 +45,8 @@ if (empty($rev_gallery) || !is_array($rev_gallery)) {
 }
 if (!empty($rev_gallery) && is_array($rev_gallery)) {
     foreach ($rev_gallery as &$item) {
-        if (!empty($item['img']) && strpos($item['img'], '/uploads/2026/10/feedback-') !== false) {
-            $item['img'] = str_replace('/uploads/2026/10/feedback-', '/uploads/2026/11/feedback-', $item['img']);
+        if (!empty($item['img']) && preg_match('#/uploads/2026/10/(feedback-(?:dau-goi|sua-tam)-gung-nghe-[1-3]\.png)#', $item['img'], $m)) {
+            $item['img'] = str_replace('/uploads/2026/10/' . $m[1], '/uploads/2026/11/' . $m[1], $item['img']);
         }
     }
     unset($item);
